@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainScreen">
+
+    <Button
+        android:id="@+id/main_screen_button_cau_hoi"
+        android:layout_width="374dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#2196F3"
+        android:text="Đề Thi"
+        app:layout_constraintBottom_toTopOf="@+id/main_screen_button_cham_diem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_screen_button_cau_hoi"
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="HardcodedText,MissingConstraints,NotSibling,TextContrastCheck,VisualLintButtonSize" />
+
+    <Button
+        android:id="@+id/main_screen_button_trang_chu"
+        android:layout_width="99dp"
+        android:layout_height="35dp"
+        android:backgroundTint="#2196F3"
+        android:text="Trang Chủ"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,SmallSp,TextContrastCheck,TouchTargetSizeCheck,VisualLintOverlap,VisualLintBounds"
+        tools:layout_editor_absoluteY="691dp" />
+
+    <Button
+        android:id="@+id/main_screen_button_ho_so"
+        android:layout_width="99dp"
+        android:layout_height="35dp"
+        android:backgroundTint="#2196F3"
+        android:text="Hồ Sơ"
+        android:textSize="10sp"
+        tools:ignore="DuplicateIds,HardcodedText,MissingConstraints,SmallSp,TextContrastCheck,TouchTargetSizeCheck,VisualLintBounds"
+        tools:layout_editor_absoluteX="291dp"
+        tools:layout_editor_absoluteY="691dp" />
+
+    <Button
+        android:id="@+id/main_screen_button_de_thi"
+        android:layout_width="374dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#2196F3"
+        android:text="Câu Hỏi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,VisualLintButtonSize,TextContrastCheck"
+        tools:layout_editor_absoluteY="341dp" />
+
+    <Button
+        android:id="@+id/main_screen_button_tra_cuu"
+        android:layout_width="374dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#2196F3"
+        android:text="Tra Cứu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,VisualLintButtonSize,TextContrastCheck"
+        tools:layout_editor_absoluteY="522dp" />
+
+    <Button
+        android:id="@+id/main_screen_button_cham_diem"
+        android:layout_width="374dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#2196F3"
+        android:text="Chấm Điểm "
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,VisualLintButtonSize,TextContrastCheck"
+        tools:layout_editor_absoluteY="459dp" />
+
+    <Button
+        android:id="@+id/main_screen_button_bao_cao"
+        android:layout_width="374dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#2196F3"
+        android:text="Báo Cáo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,VisualLintButtonSize,TextContrastCheck"
+        tools:layout_editor_absoluteY="585dp" />
+
+    <TextView
+        android:id="@+id/main_screen_text_ten"
+        android:layout_width="121dp"
+        android:layout_height="39dp"
+        android:gravity="center"
+        android:text="TS.Ngô Đức Thành"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,TextSizeCheck"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="-3dp"
+        tools:ignore="VisualLintBounds" />
+
+    <EditText
+        android:id="@+id/main_screen_text_khoa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        android:text="Khoa Khoa Học Máy Tính"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="Autofill,HardcodedText,LabelFor,MissingConstraints,TouchTargetSizeCheck"
+        tools:layout_editor_absoluteY="276dp" />
+
+    <ImageView
+        android:id="@+id/main_screen_image_user"
+        android:layout_width="220dp"
+        android:layout_height="184dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ellipse_742"
+        tools:ignore="ContentDescription,ImageContrastCheck,MissingConstraints"
+        tools:layout_editor_absoluteY="48dp" />
+
+    <Button
+        android:id="@+id/main_screen_button_thong_bao"
+        android:layout_width="99dp"
+        android:layout_height="35dp"
+        android:backgroundTint="#2196F3"
+        android:text="Thông Báo"
+        android:textSize="10sp"
+        tools:ignore="DuplicateIds,HardcodedText,MissingConstraints,SmallSp,TextContrastCheck,TouchTargetSizeCheck,VisualLintBounds"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="691dp" />
+
+    <ImageView
+        android:id="@+id/main_screen_image_home"
+        android:layout_width="43dp"
+        android:layout_height="33dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/homee"
+        tools:ignore="ContentDescription,ImageContrastCheck,MissingConstraints"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <ImageView
+        android:id="@+id/main_screen_image_bell"
+        android:layout_width="43dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/bel"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+    <ImageView
+        android:id="@+id/main_screen_image_icon_user"
+        android:layout_width="43dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/us"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="323dp"
+        tools:layout_editor_absoluteY="658dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
