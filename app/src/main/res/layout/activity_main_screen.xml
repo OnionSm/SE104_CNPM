@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainScreen">
 
     <LinearLayout
@@ -14,16 +15,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="#E1E8E7"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="258dp"
+            android:layout_height="78dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/banner_uit_2" />
+
+        <ImageView
             android:id="@+id/main_screen_image_user"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="120dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/ellipse_742"/>
+            app:srcCompat="@drawable/user_image"/>
 
         <TextView
             android:id="@+id/main_screen_text_ten"
@@ -32,76 +41,107 @@
             android:gravity="center"
             android:text="TS.Ngô Đức Thành"
             android:textColor="#000000"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/main_screen_text_khoa"
+        <TextView
+            android:id="@+id/main_screen_text_ten_khoa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Khoa Khoa Học Máy Tính"
-            android:textStyle="bold"
+            android:text="Khoa khoa học máy tính"
+            android:layout_marginBottom="15dp"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/main_screen_button_de_thi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2196F3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#00FFFFFF"
             android:layout_marginBottom="5dp"
-            android:text="Câu Hỏi" />
-        <Button
-            android:id="@+id/main_screen_button_cau_hoi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2196F3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
+            android:src="@drawable/cau_hoi_layer">
+        </ImageButton>
+
+
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="360dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#00FFFFFF"
             android:layout_marginBottom="5dp"
-            android:text="Đề Thi"/>
-        <Button
-            android:id="@+id/main_screen_button_cham_diem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2196F3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
+            android:src="@drawable/de_thi_layer">
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="360dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#00FFFFFF"
             android:layout_marginBottom="5dp"
-            android:text="Chấm Điểm "/>
-        <Button
-            android:id="@+id/main_screen_button_tra_cuu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2196F3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
+            android:src="@drawable/tra_cuu_layer">
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="360dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#00FFFFFF"
             android:layout_marginBottom="5dp"
-            android:text="Tra Cứu"/>
-        <Button
-            android:id="@+id/main_screen_button_bao_cao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2196F3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
+            android:src="@drawable/cham_diem_layer">
+        <ImageButton
+            android:id="@+id/imageButton8"
+            android:layout_width="360dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#00FFFFFF"
             android:layout_marginBottom="5dp"
-            android:text="Báo Cáo"/>
+            android:layout_marginTop="5dp"
+            android:src="@drawable/bao_cao_layer">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bar">
 
 
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/thong_bao_layer"/>
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/trang_chu_layer"/>
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/ho_so_layer"/>
         </LinearLayout>
 
     </LinearLayout>
