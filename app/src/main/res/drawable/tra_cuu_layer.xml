@@ -1,0 +1,13 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bar_2" />
+    <item android:drawable="@drawable/tra_cuu_icon"
+        android:top="9dp"
+        android:left="30dp"
+        android:width="25dp"
+        android:height="25dp"/>
+    <item android:drawable="@drawable/tra_cuu_text"
+        android:top="12dp"
+        android:left="90dp"
+        android:width="50dp"
+        android:height="18dp"/>
+</layer-list>
