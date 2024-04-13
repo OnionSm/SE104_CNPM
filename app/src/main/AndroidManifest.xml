@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".ThemCauHoi"
+            android:exported="true" />
+        <activity
             android:name=".CauHoiScreen"
             android:exported="false" />
         <activity

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/them_cau_hoi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThemCauHoi">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/them_cau_hoi_shape_1">
+        <ImageView
+            android:id="@+id/them_cau_hoi_image_view_1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="78dp"
+            android:layout_marginLeft="18dp"
+            android:layout_gravity="top|left"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/them_cau_hoi_image_view_1" />
+
+        <TextView
+            android:id="@+id/them_cau_hoi_text_view_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="73dp"
+            android:layout_marginLeft="45dp"
+            android:layout_gravity="top|left"
+            android:textColor="#0000FD"
+            android:textSize="19dp"
+            android:text="Tạo câu hỏi"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:fontFamily="@font/roboto_medium"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/them_cau_hoi_text_view_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginTop="78dp"
+            android:layout_marginLeft="230dp"
+            android:text="Lưu vào bản nháp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="16dp"
+            android:textColor="#6E7591"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="170dp"
+            android:background="@drawable/them_cau_hoi_shape_2"/>
+
+        <FrameLayout
+            android:layout_width="330dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/them_cau_hoi_shape_3"
+            android:layout_gravity="top|center"
+            android:clipToPadding="false">
+
+           <TextView
+               android:id="@+id/them_cau_hoi_text_view_3"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:text="Môn học"
+               android:textColor="#0000FD"
+               android:fontFamily="@font/roboto_medium"
+               android:textSize="18dp"
+               android:maxLines="1"
+               android:singleLine="true"
+               android:layout_gravity="left|center_vertical"/>
+            <ImageView
+                android:id="@+id/them_cau_hoi_image_view_2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="290dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/them_cau_hoi_image_view_1"
+                android:rotation="270"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="274dp"
+            android:fontFamily="@font/roboto_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Nội dung câu hỏi"
+            android:textColor="#0000FD"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+    <FrameLayout
+        android:layout_width="330dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/them_cau_hoi_shape_3"
+        android:layout_gravity="top|center"
+        android:clipToPadding="false">
+
+        <TextView
+            android:id="@+id/them_cau_hoi_text_view_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Nhập nội dung câu hỏi tại đây"
+            android:textColor="#6E7591"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+    </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="430dp"
+            android:fontFamily="@font/roboto_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Độ khó"
+            android:textColor="#0000FD"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+    <FrameLayout
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="455dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/them_cau_hoi_shape_3"
+        android:clipToPadding="false">
+
+        <ImageView
+            android:id="@+id/them_cau_hoi_image_view_3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="290dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/them_cau_hoi_image_view_1"
+            android:rotation="270"/>
+
+        <TextView
+            android:id="@+id/them_cau_hoi_text_view_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Chọn độ khó"
+            android:textColor="#6E7591"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+    </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="507dp"
+            android:fontFamily="@font/roboto_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Đăng tải bởi"
+            android:textColor="#0000FD"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="532dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/them_cau_hoi_shape_4"
+            android:clipToPadding="false">
+
+            <TextView
+                android:id="@+id/them_cau_hoi_text_view_6"
+                android:layout_width="wrap_content"
+                android:layout_height="18.67dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="50dp"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Ngô Đức Thành"
+                android:textColor="#6E7591"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
+            <ImageView
+                android:id="@+id/them_cau_hoi_image_view_4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="left|center_vertical"
+                app:srcCompat="@drawable/user_image"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="570dp"
+            android:fontFamily="@font/roboto_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Ngày đăng tải"
+            android:textColor="#0000FD"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+        <FrameLayout
+            android:layout_width="330dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="595dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/them_cau_hoi_shape_3"
+            android:clipToPadding="false">
+
+            <TextView
+                android:id="@+id/them_cau_hoi_text_view_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/roboto_regular"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="DD/MM/YY"
+                android:textColor="#6E7591"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="330dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="670dp"
+            android:layout_gravity="top|left"
+            android:background="@drawable/them_cau_hoi_shape_5"
+            android:clipToPadding="false">
+            <TextView
+                android:id="@+id/them_cau_hoi_text_view_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="120dp"
+                android:text="Tạo câu hỏi"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="16dp"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"/>
+        </FrameLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

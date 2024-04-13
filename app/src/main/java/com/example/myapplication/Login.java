@@ -1,5 +1,4 @@
-package com.example.appcnpm;
-
+package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
