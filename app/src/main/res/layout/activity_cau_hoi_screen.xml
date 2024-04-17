@@ -2,9 +2,67 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/tao_cau_hoi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CauHoiScreen">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/phong_nen_cau_hoi_screen"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageButton
+            android:id="@+id/button_tao_cau_hoi"
+            android:layout_width="33dp"
+            android:layout_height="24dp"
+            android:layout_gravity="top|left"
+            android:layout_marginTop="73dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/button_quay_lai_layer" />
+
+        <TextView
+            android:id="@+id/text_Cau_hoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="72dp"
+            android:fontFamily="@font/roboto_medium"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Câu Hỏi"
+            android:textColor="#0000FD"
+            android:textSize="19dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/button_tao_cau_hoi_layer"
+                android:layout_width="407dp"
+                android:layout_height="166dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="fitXY"
+                android:src="@drawable/button_tao_cau_hoi_layer"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/button_danh_sach_cau_hoi_layer"
+                android:layout_width="354dp"
+                android:layout_height="143dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitXY"
+                android:src="@drawable/button_danh_sach_cau_hoi_layer"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
