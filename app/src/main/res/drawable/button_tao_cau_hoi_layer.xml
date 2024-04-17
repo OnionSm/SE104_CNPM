@@ -1,8 +1,0 @@
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/phong_nen_button_tao_cau_hoi" />
-    <item android:drawable="@drawable/tao_cau_hoi_text"
-        android:top="70dp"
-        android:left="250dp"
-        android:width="70dp"
-        android:height="18dp"/>
-</layer-list>
