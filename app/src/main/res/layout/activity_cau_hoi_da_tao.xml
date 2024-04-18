@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cau_hoi_da_tao"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation ="vertical"
+    android:background="#DFE4F1"
+    tools:context=".CauHoiDaTao">
+
+    <LinearLayout
+        android:id="@+id/cau_hoi_da_tao_bar"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginBottom="30dp">
+
+        <ImageButton
+            android:id="@+id/cau_hoi_da_tao_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/button_arrow_left" />
+        <TextView
+            android:id="@+id/cau_hoi_da_tao_text"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:text="Câu hỏi đã tạo"
+            android:gravity="left|center"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#0000FD"
+            android:textSize="25sp"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cau_hoi_da_tao_cau_1_layout"
+        android:layout_width="match_parent"
+        android:orientation ="vertical"
+        android:layout_height="135dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:background="@drawable/check_cau_hoi_background">
+
+        <TextView
+            android:id="@+id/cau_hoi_da_tao_cau_1_text"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Câu hỏi 1:"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#0000FD"
+            android:textSize="20sp"
+            android:layout_marginLeft="38dp"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="fill_parent"
+           android:layout_marginLeft="38dp"
+           android:layout_marginRight="38dp"
+           android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+           android:fontFamily="@font/roboto_regular"
+           android:textSize= "18sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/cau_hoi_da_tao_cau_2_layout"
+        android:layout_width="match_parent"
+        android:orientation ="vertical"
+        android:layout_height="135dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:background="@drawable/check_cau_hoi_background">
+
+        <TextView
+            android:id="@+id/cau_hoi_da_tao_cau_2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Câu hỏi 2:"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#0000FD"
+            android:textSize="20sp"
+            android:layout_marginLeft="38dp"/>
+
+        <TextView
+            android:id="@+id/cau_hoi_da_tao_cau_2_text"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            android:fontFamily="@font/roboto_regular"
+            android:textSize= "18sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/cau_hoi_da_tao_cau_3_layout"
+        android:layout_width="match_parent"
+        android:orientation ="vertical"
+        android:layout_height="135dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:background="@drawable/check_cau_hoi_background">
+
+        <TextView
+            android:id="@+id/cau_hoi_da_tao_cau_3"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Câu hỏi 3:"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#0000FD"
+            android:textSize="20sp"
+            android:layout_marginLeft="38dp"/>
+
+        <TextView
+            android:id="@+id/cau_hoi_da_tao_cau_3_text"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            android:fontFamily="@font/roboto_regular"
+            android:textSize= "18sp"/>
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
