@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tao_de_thi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaoDeThi">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/them_cau_hoi_shape_1"
+        tools:layout_editor_absoluteX="-91dp"
+        tools:layout_editor_absoluteY="37dp">
+
+        <ImageButton
+            android:id="@+id/tao_de_thi_image_button_1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="65dp"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/button_arrow_left"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/tao_de_thi_button_1"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Tạo đề"
+            android:textAllCaps="false"
+            android:textColor="#0000FD"
+            android:textSize="14sp"
+            tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
+        <FrameLayout
+            android:layout_width="165dp"
+            android:orientation ="vertical"
+            android:layout_height="95dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/tao_de_thi_shape_1">
+            <TextView
+                android:id="@+id/tao_de_thi_text_1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Tên môn học"
+                android:textColor="#0000FD"
+                android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/tao_de_thi_button_2"
+                android:layout_marginTop="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="135dp"
+                android:rotation="270"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/them_cau_hoi_image_view_1" />
+
+            <TextView
+                android:id="@+id/tao_de_thi_text_2"
+                android:layout_marginTop="35dp"
+                android:layout_width="150dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="38dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhập môn công nghệ phần mềm"
+                android:textSize="16sp" />
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="165dp"
+            android:orientation ="vertical"
+            android:layout_height="95dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="185dp"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/tao_de_thi_shape_1">
+            <TextView
+                android:id="@+id/tao_de_thi_text_3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Số câu hỏi"
+                android:textColor="#0000FD"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="38dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhập số câu hỏi"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/so_cau_hoi_do_kho_de"
+            android:layout_width="335dp"
+            android:orientation ="vertical"
+            android:layout_height="55dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/tao_de_thi_shape_1">
+            <TextView
+                android:id="@+id/tao_de_thi_text_4"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Số câu hỏi - Độ khó: Dễ"
+                android:textColor="#0000FD"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tao_de_thi_text_5"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="38dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhập số câu hỏi với độ khó Dễ"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/so_cau_hoi_do_kho_trung_binh"
+            android:layout_width="335dp"
+            android:orientation ="vertical"
+            android:layout_height="55dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/tao_de_thi_shape_1">
+            <TextView
+                android:id="@+id/tao_de_thi_text_6"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Số câu hỏi - Độ khó: Trung bình"
+                android:textColor="#0000FD"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="38dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhập số câu hỏi với độ khó Trung bình"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/so_cau_hoi_do_kho_phuc_tap"
+            android:layout_width="335dp"
+            android:orientation ="vertical"
+            android:layout_height="55dp"
+            android:layout_marginTop="420dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/tao_de_thi_shape_1">
+            <TextView
+                android:id="@+id/tao_de_thi_text_7"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Số câu hỏi - Độ khó: Phức tạp"
+                android:textColor="#0000FD"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tao_de_thi_text_8"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="38dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhập số câu hỏi với độ khó Phức tạp"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/so_cau_hoi_do_kho_kho"
+            android:layout_width="335dp"
+            android:orientation ="vertical"
+            android:layout_height="55dp"
+            android:layout_marginTop="480dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/tao_de_thi_shape_1">
+            <TextView
+                android:id="@+id/tao_de_thi_text_9"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Số câu hỏi - Độ khó: Khó"
+                android:textColor="#0000FD"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tao_de_thi_text_10"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="38dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhập số câu hỏi với độ khó Khó"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

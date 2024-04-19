@@ -268,29 +268,22 @@
                 tools:ignore="TextSizeCheck" />
         </FrameLayout>
 
-        <FrameLayout
+        <Button
+            android:id="@+id/them_cau_hoi_button_1"
             android:layout_width="330dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="670dp"
-            android:layout_gravity="top|left"
-            android:background="@drawable/them_cau_hoi_shape_5"
-            android:clipToPadding="false">
-            <TextView
-                android:id="@+id/them_cau_hoi_text_view_8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="120dp"
-                android:text="Tạo câu hỏi"
-                android:textColor="#FFFFFF"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="16dp"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textStyle="bold"/>
-        </FrameLayout>
+            android:clipToPadding="false"
+            android:backgroundTint="#0000FD"
+            android:text="Tạo câu hỏi"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textStyle="bold"/>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
