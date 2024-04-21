@@ -38,7 +38,7 @@ public class MainScreen extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageButton cauhoi = findViewById(R.id.image_button_4);
+        /*ImageButton cauhoi = findViewById(R.id.image_button_4);
         cauhoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -46,7 +46,7 @@ public class MainScreen extends AppCompatActivity {
                 Intent cau_hoi_intent = new Intent(MainScreen.this, CauHoiScreen.class);
                 startActivity(cau_hoi_intent);
             }
-        });
+        });*/
         // Không được xóa
         /*GIANGVIEN admin = new GIANGVIEN("000000", "admin", new Date(946684800000L), "nam","admin","00000");
         ref.child("GIANGVIEN").child(admin.getMaGV()).setValue(admin);*/
