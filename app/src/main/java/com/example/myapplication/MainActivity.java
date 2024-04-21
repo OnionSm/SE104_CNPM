@@ -32,6 +32,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, MainScreen.class));
                 finish();
             }
-        },3000);
+        },2500);
     }
 }
