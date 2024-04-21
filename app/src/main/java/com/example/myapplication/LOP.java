@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class LOP
 {
     private String maLop;
@@ -66,7 +68,7 @@ public class LOP
 
     @Override
     public String toString() {
-        return "LOP{" +
+        return "com.example.myapplication.LOP{" +
                 "maLop='" + maLop + '\'' +
                 ", tenLop='" + tenLop + '\'' +
                 ", maHKNH='" + maHKNH + '\'' +

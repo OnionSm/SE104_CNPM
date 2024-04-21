@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class BAOCAONAM
 {
     private String maBCNam;
@@ -56,7 +58,7 @@ public class BAOCAONAM
 
     @Override
     public String toString() {
-        return "BAOCAONAM{" +
+        return "com.example.myapplication.BAOCAONAM{" +
                 "maBCNam='" + maBCNam + '\'' +
                 ", maHKNH='" + maHKNH + '\'' +
                 ", maGV='" + maGV + '\'' +

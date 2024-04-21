@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class DOKHO {
     private String maDoKho;
     private String tenDoKho;
@@ -25,7 +27,7 @@ public class DOKHO {
 
     @Override
     public String toString() {
-        return "DOKHO{" +
+        return "com.example.myapplication.DOKHO{" +
                 "maDoKho='" + maDoKho + '\'' +
                 ", tenDoKho='" + tenDoKho + '\'' +
                 '}';

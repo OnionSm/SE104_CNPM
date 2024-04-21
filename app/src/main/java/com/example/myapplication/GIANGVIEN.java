@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 import java.util.Date;
 
 public class GIANGVIEN
@@ -68,7 +70,7 @@ public class GIANGVIEN
 
     @Override
     public String toString() {
-        return "GIANGVIEN{" +
+        return "com.example.myapplication.GIANGVIEN{" +
                 "maGV='" + maGV + '\'' +
                 ", hoTenGV='" + hoTenGV + '\'' +
                 ", ngSinhGV=" + ngSinhGV +

@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class NHOMNGUOIDUNG
 {
     private String maNhomND;
@@ -27,7 +29,7 @@ public class NHOMNGUOIDUNG
 
     @Override
     public String toString() {
-        return "NHOMNGUOIDUNG{" +
+        return "com.example.myapplication.NHOMNGUOIDUNG{" +
                 "maNhomND='" + maNhomND + '\'' +
                 ", tenNhomND='" + tenNhomND + '\'' +
                 '}';

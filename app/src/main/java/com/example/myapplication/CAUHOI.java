@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class CAUHOI {
     private String maCH;
     private String maDoKho;
@@ -55,7 +57,7 @@ public class CAUHOI {
 
     @Override
     public String toString() {
-        return "CAUHOI{" +
+        return "com.example.myapplication.CAUHOI{" +
                 "maCH='" + maCH + '\'' +
                 ", maDoKho='" + maDoKho + '\'' +
                 ", noiDung='" + noiDung + '\'' +

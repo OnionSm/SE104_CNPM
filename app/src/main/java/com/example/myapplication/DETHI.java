@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 import java.util.Date;
 
 public class DETHI
@@ -68,7 +70,7 @@ public class DETHI
 
     @Override
     public String toString() {
-        return "DETHI{" +
+        return "com.example.myapplication.DETHI{" +
                 "maDT='" + maDT + '\'' +
                 ", thoiLuong=" + thoiLuong +
                 ", maHKNH='" + maHKNH + '\'' +
