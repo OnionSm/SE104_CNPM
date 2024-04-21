@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class CHITIETLOP
 {
     private String maLop;
@@ -66,7 +68,7 @@ public class CHITIETLOP
 
     @Override
     public String toString() {
-        return "CHITIETLOP{" +
+        return "com.example.myapplication.CHITIETLOP{" +
                 "maLop='" + maLop + '\'' +
                 ", maSV='" + maSV + '\'' +
                 ", tenSV='" + tenSV + '\'' +

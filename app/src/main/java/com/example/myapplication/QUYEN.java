@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class QUYEN
 {
     private String maQuyen;
@@ -26,7 +28,7 @@ public class QUYEN
 
     @Override
     public String toString() {
-        return "QUYEN{" +
+        return "com.example.myapplication.QUYEN{" +
                 "maQuyen='" + maQuyen + '\'' +
                 ", tenQuyen='" + tenQuyen + '\'' +
                 '}';

@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class THAMSO
 {
     private String tenThamSo;
@@ -26,7 +28,7 @@ public class THAMSO
 
     @Override
     public String toString() {
-        return "THAMSO{" +
+        return "com.example.myapplication.THAMSO{" +
                 "tenThamSo='" + tenThamSo + '\'' +
                 ", giaTri=" + giaTri +
                 '}';
