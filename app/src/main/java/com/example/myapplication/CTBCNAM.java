@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class CTBCNAM
 {
     private String maBCNam;
@@ -66,7 +68,7 @@ public class CTBCNAM
 
     @Override
     public String toString() {
-        return "CTBCNAM{" +
+        return "com.example.myapplication.CTBCNAM{" +
                 "maBCNam='" + maBCNam + '\'' +
                 ", maMH='" + maMH + '\'' +
                 ", soLuongDeThi=" + soLuongDeThi +

@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class MONHOC
 {
     private String maMH;
@@ -36,7 +38,7 @@ public class MONHOC
 
     @Override
     public String toString() {
-        return "MONHOC{" +
+        return "com.example.myapplication.MONHOC{" +
                 "maMH='" + maMH + '\'' +
                 ", tenMH='" + tenMH + '\'' +
                 ", moTaMH='" + moTaMH + '\'' +

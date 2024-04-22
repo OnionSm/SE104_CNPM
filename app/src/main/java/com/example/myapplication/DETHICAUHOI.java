@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class DETHICAUHOI
 {
     private String maDT;
@@ -26,7 +28,7 @@ public class DETHICAUHOI
 
     @Override
     public String toString() {
-        return "DETHICAUHOI{" +
+        return "com.example.myapplication.DETHICAUHOI{" +
                 "maDT='" + maDT + '\'' +
                 ", maCH='" + maCH + '\'' +
                 '}';

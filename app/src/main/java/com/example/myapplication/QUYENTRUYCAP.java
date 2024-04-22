@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class QUYENTRUYCAP
 {
     private String maNhomND;
@@ -26,7 +28,7 @@ public class QUYENTRUYCAP
 
     @Override
     public String toString() {
-        return "QUYENTRUYCAP{" +
+        return "com.example.myapplication.QUYENTRUYCAP{" +
                 "maNhomND='" + maNhomND + '\'' +
                 ", maQuyen='" + maQuyen + '\'' +
                 '}';

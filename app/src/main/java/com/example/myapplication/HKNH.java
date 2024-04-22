@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 import java.util.Date;
 
 public class HKNH
@@ -48,7 +50,7 @@ public class HKNH
 
     @Override
     public String toString() {
-        return "HKNH{" +
+        return "com.example.myapplication.HKNH{" +
                 "maHKNH='" + maHKNH + '\'' +
                 ", hocKy=" + hocKy +
                 ", nam1=" + nam1 +
