@@ -1,6 +1,10 @@
 package com.example.myapplication;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +23,15 @@ public class TaoDeThi extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        ImageButton quay_lai_de_thi = findViewById(R.id.tao_de_thi_image_button_1);
+        quay_lai_de_thi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent quay_lai_trang_chu_intent = new Intent(TaoDeThi.this, DeThi.class);
+                startActivity(quay_lai_trang_chu_intent);
+            }
         });
     }
 }

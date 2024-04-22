@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tao_cau_hoi"
+    android:id="@+id/cau_hoi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CauHoiScreen">
+    tools:context=".CauHoiScreen"
+    android:background="@drawable/them_cau_hoi_shape_1">
 
 
     <LinearLayout
         android:id="@+id/cau_hoi_linear_layout_1"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal">
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        >
 
         <ImageButton
             android:id="@+id/cau_hoi_back_button"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:backgroundTint="#00FFFFFF"
             android:gravity="center"
@@ -24,7 +26,7 @@
             android:src="@drawable/button_arrow_left" />
 
         <TextView
-            android:id="@+id/cau_hoi_text_Cau_hoi"
+            android:id="@+id/cau_hoi_text_1"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="30dp"
@@ -32,7 +34,7 @@
             android:fontFamily="@font/roboto_medium"
             android:gravity="left|center"
             android:singleLine="true"
-            android:text="Câu Hỏi"
+            android:text="Câu hỏi"
             android:textColor="#0000FD"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -40,19 +42,19 @@
 
     <ImageButton
         android:id="@+id/cau_hoi_tao_cau_hoi_button"
-        android:layout_width="390dp"
-        android:layout_height="240dp"
+        android:layout_width="300dp"
+        android:layout_height="180dp"
         android:scaleType="fitXY"
         android:layout_below="@id/cau_hoi_linear_layout_1"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="100dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/cau_hoi_button"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/button_danh_sach_cau_hoi_layer"
-        android:layout_width="350dp"
-        android:layout_height="220dp"
+        android:layout_width="250dp"
+        android:layout_height="180dp"
         android:layout_below="@id/cau_hoi_tao_cau_hoi_button"
         android:layout_marginTop="-66dp"
         android:background="?android:attr/selectableItemBackground"
