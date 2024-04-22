@@ -23,5 +23,23 @@ public class DeThi extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        ImageButton tao_de_thi = findViewById(R.id.de_thi_tao_de_thi_button);
+        tao_de_thi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent tao_de_thi_intent = new Intent(DeThi.this, TaoDeThi.class);
+                startActivity(tao_de_thi_intent);
+            }
+        });
+        ImageButton quay_lai_trang_chu = findViewById(R.id.de_thi_back_button);
+        quay_lai_trang_chu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent quay_lai_trang_chu_intent = new Intent(DeThi.this, MainScreen.class);
+                startActivity(quay_lai_trang_chu_intent);
+            }
+        });
     }
 }
