@@ -1,13 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cau_hoi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+
+    tools:context=".CauHoiScreen">
+
     tools:context=".CauHoiScreen"
     android:background="@drawable/them_cau_hoi_shape_1">
 
 
+    <ImageButton
+        android:id="@+id/tao_cau_hoi_icon_back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/cau_hoi_guideline_1_4"
+        app:layout_constraintEnd_toEndOf="@id/cau_hoi_guideline_1_2"
+        app:layout_constraintStart_toStartOf="@id/cau_hoi_guideline_1_1"
+        app:layout_constraintTop_toTopOf="@id/cau_hoi_guideline_1_3"
+        app:srcCompat="@drawable/them_cau_hoi_image_view_1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_1_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_1_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_1_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_1_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.105"/>
+
+
+    <ImageView
+        android:id="@+id/tao_cau_hoi_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/cau_hoi_guideline_1_4"
+        app:layout_constraintEnd_toEndOf="@id/cau_hoi_guideline_2_2"
+        app:layout_constraintStart_toStartOf="@id/cau_hoi_guideline_2_1"
+        app:layout_constraintTop_toTopOf="@id/cau_hoi_guideline_1_3"
+        app:srcCompat="@drawable/cau_hoi_text" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_2_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.13"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_2_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3"/>
+
+
+    <ImageButton
+        android:id="@+id/tao_cau_hoi_tao_cau_hoi_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1.8:1"
+        app:layout_constraintBottom_toBottomOf="@id/cau_hoi_guideline_3_2"
+
+        app:layout_constraintEnd_toEndOf="@id/cau_hoi_guideline_3_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cau_hoi_guideline_3_1"
+        app:srcCompat="@drawable/cau_hoi_button" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_3_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.31"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_3_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.51"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_3_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.76"/>
+
+
+    <ImageButton
+        android:id="@+id/tao_cau_hoi_danh_sach_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/cau_hoi_guideline_4_3"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toEndOf="@id/cau_hoi_guideline_4_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cau_hoi_guideline_4_1"
+        app:srcCompat="@drawable/danh_sach_cau_hoi_button" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.68"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cau_hoi_guideline_4_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:id="@+id/cau_hoi_linear_layout_1"
         android:layout_width="match_parent"
