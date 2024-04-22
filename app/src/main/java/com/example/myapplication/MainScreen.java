@@ -35,5 +35,14 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(cau_hoi_intent);
             }
         });
+        ImageButton dethi = findViewById(R.id.imageButton5);
+        dethi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent de_thi_intent = new Intent(MainScreen.this, DeThi.class);
+                startActivity(de_thi_intent);
+            }
+        });
     }
 }

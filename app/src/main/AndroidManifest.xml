@@ -13,11 +13,14 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".DeThi"
+            android:exported="true" />
+        <activity
             android:name=".TaoDeThi"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CauHoiDaTao"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Profile"
             android:exported="true" />
@@ -26,7 +29,7 @@
             android:exported="true" />
         <activity
             android:name=".CauHoiScreen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainScreen"
             android:exported="true">
