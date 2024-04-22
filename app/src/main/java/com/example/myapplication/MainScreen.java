@@ -46,9 +46,21 @@ public class MainScreen extends AppCompatActivity {
                 Intent cau_hoi_intent = new Intent(MainScreen.this, CauHoiScreen.class);
                 startActivity(cau_hoi_intent);
             }
+
+        });
+//         ImageButton dethi = findViewById(R.id.imageButton5);
+//         dethi.setOnClickListener(new View.OnClickListener() {
+//             @Override
+//             public void onClick(View view)
+//             {
+//                 Intent de_thi_intent = new Intent(MainScreen.this, DeThi.class);
+//                 startActivity(de_thi_intent);
+//             }
+//         });
         });*/
         // Không được xóa
         /*GIANGVIEN admin = new GIANGVIEN("000000", "admin", new Date(946684800000L), "nam","admin","00000");
         ref.child("GIANGVIEN").child(admin.getMaGV()).setValue(admin);*/
+
     }
 }
