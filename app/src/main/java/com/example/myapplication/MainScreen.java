@@ -15,7 +15,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.Date;
 
-public class MainScreen extends AppCompatActivity {
+public class MainScreen extends AppCompatActivity
+{
 
     // Không được xóa những dòng comment
     /*private FirebaseDatabase db;
@@ -23,7 +24,8 @@ public class MainScreen extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main_screen);
@@ -38,8 +40,9 @@ public class MainScreen extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        /*ImageButton cauhoi = findViewById(R.id.image_button_4);
-        cauhoi.setOnClickListener(new View.OnClickListener() {
+        ImageButton cauhoi = findViewById(R.id.trang_chu_cau_hoi_button);
+        cauhoi.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
@@ -48,16 +51,18 @@ public class MainScreen extends AppCompatActivity {
             }
 
         });
-//         ImageButton dethi = findViewById(R.id.imageButton5);
-//         dethi.setOnClickListener(new View.OnClickListener() {
-//             @Override
-//             public void onClick(View view)
-//             {
-//                 Intent de_thi_intent = new Intent(MainScreen.this, DeThi.class);
-//                 startActivity(de_thi_intent);
-//             }
-//         });
-        });*/
+         ImageButton dethi = findViewById(R.id.trang_chu_de_thi_button);
+         dethi.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view)
+             {
+                 Intent de_thi_intent = new Intent(MainScreen.this, DeThi.class);
+                 startActivity(de_thi_intent);
+             }
+         });
+
+
+
         // Không được xóa
         /*GIANGVIEN admin = new GIANGVIEN("000000", "admin", new Date(946684800000L), "nam","admin","00000");
         ref.child("GIANGVIEN").child(admin.getMaGV()).setValue(admin);*/

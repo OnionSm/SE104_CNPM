@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_screen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context=".MainScreen">
 
     <ImageView
@@ -108,10 +108,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:scaleType="fitXY"
         android:text="TS.Ngô Đức Thành"
         android:textColor="#000000"
-        android:textSize="25sp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_4_2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,11 +134,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:scaleType="centerCrop"
         android:text="Khoa khoa học máy tính"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_5_1"
+        app:layout_constraintDimensionRatio="10:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_4_2" />
@@ -152,15 +151,16 @@
 
 
     <ImageButton
+        android:id="@+id/trang_chu_cau_hoi_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_6_2"
         app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_6_4"
         app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_6_3"
         app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_6_1"
-        app:srcCompat="@drawable/cau_hoi_layer"/>
+        app:srcCompat="@drawable/tao_cau_hoi_button"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_6_1"
         android:layout_width="wrap_content"
@@ -188,15 +188,16 @@
 
 
     <ImageButton
+        android:id="@+id/trang_chu_de_thi_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_7_2"
         app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_6_4"
         app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_6_3"
         app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_7_1"
-        app:srcCompat="@drawable/de_thi_layer" />
+        app:srcCompat="@drawable/trang_chu_de_thi_button" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_7_1"
         android:layout_width="wrap_content"
@@ -212,15 +213,16 @@
 
 
     <ImageButton
+        android:id="@+id/trang_chu_tra_cuu_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_8_2"
         app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_6_4"
         app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_6_3"
         app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_8_1"
-        app:srcCompat="@drawable/tra_cuu_layer"/>
+        app:srcCompat="@drawable/trang_chu_tra_cuu_button"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_8_1"
         android:layout_width="wrap_content"
@@ -236,15 +238,16 @@
 
 
     <ImageButton
+        android:id="@+id/trang_chu_cham_diem_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_9_2"
         app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_6_4"
         app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_6_3"
         app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_9_1"
-        app:srcCompat="@drawable/cham_diem_layer"/>
+        app:srcCompat="@drawable/trang_chu_cham_diem_button"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_9_1"
         android:layout_width="wrap_content"
@@ -259,15 +262,16 @@
         app:layout_constraintGuide_percent="0.772" />
 
     <ImageButton
+        android:id="@+id/trang_chu_bao_cao_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_10_2"
         app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_6_4"
         app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_6_3"
         app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_10_1"
-        app:srcCompat="@drawable/bao_cao_layer" />
+        app:srcCompat="@drawable/trang_chu_bao_cao_button" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_10_1"
         android:layout_width="wrap_content"
