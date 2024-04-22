@@ -152,9 +152,6 @@
 
     <ImageButton
         android:id="@+id/trang_chu_cau_hoi_button"
-
-        android:id="@+id/image_button_4"
-
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
@@ -192,9 +189,6 @@
 
     <ImageButton
         android:id="@+id/trang_chu_de_thi_button"
-
-        android:id="@+id/image_button_5"
-
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
