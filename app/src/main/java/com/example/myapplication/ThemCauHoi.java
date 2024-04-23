@@ -25,7 +25,7 @@ public class ThemCauHoi extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageView quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_image_view_1);
+        ImageView quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_icon_back);
         quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
