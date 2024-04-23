@@ -1,9 +1,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/thong_bao_icon"
+    <item android:drawable="@drawable/home_icon"
         android:gravity="center"
         android:width="20dp"
         android:height="20dp"/>
-    <item android:drawable="@drawable/thong_bao_text_1"
+    <item android:drawable="@drawable/trang_chu_text"
         android:gravity="center"
         android:top="40dp"
         android:bottom="12dp"
