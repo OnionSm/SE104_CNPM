@@ -24,7 +24,7 @@ public class TaoDeThi extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageButton quay_lai_de_thi = findViewById(R.id.tao_de_thi_image_button_1);
+        ImageButton quay_lai_de_thi = findViewById(R.id.tao_de_thi_icon_back);
         quay_lai_de_thi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
