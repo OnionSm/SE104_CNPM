@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ThemCauHoi"
     android:background="@drawable/them_cau_hoi_shape_1">
-    
+
     <ImageButton
         android:id="@+id/them_cau_hoi_icon_back"
         android:layout_width="0dp"
@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_1_2"
         app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
         app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_1_3"
-        app:srcCompat="@drawable/them_cau_hoi_image_view_1" />
+        app:srcCompat="@drawable/them_cau_hoi_image_view_1"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_1_1"
         android:layout_width="wrap_content"
@@ -89,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92"/>
+        app:layout_constraintGuide_percent="0.94"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -105,5 +106,327 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2"/>
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:id="@+id/chon_mon_hoc"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_5_2"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_5_1"
+        app:srcCompat="@drawable/mon_hoc"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:background="#00FFFFFF"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_5_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.23"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_5_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.32"/>
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_7_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_7_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_7_4"
+        app:srcCompat="@drawable/noi_dung_cau_hoi_text"
+        android:background="#00FFFFFF"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_7_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.29"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_7_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_7_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.372"/>
+<EditText
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:id="@+id/noi_dung_cau_hoi"
+    android:paddingBottom="70dp"
+    android:paddingLeft="10dp"
+    android:hint="Nhập nội dung câu hỏi tại đây"
+    android:fontFamily="@font/roboto_regular"
+    android:textSize="11sp"
+    android:background="@drawable/them_cau_hoi_shape_3"
+    app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+    app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
+    app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_8_3"
+    app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_8_4"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_8_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.385"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_8_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52"/>
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_9_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_9_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_9_4"
+        app:srcCompat="@drawable/do_kho_text"
+        android:background="#00FFFFFF"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_9_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.16"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_9_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.535"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_9_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.557"/>
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:id="@+id/do_kho"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_10_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_10_4"
+        app:srcCompat="@drawable/do_kho"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:background="#00FFFFFF"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_10_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.57"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_10_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.64"/>
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_11_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_11_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_11_4"
+        app:srcCompat="@drawable/dang_tai_boi_text"
+        android:background="#00FFFFFF"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_11_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.234"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_11_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.652"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_11_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.674"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/dang_tai_boi"
+        android:background="@drawable/them_cau_hoi_shape_4"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_12_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_12_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_12_4"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_12_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.54"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_12_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.678"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_12_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.724"/>
+    <ImageView
+        android:id="@+id/anh_dai_dien_nguoi_them_cau_hoi"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_2"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_13_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_13_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_13_4"
+        app:srcCompat="@drawable/ellipse_742"
+        android:background="#00FFFFFF"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_13_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.178"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_13_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.685"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_13_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.717"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:id="@+id/ten_nguoi_them_cau_hoi"
+        android:text="Ngô Đức Thành"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_14_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_14_4"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_14_1"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_14_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_14_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.69"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_14_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.71"/>
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_15_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_15_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_15_4"
+        app:srcCompat="@drawable/ngay_dang_tai"
+        android:background="#00FFFFFF"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_15_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_15_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.742"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_15_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.764"/>
 
+    <EditText
+        android:id="@+id/ngay_dang_tai"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/them_cau_hoi_shape_3"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="DD/MM/YYYY"
+        android:paddingLeft="10dp"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_16_4"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_16_3"
+        tools:ignore="TouchTargetSizeCheck" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/them_cau_hoi_guideline_16_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.777"/>
+        <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_16_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.838"/>
+
+    <ImageButton
+        android:id="@+id/tao_cau_hoi_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_17_2"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_17_1"
+        app:srcCompat="@drawable/button_tao_cau_hoi"
+        tools:ignore="TouchTargetSizeCheck, SpeakableTextPresentCheck" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_17_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_17_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.94"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
