@@ -32,7 +32,7 @@ public class DeThi extends AppCompatActivity {
                 startActivity(tao_de_thi_intent);
             }
         });
-        ImageButton quay_lai_trang_chu = findViewById(R.id.de_thi_back_button);
+        ImageButton quay_lai_trang_chu = findViewById(R.id.de_thi_icon_back);
         quay_lai_trang_chu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
