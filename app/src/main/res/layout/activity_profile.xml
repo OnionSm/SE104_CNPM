@@ -151,7 +151,6 @@
         android:textSize="18sp"
         android:textColor="#6E7591"
         app:layout_constraintStart_toStartOf="@id/profile_guideline_4_1"
-        app:layout_constraintEnd_toEndOf="wrap"
         app:layout_constraintTop_toTopOf="@id/profile_guideline_5_3"
         app:layout_constraintBottom_toBottomOf="@id/profile_guideline_5_4"/>
     <androidx.constraintlayout.widget.Guideline
@@ -223,7 +222,6 @@
         android:textSize="18sp"
         android:textColor="#6E7591"
         app:layout_constraintStart_toStartOf="@id/profile_guideline_4_1"
-        app:layout_constraintEnd_toEndOf="wrap"
         app:layout_constraintTop_toTopOf="@id/profile_guideline_8_3"
         app:layout_constraintBottom_toBottomOf="@id/profile_guideline_8_4"/>
     <androidx.constraintlayout.widget.Guideline
@@ -295,7 +293,6 @@
         android:textSize="18sp"
         android:textColor="#6E7591"
         app:layout_constraintStart_toStartOf="@id/profile_guideline_4_1"
-        app:layout_constraintEnd_toEndOf="wrap"
         app:layout_constraintTop_toTopOf="@id/profile_guideline_11_3"
         app:layout_constraintBottom_toBottomOf="@id/profile_guideline_11_4"/>
     <androidx.constraintlayout.widget.Guideline
@@ -367,7 +364,6 @@
         android:textSize="18sp"
         android:textColor="#6E7591"
         app:layout_constraintStart_toStartOf="@id/profile_guideline_4_1"
-        app:layout_constraintEnd_toEndOf="wrap"
         app:layout_constraintTop_toTopOf="@id/profile_guideline_14_3"
         app:layout_constraintBottom_toBottomOf="@id/profile_guideline_14_4"/>
     <androidx.constraintlayout.widget.Guideline
@@ -439,7 +435,6 @@
         android:textSize="18sp"
         android:textColor="#6E7591"
         app:layout_constraintStart_toStartOf="@id/profile_guideline_4_1"
-        app:layout_constraintEnd_toEndOf="wrap"
         app:layout_constraintTop_toTopOf="@id/profile_guideline_17_3"
         app:layout_constraintBottom_toBottomOf="@id/profile_guideline_17_4"/>
     <androidx.constraintlayout.widget.Guideline
@@ -511,7 +506,6 @@
         android:textSize="18sp"
         android:textColor="#6E7591"
         app:layout_constraintStart_toStartOf="@id/profile_guideline_4_1"
-        app:layout_constraintEnd_toEndOf="wrap"
         app:layout_constraintTop_toTopOf="@id/profile_guideline_20_3"
         app:layout_constraintBottom_toBottomOf="@id/profile_guideline_20_4"/>
     <androidx.constraintlayout.widget.Guideline

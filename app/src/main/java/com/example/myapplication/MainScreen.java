@@ -42,7 +42,6 @@ public class MainScreen extends AppCompatActivity
         });
 
         ImageButton cauhoi = findViewById(R.id.trang_chu_cau_hoi_button);
-
         cauhoi.setOnClickListener(new View.OnClickListener()
         {
 
