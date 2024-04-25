@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class CauHoiScreen extends AppCompatActivity {
 
+    private ImageButton ds_cau_hoi_da_tao_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,16 @@ public class CauHoiScreen extends AppCompatActivity {
                 startActivity(quay_lai_trang_chu_intent);
             }
         });
+
+        ds_cau_hoi_da_tao_button = (ImageButton) findViewById(R.id.tao_cau_hoi_danh_sach_button);
+        ds_cau_hoi_da_tao_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(CauHoiScreen.this, DsCauHoiDaTao.class));
+            }
+        });
+
 
     }
 }
