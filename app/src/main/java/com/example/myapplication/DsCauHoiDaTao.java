@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -36,6 +39,17 @@ public class DsCauHoiDaTao extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        ImageButton quay_lai_cau_hoi_screen = findViewById(R.id.ds_danh_sach_cau_hoi_icon_back);
+        quay_lai_cau_hoi_screen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent quay_lai_trang_chu_intent = new Intent(DsCauHoiDaTao.this, CauHoiScreen.class);
+                startActivity(quay_lai_trang_chu_intent);
+            }
+        });
+
         mylist = new ArrayList<>();
         for (int i = 0; i <stt.length;i++)
         {
