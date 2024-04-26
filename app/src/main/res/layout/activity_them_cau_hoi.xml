@@ -70,7 +70,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.33"/>
 
-    <ImageButton
+    <TextView
         android:id="@+id/luu_vao_ban_nhap"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -79,7 +79,10 @@
         app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
         app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_3_1"
         app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_1_3"
-        app:srcCompat="@drawable/luu_vao_ban_nhap_text"
+        android:text="Lưu vào bản nháp"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="13sp"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_3_1"
