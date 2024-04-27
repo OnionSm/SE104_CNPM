@@ -6,7 +6,6 @@ public class cauhoiitem
     private String mon_hoc;
     private String mo_ta;
     private String do_kho;
-    private String ngay_tao;
 
     public cauhoiitem(String stt, String mon_hoc, String mo_ta, String do_kho, String ngay_tao) {
         this.stt = stt;
@@ -56,6 +55,6 @@ public class cauhoiitem
         this.ngay_tao = ngay_tao;
     }
 
-
+    private String ngay_tao;
 
 }
