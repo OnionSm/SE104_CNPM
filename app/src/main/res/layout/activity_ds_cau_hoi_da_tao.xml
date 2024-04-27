@@ -72,6 +72,8 @@
         android:id="@+id/danh_sach_cau_hoi_list_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:divider="#2F6BFF"
+        android:dividerHeight="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,8 +84,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.13"/>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

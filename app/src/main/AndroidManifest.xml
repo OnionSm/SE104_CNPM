@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".DeThiScreen"
+            android:exported="false" />
+        <activity
             android:name=".CustomListView"
             android:exported="false" />
         <activity

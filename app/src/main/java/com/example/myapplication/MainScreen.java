@@ -60,7 +60,7 @@ public class MainScreen extends AppCompatActivity
              @Override
              public void onClick(View view)
              {
-                 Intent de_thi_intent = new Intent(MainScreen.this, DeThi.class);
+                 Intent de_thi_intent = new Intent(MainScreen.this, DeThiScreen.class);
                  startActivity(de_thi_intent);
              }
          });

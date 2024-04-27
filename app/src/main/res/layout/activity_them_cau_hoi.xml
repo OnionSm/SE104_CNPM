@@ -70,15 +70,15 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.33"/>
 
-    <TextView
+    <ImageButton
         android:id="@+id/luu_vao_ban_nhap"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_1_4"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_3_3"
         app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
         app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_3_1"
-        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_1_3"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_3_4"
         app:srcCompat="@drawable/luu_vao_ban_nhap_text"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     <androidx.constraintlayout.widget.Guideline
@@ -93,6 +93,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.94"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_3_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.115"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_3_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -102,30 +114,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_4_1"
         app:srcCompat="@drawable/them_cau_hoi_shape_2" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_4_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2"/>
-    <ImageButton
+
+    <Spinner
+        android:id="@+id/tao_cau_hoi_mon_hoc_spiner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:id="@+id/chon_mon_hoc"
+        android:dropDownVerticalOffset = "70dp"
+        android:background="@drawable/drop_down_background"
         app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_5_2"
         app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
         app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
-        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_5_1"
-        app:srcCompat="@drawable/mon_hoc"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:background="#00FFFFFF"/>
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_5_1"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_5_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.23"/>
+        app:layout_constraintGuide_percent="0.24"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_5_2"
         android:layout_width="wrap_content"
@@ -160,20 +172,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.372"/>
-<EditText
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:id="@+id/noi_dung_cau_hoi"
-    android:paddingBottom="70dp"
-    android:paddingLeft="10dp"
-    android:hint="Nhập nội dung câu hỏi tại đây"
-    android:fontFamily="@font/roboto_regular"
-    android:textSize="11sp"
-    android:background="@drawable/them_cau_hoi_shape_3"
-    app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
-    app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
-    app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_8_3"
-    app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_8_4"/>
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/noi_dung_cau_hoi"
+        android:paddingBottom="70dp"
+        android:paddingLeft="10dp"
+        android:hint="Nhập nội dung câu hỏi tại đây"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="11sp"
+        android:background="@drawable/them_cau_hoi_shape_3"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_8_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_8_4"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_8_3"
         android:layout_width="wrap_content"
@@ -214,18 +226,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.557"/>
-    <ImageButton
+
+    <Spinner
+        android:id="@+id/tao_cau_hoi_do_kho_spiner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:id="@+id/do_kho"
+        android:dropDownVerticalOffset = "62dp"
         app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
         app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
         app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_10_3"
         app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_10_4"
-        app:srcCompat="@drawable/do_kho"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:background="#00FFFFFF"/>
+        android:background="@drawable/drop_down_background"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_10_3"
         android:layout_width="wrap_content"
@@ -394,18 +405,18 @@
         app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
         app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_16_3"
         tools:ignore="TouchTargetSizeCheck" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/them_cau_hoi_guideline_16_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.777"/>
-        <androidx.constraintlayout.widget.Guideline
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_16_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.777"/>
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_16_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.838"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.838"/>
 
     <ImageButton
         android:id="@+id/tao_cau_hoi_button"
