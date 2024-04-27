@@ -75,10 +75,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_3_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_1_4"
         app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
         app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_3_1"
-        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_3_4"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_1_3"
         app:srcCompat="@drawable/luu_vao_ban_nhap_text"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     <androidx.constraintlayout.widget.Guideline
@@ -93,18 +93,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.94"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/them_cau_hoi_guideline_3_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.115"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/them_cau_hoi_guideline_3_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.07"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -114,28 +102,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_4_1"
         app:srcCompat="@drawable/them_cau_hoi_shape_2" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_4_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2"/>
-
-   <Spinner
-       android:id="@+id/tao_cau_hoi_mon_hoc_spiner"
-       android:layout_width="0dp"
-       android:layout_height="0dp"
-       android:dropDownVerticalOffset = "70dp"
-       android:background="@drawable/drop_down_background"
-       app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_5_2"
-       app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
-       app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
-       app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_5_1"/>
-
-
-
-    <!--<ImageButton
+    <ImageButton
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -146,14 +119,13 @@
         app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_5_1"
         app:srcCompat="@drawable/mon_hoc"
         tools:ignore="SpeakableTextPresentCheck"
-        android:background="#00FFFFFF"/>-->
-
+        android:background="#00FFFFFF"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_5_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.24"/>
+        app:layout_constraintGuide_percent="0.23"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_5_2"
         android:layout_width="wrap_content"
@@ -242,19 +214,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.557"/>
-
-    <Spinner
-        android:id="@+id/tao_cau_hoi_do_kho_spiner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:dropDownVerticalOffset = "62dp"
-        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_1"
-        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_3_2"
-        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_10_3"
-        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_10_4"
-        android:background="@drawable/drop_down_background"/>
-
-   <!-- <ImageButton
+    <ImageButton
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -265,7 +225,7 @@
         app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_10_4"
         app:srcCompat="@drawable/do_kho"
         tools:ignore="SpeakableTextPresentCheck"
-        android:background="#00FFFFFF"/>-->
+        android:background="#00FFFFFF"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_10_3"
         android:layout_width="wrap_content"
