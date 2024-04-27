@@ -1,45 +1,82 @@
 package com.example.myapplication;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
+import java.util.Date;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+public class DETHI
+{
+    private String maDT;
+    private int thoiLuong;
+    private String maHKNH;
+    private Date ngayThi;
+    private String maMH;
+    private String maGV;
 
-public class DeThi extends AppCompatActivity {
+    public DETHI(String maDT, int thoiLuong, String maHKNH, Date ngayThi, String maMH, String maGV) {
+        this.maDT = maDT;
+        this.thoiLuong = thoiLuong;
+        this.maHKNH = maHKNH;
+        this.ngayThi = ngayThi;
+        this.maMH = maMH;
+        this.maGV = maGV;
+    }
+
+    public String getMaDT() {
+        return maDT;
+    }
+
+    public void setMaDT(String maDT) {
+        this.maDT = maDT;
+    }
+
+    public int getThoiLuong() {
+        return thoiLuong;
+    }
+
+    public void setThoiLuong(int thoiLuong) {
+        this.thoiLuong = thoiLuong;
+    }
+
+    public String getMaHKNH() {
+        return maHKNH;
+    }
+
+    public void setMaHKNH(String maHKNH) {
+        this.maHKNH = maHKNH;
+    }
+
+    public Date getNgayThi() {
+        return ngayThi;
+    }
+
+    public void setNgayThi(Date ngayThi) {
+        this.ngayThi = ngayThi;
+    }
+
+    public String getMaMH() {
+        return maMH;
+    }
+
+    public void setMaMH(String maMH) {
+        this.maMH = maMH;
+    }
+
+    public String getMaGV() {
+        return maGV;
+    }
+
+    public void setMaGV(String maGV) {
+        this.maGV = maGV;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_dethi);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.de_thi), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        ImageButton tao_de_thi = findViewById(R.id.de_thi_tao_de_thi_button);
-        tao_de_thi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent tao_de_thi_intent = new Intent(DeThi.this, TaoDeThi.class);
-                startActivity(tao_de_thi_intent);
-            }
-        });
-        ImageButton quay_lai_trang_chu = findViewById(R.id.de_thi_icon_back);
-        quay_lai_trang_chu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Intent quay_lai_trang_chu_intent = new Intent(DeThi.this, MainScreen.class);
-                startActivity(quay_lai_trang_chu_intent);
-            }
-        });
+    public String toString() {
+        return "com.example.myapplication.DETHI{" +
+                "maDT='" + maDT + '\'' +
+                ", thoiLuong=" + thoiLuong +
+                ", maHKNH='" + maHKNH + '\'' +
+                ", ngayThi=" + ngayThi +
+                ", maMH='" + maMH + '\'' +
+                ", maGV='" + maGV + '\'' +
+                '}';
     }
 }
