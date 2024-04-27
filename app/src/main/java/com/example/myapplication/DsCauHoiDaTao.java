@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -25,6 +28,8 @@ public class DsCauHoiDaTao extends AppCompatActivity {
     CustomListViewBase custom_list_view_base;
     ListView listview;
 
+    ImageButton quay_lai_cau_hoi_screen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -46,5 +51,15 @@ public class DsCauHoiDaTao extends AppCompatActivity {
 
         custom_list_view_base = new CustomListViewBase(this, R.layout.activity_custom_list_view, mylist);
         listview.setAdapter(custom_list_view_base);
+
+        quay_lai_cau_hoi_screen = findViewById(R.id.ds_danh_sach_cau_hoi_icon_back);
+        quay_lai_cau_hoi_screen.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DsCauHoiDaTao.this, CauHoiScreen.class));
+            }
+        });
+
     }
 }
