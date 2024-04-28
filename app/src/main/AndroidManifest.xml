@@ -15,9 +15,6 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33" >
         <activity
-            android:name=".Fetching"
-            android:exported="false" />
-        <activity
             android:name=".DeThiScreen"
             android:exported="false" />
         <activity
@@ -25,9 +22,6 @@
             android:exported="false" />
         <activity
             android:name=".DsCauHoiDaTao"
-            android:exported="true" />
-        <activity
-            android:name=".DeThi"
             android:exported="true" />
         <activity
             android:name=".TaoDeThi"
