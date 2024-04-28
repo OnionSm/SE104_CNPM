@@ -16,10 +16,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class TaoDeThi extends AppCompatActivity {
     String[] mon_hoc_list = {"Nhập môn lập trình",
-            "Lập trình hướng đối tượng",
-            "Toán cho khoa học máy tính",
-            "Phân tích và thiết kế thuật toán",
-            "Nhập môn công nghệ phần mềm"};
+            "Lập trình hướng đối tượng", "Cấu trúc dữ liệu và giải thuật",
+    "Kiến trúc máy tính", "Hệ điều hành", "Nhập môn mạng máy tính",
+            "Cơ sở dữ liệu", "Tổ chức và cấu trúc máy tính", "Đại số tuyến tính",
+        "Cấu trúc rời rạc", "Xác suất thống kê", "Giải tích", "Tư tưởng Hồ Chí Minh",
+        "Pháp luật đại cương", "Triết học Mác - Lenin", "Kinh tế chính trị Mác - Lenin",
+        "Chủ nghĩa xã hội khoa học", "Lịch sử Đảng Cộng sản Việt Nam"};
     Spinner spinner_mon_hoc;
 
     @Override
