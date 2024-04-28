@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -13,6 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class ThemCauHoi extends AppCompatActivity {
@@ -40,6 +47,7 @@ public class ThemCauHoi extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         ImageView quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_icon_back);
         quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener()
         {
@@ -60,6 +68,6 @@ public class ThemCauHoi extends AppCompatActivity {
         ArrayAdapter<String> adapter_2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, do_kho_list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_do_kho.setAdapter(adapter_2);
-
+        
     }
 }
