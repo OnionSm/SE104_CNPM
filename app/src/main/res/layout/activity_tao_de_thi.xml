@@ -80,18 +80,28 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.075" />
-    <ImageButton
-        android:id="@+id/tao_de_thi_ten_mon_hoc_button"
+    <Spinner
+        android:id="@+id/tao_de_thi_mon_hoc_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#00FFFFFF"
-        android:scaleType="centerCrop"
+        android:dropDownVerticalOffset = "70dp"
+        android:background="@drawable/ten_mon_hoc_de_thi"
         app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_3_1"
         app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_3_2"
         app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_3_3"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_3_4"
-        app:srcCompat="@drawable/ten_mon_hoc_de_thi"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_3_4"/>
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/tao_de_thi_ten_mon_hoc_button"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:background="#00FFFFFF"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_3_1"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_3_2"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_3_3"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_3_4"-->
+    <!--        app:srcCompat="@drawable/ten_mon_hoc_de_thi"-->
+    <!--        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_thi_guideline_3_1"
         android:layout_width="wrap_content"
