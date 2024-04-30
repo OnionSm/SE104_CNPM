@@ -22,6 +22,7 @@ public class MainScreen extends AppCompatActivity
     /*private FirebaseDatabase db;
     private DatabaseReference ref;*/
 
+    ImageButton tra_cuu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -69,5 +70,12 @@ public class MainScreen extends AppCompatActivity
         /*GIANGVIEN admin = new GIANGVIEN("000000", "admin", new Date(946684800000L), "nam","admin","00000");
         ref.child("GIANGVIEN").child(admin.getMaGV()).setValue(admin);*/
 
+        tra_cuu = findViewById(R.id.trang_chu_tra_cuu_button);
+        tra_cuu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainScreen.this, TraCuuScreen.class));
+            }
+        });
     }
 }
