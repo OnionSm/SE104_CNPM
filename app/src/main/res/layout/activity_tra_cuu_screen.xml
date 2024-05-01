@@ -114,17 +114,22 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.99"/>
 
-    <EditText
-        android:id="@+id/tra_cuu_edit_text"
+    <SearchView
+        android:id="@+id/tra_cuu_search_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
+        android:queryHint="Nhập mã số đề thi"
+        android:iconifiedByDefault="false"
+        android:fontFamily="@font/roboto_regular"
         app:srcCompat="@drawable/tra_cuu_input_background"
         android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="@id/tra_cuu_guideline_4_2"
         app:layout_constraintEnd_toEndOf="@id/tra_cuu_guideline_4_4"
         app:layout_constraintStart_toStartOf="@id/tra_cuu_guideline_4_3"
-        app:layout_constraintTop_toTopOf="@id/tra_cuu_guideline_4_1"/>
+        app:layout_constraintTop_toTopOf="@id/tra_cuu_guideline_4_1">
+        <requestFocus/>
+    </SearchView>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tra_cuu_guideline_4_1"
         android:layout_width="wrap_content"
@@ -239,12 +244,10 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
 
-    <ListView
-        android:id="@+id/ds_de_thi_lv"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ds_de_thi_rcv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:divider="#2F6BFF"
-        android:dividerHeight="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/tra_cuu_guideline_7_2"
         app:layout_constraintStart_toStartOf="@id/tra_cuu_guideline_6_3"

@@ -2,17 +2,24 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TraCuuScreen extends AppCompatActivity {
 
@@ -23,9 +30,12 @@ public class TraCuuScreen extends AppCompatActivity {
     String ma_de[] = {"001", "002", "003"};
     ArrayList<dethitracuuitem> mylist;
     DeThiTraCuuAdapter adapter;
-    ListView listview;
+    RecyclerView dethi_rcv;
+
+    SearchView searview;
 
     ImageButton quay_lai_main_screen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -55,9 +65,31 @@ public class TraCuuScreen extends AppCompatActivity {
             mylist.add(new dethitracuuitem(ten_mon[i], ngay_tao[i], ma_de[i]));
         }
 
-        listview =  findViewById(R.id.ds_de_thi_lv);
-        adapter = new DeThiTraCuuAdapter(this, R.layout.activity_tra_cuu_de_thi_list_view, mylist);
-        listview.setAdapter(adapter);
+        dethi_rcv = findViewById(R.id.ds_de_thi_rcv);
+        LinearLayoutManager ln_layout_manager = new LinearLayoutManager(this);
+        dethi_rcv.setLayoutManager(ln_layout_manager);
+        adapter = new DeThiTraCuuAdapter(mylist);
+        dethi_rcv.setAdapter(adapter);
 
+        RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        dethi_rcv.addItemDecoration(item_decoration);
+        searview = findViewById(R.id.tra_cuu_search_view);
+        searview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+                adapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
+
+
 }
