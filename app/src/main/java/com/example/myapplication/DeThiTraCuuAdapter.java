@@ -1,49 +1,115 @@
 package com.example.myapplication;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.ArrayList;
 
-public class DeThiTraCuuAdapter extends ArrayAdapter<dethitracuuitem>
-{
-    Activity context;
-    ArrayList<dethitracuuitem> mylist;
 
-    public DeThiTraCuuAdapter(Activity context,int idlayout,ArrayList<dethitracuuitem> mylist)
+public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.DeThiViewHoder> implements Filterable
+{
+
+    private ArrayList<dethitracuuitem> mylist;
+    private ArrayList<dethitracuuitem> mylist_old;
+
+    public DeThiTraCuuAdapter(ArrayList<dethitracuuitem> mylist)
     {
-        super(context, idlayout, mylist);
-        this.context = context;
         this.mylist = mylist;
+        this.mylist_old = mylist;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
+    public DeThiViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
+        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_tra_cuu_de_thi_list_view,parent,false);
+        return new DeThiViewHoder(view);
+    }
 
-        LayoutInflater inflater = context.getLayoutInflater();
-        convertView = inflater.inflate(R.layout.activity_tra_cuu_de_thi_list_view, null);
-
+    @Override
+    public void onBindViewHolder(@NonNull DeThiViewHoder holder, int position)
+    {
         dethitracuuitem dethi = mylist.get(position);
+        if(dethi == null)
+        {
+            return;
+        }
+        holder.ma_de.setText(dethi.getMa_de());
+        holder.ngay_tao.setText(dethi.getNgay());
+        holder.ten_mon.setText(dethi.getMon_hoc());
+    }
 
-        TextView mon_hoc =  convertView.findViewById(R.id.cs_lv_ten_mon);
-        TextView ngay =  convertView.findViewById(R.id.cs_lv_ngay);
-        TextView ma_de =  convertView.findViewById(R.id.cs_lv_ma_de);
+    @Override
+    public int getItemCount()
+    {
+        if(mylist != null)
+        {
+            return mylist.size();
+        }
+        return 0;
+    }
 
 
 
-        mon_hoc.setText(dethi.getMon_hoc());
-        ngay.setText(dethi.getNgay());
-        ma_de.setText(dethi.getMa_de());
+    public class DeThiViewHoder extends RecyclerView.ViewHolder
+    {
+        private TextView ma_de;
+        private TextView ten_mon;
 
-        return convertView;
+        private TextView ngay_tao;
+        public DeThiViewHoder(@NonNull View itemView)
+        {
+            super(itemView);
+            ten_mon =  itemView.findViewById(R.id.cs_lv_ten_mon);
+            ngay_tao =  itemView.findViewById(R.id.cs_lv_ngay);
+            ma_de =  itemView.findViewById(R.id.cs_lv_ma_de);
+        }
+    }
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint)
+            {
+                String str_search = constraint.toString();
+                if(str_search.isEmpty())
+                {
+                    mylist = mylist_old;
+                }
+                else
+                {
+                    ArrayList<dethitracuuitem> list = new ArrayList<>();
+                    for(dethitracuuitem dethi : mylist_old)
+                    {
+                        if(dethi.getMa_de().toLowerCase().contains(str_search.toLowerCase()))
+                        {
+                            list.add(dethi);
+                        }
+                    }
+                    mylist = list;
+                }
+                FilterResults filter_results = new FilterResults();
+                filter_results.values = mylist;
+                return filter_results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results)
+            {
+                mylist = (ArrayList<dethitracuuitem>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }
+

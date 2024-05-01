@@ -15,6 +15,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".BoLocTraCuuScreen"
+            android:exported="false" />
+        <activity
             android:name=".TraCuuDeThiListView"
             android:exported="false" />
         <activity
