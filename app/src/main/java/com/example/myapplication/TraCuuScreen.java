@@ -1,16 +1,26 @@
 package com.example.myapplication;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.SearchView;
 
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -36,6 +46,7 @@ public class TraCuuScreen extends AppCompatActivity {
 
     ImageButton quay_lai_main_screen;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -59,6 +70,15 @@ public class TraCuuScreen extends AppCompatActivity {
             }
         });
 
+        ImageButton bo_loc_mo_rong = findViewById(R.id.tra_cuu_mo_rong_button);
+        bo_loc_mo_rong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                CreatePopUpFilter(Gravity.CENTER);
+            }
+        });
+
         mylist = new ArrayList<>();
         for (int i = 0; i <ten_mon.length;i++)
         {
@@ -74,7 +94,8 @@ public class TraCuuScreen extends AppCompatActivity {
         RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         dethi_rcv.addItemDecoration(item_decoration);
         searview = findViewById(R.id.tra_cuu_search_view);
-        searview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searview.setOnQueryTextListener(new SearchView.OnQueryTextListener()
+        {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
@@ -91,5 +112,29 @@ public class TraCuuScreen extends AppCompatActivity {
         });
     }
 
+    private void CreatePopUpFilter(int gravity)
+    {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_bo_loc_tra_cuu_screen);
+
+        Window window = dialog.getWindow();
+        if(window == null)
+        {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams window_attributes = window.getAttributes();
+        window_attributes.gravity = gravity;
+        window.setAttributes(window_attributes);
+
+        dialog.setCanceledOnTouchOutside(true);
+
+        dialog.show();
+
+
+    }
 
 }
