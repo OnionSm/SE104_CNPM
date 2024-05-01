@@ -4,7 +4,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_background"
     tools:context=".BoLocTraCuuScreen">
+
+    <ImageView
+        android:id="@+id/bo_loc_ma_de"
+        android:layout_width="60dp"
+        android:layout_height="14dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/bo_loc_ma_de_thi_text"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/bo_loc_edt_ma_de"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Nhập mã đề thi"
+        android:textSize="16sp"
+        android:paddingStart="15dp"
+        android:textColor="#6E7591"
+        android:layout_marginTop="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_ma_de"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/bo_loc_nam_hoc"
+        android:layout_width="110dp"
+        android:layout_height="16dp"
+        android:scaleType="fitXY"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/bo_loc_ma_hk_text"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_ma_de"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/bo_loc_edt_nam_hoc"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="16sp"
+        android:hint="Nhập mã học kỳ năm học"
+        android:paddingStart="15dp"
+        android:textColor="#6E7591"
+        android:layout_marginTop="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_nam_hoc"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/bo_loc_mon_hoc"
+        android:layout_width="70dp"
+        android:layout_height="16dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/bo_loc_ma_mh_text"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_nam_hoc"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/bo_loc_edt_mon_hoc"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Nhập mã môn học"
+        android:textSize="16sp"
+        android:paddingStart="15dp"
+        android:textColor="#6E7591"
+        android:layout_marginTop="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_mon_hoc"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <ImageView
+        android:id="@+id/bo_loc_thoi_luong"
+        android:layout_width="60dp"
+        android:layout_height="16dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/bo_loc_thoi_luong_text"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="534dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_mon_hoc"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/bo_loc_edt_thoi_luong"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Nhập thời lượng"
+        android:paddingStart="15dp"
+        android:textColor="#6E7591"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/bo_loc_edt_ngay_thi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_thoi_luong" />
+
+    <ImageView
+        android:id="@+id/bo_loc_ngay_thi"
+        android:layout_width="52dp"
+        android:layout_height="15dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/bo_loc_ngay_thi_text"
+
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="250dp"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_mon_hoc"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/bo_loc_edt_ngay_thi"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Nhập ngày thi"
+        android:paddingStart="15dp"
+        android:textColor="#6E7591"
+        android:textSize="14sp"
+        android:layout_marginStart="210dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_ngay_thi" />
+
+    <ImageView
+        android:id="@+id/bo_loc_ma_gv"
+        android:layout_width="72dp"
+        android:layout_height="16dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/bo_loc_ma_gv_text"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_thoi_luong"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/bo_loc_edt_ma_gv"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Nhập mã giảng viên"
+        android:paddingStart="15dp"
+        android:textColor="#6E7591"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="629dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_ma_gv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+        android:background="#00FFFFFF"
+        app:srcCompat="@drawable/bo_loc_tra_cuu_button"
+
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_ma_gv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
