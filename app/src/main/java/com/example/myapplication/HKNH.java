@@ -6,10 +6,10 @@ public class HKNH
 {
     private String maHKNH;
     private int hocKy;
-    private Date nam1;
-    private Date nam2;
+    private int nam1;
+    private int nam2;
 
-    public HKNH(String maHKNH, int hocKy, Date nam1, Date nam2) {
+    public HKNH(String maHKNH, int hocKy, int nam1, int nam2) {
         this.maHKNH = maHKNH;
         this.hocKy = hocKy;
         this.nam1 = nam1;
@@ -32,19 +32,19 @@ public class HKNH
         this.hocKy = hocKy;
     }
 
-    public Date getNam1() {
+    public int getNam1() {
         return nam1;
     }
 
-    public void setNam1(Date nam1) {
+    public void setNam1(int nam1) {
         this.nam1 = nam1;
     }
 
-    public Date getNam2() {
+    public int getNam2() {
         return nam2;
     }
 
-    public void setNam2(Date nam2) {
+    public void setNam2(int nam2) {
         this.nam2 = nam2;
     }
 

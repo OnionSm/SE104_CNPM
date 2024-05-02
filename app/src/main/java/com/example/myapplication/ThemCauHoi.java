@@ -125,7 +125,8 @@ public class ThemCauHoi extends AppCompatActivity {
         spinner_do_kho.setAdapter(adapter);
     }
 
-    private void SaveTaoCauHoi() {
+    private void SaveTaoCauHoi()
+    {
         String tenMonHoc = spinner_mon_hoc.getSelectedItem().toString();
         String tenDoKho = spinner_do_kho.getSelectedItem().toString();
 

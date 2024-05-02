@@ -5,22 +5,25 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
+
 import android.view.View;
-import android.view.ViewGroup;
+
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.PopupWindow;
+
 import android.widget.SearchView;
+import android.widget.Toast;
 
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -28,17 +31,26 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class TraCuuScreen extends AppCompatActivity {
 
-    String ten_mon[] = {"Nhập môn lập trình","Toán cho khoa học máy tính", "Nhập môn Công nghệ phần mềm"};
+   /* String ten_mon[] = {"Nhập môn lập trình","Toán cho khoa học máy tính", "Nhập môn Công nghệ phần mềm"};
 
     String ngay_tao[]  = {"23/4//2024", "24/4/2024", "25/4/2024"};
 
-    String ma_de[] = {"001", "002", "003"};
+    String ma_de[] = {"001", "002", "003"};*/
     ArrayList<dethitracuuitem> mylist;
+    ArrayList<dethitracuuitem> mylist2;
     DeThiTraCuuAdapter adapter;
     RecyclerView dethi_rcv;
 
@@ -75,23 +87,134 @@ public class TraCuuScreen extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                CreatePopUpFilter(Gravity.CENTER);
+                CreatePopUpFilter();
             }
         });
 
-        mylist = new ArrayList<>();
-        for (int i = 0; i <ten_mon.length;i++)
-        {
-            mylist.add(new dethitracuuitem(ten_mon[i], ngay_tao[i], ma_de[i]));
-        }
+        GetDataFromFireBase();
+    }
 
+
+
+
+    private void CreatePopUpFilter()
+    {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_bo_loc_tra_cuu_screen);
+
+        Window window = dialog.getWindow();
+        if(window == null)
+        {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams window_attributes = window.getAttributes();
+        window_attributes.gravity = Gravity.CENTER;
+        window.setAttributes(window_attributes);
+
+        dialog.setCanceledOnTouchOutside(true);
+
+        dialog.show();
+
+        EditText madt_edt = dialog.findViewById(R.id.bo_loc_edt_ma_de);
+        EditText mahk_edt = dialog.findViewById(R.id.bo_loc_edt_nam_hoc);
+        EditText mamh_edt = dialog.findViewById(R.id.bo_loc_edt_mon_hoc);
+        EditText thoiluong_edt = dialog.findViewById(R.id.bo_loc_edt_thoi_luong);
+        EditText ngaythi_edt = dialog.findViewById(R.id.bo_loc_edt_ngay_thi);
+        EditText magv_edt = dialog.findViewById(R.id.bo_loc_edt_ma_gv);
+        ImageButton tra_cuu_btn = dialog.findViewById(R.id.bo_loc_button_tra_cuu);
+
+        String madt = madt_edt.toString();
+        String mahk = mahk_edt.toString();
+        String mamh = mamh_edt.toString();
+        String thoiluong = thoiluong_edt.toString();
+        String ngaythi = ngaythi_edt.toString();
+        String magv = magv_edt.toString();
+
+        tra_cuu_btn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                dialog.dismiss();
+            }
+        });
+    }
+
+    private void GetDataFromFireBase()
+    {
+        DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
+        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+        Query query = db_dethi.limitToLast(10);
+        mylist = new ArrayList<>();
+        query.addChildEventListener(new ChildEventListener()
+        {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+                String ma_DT = snapshot.child("maDT").getValue(String.class);
+                String ngay_Thi = snapshot.child("ngayThi").getValue(String.class);
+                String ma_MH_dethi = snapshot.child("maMH").getValue(String.class);
+                if (ma_DT != null && ngay_Thi != null && ma_MH_dethi != null)
+                {
+                    Log.e("Thông tin", "MaDT: " + ma_DT + ", NgayThi: " + ngay_Thi + ", MaMH: " + ma_MH_dethi);
+                }
+                db_monhoc.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        String tenmon = snapshot.child(ma_MH_dethi).child("tenMH").getValue(String.class);
+                        Log.e("môn học", tenmon);
+                        mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT));
+                        GetListDeThi();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot)
+            {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+
+            }
+        });
+
+    }
+
+    private void GetListDeThi()
+    {
         dethi_rcv = findViewById(R.id.ds_de_thi_rcv);
-        LinearLayoutManager ln_layout_manager = new LinearLayoutManager(this);
+        LinearLayoutManager ln_layout_manager = new LinearLayoutManager(TraCuuScreen.this);
         dethi_rcv.setLayoutManager(ln_layout_manager);
         adapter = new DeThiTraCuuAdapter(mylist);
         dethi_rcv.setAdapter(adapter);
 
-        RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(TraCuuScreen.this, DividerItemDecoration.VERTICAL);
         dethi_rcv.addItemDecoration(item_decoration);
         searview = findViewById(R.id.tra_cuu_search_view);
         searview.setOnQueryTextListener(new SearchView.OnQueryTextListener()
@@ -110,31 +233,16 @@ public class TraCuuScreen extends AppCompatActivity {
                 return false;
             }
         });
+        // Sau khi đã thêm dữ liệu mới vào danh sách, cập nhật giao diện nếu cần
+        // Ví dụ: Nếu bạn sử dụng RecyclerView, bạn có thể gọi notifyDataSetChanged()
+        // adapter.notifyDataSetChanged();
     }
 
-    private void CreatePopUpFilter(int gravity)
+    private void GetDataSorted()
     {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.activity_bo_loc_tra_cuu_screen);
-
-        Window window = dialog.getWindow();
-        if(window == null)
-        {
-            return;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        WindowManager.LayoutParams window_attributes = window.getAttributes();
-        window_attributes.gravity = gravity;
-        window.setAttributes(window_attributes);
-
-        dialog.setCanceledOnTouchOutside(true);
-
-        dialog.show();
-
-
+        DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
+        DatabaseReference db_hknh = FirebaseDatabase.getInstance().getReference("HKNH");
+        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
     }
 
 }

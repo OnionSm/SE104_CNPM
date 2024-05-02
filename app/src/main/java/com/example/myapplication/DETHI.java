@@ -7,11 +7,11 @@ public class DETHI
     private String maDT;
     private int thoiLuong;
     private String maHKNH;
-    private Date ngayThi;
+    private String ngayThi;
     private String maMH;
     private String maGV;
 
-    public DETHI(String maDT, int thoiLuong, String maHKNH, Date ngayThi, String maMH, String maGV) {
+    public DETHI(String maDT, int thoiLuong, String maHKNH, String ngayThi, String maMH, String maGV) {
         this.maDT = maDT;
         this.thoiLuong = thoiLuong;
         this.maHKNH = maHKNH;
@@ -44,11 +44,11 @@ public class DETHI
         this.maHKNH = maHKNH;
     }
 
-    public Date getNgayThi() {
+    public String getNgayThi() {
         return ngayThi;
     }
 
-    public void setNgayThi(Date ngayThi) {
+    public void setNgayThi(String ngayThi) {
         this.ngayThi = ngayThi;
     }
 
