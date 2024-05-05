@@ -44,13 +44,7 @@ import java.util.ArrayList;
 
 public class TraCuuScreen extends AppCompatActivity {
 
-   /* String ten_mon[] = {"Nhập môn lập trình","Toán cho khoa học máy tính", "Nhập môn Công nghệ phần mềm"};
-
-    String ngay_tao[]  = {"23/4//2024", "24/4/2024", "25/4/2024"};
-
-    String ma_de[] = {"001", "002", "003"};*/
     ArrayList<dethitracuuitem> mylist;
-    ArrayList<dethitracuuitem> mylist2;
     DeThiTraCuuAdapter adapter;
     RecyclerView dethi_rcv;
 

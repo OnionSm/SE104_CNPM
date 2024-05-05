@@ -4,17 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class DsCauHoiDaTao extends AppCompatActivity {
+public class DsCauHoiDaTao extends AppCompatActivity
+{
     String stt[] = {"1","2","3"};
 
     String ten_mon[] = {"Nhập môn lập trình","Toán cho khoa học máy tính", "Nhập môn Công nghệ phần mềm"};
@@ -23,10 +35,9 @@ public class DsCauHoiDaTao extends AppCompatActivity {
     String do_kho[] = {"Dễ", "Khó vcl", "Khó"};
 
     String ngay_tao[]  = {"23/4//2024", "24/4/2024", "25/4/2024"};
-
     ArrayList<cauhoiitem> mylist;
-    CustomListViewBase custom_list_view_base;
-    ListView listview;
+    DsCauHoiDaTaoAdapter adapter;
+    RecyclerView cauhoi_rcv;
 
     ImageButton quay_lai_cau_hoi_screen;
 
@@ -41,25 +52,130 @@ public class DsCauHoiDaTao extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        mylist = new ArrayList<>();
-        for (int i = 0; i <stt.length;i++)
-        {
-            mylist.add(new cauhoiitem(stt[i],ten_mon[i],mo_ta[i], do_kho[i],ngay_tao[i]));
-        }
 
-        listview =  findViewById(R.id.danh_sach_cau_hoi_list_view);
 
-        custom_list_view_base = new CustomListViewBase(this, R.layout.activity_custom_list_view, mylist);
-        listview.setAdapter(custom_list_view_base);
 
         quay_lai_cau_hoi_screen = findViewById(R.id.ds_danh_sach_cau_hoi_icon_back);
         quay_lai_cau_hoi_screen.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 startActivity(new Intent(DsCauHoiDaTao.this, CauHoiScreen.class));
             }
         });
+        GetDataFromFireBase();
 
     }
+
+    private void GetDataFromFireBase()
+    {
+        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
+        DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
+        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+        DatabaseReference db_dokho = FirebaseDatabase.getInstance().getReference("DOKHO");
+
+        mylist = new ArrayList<>();
+
+
+        db_cauhoi.addChildEventListener(new ChildEventListener()
+        {
+            int stt = 1;
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+
+                String mamh = snapshot.child("maMH").getValue(String.class);
+                String madokho = snapshot.child("maDoKho").getValue(String.class);
+                String magv = snapshot.child("maGV").getValue(String.class);
+                String ngaytao = snapshot.child("ngaytao").getValue(String.class);
+                String noidung = snapshot.child("noiDung").getValue(String.class);
+                db_pdn.addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        String taikhoan = snapshot.child("account").getValue(String.class);
+                        if(taikhoan.equals(magv))
+                        {
+                            db_monhoc.addValueEventListener(new ValueEventListener()
+                            {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot)
+                                {
+
+                                    String tenmon = snapshot.child(mamh).child("tenMH").getValue(String.class);
+                                    db_dokho.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot)
+                                        {
+                                            String dokho = snapshot.child(madokho).child("TenDK").getValue(String.class);
+                                            mylist.add(0,new cauhoiitem(String.valueOf(stt),tenmon,noidung,dokho,ngaytao));
+                                            stt = stt +1;
+                                            GetListCauHoi();
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot)
+            {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+
+            }
+        });
+    }
+    private void GetListCauHoi()
+    {
+        cauhoi_rcv = findViewById(R.id.danh_sach_cau_hoi_recycle_view);
+        LinearLayoutManager ln_layout_manager = new LinearLayoutManager(DsCauHoiDaTao.this);
+        cauhoi_rcv.setLayoutManager(ln_layout_manager);
+        adapter = new DsCauHoiDaTaoAdapter(mylist);
+        cauhoi_rcv.setAdapter(adapter);
+
+        RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(DsCauHoiDaTao.this, DividerItemDecoration.VERTICAL);
+        cauhoi_rcv.addItemDecoration(item_decoration);
+    }
+
+
 }

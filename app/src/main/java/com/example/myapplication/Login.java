@@ -21,7 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity
+{
 
     private FirebaseDatabase db;
     private DatabaseReference ref;
@@ -64,7 +65,10 @@ public class Login extends AppCompatActivity {
                                 if (dataSnapshot.exists()) {
                                     String id = dataSnapshot.child("maGV").getValue(String.class);
                                     String matKhau = dataSnapshot.child("matKhau").getValue(String.class);
-                                    if (email.equals(id) && password.equals(matKhau)) {
+                                    if (email.equals(id) && password.equals(matKhau))
+                                    {
+                                        PHIENDANGNHAP phiendangnhap = new PHIENDANGNHAP(id,matKhau);
+                                        ref.child("PHIENDANGNHAP").setValue(phiendangnhap);
                                         startActivity(new Intent(Login.this, MainScreen.class));
                                     }
                                     Log.d("GIANGVIEN", "ID: " + id);
