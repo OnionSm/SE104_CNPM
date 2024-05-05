@@ -3,6 +3,8 @@ package com.example.myapplication;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +26,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 public class ThemCauHoi extends AppCompatActivity {
@@ -39,6 +40,8 @@ public class ThemCauHoi extends AppCompatActivity {
     Spinner spinner_do_kho;
     EditText noi_dung_cau_hoi;
     TextView ten_giang_vien;
+
+    DatabaseReference db_pdn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,8 @@ public class ThemCauHoi extends AppCompatActivity {
         dbRef_3 = FirebaseDatabase.getInstance().getReference("CAUHOI");
         dbRef_4 = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
         dbRef = FirebaseDatabase.getInstance().getReference("MONHOC");
+        db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
+
         spinner_mon_hoc = findViewById(R.id.tao_cau_hoi_mon_hoc_spiner);
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -129,15 +134,17 @@ public class ThemCauHoi extends AppCompatActivity {
     {
         String tenMonHoc = spinner_mon_hoc.getSelectedItem().toString();
         String tenDoKho = spinner_do_kho.getSelectedItem().toString();
-
+        String magv;
         getMaMonHoc(tenMonHoc, new OnMaMonHocCallback() {
             @Override
             public void onMaMonHocReceived(String maMonHoc) {
                 if (maMonHoc != null) {
                     getMaDoKho(tenDoKho, new OnMaDoKhoCallback() {
                         @Override
-                        public void onMaDoKhoReceived(String maDoKho) {
-                            if (maDoKho != null) {
+                        public void onMaDoKhoReceived(String maDoKho)
+                        {
+                            if (maDoKho != null)
+                            {
                                 String noiDung = noi_dung_cau_hoi.getText().toString();
                                 String maCH = dbRef_3.push().getKey();
 
@@ -145,14 +152,37 @@ public class ThemCauHoi extends AppCompatActivity {
                                 String tenGiangVien = ten_giang_vien.getText().toString();
 
                                 // Lấy mã giảng viên từ tên giảng viên
-                                getMaGiangVien(tenGiangVien, new OnMaGiangVienCallback() {
+                                getMaGiangVien(tenGiangVien, new OnMaGiangVienCallback()
+                                {
                                     @Override
-                                    public void onMaGiangVienReceived(String maGVtaocauhoi) {
-                                        if (maGVtaocauhoi != null) {
-                                            CAUHOI chiTietCauHoi = new CAUHOI(maCH, maDoKho, noiDung, maMonHoc, maGVtaocauhoi);
-                                            dbRef_3.child(maCH).setValue(chiTietCauHoi).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    public void onMaGiangVienReceived(String maGVtaocauhoi)
+                                    {
+                                        if (maGVtaocauhoi != null)
+                                        {
+                                            Calendar calendar = Calendar.getInstance();
+                                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                            String dateString = dateFormat.format(calendar.getTime());
+
+                                            db_pdn.addValueEventListener(new ValueEventListener()
+                                            {
                                                 @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
+                                                public void onDataChange(@NonNull DataSnapshot snapshot)
+                                                {
+                                                    String magv = snapshot.child("account").getValue(String.class);
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error)
+                                                {
+
+                                                }
+                                            });
+                                            CAUHOI chiTietCauHoi = new CAUHOI(maCH, maDoKho, noiDung, maMonHoc, maGVtaocauhoi, dateString);
+                                            dbRef_3.child(maCH).setValue(chiTietCauHoi).addOnCompleteListener(new OnCompleteListener<Void>()
+                                            {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task)
+                                                {
                                                     if (task.isSuccessful()) {
                                                         Toast.makeText(ThemCauHoi.this, "Câu hỏi đã được tạo", Toast.LENGTH_LONG).show();
                                                     } else {
@@ -160,7 +190,9 @@ public class ThemCauHoi extends AppCompatActivity {
                                                     }
                                                 }
                                             });
-                                        } else {
+
+                                        } else
+                                        {
                                             Toast.makeText(ThemCauHoi.this, "Không tìm thấy mã giảng viên", Toast.LENGTH_LONG).show();
                                         }
                                     }
@@ -170,7 +202,9 @@ public class ThemCauHoi extends AppCompatActivity {
                             }
                         }
                     });
-                } else {
+                }
+                else
+                {
                     Toast.makeText(ThemCauHoi.this, "Không tìm thấy mã môn học", Toast.LENGTH_LONG).show();
                 }
             }

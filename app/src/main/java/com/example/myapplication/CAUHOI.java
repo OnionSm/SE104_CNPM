@@ -7,12 +7,15 @@ public class CAUHOI {
     private String maMH;
     private String maGV;
 
-    public CAUHOI(String maCH, String maDoKho, String noiDung, String maMH, String maGV) {
+    private String ngaytao;
+
+    public CAUHOI(String maCH, String maDoKho, String noiDung, String maMH, String maGV, String ngaytao) {
         this.maCH = maCH;
         this.maDoKho = maDoKho;
         this.noiDung = noiDung;
         this.maMH = maMH;
         this.maGV = maGV;
+        this.ngaytao = ngaytao;
     }
 
     public String getMaCH() {
@@ -55,14 +58,23 @@ public class CAUHOI {
         this.maGV = maGV;
     }
 
+    public String getNgaytao() {
+        return ngaytao;
+    }
+
+    public void setNgaytao(String ngaytao) {
+        this.ngaytao = ngaytao;
+    }
+
     @Override
     public String toString() {
-        return "com.example.myapplication.CAUHOI{" +
+        return "CAUHOI{" +
                 "maCH='" + maCH + '\'' +
                 ", maDoKho='" + maDoKho + '\'' +
                 ", noiDung='" + noiDung + '\'' +
                 ", maMH='" + maMH + '\'' +
                 ", maGV='" + maGV + '\'' +
+                ", ngaytao='" + ngaytao + '\'' +
                 '}';
     }
 }
