@@ -14,6 +14,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import fragment.TrangChuFragment;
 import fragment.ViewPager2Adapter;
@@ -62,8 +64,6 @@ public class MainScreenNew extends AppCompatActivity
                 return true;
             }
         });
-
-
     }
 
 }

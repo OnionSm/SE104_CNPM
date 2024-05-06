@@ -73,16 +73,19 @@
         app:layout_constraintGuide_percent="0.048" />
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/trang_chu_user_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="fitXY"
+        android:src="@drawable/male_default_avatar"
+
+        app:civ_border_color="#FF000000"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_3_3"
         app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_1"
         app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_3_2"
-        app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_3_1"
-        app:srcCompat="@drawable/user_image" />
+        app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_3_1"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_3_1"
         android:layout_width="wrap_content"
@@ -104,6 +107,7 @@
 
 
     <TextView
+        android:id="@+id/trang_chu_ten_user"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"

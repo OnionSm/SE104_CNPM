@@ -44,15 +44,16 @@ public class ThemCauHoi extends AppCompatActivity {
     DatabaseReference db_pdn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_cau_hoi);
 
         noi_dung_cau_hoi = findViewById(R.id.noi_dung_cau_hoi);
-        ten_giang_vien = findViewById(R.id.ten_nguoi_them_cau_hoi);
 
         ImageView quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_icon_back);
-        quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener() {
+        quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 Intent quay_lai_trang_chu_intent = new Intent(ThemCauHoi.this, CauHoiScreen.class);
@@ -68,7 +69,8 @@ public class ThemCauHoi extends AppCompatActivity {
         spinner_mon_hoc = findViewById(R.id.tao_cau_hoi_mon_hoc_spiner);
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
                 tenMonHocList.clear();
                 for (DataSnapshot monHocSnapshot : dataSnapshot.getChildren()) {
                     String tenMonHoc = monHocSnapshot.child("tenMH").getValue(String.class);
@@ -97,7 +99,8 @@ public class ThemCauHoi extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError)
+            {
                 Log.w(TAG, "Lỗi", databaseError.toException());
             }
         });
@@ -109,14 +112,23 @@ public class ThemCauHoi extends AppCompatActivity {
         adapter_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_do_kho.setAdapter(adapter_2);
 
+
+        /*Lấy tên giảng viên từ database và set vào phần đăng tải bởi*/
+        GetTenNguoiThemCauHoi();
+
+
         ImageButton tao_cau_hoi = findViewById(R.id.tao_cau_hoi_button);
-        tao_cau_hoi.setOnClickListener(new View.OnClickListener() {
+        tao_cau_hoi.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 SaveTaoCauHoi();
             }
         });
     }
+
+
+
 
     private void updateSpinner() {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(ThemCauHoi.this, android.R.layout.simple_spinner_item, tenMonHocList);
@@ -135,11 +147,15 @@ public class ThemCauHoi extends AppCompatActivity {
         String tenMonHoc = spinner_mon_hoc.getSelectedItem().toString();
         String tenDoKho = spinner_do_kho.getSelectedItem().toString();
         String magv;
-        getMaMonHoc(tenMonHoc, new OnMaMonHocCallback() {
+        getMaMonHoc(tenMonHoc, new OnMaMonHocCallback()
+        {
             @Override
-            public void onMaMonHocReceived(String maMonHoc) {
-                if (maMonHoc != null) {
-                    getMaDoKho(tenDoKho, new OnMaDoKhoCallback() {
+            public void onMaMonHocReceived(String maMonHoc)
+            {
+                if (maMonHoc != null)
+                {
+                    getMaDoKho(tenDoKho, new OnMaDoKhoCallback()
+                    {
                         @Override
                         public void onMaDoKhoReceived(String maDoKho)
                         {
@@ -183,21 +199,27 @@ public class ThemCauHoi extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task)
                                                 {
-                                                    if (task.isSuccessful()) {
+                                                    if (task.isSuccessful())
+                                                    {
                                                         Toast.makeText(ThemCauHoi.this, "Câu hỏi đã được tạo", Toast.LENGTH_LONG).show();
-                                                    } else {
+                                                    }
+                                                    else
+                                                    {
                                                         Toast.makeText(ThemCauHoi.this, "Lỗi", Toast.LENGTH_LONG).show();
                                                     }
                                                 }
                                             });
 
-                                        } else
+                                        }
+                                        else
                                         {
                                             Toast.makeText(ThemCauHoi.this, "Không tìm thấy mã giảng viên", Toast.LENGTH_LONG).show();
                                         }
                                     }
                                 });
-                            } else {
+                            }
+                            else
+                            {
                                 Toast.makeText(ThemCauHoi.this, "Không tìm thấy mã độ khó", Toast.LENGTH_LONG).show();
                             }
                         }
@@ -211,8 +233,10 @@ public class ThemCauHoi extends AppCompatActivity {
         });
     }
 
-    private void getMaMonHoc(String tenMonHoc, OnMaMonHocCallback callback) {
-        dbRef.orderByChild("tenMH").equalTo(tenMonHoc).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void getMaMonHoc(String tenMonHoc, OnMaMonHocCallback callback)
+    {
+        dbRef.orderByChild("tenMH").equalTo(tenMonHoc).addListenerForSingleValueEvent(new ValueEventListener()
+        {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String maMonHoc = null;
@@ -231,12 +255,16 @@ public class ThemCauHoi extends AppCompatActivity {
         });
     }
 
-    private void getMaDoKho(String tenDoKho, OnMaDoKhoCallback callback) {
-        dbRef_2.orderByChild("TenDK").equalTo(tenDoKho).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void getMaDoKho(String tenDoKho, OnMaDoKhoCallback callback)
+    {
+        dbRef_2.orderByChild("TenDK").equalTo(tenDoKho).addListenerForSingleValueEvent(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 String maDoKho = null;
-                for (DataSnapshot doKhoSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot doKhoSnapshot : dataSnapshot.getChildren())
+                {
                     maDoKho = doKhoSnapshot.getKey();
                     break;
                 }
@@ -244,22 +272,22 @@ public class ThemCauHoi extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
                 Log.w(TAG, "Lỗi", databaseError.toException());
                 callback.onMaDoKhoReceived(null);
             }
         });
     }
 
-    private void getMaGiangVien(String tenGiangVien, OnMaGiangVienCallback callback) {
-        dbRef_4.orderByChild("hoTenGV").equalTo(tenGiangVien).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void getMaGiangVien(String tenGiangVien, OnMaGiangVienCallback callback)
+    {
+        db_pdn.child("account").addListenerForSingleValueEvent(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String maGiangVien = null;
-                for (DataSnapshot giangVienSnapshot : dataSnapshot.getChildren()) {
-                    maGiangVien = giangVienSnapshot.getKey();
-                    break;
-                }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                String maGiangVien = dataSnapshot.getValue(String.class);
                 callback.onMaGiangVienReceived(maGiangVien);
             }
 
@@ -270,6 +298,41 @@ public class ThemCauHoi extends AppCompatActivity {
             }
         });
     }
+
+
+    private void GetTenNguoiThemCauHoi()
+    {
+        ten_giang_vien = findViewById(R.id.ten_nguoi_them_cau_hoi);
+        db_pdn.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                String magv = snapshot.child("account").getValue(String.class);
+                dbRef_4.addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        String ten_gv = snapshot.child(magv).child("hoTenGV").getValue(String.class);
+                        ten_giang_vien.setText(ten_gv);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
 
     interface OnMaMonHocCallback {
         void onMaMonHocReceived(String maMonHoc);
