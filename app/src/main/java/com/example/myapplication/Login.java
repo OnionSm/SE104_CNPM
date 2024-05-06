@@ -69,7 +69,7 @@ public class Login extends AppCompatActivity
                                     {
                                         PHIENDANGNHAP phiendangnhap = new PHIENDANGNHAP(id,matKhau);
                                         ref.child("PHIENDANGNHAP").setValue(phiendangnhap);
-                                        startActivity(new Intent(Login.this, MainScreen.class));
+                                        startActivity(new Intent(Login.this, MainScreenNew.class));
                                     }
                                     Log.d("GIANGVIEN", "ID: " + id);
                                     Log.d("GIANGVIEN", "Mật khẩu: " + matKhau);

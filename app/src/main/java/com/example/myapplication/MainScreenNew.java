@@ -10,10 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import fragment.TrangChuFragment;
 import fragment.ViewPager2Adapter;
 
 public class MainScreenNew extends AppCompatActivity
@@ -60,6 +62,8 @@ public class MainScreenNew extends AppCompatActivity
                 return true;
             }
         });
+
+
     }
 
 }
