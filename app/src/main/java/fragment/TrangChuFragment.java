@@ -1,22 +1,32 @@
 package fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
+import com.example.myapplication.CauHoiScreen;
+import com.example.myapplication.DeThiScreen;
+import com.example.myapplication.MainScreenNew;
 import com.example.myapplication.R;
+import com.example.myapplication.TraCuuScreen;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link TrangChuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TrangChuFragment extends Fragment {
-
+public class TrangChuFragment extends Fragment
+{
+    MainScreenNew activity;
+    ImageButton cauhoi;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,7 +49,8 @@ public class TrangChuFragment extends Fragment {
      * @return A new instance of fragment TrangChuFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TrangChuFragment newInstance(String param1, String param2) {
+    public static TrangChuFragment newInstance(String param1, String param2)
+    {
         TrangChuFragment fragment = new TrangChuFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -49,18 +60,50 @@ public class TrangChuFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+        if (getArguments() != null)
+        {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trang_chu, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        View view = inflater.inflate(R.layout.fragment_trang_chu, container, false);
+        activity = (MainScreenNew)getActivity();
+        cauhoi = (ImageButton)view.findViewById(R.id.trang_chu_cau_hoi_button);
+        cauhoi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(activity, CauHoiScreen.class));
+            }
+        });
+        ImageButton dethi = view.findViewById(R.id.trang_chu_de_thi_button);
+        dethi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent de_thi_intent = new Intent(activity, DeThiScreen.class);
+                startActivity(de_thi_intent);
+            }
+        });
+
+        ImageButton tra_cuu = view.findViewById(R.id.trang_chu_tra_cuu_button);
+        tra_cuu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(activity, TraCuuScreen.class));
+            }
+        });
+
+        return view;
     }
 }

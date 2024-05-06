@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.48" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_3"
@@ -67,22 +67,20 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="105dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_2"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_2"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_1"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal_1"
-        app:layout_constraintVertical_bias="0.363"
         app:srcCompat="@drawable/thong_bao_text" />
     <!--bell image -->
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="52dp"
-        android:layout_height="49dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -121,8 +119,8 @@
         app:layout_constraintGuide_percent="0.73" />
     <TextView
         android:id="@+id/textView"
-        android:layout_width="358dp"
-        android:layout_height="130dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="Your text herwdfkchwjsfkjcasckdshjcksadjcdjskdjsjadksjdsjdsdkjsdkjcasjdkcsadkjcsdkjcsdkjskacsdjcgadhckhasdckjdhsksadcskhjcsdkjcsjdkcsdkjche"
@@ -134,8 +132,8 @@
         app:layout_constraintVertical_bias="0.0" />
     <TextView
         android:id="@+id/textVie2"
-        android:layout_width="358dp"
-        android:layout_height="130dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="dshjcksadjcdjskdjsjadksjdsjdsdkjsdkjcasjdkcsadkjcsdkjcsdkjskacsdjcgadhckhasdckjdhsksadcskhjcsdkjcsjdkcsdkjche"
@@ -147,8 +145,8 @@
         app:layout_constraintVertical_bias="0.0" />
     <TextView
         android:id="@+id/textVie3"
-        android:layout_width="358dp"
-        android:layout_height="130dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="dshjcksadjcdjskdjsjadksjdsjdsdkjsdkjcasjdkcsadkjcsdkjcsdkjskacsdjcgadhckhasdckjdhsksadcskhjcsdkjcsjdkcsdkjche"
@@ -160,8 +158,8 @@
         app:layout_constraintVertical_bias="0.0" />
     <TextView
         android:id="@+id/textVie4"
-        android:layout_width="358dp"
-        android:layout_height="130dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="dshjcksadjcdjskdjsjadksjdsjdsdkjsdkjcasjdkcsadkjcsdkjcsdkjskacsdjcgadhckhasdckjdhsksadcskhjcsdkjcsjdkcsdkjche"
@@ -211,6 +209,7 @@
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_3"
         app:layout_constraintTop_toTopOf="@id/guideline_horizontal_5"
         app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/time4"
         android:layout_width="55dp"
@@ -238,79 +237,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.925" />
-    <ImageButton
-        android:id="@+id/trang_chu_thong_bao_button_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#00FFFFFF"
-        app:layout_constraintDimensionRatio="7:6"
-        app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_11_2"
-        app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_1_2"
-        app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_11_3"
-        app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_11_1"
-        app:srcCompat="@drawable/thong_bao_full_fill_layer" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/trang_chu_guideline_11_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.937" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/trang_chu_guideline_11_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.99" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/trang_chu_guideline_11_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.185" />
 
-
-
-    <ImageButton
-        android:id="@+id/trang_chu_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#00FFFFFF"
-        app:layout_constraintDimensionRatio="7:6"
-        app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_11_2"
-        app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_12_2"
-        app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_12_1"
-        app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_11_1"
-        app:srcCompat="@drawable/home_not_full_fill_layer" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/trang_chu_guideline_12_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.43" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/trang_chu_guideline_12_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.57" />
-
-
-    <ImageButton
-        android:id="@+id/trang_chu_ho_so_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_11_2"
-        app:layout_constraintDimensionRatio="7:9"
-        app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_6_4"
-        app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_13_1"
-        app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_11_1"
-        app:srcCompat="@drawable/ho_so_layer" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/trang_chu_guideline_13_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.845" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
