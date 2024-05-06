@@ -1,8 +1,11 @@
 package fragment;
 
+import static com.google.common.reflect.Reflection.getPackageName;
+
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -11,12 +14,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.CauHoiScreen;
 import com.example.myapplication.DeThiScreen;
 import com.example.myapplication.MainScreenNew;
 import com.example.myapplication.R;
 import com.example.myapplication.TraCuuScreen;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,7 +48,8 @@ public class TrangChuFragment extends Fragment
     private String mParam1;
     private String mParam2;
 
-    public TrangChuFragment() {
+    public TrangChuFragment()
+    {
         // Required empty public constructor
     }
 
@@ -104,6 +117,85 @@ public class TrangChuFragment extends Fragment
             }
         });
 
+
+        SetUserImage(view);
+
+
+
         return view;
     }
+    private void SetUserImage(View view)
+    {
+
+        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
+        DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
+        DatabaseReference db_gv = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
+        CircleImageView user_image = view.findViewById(R.id.trang_chu_user_image);
+        TextView user_name = view.findViewById(R.id.trang_chu_ten_user);
+        db_pdn.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                String taikhoan = snapshot.child("account").getValue(String.class);
+                db_userimage.addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        //String file_image = snapshot.child(taikhoan).child("fileImage").getValue(String.class);
+                        if(taikhoan.equals("22520375"))
+                        {
+                            user_image.setImageResource(R.drawable.user_image_22520375);
+                        }
+                        else if(taikhoan.equals("22520234"))
+                        {
+                            user_image.setImageResource(R.drawable.user_image_22520234);
+                        }
+                        else if(taikhoan.equals("22520363"))
+                        {
+                            user_image.setImageResource(R.drawable.user_image_22520363);
+                        }
+                        else if(taikhoan.equals("22520989"))
+                        {
+                            user_image.setImageResource(R.drawable.user_image_22520989);
+                        }
+                        else if(taikhoan.equals("22521172"))
+                        {
+                            user_image.setImageResource(R.drawable.user_image_22521172);
+                        }
+                        else if(taikhoan.equals("000000"))
+                        {
+                            user_image.setImageResource(R.drawable.user_image);
+                        }
+                        db_gv.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot)
+                            {
+                                String tengv = snapshot.child(taikhoan).child("hoTenGV").getValue(String.class);
+                                user_name.setText(tengv);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
 }
