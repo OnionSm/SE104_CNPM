@@ -372,12 +372,13 @@
         app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_15_4"
         app:srcCompat="@drawable/ngay_dang_tai"
         android:background="#00FFFFFF"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_15_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.13" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_15_3"
         android:layout_width="wrap_content"
