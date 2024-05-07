@@ -60,13 +60,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.31"/>
+        app:layout_constraintGuide_percent="0.33"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_guideline_2_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.685"/>
+        app:layout_constraintGuide_percent="0.665"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_guideline_2_3"
         android:layout_width="wrap_content"
@@ -150,6 +150,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/login_screen_shape_4"
+        android:drawableLeft="@drawable/login_email_image"
+        android:paddingLeft="10dp"
+        android:drawablePadding="10dp"
         app:layout_constraintBottom_toBottomOf="@id/login_guideline_5_3"
         app:layout_constraintStart_toStartOf="@id/login_guideline_3_1"
         app:layout_constraintEnd_toEndOf="@id/login_guideline_5_1"
@@ -180,9 +183,15 @@
         android:layout_height="0dp"
         android:background="@drawable/login_screen_shape_4"
         app:layout_constraintBottom_toBottomOf="@id/login_guideline_6_2"
-        app:layout_constraintStart_toStartOf="@id/login_guideline_3_1"
         app:layout_constraintEnd_toEndOf="@id/login_guideline_5_1"
-        app:layout_constraintTop_toTopOf="@id/login_guideline_6_1"/>
+        android:drawableLeft="@drawable/login_lock_image"
+        android:drawableRight="@drawable/visibility_off_24dp"
+        android:drawablePadding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintStart_toStartOf="@id/login_guideline_3_1"
+        app:layout_constraintTop_toTopOf="@id/login_guideline_6_1"
+        android:inputType="textPassword"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_guideline_6_1"
         android:layout_width="wrap_content"
@@ -210,25 +219,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.768"/>
+        app:layout_constraintGuide_percent="0.77"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_guideline_7_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.817"/>
+        app:layout_constraintGuide_percent="0.815"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_guideline_7_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.285"/>
+        app:layout_constraintGuide_percent="0.35"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_guideline_7_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.715"/>
+        app:layout_constraintGuide_percent="0.65"/>
 
     <ImageButton
         android:layout_width="0dp"

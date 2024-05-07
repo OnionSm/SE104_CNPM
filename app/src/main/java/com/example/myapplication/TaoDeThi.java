@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -30,7 +31,8 @@ public class TaoDeThi extends AppCompatActivity {
     Spinner spinnerMonHoc;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tao_de_thi);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.tao_de_thi), (v, insets) -> {
@@ -45,6 +47,7 @@ public class TaoDeThi extends AppCompatActivity {
             {
                 Intent quay_lai_trang_chu_intent = new Intent(TaoDeThi.this, DeThiScreen.class);
                 startActivity(quay_lai_trang_chu_intent);
+                finish();
             }
         });
 
@@ -73,11 +76,29 @@ public class TaoDeThi extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tenMonHocList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMonHoc.setAdapter(adapter);
+
+        setupOnBackPressed();
     }
 
     private void updateSpinner() {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(TaoDeThi.this, android.R.layout.simple_spinner_item, tenMonHocList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMonHoc.setAdapter(adapter);
+    }
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(TaoDeThi.this, DeThiScreen.class));
+                    setEnabled(false);
+                    finish();
+                }
+            }
+        });
     }
 }

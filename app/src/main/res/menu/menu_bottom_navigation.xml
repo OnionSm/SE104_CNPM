@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/menu_thongbao"
-        android:title="Thông báo"
-        android:icon="@drawable/thong_bao_icon"/>
-
     <item android:id="@+id/menu_trangchu"
         android:title="Trang chủ"
         android:icon="@drawable/profile_home_image"/>
+
+    <item android:id="@+id/menu_thongbao"
+        android:title="Thông báo"
+        android:icon="@drawable/thong_bao_icon"/>
 
     <item android:id="@+id/menu_hoso"
         android:title="Hồ sơ"

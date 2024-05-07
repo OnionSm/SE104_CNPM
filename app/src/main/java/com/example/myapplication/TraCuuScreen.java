@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,7 +73,7 @@ public class TraCuuScreen extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(TraCuuScreen.this, MainScreen.class));
+                startActivity(new Intent(TraCuuScreen.this, MainScreenNew.class));
             }
         });
 
@@ -86,6 +87,7 @@ public class TraCuuScreen extends AppCompatActivity {
         });
 
         GetDataFromFireBase();
+        setupOnBackPressed();
     }
 
 
@@ -237,6 +239,22 @@ public class TraCuuScreen extends AppCompatActivity {
         DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
         DatabaseReference db_hknh = FirebaseDatabase.getInstance().getReference("HKNH");
         DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+    }
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(TraCuuScreen.this, MainScreenNew.class));
+                    setEnabled(false);
+                    finish();
+                }
+            }
+        });
     }
 
 }

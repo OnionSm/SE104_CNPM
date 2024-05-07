@@ -2,6 +2,7 @@ package fragment;
 
 import static com.google.common.reflect.Reflection.getPackageName;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -96,6 +97,7 @@ public class TrangChuFragment extends Fragment
             public void onClick(View v)
             {
                 startActivity(new Intent(activity, CauHoiScreen.class));
+                requireActivity().finishAffinity();
             }
         });
         ImageButton dethi = view.findViewById(R.id.trang_chu_de_thi_button);
@@ -106,14 +108,17 @@ public class TrangChuFragment extends Fragment
             {
                 Intent de_thi_intent = new Intent(activity, DeThiScreen.class);
                 startActivity(de_thi_intent);
+                requireActivity().finishAffinity();
             }
         });
 
         ImageButton tra_cuu = view.findViewById(R.id.trang_chu_tra_cuu_button);
         tra_cuu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 startActivity(new Intent(activity, TraCuuScreen.class));
+                requireActivity().finishAffinity();
             }
         });
 
@@ -143,32 +148,13 @@ public class TrangChuFragment extends Fragment
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot)
                     {
-                        //String file_image = snapshot.child(taikhoan).child("fileImage").getValue(String.class);
-                        if(taikhoan.equals("22520375"))
+                        String file_image = snapshot.child(taikhoan).child("fileImage").getValue(String.class);
+                        Context context = getContext();;
+                        String packageName = context.getPackageName();
+                        int resourceId = context.getResources().getIdentifier(file_image, "drawable", packageName);
+                        user_image.setImageResource(resourceId);
+                        db_gv.addValueEventListener(new ValueEventListener()
                         {
-                            user_image.setImageResource(R.drawable.user_image_22520375);
-                        }
-                        else if(taikhoan.equals("22520234"))
-                        {
-                            user_image.setImageResource(R.drawable.user_image_22520234);
-                        }
-                        else if(taikhoan.equals("22520363"))
-                        {
-                            user_image.setImageResource(R.drawable.user_image_22520363);
-                        }
-                        else if(taikhoan.equals("22520989"))
-                        {
-                            user_image.setImageResource(R.drawable.user_image_22520989);
-                        }
-                        else if(taikhoan.equals("22521172"))
-                        {
-                            user_image.setImageResource(R.drawable.user_image_22521172);
-                        }
-                        else if(taikhoan.equals("000000"))
-                        {
-                            user_image.setImageResource(R.drawable.user_image);
-                        }
-                        db_gv.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot)
                             {

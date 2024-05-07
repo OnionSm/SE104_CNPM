@@ -1,11 +1,13 @@
 package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -24,12 +26,11 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Login extends AppCompatActivity
 {
 
-    private FirebaseDatabase db;
-    private DatabaseReference ref;
     EditText EmailInput;
     EditText PasswordInput;
     ImageButton LoginButton;
 
+    boolean password_visible;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -41,13 +42,47 @@ public class Login extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference ref = db.getReference();
         EmailInput = findViewById(R.id.login_email_edit_text);
         PasswordInput = findViewById(R.id.login_pass_edit_text);
         LoginButton = findViewById(R.id.login_button);
-        String true_email = "";
-        String true_pass = "";
+
+
+        PasswordInput.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                final int right = 2;
+                if(event.getAction() == MotionEvent.ACTION_UP)
+                {
+                    if(event.getRawX() >= PasswordInput.getRight()- PasswordInput.getCompoundDrawables()[right].getBounds().width())
+                    {
+                        int selection = PasswordInput.getSelectionEnd();
+                        if(password_visible)
+                        {
+                            PasswordInput.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.visibility_off_24dp, 0);
+                            PasswordInput.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            password_visible = false;
+                        }
+                        else
+                        {
+                            PasswordInput.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.visibility_24dp, 0);
+                            PasswordInput.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            password_visible = true;
+                        }
+                        PasswordInput.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
         LoginButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -70,6 +105,7 @@ public class Login extends AppCompatActivity
                                         PHIENDANGNHAP phiendangnhap = new PHIENDANGNHAP(id,matKhau);
                                         ref.child("PHIENDANGNHAP").setValue(phiendangnhap);
                                         startActivity(new Intent(Login.this, MainScreenNew.class));
+                                        finish();
                                     }
                                     Log.d("GIANGVIEN", "ID: " + id);
                                     Log.d("GIANGVIEN", "Mật khẩu: " + matKhau);

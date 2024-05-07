@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -125,6 +126,7 @@ public class ThemCauHoi extends AppCompatActivity {
                 SaveTaoCauHoi();
             }
         });
+        setupOnBackPressed();
     }
 
 
@@ -333,7 +335,6 @@ public class ThemCauHoi extends AppCompatActivity {
     }
 
 
-
     interface OnMaMonHocCallback {
         void onMaMonHocReceived(String maMonHoc);
     }
@@ -344,5 +345,21 @@ public class ThemCauHoi extends AppCompatActivity {
 
     interface OnMaGiangVienCallback {
         void onMaGiangVienReceived(String maGiangVien);
+    }
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(ThemCauHoi.this, CauHoiScreen.class));
+                    setEnabled(false);
+                    finish();
+                }
+            }
+        });
     }
 }
