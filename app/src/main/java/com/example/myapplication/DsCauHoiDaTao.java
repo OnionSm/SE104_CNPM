@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,9 +63,11 @@ public class DsCauHoiDaTao extends AppCompatActivity
             public void onClick(View v)
             {
                 startActivity(new Intent(DsCauHoiDaTao.this, CauHoiScreen.class));
+                finish();
             }
         });
         GetDataFromFireBase();
+        setupOnBackPressed();
 
     }
 
@@ -175,6 +178,22 @@ public class DsCauHoiDaTao extends AppCompatActivity
 
         RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(DsCauHoiDaTao.this, DividerItemDecoration.VERTICAL);
         cauhoi_rcv.addItemDecoration(item_decoration);
+    }
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(DsCauHoiDaTao.this, CauHoiScreen.class));
+                    setEnabled(false);
+                    finish();
+                }
+            }
+        });
     }
 
 

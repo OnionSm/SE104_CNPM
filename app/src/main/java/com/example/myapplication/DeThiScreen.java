@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -35,8 +36,26 @@ public class DeThiScreen extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent quay_lai_trang_chu_intent = new Intent(DeThiScreen.this, MainScreen.class);
+                Intent quay_lai_trang_chu_intent = new Intent(DeThiScreen.this, MainScreenNew.class);
                 startActivity(quay_lai_trang_chu_intent);
+                finish();
+            }
+        });
+        setupOnBackPressed();
+    }
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(DeThiScreen.this, MainScreenNew.class));
+                    setEnabled(false);
+                    finish();
+                }
             }
         });
     }

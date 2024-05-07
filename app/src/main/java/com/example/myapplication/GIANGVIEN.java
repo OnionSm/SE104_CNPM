@@ -1,23 +1,26 @@
 package com.example.myapplication;
 
-import java.util.Date;
+
 
 public class GIANGVIEN
 {
     private String maGV;
     private String hoTenGV;
-    private Date ngSinhGV;
+    private String ngSinhGV;
     private String gioiTinhGV;
     private String matKhau;
     private String maNhomND;
 
-    public GIANGVIEN(String maGV, String hoTenGV, Date ngSinhGV, String gioiTinhGV, String matKhau, String maNhomND) {
+    public GIANGVIEN(String maGV, String hoTenGV, String ngSinhGV, String gioiTinhGV, String matKhau, String maNhomND) {
         this.maGV = maGV;
         this.hoTenGV = hoTenGV;
         this.ngSinhGV = ngSinhGV;
         this.gioiTinhGV = gioiTinhGV;
         this.matKhau = matKhau;
         this.maNhomND = maNhomND;
+    }
+
+    public GIANGVIEN() {
     }
 
     public String getMaGV() {
@@ -36,11 +39,11 @@ public class GIANGVIEN
         this.hoTenGV = hoTenGV;
     }
 
-    public Date getNgSinhGV() {
+    public String getNgSinhGV() {
         return ngSinhGV;
     }
 
-    public void setNgSinhGV(Date ngSinhGV) {
+    public void setNgSinhGV(String ngSinhGV) {
         this.ngSinhGV = ngSinhGV;
     }
 

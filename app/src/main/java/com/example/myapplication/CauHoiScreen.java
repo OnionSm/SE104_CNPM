@@ -4,19 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class CauHoiScreen extends AppCompatActivity {
+public class CauHoiScreen extends AppCompatActivity
+{
 
     private ImageButton ds_cau_hoi_da_tao_button;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cau_hoi_screen);
@@ -39,8 +43,9 @@ public class CauHoiScreen extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent quay_lai_trang_chu_intent = new Intent(CauHoiScreen.this, MainScreen.class);
+                Intent quay_lai_trang_chu_intent = new Intent(CauHoiScreen.this, MainScreenNew.class);
                 startActivity(quay_lai_trang_chu_intent);
+                finish();
             }
         });
 
@@ -50,9 +55,26 @@ public class CauHoiScreen extends AppCompatActivity {
             public void onClick(View view)
             {
                 startActivity(new Intent(CauHoiScreen.this, DsCauHoiDaTao.class));
+                finish();
             }
         });
+        setupOnBackPressed();
 
-
+    }
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(CauHoiScreen.this, MainScreenNew.class));
+                    setEnabled(false);
+                    finish();
+                }
+            }
+        });
     }
 }

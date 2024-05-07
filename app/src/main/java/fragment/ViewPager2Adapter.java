@@ -19,9 +19,9 @@ public class ViewPager2Adapter extends FragmentStateAdapter
         switch(position)
         {
             case 0:
-                return new ThongBaoFragment();
-            case 1:
                 return new TrangChuFragment();
+            case 1:
+                return new ThongBaoFragment();
             case 2:
                 return new HoSoFragment();
             default:
