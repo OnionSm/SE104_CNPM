@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/nen_xanh"/>
+    <item android:drawable="@drawable/cham_diem_white_text"
+        android:top="40dp"
+        android:left="150dp"
+        android:width="201dp"
+        android:height="60dp"/>
+</layer-list>
