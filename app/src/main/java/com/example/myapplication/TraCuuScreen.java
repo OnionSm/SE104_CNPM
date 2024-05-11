@@ -155,16 +155,12 @@ public class TraCuuScreen extends AppCompatActivity {
                 String ma_DT = snapshot.child("maDT").getValue(String.class);
                 String ngay_Thi = snapshot.child("ngayThi").getValue(String.class);
                 String ma_MH_dethi = snapshot.child("maMH").getValue(String.class);
-                if (ma_DT != null && ngay_Thi != null && ma_MH_dethi != null)
-                {
-                    Log.e("Thông tin", "MaDT: " + ma_DT + ", NgayThi: " + ngay_Thi + ", MaMH: " + ma_MH_dethi);
-                }
+
                 db_monhoc.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot)
                     {
                         String tenmon = snapshot.child(ma_MH_dethi).child("tenMH").getValue(String.class);
-                        Log.e("môn học", tenmon);
                         mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT));
                         GetListDeThi();
                     }

@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.CauHoiScreen;
+import com.example.myapplication.ChamDiemScreen;
 import com.example.myapplication.DeThiScreen;
 import com.example.myapplication.MainScreenNew;
 import com.example.myapplication.R;
@@ -118,6 +119,17 @@ public class TrangChuFragment extends Fragment
             public void onClick(View v)
             {
                 startActivity(new Intent(activity, TraCuuScreen.class));
+                requireActivity().finishAffinity();
+            }
+        });
+
+        ImageButton cham_diem = view.findViewById(R.id.trang_chu_cham_diem_button);
+        cham_diem.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(activity, ChamDiemScreen.class));
                 requireActivity().finishAffinity();
             }
         });
