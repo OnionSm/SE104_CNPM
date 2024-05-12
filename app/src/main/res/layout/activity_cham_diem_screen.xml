@@ -197,7 +197,7 @@
         android:id="@+id/tai_len_excel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Đạt Đẹp trai số 1 thế giới"
+        android:text="Nhấn để tải lên file excel"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/bot_tai_len_excel"
         app:layout_constraintEnd_toEndOf="@+id/r_tai_len_excel"
