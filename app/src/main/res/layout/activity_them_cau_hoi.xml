@@ -304,17 +304,29 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.724"/>
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/anh_dai_dien_nguoi_them_cau_hoi"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_2"
-        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_13_2"
-        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_13_3"
+        android:src="@drawable/male_default_avatar"
+        app:civ_border_color="#FF000000"
         app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_13_4"
-        app:srcCompat="@drawable/ellipse_742"
-        android:background="#00FFFFFF"/>
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_13_2"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_13_3"/>
+    <!--<ImageView
+
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_13_4"
+        app:layout_constraintEnd_toEndOf="@id/them_cau_hoi_guideline_13_2"
+        app:layout_constraintStart_toStartOf="@id/them_cau_hoi_guideline_1_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_13_3"
+        app:srcCompat="@drawable/ellipse_742" />-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/them_cau_hoi_guideline_13_2"
         android:layout_width="wrap_content"

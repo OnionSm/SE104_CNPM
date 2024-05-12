@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -97,6 +98,18 @@ public class ChamDiemScreen extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        ImageButton button_back = findViewById(R.id.cham_diem_button_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(ChamDiemScreen.this, MainScreenNew.class));
+                finish();
+            }
+        });
+
+
+
 
         select_file = findViewById(R.id.tai_len_excel);
         select_file.setOnClickListener(new View.OnClickListener()
@@ -131,7 +144,7 @@ public class ChamDiemScreen extends AppCompatActivity
             }
         });
 
-
+        setupOnBackPressed();
     }
     private void onClickRequestPermission()
     {
@@ -155,7 +168,22 @@ public class ChamDiemScreen extends AppCompatActivity
         m_activity_result.launch(intent);
     }
 
-
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(ChamDiemScreen.this, MainScreenNew.class));
+                    setEnabled(false);
+                    finish();
+                }
+            }
+        });
+    }
 
 
 }

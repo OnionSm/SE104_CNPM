@@ -5,6 +5,7 @@
     android:id="@+id/nhapdiemscreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".NhapDiemScreen">
 
     <ImageButton
@@ -44,18 +45,20 @@
         app:layout_constraintGuide_percent="0.105"/>
 
     <TextView
+        android:id="@+id/cham_diem_ma_lop"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Mã lớp: SE104.022"
         android:textSize = "22dp"
         android:gravity="center"
+        android:scaleType="fitXY"
         android:textColor="#0000FD"
         android:fontFamily="@font/roboto_regular"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/nhap_diem_guideline_1_4"
+        app:layout_constraintBottom_toBottomOf="@id/nhap_diem_guideline_2_4"
         app:layout_constraintEnd_toEndOf="@id/nhap_diem_guideline_2_2"
         app:layout_constraintStart_toStartOf="@id/nhap_diem_guideline_2_1"
-        app:layout_constraintTop_toTopOf="@id/nhap_diem_guideline_1_3"
+        app:layout_constraintTop_toTopOf="@id/nhap_diem_guideline_2_3"
         app:srcCompat="@drawable/them_cau_hoi_image_view_1" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/nhap_diem_guideline_2_1"
@@ -69,6 +72,54 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.8"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_diem_guideline_2_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0765"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_diem_guideline_2_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11"/>
+
+    <ImageButton
+        android:id="@+id/cham_thi_tao_de"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/nhap_diem_guideline_4_4"
+        app:layout_constraintEnd_toEndOf="@id/nhap_diem_guideline_4_2"
+        app:layout_constraintStart_toStartOf="@id/nhap_diem_guideline_4_1"
+        app:layout_constraintTop_toTopOf="@id/nhap_diem_guideline_4_3"
+        app:srcCompat="@drawable/cham_thi_tao_de_button"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_diem_guideline_4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.775"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_diem_guideline_4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.97"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_diem_guideline_4_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0745"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_diem_guideline_4_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
