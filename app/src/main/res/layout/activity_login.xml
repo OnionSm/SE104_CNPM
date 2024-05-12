@@ -81,7 +81,7 @@
         app:layout_constraintGuide_percent="0.51"/>
 
     <ImageView
-        android:id="@+id/login_email_text"
+        android:id="@+id/login_tai_khoan_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -89,7 +89,7 @@
         app:layout_constraintStart_toStartOf="@id/login_guideline_3_1"
         app:layout_constraintEnd_toEndOf="@id/login_guideline_3_2"
         app:layout_constraintTop_toTopOf="@id/login_guideline_3_3"
-        app:srcCompat="@drawable/login_email_text" />
+        app:srcCompat="@drawable/tai_khoan_text" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_guideline_3_1"
         android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.29"/>
+        app:layout_constraintGuide_percent="0.36"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/login_guideline_3_3"
         android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/login_screen_shape_4"
-        android:drawableLeft="@drawable/login_email_image"
+        android:drawableLeft="@drawable/user_login"
         android:paddingLeft="10dp"
         android:drawablePadding="10dp"
         app:layout_constraintBottom_toBottomOf="@id/login_guideline_5_3"

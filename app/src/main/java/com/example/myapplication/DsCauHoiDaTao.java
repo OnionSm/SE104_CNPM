@@ -25,17 +25,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DsCauHoiDaTao extends AppCompatActivity
 {
-    String stt[] = {"1","2","3"};
-
-    String ten_mon[] = {"Nhập môn lập trình","Toán cho khoa học máy tính", "Nhập môn Công nghệ phần mềm"};
-    String mo_ta[] = {"Môn này nên học", "Học rồi không biết đã học hay chưa", "Rất là okela"};
-
-    String do_kho[] = {"Dễ", "Khó vcl", "Khó"};
-
-    String ngay_tao[]  = {"23/4//2024", "24/4/2024", "25/4/2024"};
     ArrayList<cauhoiitem> mylist;
     DsCauHoiDaTaoAdapter adapter;
     RecyclerView cauhoi_rcv;
@@ -113,8 +106,12 @@ public class DsCauHoiDaTao extends AppCompatActivity
                                         public void onDataChange(@NonNull DataSnapshot snapshot)
                                         {
                                             String dokho = snapshot.child(madokho).child("TenDK").getValue(String.class);
-                                            mylist.add(0,new cauhoiitem(String.valueOf(stt),tenmon,noidung,dokho,ngaytao));
-                                            stt = stt +1;
+                                            mylist.add(0, new cauhoiitem("1", tenmon, noidung, dokho, ngaytao));
+                                            for (int i = 1; i < mylist.size(); i++) {
+                                                cauhoiitem item = mylist.get(i);
+                                                int newStt = Integer.parseInt(item.getStt()) + 1;
+                                                item.setStt(String.valueOf(newStt));
+                                            }
                                             GetListCauHoi();
 
                                         }
