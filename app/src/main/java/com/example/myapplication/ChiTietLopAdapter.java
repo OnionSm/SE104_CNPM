@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,29 +25,26 @@ public class ChiTietLopAdapter extends RecyclerView.Adapter<ChiTietLopAdapter.Ds
     @Override
     public ChiTietLopAdapter.DsCTViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        // sẽ sửa khi có màn hình
 
-       /* View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_custom_list_view,parent,false);
-        return new DsCauHoiDaTaoAdapter.DsViewHoder(view);*/
 
-        return null;
+        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_chi_tiet_lop_recycle_view,parent,false);
+        return new ChiTietLopAdapter.DsCTViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull ChiTietLopAdapter.DsCTViewHolder holder, int position)
     {
-        // sẽ sửa khi có màn hình
-
-        /*cauhoiitem cauhoi = mylist.get(position);
-        if(cauhoi == null)
+        CHITIETLOP chitiet = mylist.get(position);
+        if(chitiet == null)
         {
             return;
         }
-        holder.stt.setText(cauhoi.getStt());
-        holder.monhoc.setText(cauhoi.getMon_hoc());
-        holder.noidung.setText(cauhoi.getMo_ta());
-        holder.dokho.setText(cauhoi.getDo_kho());
-        holder.ngaytao.setText(cauhoi.getNgay_tao());*/
+        holder.masv.setText(chitiet.getMaSV());
+        holder.hoten.setText(chitiet.getTenSV());
+        holder.diem.setText(String.valueOf(chitiet.getDiem()));
+        holder.diemchu.setText(chitiet.getDiemChu());
+        holder.ghichu.setText(chitiet.getGhiChu());
     }
 
     @Override
@@ -61,27 +59,20 @@ public class ChiTietLopAdapter extends RecyclerView.Adapter<ChiTietLopAdapter.Ds
 
     public class DsCTViewHolder extends RecyclerView.ViewHolder
      {
-
-         // sẽ sửa sau khi có màn hình
-
-         /*private TextView stt;
-         private TextView monhoc;
-         private TextView noidung;
-
-         private TextView dokho;
-
-         private TextView ngaytao;*/
+        private EditText masv;
+        private EditText hoten;
+        private EditText diem;
+        private EditText diemchu;
+        private EditText ghichu;
          public DsCTViewHolder(@NonNull View itemView)
          {
              super(itemView);
 
-             // sẽ sửa sau khi có màn hình
-
-             /*stt =  itemView.findViewById(R.id.custom_list_view_stt);
-             monhoc =  itemView.findViewById(R.id.custom_list_view_ten_mon);
-             noidung =  itemView.findViewById(R.id.custom_list_view_de_thi);
-             dokho =  itemView.findViewById(R.id.custom_list_view_do_kho);
-             ngaytao =  itemView.findViewById(R.id.custom_list_view_ngay_tao);*/
+             masv = itemView.findViewById(R.id.cham_thi_mssv_textview);
+             hoten = itemView.findViewById(R.id.cham_thi_ho_va_ten_textview);
+             diem = itemView.findViewById(R.id.cham_thi_diem_text);
+             diemchu = itemView.findViewById(R.id.cham_thi_diem_chu_text);
+             ghichu = itemView.findViewById(R.id.cham_thi_ghi_chu_text_view);
          }
      }
 }

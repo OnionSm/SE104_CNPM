@@ -172,7 +172,6 @@ public class DsCauHoiDaTao extends AppCompatActivity
         cauhoi_rcv.setLayoutManager(ln_layout_manager);
         adapter = new DsCauHoiDaTaoAdapter(mylist);
         cauhoi_rcv.setAdapter(adapter);
-
         RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(DsCauHoiDaTao.this, DividerItemDecoration.VERTICAL);
         cauhoi_rcv.addItemDecoration(item_decoration);
     }
