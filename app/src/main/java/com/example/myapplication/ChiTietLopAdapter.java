@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +47,13 @@ public class ChiTietLopAdapter extends RecyclerView.Adapter<ChiTietLopAdapter.Ds
         holder.diem.setText(String.valueOf(chitiet.getDiem()));
         holder.diemchu.setText(chitiet.getDiemChu());
         holder.ghichu.setText(chitiet.getGhiChu());
+
+
+        /*mylist.get(position).setMaSV(holder.masv.getText().toString());
+        mylist.get(position).setTenSV(holder.masv.getText().toString());
+        mylist.get(position).setDiem(Integer.parseInt(holder.masv.getText().toString()));
+        mylist.get(position).setDiemChu(holder.masv.getText().toString());
+        mylist.get(position).setGhiChu(holder.masv.getText().toString());*/
     }
 
     @Override
@@ -75,4 +84,9 @@ public class ChiTietLopAdapter extends RecyclerView.Adapter<ChiTietLopAdapter.Ds
              ghichu = itemView.findViewById(R.id.cham_thi_ghi_chu_text_view);
          }
      }
+     public ArrayList<CHITIETLOP> GetChamDiemData()
+     {
+         return mylist;
+     }
+
 }

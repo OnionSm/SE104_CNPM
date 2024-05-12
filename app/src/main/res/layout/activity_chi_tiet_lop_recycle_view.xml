@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/cham_thi_mssv_textview"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/round_button_2"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cham_thi_mssv_textview"/>
     <EditText
         android:id="@+id/cham_thi_ho_va_ten_textview"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="50dp"
         android:background="@drawable/round_button_2"
         android:fontFamily="@font/roboto_regular"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cham_thi_ho_va_ten_textview"/>
     <EditText
         android:id="@+id/cham_thi_diem_text"
-        android:layout_width="182dp"
+        android:layout_width="165dp"
         android:layout_height="45dp"
         android:background="@drawable/round_button_2"
         android:fontFamily="@font/roboto_regular"
@@ -83,7 +83,7 @@
         android:paddingStart="15dp"
         android:textColor="#6E7591"
         android:textSize="16sp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cham_thi_diem" />
@@ -92,8 +92,8 @@
         android:id="@+id/cham_thi_diem_chu"
         android:layout_width="55dp"
         android:layout_height="16dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="225dp"
+        android:layout_marginTop="15dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cham_thi_ho_va_ten_textview"
@@ -101,7 +101,7 @@
 
     <EditText
         android:id="@+id/cham_thi_diem_chu_text"
-        android:layout_width="182dp"
+        android:layout_width="165dp"
         android:layout_height="45dp"
         android:background="@drawable/round_button_2"
         android:fontFamily="@font/roboto_regular"
@@ -110,7 +110,7 @@
         android:textSize="16sp"
         android:text=""
         android:paddingStart="15dp"
-        android:layout_marginStart="250dp"
+        android:layout_marginStart="215dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cham_thi_diem_chu" />
@@ -127,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cham_thi_diem_text"/>
     <EditText
         android:id="@+id/cham_thi_ghi_chu_text_view"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="50dp"
         android:background="@drawable/round_button_2"
         android:fontFamily="@font/roboto_regular"

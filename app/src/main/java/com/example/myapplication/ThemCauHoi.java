@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
@@ -29,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ThemCauHoi extends AppCompatActivity {
 
     DatabaseReference dbRef;
@@ -43,6 +46,8 @@ public class ThemCauHoi extends AppCompatActivity {
     TextView ten_giang_vien;
 
     DatabaseReference db_pdn;
+
+    CircleImageView use_dang_tai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -116,6 +121,7 @@ public class ThemCauHoi extends AppCompatActivity {
 
         /*Lấy tên giảng viên từ database và set vào phần đăng tải bởi*/
         GetTenNguoiThemCauHoi();
+        SetUserImage();
 
 
         ImageButton tao_cau_hoi = findViewById(R.id.tao_cau_hoi_button);
@@ -301,6 +307,44 @@ public class ThemCauHoi extends AppCompatActivity {
         });
     }
 
+    private void SetUserImage()
+    {
+
+        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
+        DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
+        DatabaseReference db_gv = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
+        use_dang_tai = findViewById(R.id.anh_dai_dien_nguoi_them_cau_hoi);
+        db_pdn.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                String taikhoan = snapshot.child("account").getValue(String.class);
+                db_userimage.addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        String file_image = snapshot.child(taikhoan).child("fileImage").getValue(String.class);
+                        String packageName = getPackageName();
+                        int resourceId = getResources().getIdentifier(file_image, "drawable", packageName);
+                        use_dang_tai.setImageResource(resourceId);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
 
     private void GetTenNguoiThemCauHoi()
     {

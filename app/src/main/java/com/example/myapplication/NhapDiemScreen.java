@@ -1,20 +1,33 @@
 package com.example.myapplication;
 
+import static androidx.tracing.Trace.isEnabled;
+
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -35,8 +48,13 @@ public class NhapDiemScreen extends AppCompatActivity
     ChiTietLopAdapter adapter;
 
     ArrayList<CHITIETLOP> mylist;
+    ArrayList<CHITIETLOP> chamdiemdatalist;
 
     String filepath;
+    ImageButton taode;
+    DatabaseReference db_chitietlop;
+
+    TextView ma_lop_text_view;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -49,6 +67,8 @@ public class NhapDiemScreen extends AppCompatActivity
             return insets;
         });
 
+        setupOnBackPressed();
+
         quay_lai_cham_diem_screen = findViewById(R.id.nhap_diem_icon_back);
         quay_lai_cham_diem_screen.setOnClickListener(new View.OnClickListener()
         {
@@ -57,6 +77,46 @@ public class NhapDiemScreen extends AppCompatActivity
             {
                 startActivity(new Intent(NhapDiemScreen.this,ChamDiemScreen.class));
                 finish();
+            }
+        });
+
+        taode = findViewById(R.id.cham_thi_tao_de);
+        ma_lop_text_view = findViewById(R.id.cham_diem_ma_lop);
+        db_chitietlop = FirebaseDatabase.getInstance().getReference("CHITIETLOP");
+        taode.setOnClickListener(new View.OnClickListener()
+        {
+            int count = 0;
+            @Override
+            public void onClick(View v)
+            {
+                int item_count = adapter.getItemCount();
+
+                for(int i = 0;i<item_count;i++)
+                {
+                    String malop = ma_lop_text_view.getText().toString().split(":")[1];
+                    String masv = ((EditText) nhap_diem_rcv.findViewHolderForAdapterPosition(0).itemView.findViewById(R.id.cham_thi_mssv_textview)).getText().toString();
+                    String hoten = ((EditText) nhap_diem_rcv.findViewHolderForAdapterPosition(0).itemView.findViewById(R.id.cham_thi_ho_va_ten_textview)).getText().toString();
+                    int diem = Integer.parseInt(((EditText) nhap_diem_rcv.findViewHolderForAdapterPosition(0).itemView.findViewById(R.id.cham_thi_diem_text)).getText().toString());
+                    String diemchu = ((EditText) nhap_diem_rcv.findViewHolderForAdapterPosition(0).itemView.findViewById(R.id.cham_thi_diem_chu_text)).getText().toString();
+                    String ghichu = ((EditText) nhap_diem_rcv.findViewHolderForAdapterPosition(0).itemView.findViewById(R.id.cham_thi_ghi_chu_text_view)).getText().toString();
+                    CHITIETLOP sinhvien = new CHITIETLOP(malop,masv,hoten,diem,diemchu,ghichu);
+                    String key = db_chitietlop.push().getKey();
+                    db_chitietlop.child(key).setValue(sinhvien).addOnCompleteListener(new OnCompleteListener<Void>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task)
+                        {
+                            if (task.isSuccessful())
+                            {
+                                count++;
+                            }
+                        }
+                    });
+                }
+                if(count!= 0)
+                {
+                    Toast.makeText(NhapDiemScreen.this,"Đã lưu điểm "+count+" sinh viên",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         Intent intent = getIntent();
@@ -72,7 +132,9 @@ public class NhapDiemScreen extends AppCompatActivity
         nhap_diem_rcv.setLayoutManager(ln_layout_manager);
         adapter = new ChiTietLopAdapter(mylist);
         nhap_diem_rcv.setAdapter(adapter);
-        RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(NhapDiemScreen.this, DividerItemDecoration.VERTICAL);
+        DividerItemDecoration item_decoration = new DividerItemDecoration(NhapDiemScreen.this, DividerItemDecoration.VERTICAL);
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.divider_nhap_diem, null);
+        item_decoration.setDrawable(drawable);
         nhap_diem_rcv.addItemDecoration(item_decoration);
     }
     private void GetData(String absoulute_path)
@@ -134,5 +196,21 @@ public class NhapDiemScreen extends AppCompatActivity
         {
             e.printStackTrace();
         }
+    }
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(NhapDiemScreen.this, ChamDiemScreen.class));
+                    setEnabled(false);
+                    finish();
+                }
+            }
+        });
     }
 }
