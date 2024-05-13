@@ -22,6 +22,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".TaoCauHoiCauHoiItem"
+            android:exported="false" />
+        <activity
             android:name=".ThongTinMonHoc"
             android:exported="false" />
         <activity
@@ -35,7 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".ChamDiemScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainScreenNew"
             android:exported="true" />

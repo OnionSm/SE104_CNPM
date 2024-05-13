@@ -48,12 +48,6 @@ public class ChiTietLopAdapter extends RecyclerView.Adapter<ChiTietLopAdapter.Ds
         holder.diemchu.setText(chitiet.getDiemChu());
         holder.ghichu.setText(chitiet.getGhiChu());
 
-
-        /*mylist.get(position).setMaSV(holder.masv.getText().toString());
-        mylist.get(position).setTenSV(holder.masv.getText().toString());
-        mylist.get(position).setDiem(Integer.parseInt(holder.masv.getText().toString()));
-        mylist.get(position).setDiemChu(holder.masv.getText().toString());
-        mylist.get(position).setGhiChu(holder.masv.getText().toString());*/
     }
 
     @Override

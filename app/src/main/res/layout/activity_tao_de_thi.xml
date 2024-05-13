@@ -101,7 +101,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.96"/>
     <SearchView
-        android:id="@+id/tra_cuu_search_view"
+        android:id="@+id/tao_de_thi_search_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -121,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.172" />
+        app:layout_constraintGuide_percent="0.165" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_4_2"
         android:layout_width="wrap_content"
@@ -176,6 +176,45 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.90"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tao_de_thi_rcv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_6_2"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_6_4"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_6_3"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_6_1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_6_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_6_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_6_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_6_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94"/>
+
+
+
+
+
 
 
 

@@ -76,8 +76,10 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
         }
     }
     @Override
-    public Filter getFilter() {
-        return new Filter() {
+    public Filter getFilter()
+    {
+        return new Filter()
+        {
             @Override
             protected FilterResults performFiltering(CharSequence constraint)
             {
