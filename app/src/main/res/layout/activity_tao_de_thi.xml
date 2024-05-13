@@ -5,7 +5,6 @@
     android:id="@+id/tao_de_thi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
     tools:context=".TaoDeThi">
     <ImageButton
         android:id="@+id/tao_de_thi_icon_back"
@@ -66,153 +65,32 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.955"/>
 
-    <ImageView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/tao_de_thi_view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/de_thi_tra_cuu_box"
-        android:background="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_3_2"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_3_4"
-        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_3_3"
-        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_3_1" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/tao_de_guideline_3_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.156" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/tao_de_guideline_3_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.245" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/tao_de_guideline_3_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/tao_de_guideline_3_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.96"/>
-    <SearchView
-        android:id="@+id/tao_de_thi_search_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:queryHint="Nhập nội dung câu hỏi"
-        android:iconifiedByDefault="false"
-        android:fontFamily="@font/roboto_regular"
-        app:srcCompat="@drawable/tra_cuu_input_background"
-        android:background="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_4_2"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_4_4"
-        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_4_3"
-        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_4_1">
-        <requestFocus/>
-    </SearchView>
+        app:layout_constraintBottom_toBottomOf="@id/main_scr_guideline_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_1_2" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/tao_de_thi_bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_on_primary"
+        app:menu="@menu/menu_tao_de_thi_bottom_navigation"
+        app:itemTextColor="@color/custom_color_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemIconTint="@color/custom_color_navigation"
+        app:layout_constraintTop_toTopOf="@id/main_scr_guideline_1"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_4_1"
+        android:id="@+id/main_scr_guideline_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.165" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_4_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.208" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_4_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.075" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_4_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8"/>
-
-    <ImageButton
-        android:id="@+id/mo_rong_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/de_thi_tra_cuu_icon"
-        android:background="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_5_2"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_5_4"
-        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_5_3"
-        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_5_1" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_5_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.182" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_5_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.202" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_5_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.85" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_5_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.90"/>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tao_de_thi_rcv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_6_2"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_6_4"
-        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_6_3"
-        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_6_1"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_6_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_6_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_6_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_guideline_6_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.94"/>
-
-
-
+        app:layout_constraintGuide_percent="0.937" />
 
 
 

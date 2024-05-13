@@ -71,18 +71,19 @@ public class MainScreenNew extends AppCompatActivity
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
                 {
                     if (Environment.isExternalStorageManager())
-                        Toast.makeText(MainScreenNew.this,"We Have Permission",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainScreenNew.this,"We have permission",Toast.LENGTH_SHORT).show();
                     else
-                        Toast.makeText(MainScreenNew.this, "You Denied the permission", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainScreenNew.this, "You denied the permission", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainScreenNew.this, "You Denied the permission", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainScreenNew.this, "You denied the permission", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
-        if (checkPermission()) {
-            Toast.makeText(MainScreenNew.this,"WE Have Permission",Toast.LENGTH_SHORT).show();   // WE have a permission just start your work.
+        if (checkPermission())
+        {
+            Toast.makeText(MainScreenNew.this,"We have permission",Toast.LENGTH_SHORT).show();   // WE have a permission just start your work.
         } else {
             requestPermission(); // Request Permission
         }
