@@ -22,6 +22,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".TaoDeThiCauHoiDaTao"
+            android:exported="false" />
+        <activity
             android:name=".TaoCauHoiCauHoiItem"
             android:exported="false" />
         <activity

@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,7 +34,9 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,9 +46,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import fragment.TaoDeThiViewPagerAdapter;
+import fragment.ViewPager2Adapter;
+
 public class TaoDeThi extends AppCompatActivity
 {
 
+    private BottomNavigationView bottom_navigation_view;
+    private ViewPager2 viewpager2;
+
+    TaoDeThiViewPagerAdapter view_pager_adapter;
     DatabaseReference db_monhoc;
     private String monhoc;
 
@@ -61,6 +71,8 @@ public class TaoDeThi extends AppCompatActivity
     TaoDeThiAdapter adapter;
 
     SearchView searchview;
+
+    ImageButton ds_cau_hoi_da_chon_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -85,18 +97,38 @@ public class TaoDeThi extends AppCompatActivity
                 finish();
             }
         });
-        ImageButton thongtin = findViewById(R.id.mo_rong_button);
-        thongtin.setOnClickListener(new View.OnClickListener()
+
+        bottom_navigation_view = findViewById(R.id.tao_de_thi_bottom_navigation_view);
+
+        viewpager2 = findViewById(R.id.tao_de_thi_view_pager);
+        view_pager_adapter = new TaoDeThiViewPagerAdapter(this);
+        viewpager2.setAdapter(view_pager_adapter);
+        viewpager2.setPageTransformer(new ZoomOutPageTransformer());
+
+        bottom_navigation_view.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener()
         {
             @Override
-            public void onClick(View v)
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
             {
-                CreatePopUpThongTinMonHoc();
+                switch (item.getItemId())
+                {
+                    case R.id.menu_ngan_hang_cau_hoi:
+                        viewpager2.setCurrentItem(0);
+                        break;
+                    case R.id.menu_cau_hoi_da_chon:
+                        viewpager2.setCurrentItem(1);
+                        break;
+                }
+                return true;
             }
         });
-        GetDataCauHoiFromFireBase();
+
+        //GetDataCauHoiFromFireBase();
         setupOnBackPressed();
     }
+
+
+
     private void setupOnBackPressed()
     {
         getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
@@ -112,174 +144,5 @@ public class TaoDeThi extends AppCompatActivity
                 }
             }
         });
-    }
-    private void CreatePopUpThongTinMonHoc()
-    {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.activity_thong_tin_mon_hoc);
-
-        Window window = dialog.getWindow();
-        if(window == null)
-        {
-            return;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        WindowManager.LayoutParams window_attributes = window.getAttributes();
-        window_attributes.gravity = Gravity.CENTER;
-        window.setAttributes(window_attributes);
-
-        dialog.setCanceledOnTouchOutside(true);
-
-        dialog.show();
-
-        Spinner mon_hoc_spiner = dialog.findViewById(R.id.ten_mon_hoc_spiner);
-        Spinner hoc_ky_spiner = dialog.findViewById(R.id.hoc_ky_spiner);
-        EditText nam_hoc = dialog.findViewById(R.id.nam_hoc_edt);
-        EditText thoi_luong_edt = dialog.findViewById(R.id.thoi_luong_edt);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(TaoDeThi.this, android.R.layout.simple_spinner_item, hocky_list);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        hoc_ky_spiner.setAdapter(adapter);
-
-        ArrayList<String> monhoc_list = new ArrayList<>();
-        db_monhoc.addChildEventListener(new ChildEventListener()
-        {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-                String tenmon = snapshot.child("tenMH").getValue(String.class);
-                monhoc_list.add(tenmon);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(TaoDeThi.this, android.R.layout.simple_spinner_item, monhoc_list);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                mon_hoc_spiner.setAdapter(adapter);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error)
-            {
-
-            }
-
-        });
-        mon_hoc_spiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                monhoc = (String) parent.getItemAtPosition(position);
-                Log.e("test môn học",monhoc);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
-                monhoc = "";
-            }
-        });
-        hoc_ky_spiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                hocky = (String) parent.getItemAtPosition(position);
-                Log.e("học kỳ",hocky);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
-                hocky = "";
-            }
-        });
-    }
-    private void GetDataCauHoiFromFireBase()
-    {
-        DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
-        mylist = new ArrayList<>();
-        db_cauhoi.addChildEventListener(new ChildEventListener()
-        {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-                String mach = snapshot.child("maCH").getValue(String.class);
-                String noidung = snapshot.child("noiDung").getValue(String.class);
-                mylist.add(new taodethicauhoiitem(mach,noidung));
-                GetListCauHoi();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void GetListCauHoi()
-    {
-        tao_de_thi_rcv = findViewById(R.id.tao_de_thi_rcv);
-        LinearLayoutManager ln_layout_manager = new LinearLayoutManager(TaoDeThi.this);
-        tao_de_thi_rcv.setLayoutManager(ln_layout_manager);
-        adapter = new TaoDeThiAdapter(mylist);
-        tao_de_thi_rcv.setAdapter(adapter);
-
-        DividerItemDecoration item_decoration = new DividerItemDecoration(TaoDeThi.this, DividerItemDecoration.VERTICAL);
-        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.divider_nhap_diem, null);
-        item_decoration.setDrawable(drawable);
-        tao_de_thi_rcv.addItemDecoration(item_decoration);
-
-        searchview = findViewById(R.id.tao_de_thi_search_view);
-        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener()
-        {
-            @Override
-            public boolean onQueryTextSubmit(String query)
-            {
-                adapter.getFilter().filter(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText)
-            {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        // Sau khi đã thêm dữ liệu mới vào danh sách, cập nhật giao diện nếu cần
-        // Ví dụ: Nếu bạn sử dụng RecyclerView, bạn có thể gọi notifyDataSetChanged()
-        // adapter.notifyDataSetChanged();
     }
 }

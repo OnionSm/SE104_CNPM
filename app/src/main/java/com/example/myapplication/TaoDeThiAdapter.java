@@ -8,19 +8,25 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import my_interface.IClickCauHoiItemListener;
 
 public class TaoDeThiAdapter extends RecyclerView.Adapter<TaoDeThiAdapter.CauHoiViewHolder> implements Filterable
 {
     private ArrayList<taodethicauhoiitem> mylist;
     private ArrayList<taodethicauhoiitem> mylist_old;
 
-    public TaoDeThiAdapter(ArrayList<taodethicauhoiitem> mylist)
+    private IClickCauHoiItemListener iClickCauHoiItemListener;
+
+    public TaoDeThiAdapter(ArrayList<taodethicauhoiitem> mylist, IClickCauHoiItemListener iClickCauHoiItemListener)
     {
         this.mylist = mylist;
         this.mylist_old = mylist;
+        this.iClickCauHoiItemListener = iClickCauHoiItemListener;
     }
 
     @NonNull
@@ -41,6 +47,14 @@ public class TaoDeThiAdapter extends RecyclerView.Adapter<TaoDeThiAdapter.CauHoi
         }
         holder.mach.setText("Mã câu hỏi: "+ cauhoi.getMacauhoi());
         holder.nd.setText(cauhoi.getNoidung());
+        holder.layout.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                iClickCauHoiItemListener.onClickItemCauHoi(cauhoi);
+            }
+        });
     }
 
     @Override
@@ -96,11 +110,13 @@ public class TaoDeThiAdapter extends RecyclerView.Adapter<TaoDeThiAdapter.CauHoi
     {
         private TextView mach;
         private TextView nd;
+        private ConstraintLayout layout;
         public CauHoiViewHolder(@NonNull View itemView)
         {
             super(itemView);
             mach = itemView.findViewById(R.id.ma_cau_hoi);
             nd = itemView.findViewById(R.id.noi_dung_cau_hoi);
+            layout = itemView.findViewById(R.id.taocauhoiitem);
         }
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_ngan_hang_cau_hoi"
+        android:title="Ngân hàng câu hỏi"
+        android:icon="@drawable/ngan_hang_cau_hoi_icon"/>
+
+    <item android:id="@+id/menu_cau_hoi_da_chon"
+        android:title="Câu hỏi đã chọn"
+        android:icon="@drawable/cau_hoi_da_chon_icon"/>
+</menu>
