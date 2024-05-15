@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.BaoCaoNamScreen;
 import com.example.myapplication.CauHoiScreen;
 import com.example.myapplication.ChamDiemScreen;
 import com.example.myapplication.DeThiScreen;
@@ -130,6 +131,17 @@ public class TrangChuFragment extends Fragment
             public void onClick(View v)
             {
                 startActivity(new Intent(activity, ChamDiemScreen.class));
+                requireActivity().finishAffinity();
+            }
+        });
+
+        ImageButton bao_cao = view.findViewById(R.id.trang_chu_bao_cao_button);
+        bao_cao.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(activity, BaoCaoNamScreen.class));
                 requireActivity().finishAffinity();
             }
         });

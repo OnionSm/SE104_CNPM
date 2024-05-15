@@ -1,109 +1,62 @@
 package com.example.myapplication;
 
-import static android.content.ContentValues.TAG;
-
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.SearchView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
+import fragment.BaoCaoViewPagerAdapter;
 import fragment.TaoDeThiViewPagerAdapter;
-import fragment.ViewPager2Adapter;
 
-public class TaoDeThi extends AppCompatActivity
+public class BaoCaoNamScreen extends AppCompatActivity
 {
-
     private BottomNavigationView bottom_navigation_view;
     private ViewPager2 viewpager2;
 
-    TaoDeThiViewPagerAdapter view_pager_adapter;
-    DatabaseReference db_monhoc;
-    private String monhoc;
-
-    private String hocky;
-
-    String hocky_list[] = {"1","2"};
-
-    ArrayList<taodethicauhoiitem> mylist;
-
-
-    RecyclerView tao_de_thi_rcv;
-
-    TaoDeThiAdapter adapter;
-
-    SearchView searchview;
-
-    ImageButton ds_cau_hoi_da_chon_button;
-
+    BaoCaoViewPagerAdapter view_pager_adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tao_de_thi);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.tao_de_thi), (v, insets) -> {
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_bao_cao_nam_screen);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageButton quay_lai_de_thi = findViewById(R.id.tao_de_thi_icon_back);
+
+
+        ImageButton quay_lai_de_thi = findViewById(R.id.bao_cao_icon_back);
         quay_lai_de_thi.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                Intent quay_lai_trang_chu_intent = new Intent(TaoDeThi.this, DeThiScreen.class);
+                Intent quay_lai_trang_chu_intent = new Intent(BaoCaoNamScreen.this, MainScreenNew.class);
                 startActivity(quay_lai_trang_chu_intent);
                 finish();
             }
         });
 
-        bottom_navigation_view = findViewById(R.id.tao_de_thi_bottom_navigation_view);
+        bottom_navigation_view = findViewById(R.id.bao_cao_bottom_navigation_view);
 
-        viewpager2 = findViewById(R.id.tao_de_thi_view_pager);
-        view_pager_adapter = new TaoDeThiViewPagerAdapter(this);
+        viewpager2 = findViewById(R.id.bao_cao_view_pager);
+        view_pager_adapter = new BaoCaoViewPagerAdapter(this);
         viewpager2.setAdapter(view_pager_adapter);
-        viewpager2.setPageTransformer(new ZoomOutPageTransformer());
+        viewpager2.setPageTransformer(new DepthPageTransformer());
 
         bottom_navigation_view.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener()
         {
@@ -112,27 +65,34 @@ public class TaoDeThi extends AppCompatActivity
             {
                 switch (item.getItemId())
                 {
-                    case R.id.menu_ngan_hang_cau_hoi:
+                    case R.id.menu_baocao:
                         viewpager2.setCurrentItem(0);
                         break;
-                    case R.id.menu_cau_hoi_da_chon:
+                    case R.id.menu_dethi:
                         viewpager2.setCurrentItem(1);
+                        break;
+                    case R.id.menu_baicham:
+                        viewpager2.setCurrentItem(2);
                         break;
                 }
                 return true;
             }
         });
-        viewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        viewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback()
+        {
             @Override
             public void onPageSelected(int position)
             {
                 switch (position)
                 {
                     case 0:
-                        bottom_navigation_view.setSelectedItemId(R.id.menu_ngan_hang_cau_hoi);
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_baocao);
                         break;
                     case 1:
-                        bottom_navigation_view.setSelectedItemId(R.id.menu_cau_hoi_da_chon);
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_dethi);
+                        break;
+                    case 2:
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_baicham);
                         break;
                 }
                 super.onPageSelected(position);
@@ -154,7 +114,7 @@ public class TaoDeThi extends AppCompatActivity
             {
                 if(isEnabled())
                 {
-                    startActivity(new Intent(TaoDeThi.this, DeThiScreen.class));
+                    startActivity(new Intent(BaoCaoNamScreen.this, MainScreenNew.class));
                     setEnabled(false);
                     finish();
                 }

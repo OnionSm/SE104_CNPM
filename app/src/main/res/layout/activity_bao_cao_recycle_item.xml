@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BaoCaoRecycleItem">
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="400dp"
+        android:layout_height="180dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/ten_mon"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="start"
+        android:text="Nhập môn công nghệ phần mềm"
+        android:textColor="#0000FD"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/background"
+        app:layout_constraintTop_toTopOf="@id/background" />
+
+    <TextView
+        android:id="@+id/so_luong_de_thi"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="start"
+        android:text="Số lượng đề thi:"
+        android:textSize="14sp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="@id/background"
+        app:layout_constraintTop_toBottomOf="@id/ten_mon"/>
+
+    <TextView
+        android:id="@+id/so_luong_bai_cham"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginStart="8dp"
+        android:gravity="start"
+        android:text="Số lượng bài chấm:"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@id/background"
+        app:layout_constraintTop_toBottomOf="@id/so_luong_de_thi"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@id/so_luong_de_thi"
+        app:layout_constraintTop_toTopOf="@id/background"
+        app:layout_constraintBottom_toBottomOf= "@id/background"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/progressBar"
+        app:layout_constraintTop_toTopOf="@id/background"
+        app:layout_constraintBottom_toBottomOf= "@id/background"
+        app:layout_constraintEnd_toEndOf="@id/background"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

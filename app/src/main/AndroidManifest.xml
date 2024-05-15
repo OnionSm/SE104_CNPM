@@ -22,6 +22,18 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".ThongTinDeThiScreen"
+            android:exported="false" />
+        <activity
+            android:name=".BaoCaoRecycleItem"
+            android:exported="false" />
+        <activity
+            android:name=".baocaomonhocitem"
+            android:exported="false" />
+        <activity
+            android:name=".BaoCaoNamScreen"
+            android:exported="true" />
+        <activity
             android:name=".TaoDeThiCauHoiDaTao"
             android:exported="false" />
         <activity
@@ -59,7 +71,7 @@
             android:exported="false" />
         <activity
             android:name=".CustomListView"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".DsCauHoiDaTao"
             android:exported="true" />

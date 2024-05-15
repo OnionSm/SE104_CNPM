@@ -43,7 +43,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class TraCuuScreen extends AppCompatActivity {
+public class TraCuuScreen extends AppCompatActivity
+{
 
     ArrayList<dethitracuuitem> mylist;
     DeThiTraCuuAdapter adapter;
@@ -116,26 +117,33 @@ public class TraCuuScreen extends AppCompatActivity {
         dialog.show();
 
         EditText madt_edt = dialog.findViewById(R.id.bo_loc_edt_ma_de);
-        EditText mahk_edt = dialog.findViewById(R.id.bo_loc_edt_nam_hoc);
-        EditText mamh_edt = dialog.findViewById(R.id.bo_loc_edt_mon_hoc);
+        EditText hk_edt = dialog.findViewById(R.id.bo_loc_edt_hoc_ky2);
+        EditText mh_edt = dialog.findViewById(R.id.bo_loc_edt_mon_hoc);
         EditText thoiluong_edt = dialog.findViewById(R.id.bo_loc_edt_thoi_luong);
         EditText ngaythi_edt = dialog.findViewById(R.id.bo_loc_edt_ngay_thi);
-        EditText magv_edt = dialog.findViewById(R.id.bo_loc_edt_ma_gv);
+        EditText namhoc_edt = dialog.findViewById(R.id.bo_loc_edt_nam_hoc);
         ImageButton tra_cuu_btn = dialog.findViewById(R.id.bo_loc_button_tra_cuu);
 
-        String madt = madt_edt.toString();
-        String mahk = mahk_edt.toString();
-        String mamh = mamh_edt.toString();
-        String thoiluong = thoiluong_edt.toString();
-        String ngaythi = ngaythi_edt.toString();
-        String magv = magv_edt.toString();
+
+
 
         tra_cuu_btn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-
+                String made = madt_edt.getText().toString();
+                adapter.getFilterMaDe().filter(made);
+                String ngaythi = ngaythi_edt.getText().toString();
+                adapter.getFilterNgayThi().filter(ngaythi);
+                String monhoc = mh_edt.getText().toString();
+                adapter.getFilterMonHoc().filter(monhoc);
+                String thoiluong = thoiluong_edt.getText().toString();
+                adapter.getFilterThoiLuong().filter(thoiluong);
+                String hocky = hk_edt.getText().toString();
+                adapter.getFilterHocKy().filter(hocky);
+                String namhoc = namhoc_edt.getText().toString();
+                adapter.getFilterNam().filter(namhoc);
                 dialog.dismiss();
             }
         });
@@ -214,14 +222,14 @@ public class TraCuuScreen extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                adapter.getFilter().filter(query);
+                adapter.getFilterMaDe().filter(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText)
             {
-                adapter.getFilter().filter(newText);
+                adapter.getFilterMaDe().filter(newText);
                 return false;
             }
         });

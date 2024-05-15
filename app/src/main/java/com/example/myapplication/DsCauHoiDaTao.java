@@ -2,8 +2,10 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -14,9 +16,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +39,9 @@ public class DsCauHoiDaTao extends AppCompatActivity
 
     ImageButton quay_lai_cau_hoi_screen;
 
+    ShimmerFrameLayout shimmer_layout;
+
+    LinearLayout data_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -46,6 +53,18 @@ public class DsCauHoiDaTao extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        shimmer_layout = findViewById(R.id.ds_cau_hoi_shimmer_layout);
+        shimmer_layout.startShimmer();
+        Handler handler = new Handler();
+        handler.postDelayed(() ->
+        {
+            cauhoi_rcv.setVisibility(View.VISIBLE);
+            shimmer_layout.stopShimmer();
+            shimmer_layout.setVisibility(View.INVISIBLE);
+        },3000);
+
 
 
 
@@ -60,12 +79,12 @@ public class DsCauHoiDaTao extends AppCompatActivity
             }
         });
         GetDataFromFireBase();
+        GetListCauHoi();
         setupOnBackPressed();
 
     }
 
-    private void GetDataFromFireBase()
-    {
+    private void GetDataFromFireBase() {
         DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
         DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
@@ -77,102 +96,122 @@ public class DsCauHoiDaTao extends AppCompatActivity
         db_cauhoi.addChildEventListener(new ChildEventListener()
         {
             int stt = 1;
+
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
             {
-
                 String mamh = snapshot.child("maMH").getValue(String.class);
                 String madokho = snapshot.child("maDoKho").getValue(String.class);
                 String magv = snapshot.child("maGV").getValue(String.class);
                 String ngaytao = snapshot.child("ngaytao").getValue(String.class);
-                String noidung = snapshot.child("noiDung").getValue(String.class);
-                db_pdn.addValueEventListener(new ValueEventListener()
+                String noidung_origin = snapshot.child("noiDung").getValue(String.class);
+                String noidung = noidung_origin.length() > 200 ? noidung_origin.substring(0, 200) : noidung_origin;
+
+                db_pdn.addListenerForSingleValueEvent(new ValueEventListener()
                 {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
-                    {
-                        String taikhoan = snapshot.child("account").getValue(String.class);
-                        if(taikhoan.equals(magv))
-                        {
-                            db_monhoc.addValueEventListener(new ValueEventListener()
-                            {
+                    public void onDataChange(@NonNull DataSnapshot pdnSnapshot) {
+                        String taikhoan = pdnSnapshot.child("account").getValue(String.class);
+                        if (taikhoan.equals(magv)) {
+                            // Fetch subject name and difficulty level in parallel
+                            db_monhoc.child(mamh).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot)
-                                {
+                                public void onDataChange(@NonNull DataSnapshot monhocSnapshot) {
+                                    String tenmon = monhocSnapshot.child("tenMH").getValue(String.class);
 
-                                    String tenmon = snapshot.child(mamh).child("tenMH").getValue(String.class);
-                                    db_dokho.addValueEventListener(new ValueEventListener() {
+                                    db_dokho.child(madokho).addListenerForSingleValueEvent(new ValueEventListener()
+                                    {
                                         @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot)
+                                        public void onDataChange(@NonNull DataSnapshot dokhoSnapshot)
                                         {
-                                            String dokho = snapshot.child(madokho).child("TenDK").getValue(String.class);
+                                            String dokho = dokhoSnapshot.child("TenDK").getValue(String.class);
+
+                                            if (mylist.size() > 50) {
+                                                mylist.remove(mylist.size() - 1);
+                                            }
                                             mylist.add(0, new cauhoiitem("1", tenmon, noidung, dokho, ngaytao));
+
                                             for (int i = 1; i < mylist.size(); i++) {
                                                 cauhoiitem item = mylist.get(i);
                                                 int newStt = Integer.parseInt(item.getStt()) + 1;
                                                 item.setStt(String.valueOf(newStt));
                                             }
-                                            GetListCauHoi();
-
                                         }
 
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
-
+                                            // Handle error
                                         }
                                     });
                                 }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-
+                                    // Handle error
                                 }
                             });
                         }
-
                     }
 
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error)
-                    {
-
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle error
                     }
                 });
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // Handle child changed
             }
 
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot)
-            {
-
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                // Handle child removed
             }
 
             @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // Handle child moved
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error)
-            {
-
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
             }
         });
     }
-    private void GetListCauHoi()
+
+
+
+
+
+
+
+
+    /*private void GetDataFromFireBase()
     {
+        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
+        DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
+        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+        DatabaseReference db_dokho = FirebaseDatabase.getInstance().getReference("DOKHO");
+
+        mylist = new ArrayList<>();
+        for(int i = 0;i<20;i++)
+        {
+            mylist.add(0, new cauhoiitem(String.valueOf(i+1), "test môn", "test nội dung", "dễ", "15/5/2024"));
+        }
+        GetListCauHoi();
+
+    }*/
+    private void GetListCauHoi() {
         cauhoi_rcv = findViewById(R.id.danh_sach_cau_hoi_recycle_view);
-        LinearLayoutManager ln_layout_manager = new LinearLayoutManager(DsCauHoiDaTao.this);
-        cauhoi_rcv.setLayoutManager(ln_layout_manager);
+        // Set GridLayoutManager with 1 column
+        GridLayoutManager grid_layout_manager = new GridLayoutManager(DsCauHoiDaTao.this, 1);
+        cauhoi_rcv.setLayoutManager(grid_layout_manager);
         adapter = new DsCauHoiDaTaoAdapter(mylist);
         cauhoi_rcv.setAdapter(adapter);
-        RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(DsCauHoiDaTao.this, DividerItemDecoration.VERTICAL);
+        DividerItemDecoration item_decoration = new DividerItemDecoration(DsCauHoiDaTao.this, DividerItemDecoration.VERTICAL);
         cauhoi_rcv.addItemDecoration(item_decoration);
     }
     private void setupOnBackPressed()

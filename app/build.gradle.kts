@@ -43,7 +43,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.recyclerview:recyclerview:1.4.0-alpha01")
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
@@ -82,6 +83,8 @@ dependencies {
     implementation("com.loopj.android:android-async-http:1.4.10")
 
     implementation("com.squareup.picasso:picasso:2.71828")
+
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
 
 
     constraints {
