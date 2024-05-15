@@ -62,14 +62,6 @@ public class ThemCauHoi extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_cau_hoi);
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("data");
-        code = bundle.getInt("code");
-        if(code == 1)
-        {
-            list_cau_hoi_duoc_chon = (ArrayList<taodethicauhoiitem>) bundle.getSerializable("list_cau_hoi");
-        }
-
         noi_dung_cau_hoi = findViewById(R.id.noi_dung_cau_hoi);
 
 
@@ -140,37 +132,16 @@ public class ThemCauHoi extends AppCompatActivity
         });
 
 
-
         ImageButton quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_icon_back);
         quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                if(code == 0)
-                {
-                    Intent quay_lai_trang_chu_intent = new Intent(ThemCauHoi.this, CauHoiScreen.class);
-                    startActivity(quay_lai_trang_chu_intent);
-                    finish();
-                }
-                else if(code == 1)
-                {
-                    FragmentManager fragment = getSupportFragmentManager();
-                    FragmentTransaction fragment_transaction = fragment.beginTransaction();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("code_data" , 1);
-                    bundle.putSerializable("data_list",list_cau_hoi_duoc_chon);
-                    NganHangCauHoiFragment nganhangcauhoi = new NganHangCauHoiFragment();
-                    nganhangcauhoi.setArguments(bundle);
-
-                    Intent quay_lai_intent = new Intent(ThemCauHoi.this, TaoDeThi.class);
-                    startActivity(quay_lai_intent);
-                    finish();
-                }
-
+                finish();
             }
         });
-        setupOnBackPressed();
+        //setupOnBackPressed();
     }
 
 
@@ -428,6 +399,7 @@ public class ThemCauHoi extends AppCompatActivity
     interface OnMaGiangVienCallback {
         void onMaGiangVienReceived(String maGiangVien);
     }
+
     private void setupOnBackPressed()
     {
         getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
@@ -437,30 +409,10 @@ public class ThemCauHoi extends AppCompatActivity
             {
                 if(isEnabled())
                 {
-                    if(code == 0)
-                    {
-                        startActivity(new Intent(ThemCauHoi.this, CauHoiScreen.class));
-                        setEnabled(false);
-                        finish();
-                    }
-                    else if(code == 1)
-                    {
-                        FragmentManager fragment = getSupportFragmentManager();
-                        FragmentTransaction fragment_transaction = fragment.beginTransaction();
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("code_data" , 1);
-                        bundle.putSerializable("data_list",list_cau_hoi_duoc_chon);
-                        NganHangCauHoiFragment nganhangcauhoi = new NganHangCauHoiFragment();
-                        nganhangcauhoi.setArguments(bundle);
-
-                        Intent quay_lai_intent = new Intent(ThemCauHoi.this, TaoDeThi.class);
-                        startActivity(quay_lai_intent);
-                        finish();
-                    }
-
-
+                    finish();
                 }
             }
         });
     }
+
 }
