@@ -23,7 +23,7 @@
         tools:targetApi="33">
         <activity
             android:name=".ThongTinDeThiScreen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".BaoCaoRecycleItem"
             android:exported="false" />
@@ -68,7 +68,8 @@
             android:exported="false" />
         <activity
             android:name=".DeThiScreen"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".CustomListView"
             android:exported="true" />

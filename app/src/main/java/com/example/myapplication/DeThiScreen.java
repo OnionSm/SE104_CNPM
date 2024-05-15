@@ -15,7 +15,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import fragment.NganHangCauHoiFragment;
 
-public class DeThiScreen extends AppCompatActivity {
+public class DeThiScreen extends AppCompatActivity
+{
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,15 +34,7 @@ public class DeThiScreen extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-
-                FragmentManager fragment = getSupportFragmentManager();
-                FragmentTransaction fragment_transaction = fragment.beginTransaction();
-                Bundle bundle = new Bundle();
-                bundle.putInt("code_data" , 0);
-                NganHangCauHoiFragment nganhangcauhoi = new NganHangCauHoiFragment();
-                nganhangcauhoi.setArguments(bundle);
-
-                Intent tao_de_thi_intent = new Intent(DeThiScreen.this, TaoDeThi.class);
+                Intent tao_de_thi_intent = new Intent(DeThiScreen.this, ThongTinDeThiScreen.class);
                 startActivity(tao_de_thi_intent);
                 finish();
             }

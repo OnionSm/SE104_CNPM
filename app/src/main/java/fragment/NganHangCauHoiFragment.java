@@ -35,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import my_interface.IClickCauHoiItemListener;
 
@@ -58,6 +59,14 @@ public class NganHangCauHoiFragment extends Fragment
     private int socautd;
 
     int code_data;
+
+    String monhoc;
+    String hocky;
+    String namhoc;
+    String thoiluong;
+
+    String mamonhoc;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -101,19 +110,19 @@ public class NganHangCauHoiFragment extends Fragment
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-       /* int code_data = this.getArguments().getInt("code_data");
-        if(code_data == 1)
-        {
-            list_cau_hoi_duoc_chon = (ArrayList<taodethicauhoiitem>) this.getArguments().getSerializable("data_list");
-        }*/
+        activity = (TaoDeThi)getActivity();
+        monhoc = activity.AccessData();
+
+        GetMaMH();
         TriggerDeThi();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ngan_hang_cau_hoi, container, false);
-        activity = (TaoDeThi)getActivity();
+
         GetDataCauHoiFromFireBase(view);
 
         ImageButton themcahoi = view.findViewById(R.id.them_cau_hoi_button);
@@ -122,12 +131,7 @@ public class NganHangCauHoiFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                int code = 1;
-                Bundle bundle = new Bundle();
-                bundle.putInt("code", code);
-                bundle.putSerializable("list_cau_hoi" , list_cau_hoi_duoc_chon);
                 Intent intent = new Intent(activity, ThemCauHoi.class);
-                intent.putExtra("data", bundle);
                 startActivity(intent);
             }
         });
@@ -151,9 +155,14 @@ public class NganHangCauHoiFragment extends Fragment
             {
                 for(DataSnapshot data : snapshot.getChildren())
                 {
-                    String mach = data.child("maCH").getValue(String.class);
-                    String noidung = data.child("noiDung").getValue(String.class);
-                    mylist.add(new taodethicauhoiitem(mach,noidung));
+
+                    if(data.child("maMH").getValue(String.class).equals(mamonhoc))
+                    {
+
+                        String mach = data.child("maCH").getValue(String.class);
+                        String noidung = data.child("noiDung").getValue(String.class);
+                        mylist.add(new taodethicauhoiitem(mach, noidung));
+                    }
                 }
                 GetListCauHoi(view);
             }
@@ -247,4 +256,32 @@ public class NganHangCauHoiFragment extends Fragment
             }
         });
     }
+
+    private void GetMaMH()
+    {
+        monhoc = monhoc.toLowerCase();
+        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+        db_monhoc.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                for(DataSnapshot data : snapshot.getChildren())
+                {
+                    String tenmh = data.child("tenMH").getValue(String.class).toLowerCase();
+                    if(tenmh.contains(monhoc))
+                    {
+                        mamonhoc = data.getKey().toString();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
+
 }

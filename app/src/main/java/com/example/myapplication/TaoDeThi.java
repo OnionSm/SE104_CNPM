@@ -46,6 +46,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import fragment.NganHangCauHoiFragment;
 import fragment.TaoDeThiViewPagerAdapter;
 import fragment.ViewPager2Adapter;
 
@@ -57,11 +58,10 @@ public class TaoDeThi extends AppCompatActivity
 
     TaoDeThiViewPagerAdapter view_pager_adapter;
     DatabaseReference db_monhoc;
-    private String monhoc;
-
-    private String hocky;
-
-    String hocky_list[] = {"1","2"};
+    String monhoc;
+    String hocky;
+    String namhoc;
+    String thoiluong;
 
     ArrayList<taodethicauhoiitem> mylist;
 
@@ -73,6 +73,7 @@ public class TaoDeThi extends AppCompatActivity
     SearchView searchview;
 
     ImageButton ds_cau_hoi_da_chon_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -86,13 +87,16 @@ public class TaoDeThi extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        GetDataFromIntent();
+
+
         ImageButton quay_lai_de_thi = findViewById(R.id.tao_de_thi_icon_back);
         quay_lai_de_thi.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                Intent quay_lai_trang_chu_intent = new Intent(TaoDeThi.this, DeThiScreen.class);
+                Intent quay_lai_trang_chu_intent = new Intent(TaoDeThi.this, ThongTinDeThiScreen.class);
                 startActivity(quay_lai_trang_chu_intent);
                 finish();
             }
@@ -154,11 +158,27 @@ public class TaoDeThi extends AppCompatActivity
             {
                 if(isEnabled())
                 {
-                    startActivity(new Intent(TaoDeThi.this, DeThiScreen.class));
+                    startActivity(new Intent(TaoDeThi.this, ThongTinDeThiScreen.class));
                     setEnabled(false);
                     finish();
                 }
             }
         });
+    }
+
+    private void GetDataFromIntent()
+    {
+        Intent thong_tin_de_thi_intent = getIntent();
+        Bundle bundle_get = new Bundle();
+        bundle_get = thong_tin_de_thi_intent.getBundleExtra("thongtinmonhoc");
+        monhoc = bundle_get.getString("monhoc");
+        hocky = bundle_get.getString("hocky");
+        namhoc = bundle_get.getString("namhoc");
+        thoiluong = bundle_get.getString("thoiluong");
+    }
+
+    public String AccessData()
+    {
+        return monhoc;
     }
 }

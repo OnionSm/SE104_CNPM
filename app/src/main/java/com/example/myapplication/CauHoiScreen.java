@@ -34,8 +34,8 @@ public class CauHoiScreen extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent them_cau_hoi_intent = new Intent(CauHoiScreen.this, ThemCauHoi.class);
-                startActivity(them_cau_hoi_intent);
+                Intent intent = new Intent(CauHoiScreen.this, ThemCauHoi.class);
+                startActivity(intent);
             }
         });
         ImageButton quay_lai_trang_chu = findViewById(R.id.tao_cau_hoi_icon_back);
@@ -55,12 +55,7 @@ public class CauHoiScreen extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                int code = 0;
-                Bundle bundle = new Bundle();
-                bundle.putInt("code", code);
-                Intent intent = new Intent(CauHoiScreen.this, DsCauHoiDaTao.class);
-                intent.putExtra("data", bundle);
-                startActivity(intent);
+                startActivity(new Intent(CauHoiScreen.this, DsCauHoiDaTao.class));
                 finish();
             }
         });
