@@ -10,10 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import fragment.NganHangCauHoiFragment;
 
 public class DeThiScreen extends AppCompatActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_de_thi_screen);
@@ -23,12 +28,22 @@ public class DeThiScreen extends AppCompatActivity {
             return insets;
         });
         ImageButton tao_de_thi = findViewById(R.id.de_thi_tao_de_thi_button);
-        tao_de_thi.setOnClickListener(new View.OnClickListener() {
+        tao_de_thi.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
+
+                FragmentManager fragment = getSupportFragmentManager();
+                FragmentTransaction fragment_transaction = fragment.beginTransaction();
+                Bundle bundle = new Bundle();
+                bundle.putInt("code_data" , 0);
+                NganHangCauHoiFragment nganhangcauhoi = new NganHangCauHoiFragment();
+                nganhangcauhoi.setArguments(bundle);
+
                 Intent tao_de_thi_intent = new Intent(DeThiScreen.this, TaoDeThi.class);
                 startActivity(tao_de_thi_intent);
+                finish();
             }
         });
         ImageButton quay_lai_trang_chu = findViewById(R.id.de_thi_icon_back);

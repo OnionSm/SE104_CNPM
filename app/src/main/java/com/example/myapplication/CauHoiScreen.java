@@ -39,7 +39,8 @@ public class CauHoiScreen extends AppCompatActivity
             }
         });
         ImageButton quay_lai_trang_chu = findViewById(R.id.tao_cau_hoi_icon_back);
-        quay_lai_trang_chu.setOnClickListener(new View.OnClickListener() {
+        quay_lai_trang_chu.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
@@ -54,7 +55,12 @@ public class CauHoiScreen extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(CauHoiScreen.this, DsCauHoiDaTao.class));
+                int code = 0;
+                Bundle bundle = new Bundle();
+                bundle.putInt("code", code);
+                Intent intent = new Intent(CauHoiScreen.this, DsCauHoiDaTao.class);
+                intent.putExtra("data", bundle);
+                startActivity(intent);
                 finish();
             }
         });

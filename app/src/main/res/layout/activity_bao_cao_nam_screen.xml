@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BaoCaoNamScreen">
+
+    <ImageButton
+        android:id="@+id/bao_cao_icon_back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/them_cau_hoi_image_view_1"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/bao_cao_guideline_1_2"
+        app:layout_constraintEnd_toEndOf="@id/bao_cao_guideline_1_4"
+        app:layout_constraintStart_toStartOf="@id/bao_cao_guideline_1_3"
+        app:layout_constraintTop_toTopOf="@id/bao_cao_guideline_1_1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bao_cao_guideline_1_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bao_cao_guideline_1_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.107" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bao_cao_guideline_1_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bao_cao_guideline_1_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.09" />
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/bao_cao_nam_text"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/bao_cao_guideline_2_2"
+        app:layout_constraintEnd_toEndOf="@id/bao_cao_guideline_2_4"
+        app:layout_constraintStart_toStartOf="@id/bao_cao_guideline_2_3"
+        app:layout_constraintTop_toTopOf="@id/bao_cao_guideline_2_1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bao_cao_guideline_2_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.078" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bao_cao_guideline_2_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.103" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bao_cao_guideline_2_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.14" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bao_cao_guideline_2_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/bao_cao_view_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/main_scr_guideline_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bao_cao_guideline_1_2" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bao_cao_bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_on_primary"
+        app:menu="@menu/bao_cao_bottom_navigation"
+        app:itemTextColor="@color/custom_color_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemIconTint="@color/custom_color_navigation"
+        app:layout_constraintTop_toTopOf="@id/main_scr_guideline_1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_scr_guideline_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.937" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

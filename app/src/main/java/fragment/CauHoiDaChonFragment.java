@@ -89,9 +89,11 @@ public class CauHoiDaChonFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+        list_cau_hoi_duoc_chon = new ArrayList<>();
         activity = (TaoDeThi)getActivity();
         View view = inflater.inflate(R.layout.fragment_cau_hoi_da_chon, container, false);
-        getParentFragmentManager().setFragmentResultListener("data", this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener("data", this, new FragmentResultListener()
+        {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result)
             {

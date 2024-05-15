@@ -7,6 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".DsCauHoiDaTao">
 
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/ds_cau_hoi_shimmer_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:shimmer_duration="2000"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ds_cau_hoi_guideline_3_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout = "@layout/activity_custom_list_view_shimmer_loading"/>
+            <include layout = "@layout/activity_custom_list_view_shimmer_loading"/>
+            <include layout = "@layout/activity_custom_list_view_shimmer_loading"/>
+            <include layout = "@layout/activity_custom_list_view_shimmer_loading"/>
+            <include layout = "@layout/activity_custom_list_view_shimmer_loading"/>
+            <include layout = "@layout/activity_custom_list_view_shimmer_loading"/>
+            <include layout = "@layout/activity_custom_list_view_shimmer_loading"/> <include layout = "@layout/activity_custom_list_view_shimmer_loading"/>
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
     <ImageButton
         android:id="@+id/ds_danh_sach_cau_hoi_icon_back"
         android:layout_width="0dp"
@@ -73,10 +102,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:divider="#2F6BFF"
-        android:dividerHeight="2dp"
+        app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="@id/ds_cau_hoi_guideline_3_1"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ds_cau_hoi_guideline_3_1"

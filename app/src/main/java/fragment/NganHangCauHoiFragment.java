@@ -1,5 +1,8 @@
 package fragment;
 
+import static android.content.Intent.getIntent;
+
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -15,17 +18,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.TaoDeThi;
 import com.example.myapplication.TaoDeThiAdapter;
+import com.example.myapplication.ThemCauHoi;
 import com.example.myapplication.taodethicauhoiitem;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -48,6 +55,9 @@ public class NganHangCauHoiFragment extends Fragment
     ArrayList<taodethicauhoiitem> mylist;
 
     ArrayList<taodethicauhoiitem> list_cau_hoi_duoc_chon;
+    private int socautd;
+
+    int code_data;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,7 +81,8 @@ public class NganHangCauHoiFragment extends Fragment
      * @return A new instance of fragment NganHangCauHoiFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NganHangCauHoiFragment newInstance(String param1, String param2) {
+    public static NganHangCauHoiFragment newInstance(String param1, String param2)
+    {
         NganHangCauHoiFragment fragment = new NganHangCauHoiFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -94,10 +105,34 @@ public class NganHangCauHoiFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+       /* int code_data = this.getArguments().getInt("code_data");
+        if(code_data == 1)
+        {
+            list_cau_hoi_duoc_chon = (ArrayList<taodethicauhoiitem>) this.getArguments().getSerializable("data_list");
+        }*/
+        TriggerDeThi();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ngan_hang_cau_hoi, container, false);
         activity = (TaoDeThi)getActivity();
         GetDataCauHoiFromFireBase(view);
+
+        ImageButton themcahoi = view.findViewById(R.id.them_cau_hoi_button);
+        themcahoi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                int code = 1;
+                Bundle bundle = new Bundle();
+                bundle.putInt("code", code);
+                bundle.putSerializable("list_cau_hoi" , list_cau_hoi_duoc_chon);
+                Intent intent = new Intent(activity, ThemCauHoi.class);
+                intent.putExtra("data", bundle);
+                startActivity(intent);
+            }
+        });
+
+
         return view;
     }
 
@@ -108,31 +143,19 @@ public class NganHangCauHoiFragment extends Fragment
     {
         DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
         mylist = new ArrayList<>();
-        db_cauhoi.addChildEventListener(new ChildEventListener()
+
+        db_cauhoi.addValueEventListener(new ValueEventListener()
         {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-                String mach = snapshot.child("maCH").getValue(String.class);
-                String noidung = snapshot.child("noiDung").getValue(String.class);
-                mylist.add(new taodethicauhoiitem(mach,noidung));
+                for(DataSnapshot data : snapshot.getChildren())
+                {
+                    String mach = data.child("maCH").getValue(String.class);
+                    String noidung = data.child("noiDung").getValue(String.class);
+                    mylist.add(new taodethicauhoiitem(mach,noidung));
+                }
                 GetListCauHoi(view);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
             }
 
             @Override
@@ -151,15 +174,31 @@ public class NganHangCauHoiFragment extends Fragment
         tao_de_thi_rcv = (RecyclerView)view.findViewById(R.id.tao_de_thi_rcv);
         LinearLayoutManager ln_layout_manager = new LinearLayoutManager(activity);
         tao_de_thi_rcv.setLayoutManager(ln_layout_manager);
-        adapter = new TaoDeThiAdapter(mylist, new IClickCauHoiItemListener() {
+        adapter = new TaoDeThiAdapter(mylist, new IClickCauHoiItemListener()
+        {
             @Override
             public void onClickItemCauHoi(taodethicauhoiitem cauhoi)
             {
-                Log.e("Giá trị",cauhoi.getNoidung());
-                list_cau_hoi_duoc_chon.add(cauhoi);
-                Bundle result = new Bundle();
-                result.putSerializable("list_duoc_chon",list_cau_hoi_duoc_chon );
-                getParentFragmentManager().setFragmentResult("data", result);
+
+                for(taodethicauhoiitem item : list_cau_hoi_duoc_chon)
+                {
+                    if(item.getMacauhoi() == cauhoi.getMacauhoi())
+                    {
+                        Log.e("Trùng câu hỏi" , "Trùng câu hỏi");
+                        return;
+                    }
+                }
+                if(list_cau_hoi_duoc_chon.size() < socautd)
+                {
+                    list_cau_hoi_duoc_chon.add(cauhoi);
+                    Bundle result = new Bundle();
+                    result.putSerializable("list_duoc_chon", list_cau_hoi_duoc_chon);
+                    getParentFragmentManager().setFragmentResult("data", result);
+                }
+                else
+                {
+                    Toast.makeText(activity, "Đã đạt số lượng câu hỏi tối đa", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         tao_de_thi_rcv.setAdapter(adapter);
@@ -190,5 +229,22 @@ public class NganHangCauHoiFragment extends Fragment
         // Ví dụ: Nếu bạn sử dụng RecyclerView, bạn có thể gọi notifyDataSetChanged()
         // adapter.notifyDataSetChanged();
 
+    }
+
+    private void TriggerDeThi()
+    {
+        DatabaseReference db_thamso = FirebaseDatabase.getInstance().getReference("THAMSO");
+        db_thamso.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                socautd = snapshot.child("socautd").child("giaTri").getValue(Integer.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 }

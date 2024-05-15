@@ -152,7 +152,7 @@
         app:layout_constraintGuide_percent="0.94"/>
 
     <ImageButton
-        android:id="@+id/cau_hoi_da_chon_button"
+        android:id="@+id/them_cau_hoi_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"

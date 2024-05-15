@@ -103,15 +103,34 @@ public class MainScreenNew extends AppCompatActivity
                 {
                     case R.id.menu_trangchu:
                         viewpager2.setCurrentItem(0);
-                        break;
+                        return true;
                     case R.id.menu_thongbao:
                         viewpager2.setCurrentItem(1);
-                        break;
+                        return true;
                     case R.id.menu_hoso:
                         viewpager2.setCurrentItem(2);
+                        return true;
+                }
+                return false;
+            }
+        });
+        viewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position)
+            {
+                switch (position)
+                {
+                    case 0:
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_trangchu);
+                        break;
+                    case 1:
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_thongbao);
+                        break;
+                    case 2:
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_hoso);
                         break;
                 }
-                return true;
+                super.onPageSelected(position);
             }
         });
         setupOnBackPressed();

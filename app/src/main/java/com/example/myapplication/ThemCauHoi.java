@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,8 +33,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import fragment.NganHangCauHoiFragment;
 
-public class ThemCauHoi extends AppCompatActivity {
+public class ThemCauHoi extends AppCompatActivity
+{
 
     DatabaseReference dbRef;
     ArrayList<String> tenMonHocList = new ArrayList<>();
@@ -49,23 +53,25 @@ public class ThemCauHoi extends AppCompatActivity {
 
     CircleImageView use_dang_tai;
 
+    int code;
+    ArrayList<taodethicauhoiitem> list_cau_hoi_duoc_chon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_cau_hoi);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra("data");
+        code = bundle.getInt("code");
+        if(code == 1)
+        {
+            list_cau_hoi_duoc_chon = (ArrayList<taodethicauhoiitem>) bundle.getSerializable("list_cau_hoi");
+        }
+
         noi_dung_cau_hoi = findViewById(R.id.noi_dung_cau_hoi);
 
-        ImageView quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_icon_back);
-        quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view) {
-                Intent quay_lai_trang_chu_intent = new Intent(ThemCauHoi.this, CauHoiScreen.class);
-                startActivity(quay_lai_trang_chu_intent);
-            }
-        });
 
         dbRef_3 = FirebaseDatabase.getInstance().getReference("CAUHOI");
         dbRef_4 = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
@@ -130,6 +136,38 @@ public class ThemCauHoi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SaveTaoCauHoi();
+            }
+        });
+
+
+
+        ImageButton quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_icon_back);
+        quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if(code == 0)
+                {
+                    Intent quay_lai_trang_chu_intent = new Intent(ThemCauHoi.this, CauHoiScreen.class);
+                    startActivity(quay_lai_trang_chu_intent);
+                    finish();
+                }
+                else if(code == 1)
+                {
+                    FragmentManager fragment = getSupportFragmentManager();
+                    FragmentTransaction fragment_transaction = fragment.beginTransaction();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("code_data" , 1);
+                    bundle.putSerializable("data_list",list_cau_hoi_duoc_chon);
+                    NganHangCauHoiFragment nganhangcauhoi = new NganHangCauHoiFragment();
+                    nganhangcauhoi.setArguments(bundle);
+
+                    Intent quay_lai_intent = new Intent(ThemCauHoi.this, TaoDeThi.class);
+                    startActivity(quay_lai_intent);
+                    finish();
+                }
+
             }
         });
         setupOnBackPressed();
@@ -399,9 +437,28 @@ public class ThemCauHoi extends AppCompatActivity {
             {
                 if(isEnabled())
                 {
-                    startActivity(new Intent(ThemCauHoi.this, CauHoiScreen.class));
-                    setEnabled(false);
-                    finish();
+                    if(code == 0)
+                    {
+                        startActivity(new Intent(ThemCauHoi.this, CauHoiScreen.class));
+                        setEnabled(false);
+                        finish();
+                    }
+                    else if(code == 1)
+                    {
+                        FragmentManager fragment = getSupportFragmentManager();
+                        FragmentTransaction fragment_transaction = fragment.beginTransaction();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("code_data" , 1);
+                        bundle.putSerializable("data_list",list_cau_hoi_duoc_chon);
+                        NganHangCauHoiFragment nganhangcauhoi = new NganHangCauHoiFragment();
+                        nganhangcauhoi.setArguments(bundle);
+
+                        Intent quay_lai_intent = new Intent(ThemCauHoi.this, TaoDeThi.class);
+                        startActivity(quay_lai_intent);
+                        finish();
+                    }
+
+
                 }
             }
         });
