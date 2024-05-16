@@ -2,6 +2,7 @@ package fragment;
 
 import static android.content.Intent.getIntent;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.TaoDeThi;
 import com.example.myapplication.TaoDeThiAdapter;
 import com.example.myapplication.ThemCauHoi;
+import com.example.myapplication.TranslateAnimationUtil;
 import com.example.myapplication.taodethicauhoiitem;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import my_interface.IClickCauHoiItemListener;
+import my_interface.IPassingData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,6 +70,13 @@ public class NganHangCauHoiFragment extends Fragment
 
     String mamonhoc;
 
+    IPassingData passdata_interface;
+    ImageButton themcauhoi;
+
+    public NganHangCauHoiFragment(IPassingData passdata_interface)
+    {
+        this.passdata_interface = passdata_interface;
+    }
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,6 +89,13 @@ public class NganHangCauHoiFragment extends Fragment
 
     public NganHangCauHoiFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context)
+    {
+        super.onAttach(context);
+        passdata_interface = (IPassingData) context;
     }
 
     /**
@@ -117,16 +134,17 @@ public class NganHangCauHoiFragment extends Fragment
     {
         activity = (TaoDeThi)getActivity();
         monhoc = activity.AccessData();
+        View view = inflater.inflate(R.layout.fragment_ngan_hang_cau_hoi, container, false);
+        themcauhoi = view.findViewById(R.id.them_cau_hoi_button);
 
         GetMaMH();
         TriggerDeThi();
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ngan_hang_cau_hoi, container, false);
 
         GetDataCauHoiFromFireBase(view);
 
-        ImageButton themcahoi = view.findViewById(R.id.them_cau_hoi_button);
-        themcahoi.setOnClickListener(new View.OnClickListener()
+
+        themcauhoi.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -185,6 +203,7 @@ public class NganHangCauHoiFragment extends Fragment
         tao_de_thi_rcv.setLayoutManager(ln_layout_manager);
         adapter = new TaoDeThiAdapter(mylist, new IClickCauHoiItemListener()
         {
+
             @Override
             public void onClickItemCauHoi(taodethicauhoiitem cauhoi)
             {
@@ -200,6 +219,7 @@ public class NganHangCauHoiFragment extends Fragment
                 if(list_cau_hoi_duoc_chon.size() < socautd)
                 {
                     list_cau_hoi_duoc_chon.add(cauhoi);
+                    sendDataToActivity(list_cau_hoi_duoc_chon);
                     Bundle result = new Bundle();
                     result.putSerializable("list_duoc_chon", list_cau_hoi_duoc_chon);
                     getParentFragmentManager().setFragmentResult("data", result);
@@ -211,6 +231,8 @@ public class NganHangCauHoiFragment extends Fragment
             }
         });
         tao_de_thi_rcv.setAdapter(adapter);
+
+        tao_de_thi_rcv.setOnTouchListener(new TranslateAnimationUtil(activity, themcauhoi));
 
         DividerItemDecoration item_decoration = new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL);
         Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.divider_nhap_diem, null);
@@ -281,7 +303,10 @@ public class NganHangCauHoiFragment extends Fragment
             }
         });
     }
-
+    private void sendDataToActivity(ArrayList<taodethicauhoiitem> list_cau_hoi)
+    {
+        passdata_interface.PassData(list_cau_hoi);
+    }
 
 
 }

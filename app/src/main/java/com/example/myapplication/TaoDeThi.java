@@ -49,8 +49,9 @@ import java.util.ArrayList;
 import fragment.NganHangCauHoiFragment;
 import fragment.TaoDeThiViewPagerAdapter;
 import fragment.ViewPager2Adapter;
+import my_interface.IPassingData;
 
-public class TaoDeThi extends AppCompatActivity
+public class TaoDeThi extends AppCompatActivity implements IPassingData
 {
 
     private BottomNavigationView bottom_navigation_view;
@@ -99,6 +100,18 @@ public class TaoDeThi extends AppCompatActivity
                 Intent quay_lai_trang_chu_intent = new Intent(TaoDeThi.this, ThongTinDeThiScreen.class);
                 startActivity(quay_lai_trang_chu_intent);
                 finish();
+            }
+        });
+
+        ImageButton tao_de_thi = findViewById(R.id.tao_de_button);
+        tao_de_thi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
+
+
             }
         });
 
@@ -180,5 +193,13 @@ public class TaoDeThi extends AppCompatActivity
     public String AccessData()
     {
         return monhoc;
+    }
+
+
+    @Override
+    public void PassData(ArrayList<taodethicauhoiitem> list_cau_hoi)
+    {
+        mylist = list_cau_hoi;
+        Log.e("Số phần tử ở activity", String.valueOf(mylist.size()));
     }
 }
