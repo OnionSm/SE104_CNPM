@@ -140,8 +140,8 @@ public class NganHangCauHoiFragment extends Fragment
         GetMaMH();
         TriggerDeThi();
         // Inflate the layout for this fragment
-
         GetDataCauHoiFromFireBase(view);
+        GetListCauHoi(view);
 
 
         themcauhoi.setOnClickListener(new View.OnClickListener()
@@ -180,9 +180,12 @@ public class NganHangCauHoiFragment extends Fragment
                         String mach = data.child("maCH").getValue(String.class);
                         String noidung = data.child("noiDung").getValue(String.class);
                         mylist.add(new taodethicauhoiitem(mach, noidung));
+                        adapter.notifyDataSetChanged();
                     }
+
+
                 }
-                GetListCauHoi(view);
+
             }
 
             @Override

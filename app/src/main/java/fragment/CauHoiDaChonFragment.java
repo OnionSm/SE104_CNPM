@@ -15,13 +15,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
+import com.example.myapplication.CAUHOI;
 import com.example.myapplication.R;
 import com.example.myapplication.TaoDeThi;
 import com.example.myapplication.TaoDeThi2Adapter;
-import com.example.myapplication.TaoDeThiAdapter;
 import com.example.myapplication.taodethicauhoiitem;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -92,14 +97,18 @@ public class CauHoiDaChonFragment extends Fragment
         list_cau_hoi_duoc_chon = new ArrayList<>();
         activity = (TaoDeThi)getActivity();
         View view = inflater.inflate(R.layout.fragment_cau_hoi_da_chon, container, false);
+
         getParentFragmentManager().setFragmentResultListener("data", this, new FragmentResultListener()
         {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result)
             {
+
                 list_cau_hoi_duoc_chon = (ArrayList<taodethicauhoiitem>) result.getSerializable("list_duoc_chon");
                 Log.e("Số phần tử ", String.valueOf(list_cau_hoi_duoc_chon.size()));
                 GetListCauHoi(view);
+                adapter.notifyDataSetChanged();
+
             }
         });
 
@@ -112,13 +121,75 @@ public class CauHoiDaChonFragment extends Fragment
         cau_hoi_da_tao_thi_rcv = (RecyclerView)view.findViewById(R.id.cau_hoi_da_tao_thi_rcv);
         LinearLayoutManager ln_layout_manager = new LinearLayoutManager(activity);
         cau_hoi_da_tao_thi_rcv.setLayoutManager(ln_layout_manager);
-        adapter = new TaoDeThi2Adapter(list_cau_hoi_duoc_chon);
+        adapter = new TaoDeThi2Adapter(list_cau_hoi_duoc_chon, new TaoDeThi2Adapter.IClickUpdateCauHoiDaChon()
+        {
+            @Override
+            public void UpdateCauHoi(taodethicauhoiitem cauhoi)
+            {
+                UpdateCauHoiToDataBase(cauhoi);
+            }
+        }, new TaoDeThi2Adapter.IClickDeleteCauHoiDaChon()
+        {
+            @Override
+            public void DeleteCauHoi(taodethicauhoiitem cauhoi)
+            {
+                DeleteCauHoiFromList(cauhoi);
+            }
+        });
         cau_hoi_da_tao_thi_rcv.setAdapter(adapter);
 
         DividerItemDecoration item_decoration = new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL);
         Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.divider_nhap_diem, null);
         item_decoration.setDrawable(drawable);
         cau_hoi_da_tao_thi_rcv.addItemDecoration(item_decoration);
+    }
+    private void UpdateCauHoiToDataBase(taodethicauhoiitem cauhoi)
+    {
+        DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
+        DatabaseReference db_dokho = FirebaseDatabase.getInstance().getReference("DOKHO");
+        String dokho = "";
+        String noidung = "";
+        db_cauhoi.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                CAUHOI cauhoi_full = snapshot.child(cauhoi.getMacauhoi()).getValue(CAUHOI.class);
+                cauhoi_full.setNoiDung(noidung);
+                db_dokho.addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        for(DataSnapshot data : snapshot.getChildren())
+                        {
+                            if(data.child("TenDK").getValue(String.class).toLowerCase().equals(dokho.toLowerCase()))
+                            {
+                                String madokho = data.getKey().toString();
+                                cauhoi_full.setMaDoKho(madokho);
+                                String key = db_cauhoi.push().getKey();
+                                cauhoi_full.setMaCH(key);
+                                db_cauhoi.child(key).setValue(cauhoi_full);
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void DeleteCauHoiFromList(taodethicauhoiitem cauhoi)
+    {
 
     }
 }

@@ -197,34 +197,14 @@ public class MainScreenNew extends AppCompatActivity
 
     /*private void ApplyData()
     {
-        ArrayList<HKNH> list_hk = new ArrayList<>();
 
-        HKNH hk1 = new HKNH("", 1, 2019, 2020);
-        HKNH hk2 = new HKNH("", 2, 2019, 2020);
-        HKNH hk3 = new HKNH("", 1, 2020, 2021);
-        HKNH hk4 = new HKNH("", 2, 2020, 2021);
-        HKNH hk5 = new HKNH("", 1, 2021, 2022);
-        HKNH hk6 = new HKNH("", 2, 2021, 2022);
-        HKNH hk7 = new HKNH("", 1, 2022, 2023);
-        HKNH hk8 = new HKNH("", 2, 2022, 2023);
-        HKNH hk9 = new HKNH("", 1, 2023, 2024);
-        HKNH hk10 = new HKNH("", 2, 2023, 2024);
-        list_hk.add(hk1);
-        list_hk.add(hk2);
-        list_hk.add(hk3);
-        list_hk.add(hk4);
-        list_hk.add(hk5);
-        list_hk.add(hk6);
-        list_hk.add(hk7);
-        list_hk.add(hk8);
-        list_hk.add(hk9);
-        list_hk.add(hk10);
-        DatabaseReference db_hknh = FirebaseDatabase.getInstance().getReference("HKNH");
+
+        DatabaseReference db_lop = FirebaseDatabase.getInstance().getReference("LOP");
         for(int i = 0 ; i<10; i++)
         {
-            String key = db_hknh.push().getKey();
-            list_hk.get(i).setMaHKNH(key);
-            db_hknh.child(key).setValue(list_hk.get(i));
+            String key = db_lop.push().getKey();
+            list_hk.get(i).setMaLop(key);
+            db_lop.child(key).setValue(list_hk.get(i));
         }
     }*/
 

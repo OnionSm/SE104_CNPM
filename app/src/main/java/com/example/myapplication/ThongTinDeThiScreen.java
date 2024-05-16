@@ -49,6 +49,7 @@ public class ThongTinDeThiScreen extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_thong_tin_de_thi_screen);
@@ -56,6 +57,17 @@ public class ThongTinDeThiScreen extends AppCompatActivity
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        TriggerThoiLuong();
+
+        ImageButton back_button = findViewById(R.id.tao_de_thi_icon_back);
+        back_button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(ThongTinDeThiScreen.this, DeThiScreen.class));
+            }
         });
 
         mon_hoc_edt = findViewById(R.id.tenmonhoc_edt);
@@ -66,7 +78,7 @@ public class ThongTinDeThiScreen extends AppCompatActivity
         thoi_luong_edt = findViewById(R.id.thoi_luong_edt);
         tao_de_thi_button = findViewById(R.id.tao_de_thi_button);
 
-        TriggerThoiLuong();
+
 
         tao_de_thi_button.setOnClickListener(new View.OnClickListener()
         {
@@ -83,12 +95,11 @@ public class ThongTinDeThiScreen extends AppCompatActivity
                     bundle.putString("thoiluong", thoiluong);
                     intent.putExtra("thongtinmonhoc",bundle);
                     startActivity(intent);
-                    finish();
                 }
             }
         });
 
-
+        setupOnBackPressed();
     }
 
     private void GetListMonHoc()
@@ -146,9 +157,9 @@ public class ThongTinDeThiScreen extends AppCompatActivity
             Log.e("hocky", hocky);
             return false;
         }
-        if(Integer.parseInt(thoiluong) < thoiluongtoithieu && Integer.parseInt(thoiluong) > thoiluongtoida)
+        if(Integer.parseInt(thoiluong) < thoiluongtoithieu || Integer.parseInt(thoiluong) > thoiluongtoida)
         {
-            Toast.makeText(ThongTinDeThiScreen.this, "Thời lượng phải lớn hơn " + thoiluongtoithieu + " và bé hơn " + thoiluongtoida ,Toast.LENGTH_SHORT).show();
+            Toast.makeText(ThongTinDeThiScreen.this, "Thời lượng phải lớn hơn " + String.valueOf(thoiluongtoithieu) + " và bé hơn " + String.valueOf(thoiluongtoida) ,Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -158,22 +169,40 @@ public class ThongTinDeThiScreen extends AppCompatActivity
     private void TriggerThoiLuong()
     {
         DatabaseReference db_thamso = FirebaseDatabase.getInstance().getReference("THAMSO");
-        db_thamso.addValueEventListener(new ValueEventListener()
+        db_thamso.addChildEventListener(new ChildEventListener()
         {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
             {
-                if(snapshot.getKey() == "thoiluongthitoithieu")
+                if(snapshot.getKey().toString().equals("thoiluongthitoithieu"))
                 {
-                    thoiluongtoithieu = snapshot.child("thoiluongthitoithieu").getValue(Integer.class);
+                    thoiluongtoithieu = snapshot.child("giaTri").getValue(Integer.class);
+                    Log.e("tối thiểu",String.valueOf(thoiluongtoithieu));
                 }
-                if(snapshot.getKey() == "thoiluongthitoida") {
-                    thoiluongtoida = snapshot.child("thoiluongthitoida").getValue(Integer.class);
+                if(snapshot.getKey().toString().equals("thoiluongthitoida")) {
+                    thoiluongtoida = snapshot.child("giaTri").getValue(Integer.class);
+                    Log.e("tối đa", String.valueOf(thoiluongtoida));
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error)
-            {
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
@@ -188,7 +217,6 @@ public class ThongTinDeThiScreen extends AppCompatActivity
                 {
                     startActivity(new Intent(ThongTinDeThiScreen.this, DeThiScreen.class));
                     setEnabled(false);
-                    finish();
                 }
             }
         });

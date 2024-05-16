@@ -39,6 +39,16 @@ public class DeThiScreen extends AppCompatActivity
                 finish();
             }
         });
+
+        ImageButton ds_de_thi = findViewById(R.id.tao_de_thi_danh_sach_button);
+        ds_de_thi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DeThiScreen.this,DanhSachDeThiScreen.class));
+                finish();
+            }
+        });
+
         ImageButton quay_lai_trang_chu = findViewById(R.id.de_thi_icon_back);
         quay_lai_trang_chu.setOnClickListener(new View.OnClickListener() {
             @Override

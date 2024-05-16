@@ -22,6 +22,12 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".DsDeThiDaTaoItem"
+            android:exported="false" />
+        <activity
+            android:name=".DanhSachDeThiScreen"
+            android:exported="false" />
+        <activity
             android:name=".ThongTinDeThiScreen"
             android:exported="true" />
         <activity
@@ -68,8 +74,7 @@
             android:exported="false" />
         <activity
             android:name=".DeThiScreen"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".CustomListView"
             android:exported="true" />
