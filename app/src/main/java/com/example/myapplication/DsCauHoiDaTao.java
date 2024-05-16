@@ -92,14 +92,11 @@ public class DsCauHoiDaTao extends AppCompatActivity
 
         mylist = new ArrayList<>();
 
-
-        db_cauhoi.addChildEventListener(new ChildEventListener()
-        {
+        db_cauhoi.addChildEventListener(new ChildEventListener() {
             int stt = 1;
 
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String mamh = snapshot.child("maMH").getValue(String.class);
                 String madokho = snapshot.child("maDoKho").getValue(String.class);
                 String magv = snapshot.child("maGV").getValue(String.class);
@@ -107,8 +104,7 @@ public class DsCauHoiDaTao extends AppCompatActivity
                 String noidung_origin = snapshot.child("noiDung").getValue(String.class);
                 String noidung = noidung_origin.length() > 200 ? noidung_origin.substring(0, 200) : noidung_origin;
 
-                db_pdn.addListenerForSingleValueEvent(new ValueEventListener()
-                {
+                db_pdn.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot pdnSnapshot) {
                         String taikhoan = pdnSnapshot.child("account").getValue(String.class);
@@ -119,23 +115,23 @@ public class DsCauHoiDaTao extends AppCompatActivity
                                 public void onDataChange(@NonNull DataSnapshot monhocSnapshot) {
                                     String tenmon = monhocSnapshot.child("tenMH").getValue(String.class);
 
-                                    db_dokho.child(madokho).addListenerForSingleValueEvent(new ValueEventListener()
-                                    {
+                                    db_dokho.child(madokho).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
-                                        public void onDataChange(@NonNull DataSnapshot dokhoSnapshot)
-                                        {
+                                        public void onDataChange(@NonNull DataSnapshot dokhoSnapshot) {
                                             String dokho = dokhoSnapshot.child("TenDK").getValue(String.class);
 
                                             if (mylist.size() > 50) {
                                                 mylist.remove(mylist.size() - 1);
                                             }
-                                            mylist.add(0, new cauhoiitem("1", tenmon, noidung, dokho, ngaytao));
+                                            mylist.add(0, new cauhoiitem(String.valueOf(stt), tenmon, noidung, dokho, ngaytao));
+                                            stt++;
 
-                                            for (int i = 1; i < mylist.size(); i++) {
+                                            // Update the serial numbers
+                                            for (int i = 0; i < mylist.size(); i++) {
                                                 cauhoiitem item = mylist.get(i);
-                                                int newStt = Integer.parseInt(item.getStt()) + 1;
-                                                item.setStt(String.valueOf(newStt));
+                                                item.setStt(String.valueOf(i + 1));
                                             }
+                                            adapter.notifyDataSetChanged(); // Notify the adapter of dataset changes
                                         }
 
                                         @Override
@@ -181,6 +177,7 @@ public class DsCauHoiDaTao extends AppCompatActivity
             }
         });
     }
+
 
 
 
