@@ -216,6 +216,7 @@ public class ThongTinDeThiScreen extends AppCompatActivity
                 if(isEnabled())
                 {
                     startActivity(new Intent(ThongTinDeThiScreen.this, DeThiScreen.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                 }
             }

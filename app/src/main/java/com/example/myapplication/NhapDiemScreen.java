@@ -133,7 +133,7 @@ public class NhapDiemScreen extends AppCompatActivity
         adapter = new ChiTietLopAdapter(mylist);
         nhap_diem_rcv.setAdapter(adapter);
         DividerItemDecoration item_decoration = new DividerItemDecoration(NhapDiemScreen.this, DividerItemDecoration.VERTICAL);
-        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.divider_nhap_diem, null);
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.divider_nhap_diem2, null);
         item_decoration.setDrawable(drawable);
         nhap_diem_rcv.addItemDecoration(item_decoration);
     }
@@ -207,6 +207,7 @@ public class NhapDiemScreen extends AppCompatActivity
                 if(isEnabled())
                 {
                     startActivity(new Intent(NhapDiemScreen.this, ChamDiemScreen.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();
                 }

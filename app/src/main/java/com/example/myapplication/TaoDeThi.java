@@ -1,54 +1,33 @@
 package com.example.myapplication;
 
-import static android.content.ContentValues.TAG;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
+
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.SearchView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import android.widget.ImageButton;
+
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
+
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.ArrayList;
-
-import fragment.NganHangCauHoiFragment;
 import fragment.TaoDeThiViewPagerAdapter;
-import fragment.ViewPager2Adapter;
 import my_interface.IPassingData;
 
 public class TaoDeThi extends AppCompatActivity implements IPassingData
@@ -67,19 +46,12 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
     ArrayList<taodethicauhoiitem> mylist;
 
 
-    RecyclerView tao_de_thi_rcv;
-
-    TaoDeThiAdapter adapter;
-
-    SearchView searchview;
-
-    ImageButton ds_cau_hoi_da_chon_button;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tao_de_thi);
@@ -88,6 +60,7 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
         GetDataFromIntent();
 
 
@@ -155,8 +128,6 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
                 super.onPageSelected(position);
             }
         });
-
-        //GetDataCauHoiFromFireBase();
         setupOnBackPressed();
     }
 
@@ -172,6 +143,7 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
                 if(isEnabled())
                 {
                     startActivity(new Intent(TaoDeThi.this, ThongTinDeThiScreen.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();
                 }

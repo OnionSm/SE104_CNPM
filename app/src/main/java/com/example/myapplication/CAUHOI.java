@@ -9,6 +9,10 @@ public class CAUHOI {
 
     private String ngaytao;
 
+    public CAUHOI()
+    {
+
+    }
     public CAUHOI(String maCH, String maDoKho, String noiDung, String maMH, String maGV, String ngaytao)
     {
         this.maCH = maCH;
