@@ -141,7 +141,7 @@ public class ThemCauHoi extends AppCompatActivity
                 finish();
             }
         });
-        //setupOnBackPressed();
+        setupOnBackPressed();
     }
 
 
@@ -409,6 +409,8 @@ public class ThemCauHoi extends AppCompatActivity
             {
                 if(isEnabled())
                 {
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                    setEnabled(false);
                     finish();
                 }
             }

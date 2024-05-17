@@ -221,6 +221,7 @@ public class DsCauHoiDaTao extends AppCompatActivity
                 if(isEnabled())
                 {
                     startActivity(new Intent(DsCauHoiDaTao.this, CauHoiScreen.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();
                 }

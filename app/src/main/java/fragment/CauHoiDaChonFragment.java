@@ -1,5 +1,8 @@
 package fragment;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -12,9 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.myapplication.CAUHOI;
 import com.example.myapplication.R;
@@ -139,57 +147,94 @@ public class CauHoiDaChonFragment extends Fragment
         cau_hoi_da_tao_thi_rcv.setAdapter(adapter);
 
         DividerItemDecoration item_decoration = new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL);
-        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.divider_nhap_diem, null);
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.divider_nhap_diem3, null);
         item_decoration.setDrawable(drawable);
         cau_hoi_da_tao_thi_rcv.addItemDecoration(item_decoration);
     }
-    private void UpdateCauHoiToDataBase(taodethicauhoiitem cauhoi)
-    {
-        DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
-        DatabaseReference db_dokho = FirebaseDatabase.getInstance().getReference("DOKHO");
-        String dokho = "";
-        String noidung = "";
-        db_cauhoi.addValueEventListener(new ValueEventListener()
+
+
+    private void UpdateCauHoiToDataBase(taodethicauhoiitem cauhoi) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_sua_cau_hoi_pop_up);
+
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams window_attributes = window.getAttributes();
+        window_attributes.gravity = Gravity.CENTER;
+        window.setAttributes(window_attributes);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
+
+        EditText noidung_edt = dialog.findViewById(R.id.noi_dung_cau_hoi_edt);
+        EditText dokho_edt = dialog.findViewById(R.id.do_kho_edt);
+        ImageButton thay_doi_button = dialog.findViewById(R.id.thay_doi_cau_hoi_button);
+
+        thay_doi_button.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
+            public void onClick(View v)
             {
-                CAUHOI cauhoi_full = snapshot.child(cauhoi.getMacauhoi()).getValue(CAUHOI.class);
-                cauhoi_full.setNoiDung(noidung);
-                db_dokho.addValueEventListener(new ValueEventListener()
+                DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
+                DatabaseReference db_dokho = FirebaseDatabase.getInstance().getReference("DOKHO");
+                String dokho = dokho_edt.getText().toString();
+                String noidung = noidung_edt.getText().toString();
+                db_cauhoi.addListenerForSingleValueEvent(new ValueEventListener()
                 {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot)
                     {
-                        for(DataSnapshot data : snapshot.getChildren())
+                        CAUHOI cauhoi_full = snapshot.child(cauhoi.getMacauhoi()).getValue(CAUHOI.class);
+                        cauhoi_full.setNoiDung(noidung);
+                        db_dokho.addListenerForSingleValueEvent(new ValueEventListener()
                         {
-                            if(data.child("TenDK").getValue(String.class).toLowerCase().equals(dokho.toLowerCase()))
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot)
                             {
-                                String madokho = data.getKey().toString();
-                                cauhoi_full.setMaDoKho(madokho);
-                                String key = db_cauhoi.push().getKey();
-                                cauhoi_full.setMaCH(key);
-                                db_cauhoi.child(key).setValue(cauhoi_full);
+                                for (DataSnapshot data : snapshot.getChildren())
+                                {
+                                    Log.e("tên độ khó", data.child("TenDK").getValue(String.class).toLowerCase());
+                                    if (data.child("TenDK").getValue(String.class).toLowerCase().equals(dokho.toLowerCase())) {
+                                        String madokho = data.getKey().toString();
+                                        cauhoi_full.setMaDoKho(madokho);
+                                        String key = db_cauhoi.push().getKey();
+                                        cauhoi.setMacauhoi(key);
+                                        cauhoi.setNoidung(noidung);
+                                        cauhoi_full.setMaCH(key);
+                                        db_cauhoi.child(key).setValue(cauhoi_full);
+                                        adapter.notifyDataSetChanged();
+                                        dialog.dismiss();
+                                        break;
+                                    }
+                                }
+
                             }
-                        }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                     }
+
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error)
-                    {
+                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
+
     private void DeleteCauHoiFromList(taodethicauhoiitem cauhoi)
     {
-
+        list_cau_hoi_duoc_chon.remove(cauhoi);
+        adapter.notifyDataSetChanged();
     }
 }

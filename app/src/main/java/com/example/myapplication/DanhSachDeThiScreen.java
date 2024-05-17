@@ -68,7 +68,7 @@ public class DanhSachDeThiScreen extends AppCompatActivity
             shimmer_layout.setVisibility(View.INVISIBLE);
         },3000);
 
-        //GetDataDeThiFromFireBase();
+        GetDataDeThiFromFireBase();
         GetListDeThi();
 
 
@@ -85,6 +85,7 @@ public class DanhSachDeThiScreen extends AppCompatActivity
                 if(isEnabled())
                 {
                     startActivity(new Intent(DanhSachDeThiScreen.this, DeThiScreen.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();
                 }
@@ -119,9 +120,10 @@ public class DanhSachDeThiScreen extends AppCompatActivity
                 String magv = snapshot.child("maGV").getValue(String.class);
                 String mahknh = snapshot.child("maHKNH").getValue(String.class);
                 String ngaythi = snapshot.child("ngayThi").getValue(String.class);
-                String thoiluong = snapshot.child("thoiLuong").getValue(String.class);
+                String thoiluong = String.valueOf(snapshot.child("thoiLuong").getValue(Integer.class));
                 String mamh = snapshot.child("maMH").getValue(String.class);
-                db_pdn.addValueEventListener(new ValueEventListener() {
+                db_pdn.addValueEventListener(new ValueEventListener()
+                {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot)
                     {
