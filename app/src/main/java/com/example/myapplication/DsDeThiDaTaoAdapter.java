@@ -39,11 +39,19 @@ public class DsDeThiDaTaoAdapter extends RecyclerView.Adapter<DsDeThiDaTaoAdapte
         }
         holder.stt.setText(dethi.getStt());
         holder.monhoc.setText(dethi.getTenmon());
-        holder.hocky.setText(dethi.getHocky());
-        holder.namhoc.setText(dethi.getNamhoc());
+        holder.hocky.setText("Học kỳ: " + dethi.getHocky());
+        holder.namhoc.setText("Năm học: " +dethi.getNamhoc());
         holder.made.setText(dethi.getMade());
-        holder.thoiluong.setText(dethi.getThoiluong());
-        holder.ngaytao.setText(dethi.getNgaytao());
+        holder.thoiluong.setText(dethi.getThoiluong() + " phút");
+        if(dethi.getNgaytao().equals(""))
+        {
+            holder.ngaytao.setText("Chưa có ngày thi");
+        }
+        else
+        {
+            holder.ngaytao.setText(dethi.getNgaytao());
+        }
+
     }
 
     @Override

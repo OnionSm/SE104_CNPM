@@ -61,22 +61,14 @@ public class NganHangCauHoiFragment extends Fragment
     ArrayList<taodethicauhoiitem> list_cau_hoi_duoc_chon;
     private int socautd;
 
-    int code_data;
 
     String monhoc;
-    String hocky;
-    String namhoc;
-    String thoiluong;
+
 
     String mamonhoc;
 
-    IPassingData passdata_interface;
     ImageButton themcauhoi;
 
-    public NganHangCauHoiFragment(IPassingData passdata_interface)
-    {
-        this.passdata_interface = passdata_interface;
-    }
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -95,7 +87,6 @@ public class NganHangCauHoiFragment extends Fragment
     public void onAttach(@NonNull Context context)
     {
         super.onAttach(context);
-        passdata_interface = (IPassingData) context;
     }
 
     /**
@@ -134,6 +125,7 @@ public class NganHangCauHoiFragment extends Fragment
     {
         activity = (TaoDeThi)getActivity();
         monhoc = activity.AccessData();
+
         View view = inflater.inflate(R.layout.fragment_ngan_hang_cau_hoi, container, false);
         themcauhoi = view.findViewById(R.id.them_cau_hoi_button);
 
@@ -222,7 +214,6 @@ public class NganHangCauHoiFragment extends Fragment
                 if(list_cau_hoi_duoc_chon.size() < socautd)
                 {
                     list_cau_hoi_duoc_chon.add(cauhoi);
-                    sendDataToActivity(list_cau_hoi_duoc_chon);
                     Bundle result = new Bundle();
                     result.putSerializable("list_duoc_chon", list_cau_hoi_duoc_chon);
                     getParentFragmentManager().setFragmentResult("data", result);
@@ -234,7 +225,6 @@ public class NganHangCauHoiFragment extends Fragment
             }
         });
         tao_de_thi_rcv.setAdapter(adapter);
-
         tao_de_thi_rcv.setOnTouchListener(new TranslateAnimationUtil(activity, themcauhoi));
 
         DividerItemDecoration item_decoration = new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL);
@@ -259,10 +249,6 @@ public class NganHangCauHoiFragment extends Fragment
                 return false;
             }
         });
-        // Sau khi đã thêm dữ liệu mới vào danh sách, cập nhật giao diện nếu cần
-        // Ví dụ: Nếu bạn sử dụng RecyclerView, bạn có thể gọi notifyDataSetChanged()
-        // adapter.notifyDataSetChanged();
-
     }
 
     private void TriggerDeThi()
@@ -277,11 +263,11 @@ public class NganHangCauHoiFragment extends Fragment
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error)
+            {
             }
         });
     }
-
     private void GetMaMH()
     {
         monhoc = monhoc.toLowerCase();
@@ -293,23 +279,18 @@ public class NganHangCauHoiFragment extends Fragment
                 for(DataSnapshot data : snapshot.getChildren())
                 {
                     String tenmh = data.child("tenMH").getValue(String.class).toLowerCase();
-                    if(tenmh.contains(monhoc))
+                    if(tenmh.equals(monhoc))
                     {
                         mamonhoc = data.getKey().toString();
+                        return;
                     }
                 }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error)
+                {
 
             }
         });
     }
-    private void sendDataToActivity(ArrayList<taodethicauhoiitem> list_cau_hoi)
-    {
-        passdata_interface.PassData(list_cau_hoi);
-    }
-
-
 }

@@ -22,8 +22,11 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
@@ -45,6 +48,9 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
 
     ArrayList<taodethicauhoiitem> mylist;
 
+    String key_mamh;
+    String key_user;
+    String key_mahknh;
 
 
 
@@ -61,7 +67,6 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
             return insets;
         });
         db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
-        GetDataFromIntent();
 
 
         ImageButton quay_lai_de_thi = findViewById(R.id.tao_de_thi_icon_back);
@@ -76,6 +81,13 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
             }
         });
 
+
+        GetDataFromIntent();
+        GetMaMH();
+        GetUser();
+        GetMaHK();
+
+
         ImageButton tao_de_thi = findViewById(R.id.tao_de_button);
         tao_de_thi.setOnClickListener(new View.OnClickListener()
         {
@@ -83,8 +95,17 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
             public void onClick(View v)
             {
                 DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
+                DatabaseReference db_dethi_cauhoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
 
-
+                String key_dt = db_dethi.push().getKey();
+                DETHI dt = new DETHI(key_dt,Integer.parseInt(thoiluong),key_mahknh,"",key_mamh,key_user);
+                db_dethi.child(key_dt).setValue(dt);
+                for(int i = 0 ;i < mylist.size(); i++)
+                {
+                    DETHICAUHOI dt_ch = new DETHICAUHOI(key_dt,mylist.get(i).getMacauhoi());
+                    String key_dtch = db_dethi_cauhoi.push().getKey();
+                    db_dethi_cauhoi.child(key_dtch).setValue(dt_ch);
+                }
             }
         });
 
@@ -112,7 +133,8 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
                 return true;
             }
         });
-        viewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        viewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback()
+        {
             @Override
             public void onPageSelected(int position)
             {
@@ -168,10 +190,89 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
     }
 
 
+
     @Override
     public void PassData(ArrayList<taodethicauhoiitem> list_cau_hoi)
     {
         mylist = list_cau_hoi;
-        Log.e("Số phần tử ở activity", String.valueOf(mylist.size()));
+        for(int i = 0 ;i < mylist.size(); i++)
+        {
+            Log.e("Giá trị trong activity", String.valueOf(mylist.get(i).getMacauhoi())+ "   " +String.valueOf(mylist.get(i).getNoidung()));
+        }
+
+    }
+
+    private void GetMaMH()
+    {
+        monhoc = monhoc.toLowerCase();
+        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+        db_monhoc.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                for(DataSnapshot data : snapshot.getChildren())
+                {
+                    String tenmh = data.child("tenMH").getValue(String.class).toLowerCase();
+                    if(tenmh.contains(monhoc))
+                    {
+                        key_mamh = data.getKey().toString();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+
+            }
+        });
+    }
+    private void GetMaHK()
+    {
+        DatabaseReference db_hknh = FirebaseDatabase.getInstance().getReference("HKNH");
+        db_hknh.addValueEventListener(new ValueEventListener()
+        {
+            String nam1 = namhoc.split("/")[0];
+            String nam2 = namhoc.split("/")[1];
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                for(DataSnapshot data : snapshot.getChildren())
+                {
+                    if (String.valueOf(data.child("hocKy").getValue(Integer.class)).equals(hocky) &&
+                            String.valueOf(data.child("nam1").getValue(Integer.class)).equals(nam1) &&
+                            String.valueOf(data.child("nam2").getValue(Integer.class)).equals(nam2))
+                    {
+                        key_mahknh = data.getKey().toString();
+                        return;
+                    }
+                }
+                String ma_hknh = db_hknh.push().getKey().toString();
+                HKNH hk = new HKNH(ma_hknh,Integer.parseInt(hocky),Integer.parseInt(nam1),Integer.parseInt(nam2));
+                db_hknh.child(ma_hknh).setValue(hk);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void GetUser()
+    {
+        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
+        db_pdn.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                key_user = snapshot.child("account").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

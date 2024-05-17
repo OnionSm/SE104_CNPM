@@ -307,7 +307,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:inputType="number"
+        android:inputType="text"
         android:background="@drawable/round_button_2"
         android:hint="Nhập năm học"
         android:paddingLeft="15dp"

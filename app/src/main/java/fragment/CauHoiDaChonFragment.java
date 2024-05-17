@@ -1,6 +1,7 @@
 package fragment;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -39,6 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import my_interface.IClickCauHoiItemListener;
+import my_interface.IPassingData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,6 +57,14 @@ public class CauHoiDaChonFragment extends Fragment
     TaoDeThi activity;
 
     TaoDeThi2Adapter adapter;
+    IPassingData passdata_interface;
+
+    @Override
+    public void onAttach(@NonNull Context context)
+    {
+        super.onAttach(context);
+        passdata_interface = (IPassingData) context;
+    }
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -115,6 +125,7 @@ public class CauHoiDaChonFragment extends Fragment
                 list_cau_hoi_duoc_chon = (ArrayList<taodethicauhoiitem>) result.getSerializable("list_duoc_chon");
                 Log.e("Số phần tử ", String.valueOf(list_cau_hoi_duoc_chon.size()));
                 GetListCauHoi(view);
+                sendDataToActivity(list_cau_hoi_duoc_chon);
                 adapter.notifyDataSetChanged();
 
             }
@@ -153,7 +164,8 @@ public class CauHoiDaChonFragment extends Fragment
     }
 
 
-    private void UpdateCauHoiToDataBase(taodethicauhoiitem cauhoi) {
+    private void UpdateCauHoiToDataBase(taodethicauhoiitem cauhoi)
+    {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_sua_cau_hoi_pop_up);
@@ -208,6 +220,7 @@ public class CauHoiDaChonFragment extends Fragment
                                         cauhoi_full.setMaCH(key);
                                         db_cauhoi.child(key).setValue(cauhoi_full);
                                         adapter.notifyDataSetChanged();
+                                        sendDataToActivity(list_cau_hoi_duoc_chon);
                                         dialog.dismiss();
                                         break;
                                     }
@@ -235,6 +248,12 @@ public class CauHoiDaChonFragment extends Fragment
     private void DeleteCauHoiFromList(taodethicauhoiitem cauhoi)
     {
         list_cau_hoi_duoc_chon.remove(cauhoi);
+        sendDataToActivity(list_cau_hoi_duoc_chon);
         adapter.notifyDataSetChanged();
+    }
+
+    private void sendDataToActivity(ArrayList<taodethicauhoiitem> list_cau_hoi)
+    {
+        passdata_interface.PassData(list_cau_hoi);
     }
 }
