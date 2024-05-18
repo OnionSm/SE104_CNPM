@@ -83,8 +83,10 @@ dependencies {
     implementation("com.loopj.android:android-async-http:1.4.10")
 
     implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.google.firebase:firebase-auth")
+    implementation ("androidx.browser:browser:1.2.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
 
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
 
 
     constraints {

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission." />
@@ -22,6 +25,22 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".QuenMatKhauScreen"
+            android:exported="false" />
+        <activity
+            android:name=".GuiMaXacThucScreen"
+            android:exported="true" />
+        <activity
+            android:name=".SDTXacThucScreen"
+            android:exported="true" />
+        <activity
+            android:name=".TestScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ChamDiemScreen"
+            android:exported="true"/>
+        
+        <activity
             android:name=".SuaCauHoiPopUp"
             android:exported="false" />
         <activity
@@ -29,8 +48,7 @@
             android:exported="false" />
         <activity
             android:name=".DanhSachDeThiScreen"
-            android:exported="true">
-
+            android:exported="true"
         </activity>
         <activity
             android:name=".ThongTinDeThiScreen"
