@@ -86,6 +86,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation ("androidx.browser:browser:1.2.0")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
 
 
 
