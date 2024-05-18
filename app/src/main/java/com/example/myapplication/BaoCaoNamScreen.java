@@ -24,8 +24,8 @@ public class BaoCaoNamScreen extends AppCompatActivity
 {
     private BottomNavigationView bottom_navigation_view;
     private ViewPager2 viewpager2;
-
     BaoCaoViewPagerAdapter view_pager_adapter;
+    String namhoc;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,7 +37,7 @@ public class BaoCaoNamScreen extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        namhoc = "2023/2024";
 
         ImageButton quay_lai_de_thi = findViewById(R.id.bao_cao_icon_back);
         quay_lai_de_thi.setOnClickListener(new View.OnClickListener()
@@ -121,5 +121,10 @@ public class BaoCaoNamScreen extends AppCompatActivity
                 }
             }
         });
+    }
+
+    public String AccessData()
+    {
+        return namhoc;
     }
 }
