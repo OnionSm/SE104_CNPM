@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_baocao"
+        android:title="Báo cáo"
+        android:icon="@drawable/profile_home_image"/>
+
+    <item android:id="@+id/menu_dethi"
+        android:title="Đề thi"
+        android:icon="@drawable/thong_bao_icon"/>
+
+    <item android:id="@+id/menu_baicham"
+        android:title="Bài chấm"
+        android:icon="@drawable/ho_so_icon"/>
+</menu>

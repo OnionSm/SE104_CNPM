@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sign_up_background"
+    tools:context=".SignUpScreen">
+    <!-- Thêm các guideline dọc -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/l_nhap_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_xac_nhan_mat_khau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.44" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_nhap_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_ten_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.26" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.28" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_mat_khau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/l_tao_tk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.28" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_tao_tk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.72" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/l_button_dangnhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_button_dangnhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/l_button_dangky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_button_dangky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.76" />
+    <!-- Thêm các guideline ngang -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_tao_tk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_tao_tk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_dangnhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_dangnhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_ten_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_ten_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.37" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_nhap_ten_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.37" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_nhap_ten_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_nhap_email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_nhap_email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_mk_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.57" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_mk_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_nhap_mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_nhap_mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_xac_nhan_mk_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.69" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_xac_nhan_mk_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.71" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_nhap_lai_mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.71" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_nhap_lai_mk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.78" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_dang_ky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bot_dang_ky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.91" />
+    <!--thêm text-->
+    <TextView
+        android:id="@+id/ten_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Tên"
+        android:textColor="#0000FF"
+        android:textSize="11sp"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_ten_text"
+        app:layout_constraintEnd_toEndOf="@+id/r_ten_text"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+        app:layout_constraintTop_toTopOf="@+id/top_ten_text"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/email_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Email"
+        android:textColor="#0000FF"
+        android:textSize="11sp"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_email"
+        app:layout_constraintEnd_toEndOf="@+id/r_email"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+        app:layout_constraintTop_toTopOf="@+id/top_email"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/mk_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Mật Khẩu"
+        android:textColor="#0000FF"
+        android:gravity="bottom"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_mk_text"
+        app:layout_constraintEnd_toEndOf="@+id/r_mat_khau"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+        app:layout_constraintTop_toTopOf="@+id/top_mk_text"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/xac_nhan_mk"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Xác Nhận Mật Khẩu"
+        android:textColor="#0000FF"
+        android:textSize="11sp"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_xac_nhan_mk_text"
+        app:layout_constraintEnd_toEndOf="@+id/r_xac_nhan_mat_khau"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+        app:layout_constraintTop_toTopOf="@+id/top_xac_nhan_mk_text"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/nhap_mk"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="datdeptrai"
+        android:background="#CCCCCC"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_mk"
+        app:layout_constraintEnd_toEndOf="@+id/r_nhap_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+        app:layout_constraintTop_toTopOf="@+id/top_nhap_mk"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="Autofill,HardcodedText" />
+    <EditText
+        android:id="@+id/nhap_ten"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="Dat Dep Trai So 1 the gioi"
+        android:textSize="12sp"
+        android:background="#CCCCCC"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_ten_text"
+        app:layout_constraintEnd_toEndOf="@+id/r_nhap_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+        app:layout_constraintTop_toTopOf="@+id/top_nhap_ten_text"
+        tools:ignore="Autofill,HardcodedText,LabelFor,MissingConstraints,TextFields" />
+
+    <EditText
+        android:id="@+id/nhap_lai_mk"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="datdzqua"
+        android:textSize="12sp"
+        android:background="#CCCCCC"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_lai_mk"
+        app:layout_constraintEnd_toEndOf="@+id/r_nhap_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+        app:layout_constraintTop_toTopOf="@+id/top_nhap_lai_mk"
+        tools:ignore="Autofill,HardcodedText" />
+
+    <EditText
+        android:id="@+id/nhap_email"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:hint="datquadz@gm.uit.edu.vn"
+        android:textSize="12sp"
+        android:inputType="textEmailAddress"
+        android:background="#CCCCCC"
+       app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_email_text"
+       app:layout_constraintEnd_toEndOf="@+id/r_nhap_text"
+       app:layout_constraintHorizontal_bias="0.0"
+       app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+       app:layout_constraintTop_toTopOf="@+id/top_nhap_email_text"
+       app:layout_constraintVertical_bias="0.0"
+        tools:ignore="Autofill,HardcodedText" />
+    <ImageView
+        android:id="@+id/cham_diem_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/tao_tai_khoan_moi_text"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_tao_tk"
+        app:layout_constraintEnd_toEndOf="@+id/r_tao_tk"
+        app:layout_constraintStart_toStartOf="@+id/l_tao_tk"
+        app:layout_constraintTop_toTopOf="@+id/top_tao_tk"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/button_dangnhap"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="bạn có tài khoản rồi sao, đăng nhập"
+        android:textSize="11sp"
+        android:background="#FFFFFF"
+        android:textColor="#0000FF"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_dangnhap"
+        app:layout_constraintEnd_toEndOf="@+id/r_button_dangnhap"
+        app:layout_constraintStart_toStartOf="@+id/l_button_dangnhap"
+        app:layout_constraintTop_toTopOf="@+id/top_dangnhap"
+        tools:ignore="HardcodedText" />
+    <ImageButton
+        android:id="@+id/button_dangky"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/button_dang_ky"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_dang_ky"
+        app:layout_constraintEnd_toEndOf="@+id/r_button_dangky"
+        app:layout_constraintStart_toStartOf="@+id/l_button_dangky"
+        app:layout_constraintTop_toTopOf="@+id/top_dang_ky"
+        tools:ignore="ContentDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

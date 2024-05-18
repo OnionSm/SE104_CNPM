@@ -35,40 +35,40 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
-        android:id="@+id/bo_loc_nam_hoc"
-        android:layout_width="110dp"
-        android:layout_height="16dp"
+        android:id="@+id/bo_loc_ngay_thi"
+        android:layout_width="55dp"
+        android:layout_height="15dp"
         android:scaleType="fitXY"
         android:layout_marginStart="45dp"
         android:layout_marginTop="15dp"
-        app:srcCompat="@drawable/bo_loc_ma_hk_text"
+        app:srcCompat="@drawable/bo_loc_ngay_thi_text"
         app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_ma_de"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/bo_loc_edt_nam_hoc"
+        android:id="@+id/bo_loc_edt_ngay_thi"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/roboto_regular"
         android:textSize="16sp"
-        android:hint="Nhập mã học kỳ năm học"
+        android:hint="DD/MM/YYYY"
         android:paddingStart="15dp"
         android:textColor="#6E7591"
         android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bo_loc_nam_hoc"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_ngay_thi"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/bo_loc_mon_hoc"
-        android:layout_width="70dp"
-        android:layout_height="16dp"
+        android:layout_width="55dp"
+        android:layout_height="15dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/bo_loc_ma_mh_text"
+        app:srcCompat="@drawable/mon_hoc_text"
         android:layout_marginStart="45dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_nam_hoc"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_ngay_thi"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -77,7 +77,7 @@
         android:layout_height="50dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/roboto_regular"
-        android:hint="Nhập mã môn học"
+        android:hint="Nhập tên môn học"
         android:textSize="16sp"
         android:paddingStart="15dp"
         android:textColor="#6E7591"
@@ -89,7 +89,7 @@
 
     <ImageView
         android:id="@+id/bo_loc_thoi_luong"
-        android:layout_width="60dp"
+        android:layout_width="62dp"
         android:layout_height="16dp"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/bo_loc_thoi_luong_text"
@@ -111,16 +111,16 @@
         android:paddingStart="15dp"
         android:textColor="#6E7591"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/bo_loc_edt_ngay_thi"
+        app:layout_constraintEnd_toStartOf="@+id/bo_loc_edt_hoc_ky2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bo_loc_thoi_luong" />
 
     <ImageView
-        android:id="@+id/bo_loc_ngay_thi"
-        android:layout_width="52dp"
+        android:id="@+id/bo_loc_hoc_ky2"
+        android:layout_width="45dp"
         android:layout_height="15dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/bo_loc_ngay_thi_text"
+        app:srcCompat="@drawable/hoc_ky_text2"
 
         android:layout_marginTop="15dp"
         android:layout_marginStart="250dp"
@@ -128,45 +128,45 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/bo_loc_edt_ngay_thi"
+        android:id="@+id/bo_loc_edt_hoc_ky2"
         android:layout_width="180dp"
         android:layout_height="30dp"
         android:layout_marginTop="2dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/roboto_regular"
-        android:hint="Nhập ngày thi"
+        android:hint="Nhập học kỳ"
         android:paddingStart="15dp"
         android:textColor="#6E7591"
         android:textSize="14sp"
         android:layout_marginStart="210dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bo_loc_ngay_thi" />
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_hoc_ky2" />
 
     <ImageView
-        android:id="@+id/bo_loc_ma_gv"
-        android:layout_width="72dp"
-        android:layout_height="16dp"
+        android:id="@+id/bo_loc_nam_hoc"
+        android:layout_width="55dp"
+        android:layout_height="15dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/bo_loc_ma_gv_text"
+        app:srcCompat="@drawable/nam_hoc_text2"
         android:layout_marginStart="45dp"
         android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_thoi_luong"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
-        android:id="@+id/bo_loc_edt_ma_gv"
+        android:id="@+id/bo_loc_edt_nam_hoc"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/roboto_regular"
-        android:hint="Nhập mã giảng viên"
+        android:hint="YYYY/YYYY"
         android:paddingStart="15dp"
         android:textColor="#6E7591"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="45dp"
         tools:layout_editor_absoluteY="629dp"
         android:layout_marginTop="2dp"
-        app:layout_constraintTop_toBottomOf="@id/bo_loc_ma_gv"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_nam_hoc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -181,7 +181,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_ma_gv"
+        app:layout_constraintTop_toBottomOf="@id/bo_loc_edt_nam_hoc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

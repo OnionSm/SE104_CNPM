@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_background"
+    tools:context=".ThongTinMonHoc">
+
+    <ImageView
+        android:id="@+id/thong_tin_de_thi"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
+        app:srcCompat="@drawable/thong_tin_de_thi_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ten_mon_hoc"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/thong_tin_de_thi"
+        app:srcCompat="@drawable/ten_mon_hoc_text" />
+
+
+    <Spinner
+        android:id="@+id/ten_mon_hoc_spiner"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:dropDownVerticalOffset="50dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ten_mon_hoc"/>
+
+
+    <ImageView
+        android:id="@+id/hoc_ky"
+        android:layout_width="49dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:srcCompat="@drawable/hoc_ky_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ten_mon_hoc_spiner"/>
+    <Spinner
+        android:id="@+id/hoc_ky_spiner"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:dropDownVerticalOffset="50dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hoc_ky"/>
+
+    <ImageView
+        android:id="@+id/nam_hoc"
+        android:layout_width="63dp"
+        android:layout_height="32dp"
+        app:srcCompat="@drawable/nam_hoc_text"
+        android:layout_marginTop="18dp"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hoc_ky_spiner"/>
+
+    <EditText
+        android:id="@+id/nam_hoc_edt"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_button"
+        android:paddingLeft="15dp"
+        android:hint="YYYY/YYYY"
+        android:textSize = "15sp"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nam_hoc"/>
+
+    <ImageView
+        android:id="@+id/thoi_luong"
+        app:srcCompat="@drawable/thoi_luong_text"
+        android:layout_width="72dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nam_hoc_edt"/>
+    <EditText
+        android:id="@+id/thoi_luong_edt"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
+        android:paddingLeft="15dp"
+        android:hint="Nhập thời lượng"
+        android:textSize = "15sp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thoi_luong"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

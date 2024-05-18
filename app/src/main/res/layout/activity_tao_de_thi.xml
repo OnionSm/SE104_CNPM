@@ -5,276 +5,98 @@
     android:id="@+id/tao_de_thi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TaoDeThi"
-    android:background="@drawable/them_cau_hoi_shape_1">
+    android:background="#F5F5F5"
+    tools:context=".TaoDeThi">
     <ImageButton
         android:id="@+id/tao_de_thi_icon_back"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#00FFFFFF"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_1_4"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_1_2"
-        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_1_1"
-        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_1_3"
         app:srcCompat="@drawable/them_cau_hoi_image_view_1"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_1_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.07"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_1_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_1_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="61dp" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_1_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.105"/>
-    <ImageButton
-        android:id="@+id/button_tao_de"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_2_4"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_2_2"
-        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_2_1"
-        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_2_3"
-        app:srcCompat="@drawable/de_thi_button"
         android:background="#00FFFFFF"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_1_2"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_1_4"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_1_3"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_1_1"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_2_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.76"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_2_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.94"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_2_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_2_3"
+        android:id="@+id/tao_de_guideline_1_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.075" />
-    <Spinner
-        android:id="@+id/tao_de_thi_mon_hoc_spinner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:dropDownVerticalOffset = "70dp"
-        android:background="@drawable/ten_mon_hoc_de_thi"
-        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_3_1"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_3_2"
-        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_3_3"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_3_4"/>
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/tao_de_thi_ten_mon_hoc_button"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:background="#00FFFFFF"-->
-    <!--        android:scaleType="centerCrop"-->
-    <!--        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_3_1"-->
-    <!--        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_3_2"-->
-    <!--        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_3_3"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_3_4"-->
-    <!--        app:srcCompat="@drawable/ten_mon_hoc_de_thi"-->
-    <!--        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />-->
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_3_1"
+        android:id="@+id/tao_de_guideline_1_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.107" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_1_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.064"/>
+        app:layout_constraintGuide_percent="0.06" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_3_2"
+        android:id="@+id/tao_de_guideline_1_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.484"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_3_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_3_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.30"/>
-    <EditText
-        android:id="@+id/tao_de_thi_so_cau_hoi_eddit_text"
+        app:layout_constraintGuide_percent="0.09" />
+
+    <ImageButton
+        android:id="@+id/tao_de_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/so_cau_hoi_eddit_text"
-        android:padding="5dp"
-        android:textColor="#6E7591"
-        android:textSize="13.5sp"
-        android:fontFamily="@font/roboto_regular"
-        android:hint="Nhập số câu hỏi"
-        android:textColorHint="#6E7591"
-        android:paddingStart="15dp"
-        android:gravity="left|center_vertical"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_3_4"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_4_2"
-        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_4_1"
-        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_3_3"
-        />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/button_tao_de_thi"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_1_2"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_2_2"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_2_1"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_1_1"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_4_1"
+        android:id="@+id/tao_de_guideline_2_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.514"/>
+        app:layout_constraintGuide_percent="0.755" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_4_2"
+        android:id="@+id/tao_de_guideline_2_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.934"/>
-    <EditText
-        android:id="@+id/tao_de_thi_so_cau_hoi_de"
+        app:layout_constraintGuide_percent="0.955"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/tao_de_thi_view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/so_cau_hoi_do_kho_de"
-        android:textColor="#6E7591"
-        android:textSize="13.5sp"
-        android:hint="Nhập số câu hỏi với độ khó dễ"
-        android:paddingStart="15dp"
-        android:paddingTop="25dp"
-        android:gravity="left"
-        android:fontFamily="@font/roboto_regular"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_5_4"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_2_2"
-        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_3_1"
-        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_5_3"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/main_scr_guideline_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_1_2" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/tao_de_thi_bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_on_primary"
+        app:menu="@menu/menu_tao_de_thi_bottom_navigation"
+        app:itemTextColor="@color/custom_color_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemIconTint="@color/custom_color_navigation"
+        app:layout_constraintTop_toTopOf="@id/main_scr_guideline_1"/>
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_5_3"
+        android:id="@+id/main_scr_guideline_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.44"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_5_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.512"/>
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/tao_de_thi_so_cau_hoi_trung_binh"
-        android:background="@drawable/so_cau_hoi_do_kho_tb"
-        android:paddingTop="25dp"
-        android:gravity="left"
-        android:textColor="#6E7591"
-        android:textSize="13.5sp"
-        android:fontFamily="@font/roboto_regular"
-        android:hint="Nhập số câu hỏi với độ khó trung bình"
-        android:paddingStart="15dp"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_6_4"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_2_2"
-        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_3_1"
-        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_6_3"
-        />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_6_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.522"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_6_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.594"/>
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/tao_de_thi_so_cau_hoi_phuc_tap"
-        android:background="@drawable/so_cau_hoi_do_kho_phuc_tap"
-        android:textColor="#6E7591"
-        android:textSize="13.5sp"
-        android:fontFamily="@font/roboto_regular"
-        android:hint="Nhập số câu hỏi với độ khó phức tạp"
-        android:paddingStart="15dp"
-        android:paddingTop="25dp"
-        android:gravity="left"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_7_4"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_2_2"
-        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_3_1"
-        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_7_3"
-        />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_7_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.604"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_7_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.676"/>
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/tao_de_thi_so_cau_hoi_kho"
-        android:background="@drawable/so_cau_hoi_do_kho_kho"
-        android:textColor="#6E7591"
-        android:textSize="13.5sp"
-        android:fontFamily="@font/roboto_regular"
-        android:hint="Nhập số câu hỏi với độ khó khó"
-        android:paddingStart="15dp"
-        android:paddingTop="25dp"
-        android:gravity="left"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@id/tao_de_thi_guideline_8_4"
-        app:layout_constraintEnd_toEndOf="@id/tao_de_thi_guideline_2_2"
-        app:layout_constraintStart_toStartOf="@id/tao_de_thi_guideline_3_1"
-        app:layout_constraintTop_toTopOf="@id/tao_de_thi_guideline_8_3"
-        />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_8_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.686"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/tao_de_thi_guideline_8_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.758"/>
+        app:layout_constraintGuide_percent="0.937" />
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

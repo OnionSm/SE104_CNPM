@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,7 +32,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
-public class ThemCauHoi extends AppCompatActivity {
+import de.hdodenhof.circleimageview.CircleImageView;
+import fragment.NganHangCauHoiFragment;
+
+public class ThemCauHoi extends AppCompatActivity
+{
 
     DatabaseReference dbRef;
     ArrayList<String> tenMonHocList = new ArrayList<>();
@@ -44,6 +51,11 @@ public class ThemCauHoi extends AppCompatActivity {
 
     DatabaseReference db_pdn;
 
+    CircleImageView use_dang_tai;
+
+    int code;
+    ArrayList<taodethicauhoiitem> list_cau_hoi_duoc_chon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -52,15 +64,6 @@ public class ThemCauHoi extends AppCompatActivity {
 
         noi_dung_cau_hoi = findViewById(R.id.noi_dung_cau_hoi);
 
-        ImageView quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_icon_back);
-        quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view) {
-                Intent quay_lai_trang_chu_intent = new Intent(ThemCauHoi.this, CauHoiScreen.class);
-                startActivity(quay_lai_trang_chu_intent);
-            }
-        });
 
         dbRef_3 = FirebaseDatabase.getInstance().getReference("CAUHOI");
         dbRef_4 = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
@@ -116,6 +119,7 @@ public class ThemCauHoi extends AppCompatActivity {
 
         /*Lấy tên giảng viên từ database và set vào phần đăng tải bởi*/
         GetTenNguoiThemCauHoi();
+        SetUserImage();
 
 
         ImageButton tao_cau_hoi = findViewById(R.id.tao_cau_hoi_button);
@@ -124,6 +128,17 @@ public class ThemCauHoi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SaveTaoCauHoi();
+            }
+        });
+
+
+        ImageButton quay_lai_cau_hoi = findViewById(R.id.them_cau_hoi_icon_back);
+        quay_lai_cau_hoi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                finish();
             }
         });
         setupOnBackPressed();
@@ -301,6 +316,44 @@ public class ThemCauHoi extends AppCompatActivity {
         });
     }
 
+    private void SetUserImage()
+    {
+
+        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
+        DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
+        DatabaseReference db_gv = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
+        use_dang_tai = findViewById(R.id.anh_dai_dien_nguoi_them_cau_hoi);
+        db_pdn.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                String taikhoan = snapshot.child("account").getValue(String.class);
+                db_userimage.addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        String file_image = snapshot.child(taikhoan).child("fileImage").getValue(String.class);
+                        String packageName = getPackageName();
+                        int resourceId = getResources().getIdentifier(file_image, "drawable", packageName);
+                        use_dang_tai.setImageResource(resourceId);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
 
     private void GetTenNguoiThemCauHoi()
     {
@@ -345,6 +398,7 @@ public class ThemCauHoi extends AppCompatActivity {
     interface OnMaGiangVienCallback {
         void onMaGiangVienReceived(String maGiangVien);
     }
+
     private void setupOnBackPressed()
     {
         getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
@@ -354,11 +408,12 @@ public class ThemCauHoi extends AppCompatActivity {
             {
                 if(isEnabled())
                 {
-                    startActivity(new Intent(ThemCauHoi.this, CauHoiScreen.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();
                 }
             }
         });
     }
+
 }

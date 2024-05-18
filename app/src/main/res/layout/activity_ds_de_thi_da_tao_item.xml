@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".DsDeThiDaTaoItem">
+
+    <TextView
+        android:id="@+id/custom_list_view_stt"
+        android:layout_width="80dp"
+        android:layout_height="110dp"
+        android:text="01"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/custom_list_view_ten_mon"
+        android:layout_width="235dp"
+        android:layout_height="25dp"
+        android:text="Title"
+        android:textSize="18sp"
+        android:textColor="#2F6BFF"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="start"
+        app:layout_constraintStart_toEndOf="@+id/custom_list_view_stt"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/custom_list_view_hoc_ky"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#2F6BFF"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintStart_toEndOf="@+id/custom_list_view_stt"
+        app:layout_constraintTop_toBottomOf="@id/custom_list_view_ten_mon"
+        android:text = "Title"
+        android:textSize = "15sp"/>
+    <TextView
+        android:id="@+id/custom_list_view_nam_hoc"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#2F6BFF"
+        app:layout_constraintStart_toEndOf="@+id/custom_list_view_stt"
+        app:layout_constraintTop_toBottomOf="@id/custom_list_view_hoc_ky"
+        android:text = "Title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="5dp"
+        android:textSize = "15sp"/>
+
+    <TextView
+        android:id="@+id/custom_list_view_ma_de"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="18dp"
+        android:text = "000001"
+        android:textColor="#2F6BFF"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize = "12sp"
+        android:gravity="end|center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/custom_list_view_thoi_luong"
+        android:layout_width="80dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="15dp"
+        android:text="60 phút"
+        android:textColor="#2F6BFF"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="end|center"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/custom_list_view_ma_de"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/custom_list_view_ngay_tao"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="18dp"
+        android:text = "25/4/2024"
+        android:textColor="#2F6BFF"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize = "12sp"
+        android:gravity="end|center"
+        app:layout_constraintTop_toBottomOf="@id/custom_list_view_thoi_luong"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

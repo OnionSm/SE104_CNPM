@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/taocauhoiitem"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".TaoCauHoiCauHoiItem">
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/cau_hoi_box_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ma_cau_hoi"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="start|center"
+        android:text="Mã câu hỏi: 000001"
+        android:textColor="#0000FD"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/noi_dung_cau_hoi"
+        android:layout_width="285dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="start"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ma_cau_hoi" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

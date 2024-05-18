@@ -37,6 +37,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.checkerframework.checker.units.qual.m;
 
+import java.util.ArrayList;
+
 import fragment.TrangChuFragment;
 import fragment.ViewPager2Adapter;
 
@@ -71,18 +73,19 @@ public class MainScreenNew extends AppCompatActivity
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
                 {
                     if (Environment.isExternalStorageManager())
-                        Toast.makeText(MainScreenNew.this,"We Have Permission",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainScreenNew.this,"We have permission",Toast.LENGTH_SHORT).show();
                     else
-                        Toast.makeText(MainScreenNew.this, "You Denied the permission", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainScreenNew.this, "You denied the permission", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainScreenNew.this, "You Denied the permission", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainScreenNew.this, "You denied the permission", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
-        if (checkPermission()) {
-            Toast.makeText(MainScreenNew.this,"WE Have Permission",Toast.LENGTH_SHORT).show();   // WE have a permission just start your work.
+        if (checkPermission())
+        {
+            Toast.makeText(MainScreenNew.this,"We have permission",Toast.LENGTH_SHORT).show();   // WE have a permission just start your work.
         } else {
             requestPermission(); // Request Permission
         }
@@ -102,15 +105,34 @@ public class MainScreenNew extends AppCompatActivity
                 {
                     case R.id.menu_trangchu:
                         viewpager2.setCurrentItem(0);
-                        break;
+                        return true;
                     case R.id.menu_thongbao:
                         viewpager2.setCurrentItem(1);
-                        break;
+                        return true;
                     case R.id.menu_hoso:
                         viewpager2.setCurrentItem(2);
+                        return true;
+                }
+                return false;
+            }
+        });
+        viewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position)
+            {
+                switch (position)
+                {
+                    case 0:
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_trangchu);
+                        break;
+                    case 1:
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_thongbao);
+                        break;
+                    case 2:
+                        bottom_navigation_view.setSelectedItemId(R.id.menu_hoso);
                         break;
                 }
-                return true;
+                super.onPageSelected(position);
             }
         });
         setupOnBackPressed();
@@ -172,4 +194,18 @@ public class MainScreenNew extends AppCompatActivity
             ActivityCompat.requestPermissions(MainScreenNew.this, permissions, 30);
         }
     }
+
+    /*private void ApplyData()
+    {
+
+
+        DatabaseReference db_lop = FirebaseDatabase.getInstance().getReference("LOP");
+        for(int i = 0 ; i<10; i++)
+        {
+            String key = db_lop.push().getKey();
+            list_hk.get(i).setMaLop(key);
+            db_lop.child(key).setValue(list_hk.get(i));
+        }
+    }*/
+
 }

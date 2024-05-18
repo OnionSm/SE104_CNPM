@@ -15,8 +15,11 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -57,12 +60,15 @@ public class ChamDiemScreen extends AppCompatActivity
 
     Workbook workbook;
     String filename;
+    String filepath;
+    TextView select_file;
     private ActivityResultLauncher<Intent> m_activity_result = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>()
             {
                 @Override
-                public void onActivityResult(ActivityResult result) {
+                public void onActivityResult(ActivityResult result)
+                {
                     if (result.getResultCode() == Activity.RESULT_OK)
                     {
                         Intent data = result.getData();
@@ -75,56 +81,7 @@ public class ChamDiemScreen extends AppCompatActivity
                             filename1 =filepath.split("/");
                             fn=filename1[filename1.length-1];
                             String absoulute_path = Environment.getExternalStorageDirectory().getPath()+"/"+filePath1[1];
-                            File file_absolute =new File(absoulute_path);
-
-                            try
-                            {
-                                ArrayList<CHITIETLOP> ctl  = new ArrayList<>();
-                                FileInputStream inputStream = new FileInputStream(file_absolute);
-                                Workbook workbook = new XSSFWorkbook(inputStream);
-                                Sheet s = workbook.getSheet("Sheet1");
-                                DataFormatter formatter = new DataFormatter();
-                                int row_count = s.getLastRowNum() + 1;
-                                int col_count = s.getRow(0).getLastCellNum(); // Số lượng cột trong hàng đầu tiên
-
-                                for (int i = 1; i <= row_count; i++)
-                                {
-                                    Row r = s.getRow(i);
-                                    if (r != null) { // Kiểm tra xem hàng có tồn tại không
-                                        // Kiểm tra xem ô có giá trị hợp lệ không trước khi chuyển đổi thành số nguyên
-                                        String maSV = "";
-                                        if (r.getCell(1) != null) {
-                                            maSV = formatter.formatCellValue(r.getCell(1));
-                                        }
-                                        String tenSV = "";
-                                        if (r.getCell(2) != null) {
-                                            tenSV = formatter.formatCellValue(r.getCell(2));
-                                        }
-                                        int diem = 0;
-                                        if (r.getCell(3) != null && r.getCell(3).getCellType() == CellType.NUMERIC) {
-                                            diem = (int) r.getCell(3).getNumericCellValue();
-                                        }
-                                        String diemChu = "";
-                                        if (r.getCell(4) != null) {
-                                            diemChu = formatter.formatCellValue(r.getCell(4));
-                                        }
-                                        String ghiChu = "";
-                                        if (r.getCell(5) != null) {
-                                            ghiChu = formatter.formatCellValue(r.getCell(5));
-                                        }
-
-                                        // Tạo đối tượng CHITIETLOP từ dữ liệu cột của hàng
-                                        CHITIETLOP sv = new CHITIETLOP("", maSV, tenSV, diem, diemChu, ghiChu);
-                                        Log.e("CHI TIẾT LỚP", sv.getMaLop() + "   " + sv.getMaSV()+ "   " + sv.getTenSV()+ "   " + sv.getDiem() + "   "+ sv.getDiemChu()+ "   " + sv.getGhiChu());
-                                    }
-                                }
-                                workbook.close();
-                                inputStream.close();
-                            }
-                            catch (IOException e)
-                            {
-                                e.printStackTrace();
-                            }
+                            select_file.setText(absoulute_path);
                         }
                     }
                 }
@@ -141,9 +98,21 @@ public class ChamDiemScreen extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        ImageButton button_back = findViewById(R.id.cham_diem_button_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(ChamDiemScreen.this, MainScreenNew.class));
+                finish();
+            }
+        });
 
-        chamdiem_btn = findViewById(R.id.button_cham_diem);
-        chamdiem_btn.setOnClickListener(new View.OnClickListener()
+
+
+
+        select_file = findViewById(R.id.tai_len_excel);
+        select_file.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -152,7 +121,30 @@ public class ChamDiemScreen extends AppCompatActivity
             }
         });
 
+        chamdiem_btn = findViewById(R.id.button_cham_diem);
+        chamdiem_btn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(select_file.getText().toString() == "Nhấn để tải lên file excel")
+                {
+                    Toast.makeText(ChamDiemScreen.this , "Vui lòng chọn file" , Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(ChamDiemScreen.this, NhapDiemScreen.class);
+                    String data = select_file.getText().toString();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("filepath", data);
+                    intent.putExtra("mypackage", bundle);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
 
+        setupOnBackPressed();
     }
     private void onClickRequestPermission()
     {
@@ -164,7 +156,6 @@ public class ChamDiemScreen extends AppCompatActivity
         {
             OpenGallery();
         }*/
-
             OpenGallery();
     }
     private void OpenGallery()
@@ -175,7 +166,24 @@ public class ChamDiemScreen extends AppCompatActivity
         intent.setData(uri);
         intent.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         m_activity_result.launch(intent);
+    }
 
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
+            @Override
+            public void handleOnBackPressed()
+            {
+                if(isEnabled())
+                {
+                    startActivity(new Intent(ChamDiemScreen.this, MainScreenNew.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                    setEnabled(false);
+                    finish();
+                }
+            }
+        });
     }
 
 

@@ -1,0 +1,192 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ngan_hang_cau_hoi"
+    android:background="#F5F5F5"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    tools:context="fragment.NganHangCauHoiFragment">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/tim_kiem_box_background"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_3_2"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_3_4"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_3_3"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_3_1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_3_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_3_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.105" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_3_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_3_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94"/>
+    <SearchView
+        android:id="@+id/tao_de_thi_search_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:queryHint="Nhập nội dung câu hỏi"
+        android:iconifiedByDefault="false"
+        android:fontFamily="@font/roboto_regular"
+        app:srcCompat="@drawable/tra_cuu_input_background"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_4_2"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_4_4"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_4_3"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_4_1">
+        <requestFocus/>
+    </SearchView>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.035" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.105" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_4_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.075" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_4_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"/>
+
+    <ImageButton
+        android:id="@+id/mo_rong_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/de_thi_tra_cuu_icon"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_5_2"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_5_4"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_5_3"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_5_1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_5_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.055" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_5_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_5_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_5_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tao_de_thi_rcv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_6_2"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_6_4"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_6_3"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_6_1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_6_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_6_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.93" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_6_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_6_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94"/>
+
+    <ImageButton
+        android:id="@+id/them_cau_hoi_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/cau_hoi_da_chon_button"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_7_2"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_7_4"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_7_3"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_7_1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_7_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.865" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_7_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.91" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_7_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.738" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_7_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.87"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

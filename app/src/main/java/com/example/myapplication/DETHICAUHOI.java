@@ -5,7 +5,8 @@ public class DETHICAUHOI
     private String maDT;
     private String maCH;
 
-    public DETHICAUHOI(String maDT, String maCH) {
+    public DETHICAUHOI(String maDT, String maCH)
+    {
         this.maDT = maDT;
         this.maCH = maCH;
     }

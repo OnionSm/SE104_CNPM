@@ -127,18 +127,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.95" />
+
     <!-- them anh -->
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/phong_nen_trang"
-
         app:layout_constraintBottom_toBottomOf="@+id/bot_phong_nen_trang"
         app:layout_constraintEnd_toEndOf="@+id/r_tai_len_excel"
         app:layout_constraintStart_toStartOf="@+id/l_quaylai"
         app:layout_constraintTop_toTopOf="@+id/bot_quay_lai" />
+
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/cham_diem_button_back"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/button_quay_lai_layer"
@@ -159,10 +160,10 @@
 
     <ImageButton
         android:id="@+id/button_cham_diem"
-        android:background="@android:color/white"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerInside"
+        android:background="#00FFFFFF"
         android:src="@drawable/button_cham_diem_layer"
         app:layout_constraintBottom_toBottomOf="@+id/bot_cham_diem"
         app:layout_constraintEnd_toEndOf="@+id/r_cham_diem"
@@ -173,7 +174,7 @@
         android:id="@+id/tai_len_moi_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#E0E0E0"
+        android:background="#00FFFFFF"
         android:scaleType="centerInside"
         android:src="@drawable/button_tai_len_moi"
         app:layout_constraintBottom_toBottomOf="@+id/bot_tai_len_moi"
@@ -185,7 +186,7 @@
         android:id="@+id/r_tai_len_gan_day_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#E0E0E0"
+        android:background="#00FFFFFF"
         android:scaleType="centerInside"
         android:src="@drawable/button_tai_len_gan_day"
         app:layout_constraintBottom_toBottomOf="@+id/bot_tai_len_moi"
@@ -197,7 +198,7 @@
         android:id="@+id/tai_len_excel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Đạt Đẹp trai số 1 thế giới"
+        android:text="Nhấn để tải lên file excel"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/bot_tai_len_excel"
         app:layout_constraintEnd_toEndOf="@+id/r_tai_len_excel"

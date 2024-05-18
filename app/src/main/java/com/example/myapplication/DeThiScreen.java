@@ -10,10 +10,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-public class DeThiScreen extends AppCompatActivity {
+import fragment.NganHangCauHoiFragment;
+
+public class DeThiScreen extends AppCompatActivity
+{
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_de_thi_screen);
@@ -23,14 +29,26 @@ public class DeThiScreen extends AppCompatActivity {
             return insets;
         });
         ImageButton tao_de_thi = findViewById(R.id.de_thi_tao_de_thi_button);
-        tao_de_thi.setOnClickListener(new View.OnClickListener() {
+        tao_de_thi.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
-                Intent tao_de_thi_intent = new Intent(DeThiScreen.this, TaoDeThi.class);
+                Intent tao_de_thi_intent = new Intent(DeThiScreen.this, ThongTinDeThiScreen.class);
                 startActivity(tao_de_thi_intent);
+                finish();
             }
         });
+
+        ImageButton ds_de_thi = findViewById(R.id.tao_de_thi_danh_sach_button);
+        ds_de_thi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DeThiScreen.this,DanhSachDeThiScreen.class));
+                finish();
+            }
+        });
+
         ImageButton quay_lai_trang_chu = findViewById(R.id.de_thi_icon_back);
         quay_lai_trang_chu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +71,7 @@ public class DeThiScreen extends AppCompatActivity {
                 if(isEnabled())
                 {
                     startActivity(new Intent(DeThiScreen.this, MainScreenNew.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();
                 }

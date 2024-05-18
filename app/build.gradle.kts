@@ -43,7 +43,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.recyclerview:recyclerview:1.4.0-alpha01")
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
@@ -85,6 +86,8 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation ("androidx.browser:browser:1.2.0")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+
+
 
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
