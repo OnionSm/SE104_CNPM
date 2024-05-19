@@ -7,16 +7,18 @@ public class baocaomonhocitem
 
     private int soluongbaicham;
 
-    private int tiledetho;
+    private float tiledethi;
 
-    private int tilebaicham;
+    private float tilebaicham;
 
-    public baocaomonhocitem(String tenmon, int soluongdethi, int soluongbaicham, int tiledetho, int tilebaicham)
+
+
+    public baocaomonhocitem(String tenmon, int soluongdethi, int soluongbaicham, float tiledethi, float tilebaicham)
     {
         this.tenmon = tenmon;
         this.soluongdethi = soluongdethi;
         this.soluongbaicham = soluongbaicham;
-        this.tiledetho = tiledetho;
+        this.tiledethi = tiledethi;
         this.tilebaicham = tilebaicham;
     }
 
@@ -44,19 +46,19 @@ public class baocaomonhocitem
         this.soluongbaicham = soluongbaicham;
     }
 
-    public int getTiledetho() {
-        return tiledetho;
+    public float getTiledethi() {
+        return tiledethi;
     }
 
-    public void setTiledetho(int tiledetho) {
-        this.tiledetho = tiledetho;
+    public void setTiledethi(float tiledethi) {
+        this.tiledethi = tiledethi;
     }
 
-    public int getTilebaicham() {
+    public float getTilebaicham() {
         return tilebaicham;
     }
 
-    public void setTilebaicham(int tilebaicham) {
+    public void setTilebaicham(float tilebaicham) {
         this.tilebaicham = tilebaicham;
     }
 }

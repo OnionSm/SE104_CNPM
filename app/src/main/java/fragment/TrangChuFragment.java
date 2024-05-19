@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.BaoCaoNamScreen;
+import com.example.myapplication.BaoCaoNhapNamScreen;
 import com.example.myapplication.CauHoiScreen;
 import com.example.myapplication.ChamDiemScreen;
 import com.example.myapplication.DeThiScreen;
@@ -141,7 +142,7 @@ public class TrangChuFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(activity, BaoCaoNamScreen.class));
+                startActivity(new Intent(activity, BaoCaoNhapNamScreen.class));
                 requireActivity().finishAffinity();
             }
         });
