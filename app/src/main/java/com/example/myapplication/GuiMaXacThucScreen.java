@@ -38,6 +38,7 @@ public class GuiMaXacThucScreen extends AppCompatActivity {
     private EditText inputcode1, inputcode2, inputcode3, inputcode4, inputcode5, inputcode6;
     ImageButton xac_thuc_otp_button;
     String getotpbackend;
+    String numberphone;
     TextView gui_lai_ma_click;
 
     @Override
@@ -61,6 +62,8 @@ public class GuiMaXacThucScreen extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 //        gui_lai_ma_click.setText(String.format("+84-%s", getIntent().getStringExtra("phone_number")));
         getotpbackend = getIntent().getStringExtra("verificationId");
+        numberphone = getIntent().getStringExtra("phone_number");
+
         final ProgressBar progressBarverify = findViewById(R.id.progress_bar);
         xac_thuc_otp_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +89,7 @@ public class GuiMaXacThucScreen extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             // Nếu xác thực OTP đúng, chuyển hướng người dùng đến màn hình nhập lại mật khẩu mới
                                             Intent intent = new Intent(GuiMaXacThucScreen.this, QuenMatKhauScreen.class);
+                                            intent.putExtra("phone_number", numberphone);
                                             startActivity(intent);
                                         } else {
                                             // Nếu xác thực OTP sai, hiển thị thông báo lỗi
