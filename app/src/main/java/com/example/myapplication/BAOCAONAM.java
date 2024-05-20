@@ -7,8 +7,11 @@ public class BAOCAONAM
     private String maGV;
     private int tongSoDeThi;
     private int tongSoBaiCham;
+    private BAOCAONAM()
+    {}
 
-    public BAOCAONAM(String maBCNam, String maHKNH, String maGV, int tongSoDeThi, int tongSoBaiCham) {
+    public BAOCAONAM(String maBCNam, String maHKNH, String maGV, int tongSoDeThi, int tongSoBaiCham)
+    {
         this.maBCNam = maBCNam;
         this.maHKNH = maHKNH;
         this.maGV = maGV;
