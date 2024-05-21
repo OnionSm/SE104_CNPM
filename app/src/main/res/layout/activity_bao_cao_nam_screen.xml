@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".BaoCaoNamScreen">
 
     <ImageButton
@@ -78,6 +79,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.4" />
+
+    <ImageButton
+        android:id="@+id/xuat_file_excel_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/xuat_file_excel_button"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_2_1"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_2_2"
+        app:layout_constraintTop_toTopOf="@id/bao_cao_guideline_1_1"
+        app:layout_constraintBottom_toBottomOf="@id/bao_cao_guideline_1_2"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_2_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.755" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_2_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.955"/>
+
+
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/bao_cao_view_pager"

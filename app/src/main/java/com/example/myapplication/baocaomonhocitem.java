@@ -1,26 +1,46 @@
 package com.example.myapplication;
 
-public class baocaomonhocitem
-{
-    private String  tenmon;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class baocaomonhocitem implements Parcelable {
+    private String tenmon;
     private int soluongdethi;
-
     private int soluongbaicham;
-
-    private float tiledethi;
-
-    private float tilebaicham;
+    private int tiledethi;
+    private int tilebaicham;
 
 
 
-    public baocaomonhocitem(String tenmon, int soluongdethi, int soluongbaicham, float tiledethi, float tilebaicham)
-    {
+    public baocaomonhocitem(String tenmon, int soluongdethi, int soluongbaicham, int tiledethi, int tilebaicham) {
         this.tenmon = tenmon;
         this.soluongdethi = soluongdethi;
         this.soluongbaicham = soluongbaicham;
         this.tiledethi = tiledethi;
         this.tilebaicham = tilebaicham;
     }
+
+    protected baocaomonhocitem(Parcel in) {
+        tenmon = in.readString();
+        soluongdethi = in.readInt();
+        soluongbaicham = in.readInt();
+        tiledethi = in.readInt();
+        tilebaicham = in.readInt();
+    }
+
+    public static final Creator<baocaomonhocitem> CREATOR = new Creator<baocaomonhocitem>() {
+        @Override
+        public baocaomonhocitem createFromParcel(Parcel in) {
+            return new baocaomonhocitem(in);
+        }
+
+        @Override
+        public baocaomonhocitem[] newArray(int size) {
+            return new baocaomonhocitem[size];
+        }
+    };
 
     public String getTenmon() {
         return tenmon;
@@ -46,19 +66,33 @@ public class baocaomonhocitem
         this.soluongbaicham = soluongbaicham;
     }
 
-    public float getTiledethi() {
+    public int getTiledethi() {
         return tiledethi;
     }
 
-    public void setTiledethi(float tiledethi) {
+    public void setTiledethi(int tiledethi) {
         this.tiledethi = tiledethi;
     }
 
-    public float getTilebaicham() {
+    public int getTilebaicham() {
         return tilebaicham;
     }
 
-    public void setTilebaicham(float tilebaicham) {
+    public void setTilebaicham(int tilebaicham) {
         this.tilebaicham = tilebaicham;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(tenmon);
+        dest.writeInt(soluongdethi);
+        dest.writeInt(soluongbaicham);
+        dest.writeInt(tiledethi);
+        dest.writeInt(tilebaicham);
     }
 }

@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".BaoCaoRecycleItem">
 
     <ImageView
         android:id="@+id/background"
         android:layout_width="400dp"
         android:layout_height="180dp"
+        android:background="#F0F7FF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </ImageView>
 
     <TextView
-        android:id="@+id/ten_mon"
+        android:id="@+id/bao_cao_ten_mon"
         android:layout_width="120dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -27,11 +28,12 @@
         android:text="Nhập môn công nghệ phần mềm"
         android:textColor="#0000FD"
         android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/background"
         app:layout_constraintTop_toTopOf="@id/background" />
 
     <TextView
-        android:id="@+id/so_luong_de_thi"
+        android:id="@+id/bao_cao_so_luong_de_thi"
         android:layout_width="120dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -41,10 +43,10 @@
         android:textSize="14sp"
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="@id/background"
-        app:layout_constraintTop_toBottomOf="@id/ten_mon"/>
+        app:layout_constraintTop_toBottomOf="@id/bao_cao_ten_mon"/>
 
     <TextView
-        android:id="@+id/so_luong_bai_cham"
+        android:id="@+id/bao_cao_so_luong_bai_cham"
         android:layout_width="120dp"
         android:layout_height="0dp"
         android:fontFamily="@font/roboto_regular"
@@ -54,7 +56,7 @@
         android:textSize="14sp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/background"
-        app:layout_constraintTop_toBottomOf="@id/so_luong_de_thi"/>
+        app:layout_constraintTop_toBottomOf="@id/bao_cao_so_luong_de_thi"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -63,7 +65,7 @@
         android:layout_marginStart="20dp"
         android:indeterminateOnly="false"
         android:progressDrawable="@drawable/custom_progress_bar"
-        app:layout_constraintStart_toEndOf="@id/so_luong_de_thi"
+        app:layout_constraintStart_toEndOf="@id/bao_cao_so_luong_de_thi"
         app:layout_constraintTop_toTopOf="@id/background"
         app:layout_constraintBottom_toBottomOf= "@id/background"/>
 
@@ -78,5 +80,37 @@
         app:layout_constraintTop_toTopOf="@id/background"
         app:layout_constraintBottom_toBottomOf= "@id/background"
         app:layout_constraintEnd_toEndOf="@id/background"/>
+
+    <TextView
+        android:id="@+id/ti_le_de_thi"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:text="10%"
+        android:textSize="14sp"
+        android:textColor="#0000FD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/progressBar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/progressBar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ti_le_bai_cham"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="10%"
+        android:textSize="14sp"
+        android:textColor="#0000FD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/progressBar2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/progressBar2"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

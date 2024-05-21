@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
 
-    tools:context="fragment.NganHangCauHoiFragment">
+    tools:context="fragment.BaoCaoSoDo1Fragment">
 
     <TextView
         android:id="@+id/bao_cao_nam_text"
@@ -16,7 +16,7 @@
         android:textColor="#0000FD"
         android:gravity="center"
         android:text="Báo cáo năm"
-        android:textSize="27sp"
+        android:textSize="25sp"
         app:layout_constraintTop_toTopOf="@id/tao_de_guideline_3_2"
         app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_3_3"
         app:layout_constraintStart_toStartOf="@id/tao_de_guideline_6_3"
@@ -27,23 +27,88 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.03"/>
+        app:layout_constraintGuide_percent="0.01"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_3_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.04"/>
+        app:layout_constraintGuide_percent="0.02"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_3_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.09"/>
+        app:layout_constraintGuide_percent="0.07"/>
 
+    <TextView
+        android:id="@+id/bao_cao_nam_sldt_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#000000"
+        android:gravity="center|left"
+        android:text="Báo cáo năm"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_4_1"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_4_2"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_4_3"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_4_4"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_4_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_4_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45"/>
+
+    <TextView
+        android:id="@+id/bao_cao_nam_slbc_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#000000"
+        android:gravity="center|right"
+        android:text="Báo cáo năm"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="@id/tao_de_guideline_4_1"
+        app:layout_constraintBottom_toBottomOf="@id/tao_de_guideline_4_2"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_5_3"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_5_4"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_5_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_5_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.93"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tao_de_thi_rcv"
+        android:id="@+id/bao_cao_tao_de_thi_rcv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
