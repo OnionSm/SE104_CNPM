@@ -116,5 +116,18 @@ public class Login extends AppCompatActivity
                 });
             }
         });
+        setContentView(R.layout.activity_login);
+        ImageButton dangKyButton = findViewById(R.id.dang_ky_button);
+        dangKyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tạo Intent để chuyển hướng sang màn hình signup
+                Intent intent = new Intent(Login.this, SignUpScreen.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
+
 }
