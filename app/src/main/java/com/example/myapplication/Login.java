@@ -116,7 +116,6 @@ public class Login extends AppCompatActivity
                 });
             }
         });
-        setContentView(R.layout.activity_login);
         ImageButton dangKyButton = findViewById(R.id.dang_ky_button);
         dangKyButton.setOnClickListener(new View.OnClickListener() {
             @Override
