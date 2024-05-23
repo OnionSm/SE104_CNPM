@@ -61,7 +61,7 @@
            android:layout_height="fill_parent"
            android:layout_marginLeft="38dp"
            android:layout_marginRight="38dp"
-           android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+           android:text="Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
            android:fontFamily="@font/roboto_regular"
            android:textSize= "18sp"/>
     </LinearLayout>
