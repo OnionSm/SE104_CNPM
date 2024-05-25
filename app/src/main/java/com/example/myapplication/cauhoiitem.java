@@ -3,6 +3,7 @@ package com.example.myapplication;
 public class cauhoiitem
 {
     private String stt;
+    private String mach;
     private String mon_hoc;
     private String mo_ta;
     private String do_kho;
