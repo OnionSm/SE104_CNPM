@@ -26,10 +26,11 @@
         tools:targetApi="33">
         <activity
             android:name=".BaoCaoNhapNamScreen"
-            android:exported="false" />
+            android:exported="true">
+        </activity>
         <activity
             android:name=".QuenMatKhauScreen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".GuiMaXacThucScreen"
             android:exported="true" />
@@ -56,7 +57,7 @@
             android:exported="true"></activity>
         <activity
             android:name=".BaoCaoRecycleItem"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".baocaomonhocitem"
             android:exported="false" />
@@ -65,13 +66,13 @@
             android:exported="true" />
         <activity
             android:name=".TaoDeThiCauHoiDaTao"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".TaoCauHoiCauHoiItem"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ThongTinMonHoc"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ChiTietLopRecycleView"
             android:exported="true" />
@@ -83,10 +84,10 @@
             android:exported="true" />
         <activity
             android:name=".BoLocTraCuuScreen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".TraCuuDeThiListView"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".TraCuuScreen"
             android:exported="true" />
@@ -116,6 +117,9 @@
             android:exported="true" />
         <activity
             android:name=".MainScreen"
+            android:exported="true" />
+        <activity
+            android:name=".SignUpScreen"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

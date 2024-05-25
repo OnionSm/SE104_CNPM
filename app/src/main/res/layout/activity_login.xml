@@ -272,15 +272,42 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/login_guideline_dangkytop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.835"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/login_guideline_dangkybot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.86"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/r_dangky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.59" />
 
-
-
-
-
-
-
-
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/l_dangky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.41" />
+    <ImageButton
+        android:id="@+id/dang_ky_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/login_guideline_dangkybot"
+        app:layout_constraintStart_toStartOf="@id/l_dangky"
+        app:layout_constraintEnd_toEndOf="@id/r_dangky"
+        app:layout_constraintTop_toTopOf="@id/login_guideline_dangkytop"
+        android:background="@drawable/login_dang_ky_button"
+        android:scaleType="fitCenter"/>
 
 
 

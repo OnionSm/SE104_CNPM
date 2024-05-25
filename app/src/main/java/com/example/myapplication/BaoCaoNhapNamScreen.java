@@ -1,7 +1,15 @@
 package com.example.myapplication;
 
+import static org.apache.poi.ss.formula.ConditionalFormattingEvaluator.getRef;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -39,6 +47,11 @@ public class BaoCaoNhapNamScreen extends AppCompatActivity
     private ArrayList<CTBCNAM> list_chitietbaocaonam;
     private boolean check;
 
+    private EditText nam1_edt;
+    private EditText nam2_edt;
+
+    private ArrayList<MONHOC> list_mon_db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,123 +67,200 @@ public class BaoCaoNhapNamScreen extends AppCompatActivity
         check = true;
         list_ctbcn = new ArrayList<>();
         list_bcnam = new ArrayList<>();
-        namhoc = "2023/2024";
-        GetUserLogin(new OnCompleteData()
+        list_mon_db = new ArrayList<>();
+        nam1_edt = findViewById(R.id.otp_input_1);
+        nam2_edt = findViewById(R.id.otp_input_2);
+
+
+        ImageButton quay_lai_trang_chu = findViewById(R.id.tao_de_thi_icon_back);
+        quay_lai_trang_chu.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onCompleteData(ArrayList<CTBCNAM> list_ctbcn , ArrayList<BAOCAONAM> list_bcn)
+            public void onClick(View view)
             {
-                if(check)
+                Intent quay_lai_trang_chu_intent = new Intent(BaoCaoNhapNamScreen.this, MainScreenNew.class);
+                startActivity(quay_lai_trang_chu_intent);
+                finish();
+            }
+        });
+
+        ImageButton xembaocao = findViewById(R.id.xem_bao_cao_button);
+        xembaocao.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                String nam1_text = nam1_edt.getText().toString();
+                String nam2_text = nam2_edt.getText().toString();
+                namhoc = nam1_text + "/" + nam2_text;
+                if (!TextUtils.isEmpty(nam1_text) && !TextUtils.isEmpty(nam2_text))
                 {
-                    for(int i =0 ;i< list_ctbcn.size();i++)
-                    {
-                        Log.e("CTBCN",String.valueOf(i)+ " " + list_ctbcn.get(i).getMaBCNam() + " "
-                                + list_ctbcn.get(i).getMaMH()+ " "
-                                + String.valueOf(list_ctbcn.get(i).getSoLuongDeThi()) + " "
-                                + String.valueOf(list_ctbcn.get(i).getSoLuongBaiCham()));
-                    }
-                    for(int i =0 ;i< list_bcn.size();i++)
-                    {
-                        Log.e("BCN",String.valueOf(i)+ " " + list_bcn.get(i).getMaBCNam() + " " +
-                                list_bcn.get(i).getMaHKNH() + "" + list_bcn.get(i).getMaGV() + " " +
-                                list_bcn.get(i).getTongSoDeThi() + " " + list_bcn.get(i).getTongSoBaiCham());
-                    }
-                    DatabaseReference db_ctbcn = FirebaseDatabase.getInstance().getReference("CTBCNAM");
-                    DatabaseReference db_bcn = FirebaseDatabase.getInstance().getReference("BAOCAONAM");
-                    db_bcn.addListenerForSingleValueEvent(new ValueEventListener()
-                    {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot)
+                    try {
+                        int nam1_value = Integer.parseInt(nam1_text);
+                        int nam2_value = Integer.parseInt(nam2_text);
+
+                        if (nam2_value == nam1_value + 1)
                         {
-                            for(int i = 0 ; i< list_bcn.size(); i++)
+                            Log.e("Check condition", "OK TRUE");
+                            GetUserLogin(new OnCompleteData()
                             {
-                                boolean check = false;
-                                for(DataSnapshot data : snapshot.getChildren())
+                                @Override
+                                public void onCompleteData(ArrayList<CTBCNAM> list_ctbcn, ArrayList<BAOCAONAM> list_bcn)
                                 {
-                                    if((list_bcn.get(i).getMaHKNH().equals(data.child("maBCNam").getValue(String.class)) &&
-                                            (list_bcn.get(i).getMaGV().equals(data.child("maGV").getValue(String.class)))))
+                                    if (check)
                                     {
-                                        check = true;
-                                        Map<String, Object> map = new HashMap<>();
-                                        map.put("maBCNam",list_bcn.get(i).getMaBCNam());
-                                        map.put("maHKNH", list_bcn.get(i).getMaHKNH());
-                                        map.put(" maGV",list_bcn.get(i).getMaGV());
-                                        map.put("tongSoDeThi",list_bcn.get(i).getTongSoDeThi());
-                                        map.put("tongSoBaiCham",list_bcn.get(i).getTongSoBaiCham());
-                                        db_bcn.child(data.getKey()).updateChildren(map);
+                                        DatabaseReference db_ctbcn = FirebaseDatabase.getInstance().getReference("CTBCNAM");
+                                        DatabaseReference db_bcn = FirebaseDatabase.getInstance().getReference("BAOCAONAM");
+                                        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+                                        db_bcn.addListenerForSingleValueEvent(new ValueEventListener()
+                                        {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot)
+                                            {
+                                                for (int i = 0; i < list_bcn.size(); i++)
+                                                {
+                                                    boolean check = false;
+                                                    for (DataSnapshot data : snapshot.getChildren())
+                                                    {
+                                                        if ((list_bcn.get(i).getMaHKNH().equals(data.child("maBCNam").getValue(String.class)) &&
+                                                                (list_bcn.get(i).getMaGV().equals(data.child("maGV").getValue(String.class))))) {
+                                                            check = true;
+                                                            Map<String, Object> map = new HashMap<>();
+                                                            map.put("maBCNam", list_bcn.get(i).getMaBCNam());
+                                                            map.put("maHKNH", list_bcn.get(i).getMaHKNH());
+                                                            map.put(" maGV", list_bcn.get(i).getMaGV());
+                                                            map.put("tongSoDeThi", list_bcn.get(i).getTongSoDeThi());
+                                                            map.put("tongSoBaiCham", list_bcn.get(i).getTongSoBaiCham());
+                                                            db_bcn.child(data.getKey()).updateChildren(map);
+                                                        }
+
+                                                    }
+                                                    if (check == false)
+                                                    {
+                                                        db_bcn.child(list_bcn.get(i).getMaBCNam()).setValue(list_bcn.get(i));
+                                                    }
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+                                        db_ctbcn.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for (int i = 0; i < list_ctbcn.size(); i++) {
+                                                    boolean check = false;
+                                                    for (DataSnapshot data : snapshot.getChildren()) {
+                                                        if ((list_ctbcn.get(i).getMaBCNam().equals(data.child("maBCNam").getValue(String.class))) &&
+                                                                (list_ctbcn.get(i).getMaMH().equals(data.child("maMH").getValue(String.class))))
+                                                        {
+                                                            check = true;
+                                                            Map<String, Object> map = new HashMap<>();
+                                                            map.put("maBCNam", list_ctbcn.get(i).getMaBCNam());
+                                                            map.put("maMH", list_ctbcn.get(i).getMaMH());
+                                                            map.put("soLuongDeThi", list_ctbcn.get(i).getSoLuongDeThi());
+                                                            map.put("tileDeThi", list_ctbcn.get(i).getTileDeThi());
+                                                            map.put("soLuongBaiCham", list_ctbcn.get(i).getSoLuongBaiCham());
+                                                            map.put("tileBaiCham", list_ctbcn.get(i).getTileBaiCham());
+                                                            db_ctbcn.child(data.getKey()).updateChildren(map);
+                                                        }
+                                                    }
+                                                    if (check == false) {
+                                                        String key = db_ctbcn.push().getKey();
+                                                        db_ctbcn.child(key).setValue(list_ctbcn.get(i));
+                                                    }
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+                                        check = false;
+                                        int tongsodethi = 0;
+                                        int tongsobaicham = 0;
+                                        for (int i = 0; i < list_bcn.size(); i++)
+                                        {
+                                            tongsodethi += list_bcn.get(i).getTongSoDeThi();
+                                            tongsobaicham += list_bcn.get(i).getTongSoBaiCham();
+                                        }
+                                        ArrayList<baocaomonhocitem> list_monhoc = new ArrayList<>();
+                                        for (int i = 0; i < list_ctbcn.size(); i++)
+                                        {
+                                            boolean check_monhoc = false;
+                                            for (int j = 0; j < list_monhoc.size(); j++)
+                                            {
+                                                if (list_monhoc.get(j).getTenmon().equals(list_ctbcn.get(i).getMaMH()))
+                                                {
+                                                    list_monhoc.get(j).setSoluongdethi(list_monhoc.get(j).getSoluongdethi() + list_ctbcn.get(i).getSoLuongDeThi());
+                                                    list_monhoc.get(j).setSoluongbaicham(list_monhoc.get(j).getSoluongbaicham() + list_ctbcn.get(i).getSoLuongBaiCham());
+                                                    check_monhoc = true;
+                                                }
+                                            }
+                                            if (check_monhoc == false) {
+                                                baocaomonhocitem monhoc = new baocaomonhocitem(list_ctbcn.get(i).getMaMH(),
+                                                        list_ctbcn.get(i).getSoLuongDeThi(),
+                                                        list_ctbcn.get(i).getSoLuongBaiCham(), 0, 0);
+                                                list_monhoc.add(monhoc);
+                                            }
+                                        }
+
+
+                                        for (int i = 0; i < list_monhoc.size(); i++)
+                                        {
+                                            for (int j = 0; j<list_mon_db.size();j++)
+                                            {
+                                                if (list_monhoc.get(i).getTenmon().equals(list_mon_db.get(j).getMaMH()))
+                                                {
+                                                    list_monhoc.get(i).setTenmon(list_mon_db.get(j).getTenMH());
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        for (int i = 0; i < list_monhoc.size(); i++)
+                                        {
+                                            int tiledethi = list_monhoc.get(i).getSoluongdethi() * 100 / tongsodethi;
+                                            int tilebaicham = list_monhoc.get(i).getSoluongbaicham() * 100 / tongsobaicham;
+                                            list_monhoc.get(i).setTiledethi(tiledethi);
+                                            list_monhoc.get(i).setTilebaicham(tilebaicham);
+                                        }
+                                        Intent intent = new Intent(BaoCaoNhapNamScreen.this, BaoCaoNamScreen.class);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putInt("tongsodethi", tongsodethi);
+                                        bundle.putInt("tongsobaicham", tongsobaicham);
+                                        bundle.putString("nam1", nam1_text);
+                                        bundle.putString("nam2", nam2_text);
+                                        bundle.putParcelableArrayList("data_list", list_monhoc);
+                                        intent.putExtra("data", bundle);
+                                        Log.e("Check Activity", "READY TO START");
+                                        startActivity(intent);
+                                        finish();
                                     }
-
                                 }
-                                if(check==false)
-                                {
-                                    db_bcn.child(list_bcn.get(i).getMaBCNam()).setValue(list_bcn.get(i));
-                                }
-                            }
+                            });
                         }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error)
+                        else
                         {
-
+                            Toast.makeText(BaoCaoNhapNamScreen.this,"Năm học không hợp lệ",Toast.LENGTH_SHORT).show();
                         }
-                    });
-
-                    db_ctbcn.addListenerForSingleValueEvent(new ValueEventListener()
-                    {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot)
-                        {
-                            for(int i = 0; i<list_ctbcn.size();i++)
-                            {
-                                boolean check = false;
-                                for(DataSnapshot data : snapshot.getChildren())
-                                {
-                                    if((list_ctbcn.get(i).getMaBCNam().equals(data.child("maBCNam").getValue(String.class))) &&
-                                            (list_ctbcn.get(i).getMaMH().equals(data.child("maMH").getValue(String.class))))
-                                    {
-                                        check = true;
-                                        Map<String, Object> map = new HashMap<>();
-                                        map.put("maBCNam", list_ctbcn.get(i).getMaBCNam());
-                                        map.put("maMH",list_ctbcn.get(i).getMaMH());
-                                        map.put("soLuongDeThi",list_ctbcn.get(i).getSoLuongDeThi());
-                                        map.put("tileDeThi",list_ctbcn.get(i).getTileDeThi());
-                                        map.put("soLuongBaiCham", list_ctbcn.get(i).getSoLuongBaiCham());
-                                        map.put("tileBaiCham",list_ctbcn.get(i).getTileBaiCham());
-                                        db_ctbcn.child(data.getKey()).updateChildren(map);
-                                    }
-                                }
-                                if(check==false)
-                                {
-                                    String key = db_ctbcn.push().getKey();
-                                    db_ctbcn.child(key).setValue(list_ctbcn.get(i));
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error)
-                        {
-
-                        }
-                    });
-
-                   /* for(int i = 0 ; i< list_bcn.size(); i++)
-                    {
-                        db_bcn.child(list_bcn.get(i).getMaBCNam()).setValue(list_bcn.get(i));
                     }
-                    for(int i = 0 ; i < list_ctbcn.size(); i++)
+                    catch (NumberFormatException e)
                     {
-                        String key = db_ctbcn.push().getKey();
-                        db_ctbcn.child(key).setValue(list_ctbcn.get(i));
-                    }*/
-                    check = false;
-                    /*DatabaseReference db_ctbcn = FirebaseDatabase.getInstance().getReference("CTBCNAM");
-                    for(int i = 0; i<list_ctbcn.size();i++)
-                    {
-                        String key = db_ctbcn.push().getKey();
-                        db_ctbcn.child(key).setValue(list_ctbcn.get(i));
-                    }*/
+                        // Handle the case where input is not a valid integer
+                        // Show an error message or handle accordingly
+                    }
+                }
+                else
+                {
+                    Toast.makeText(BaoCaoNhapNamScreen.this, "Vui lòng nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
     }
 
@@ -182,6 +272,8 @@ public class BaoCaoNhapNamScreen extends AppCompatActivity
         DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
         DatabaseReference db_baocaonam = FirebaseDatabase.getInstance().getReference("BAOCAONAM");
         DatabaseReference db_ctbcn = FirebaseDatabase.getInstance().getReference("CTBCNAM");
+        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
+
         db_pdn.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
@@ -234,14 +326,14 @@ public class BaoCaoNhapNamScreen extends AppCompatActivity
                                 if(data.child("maHKNH").getValue(String.class).equals(mahk1))
                                 {
                                     ma_bcn_hk1 = data.getKey();
-                                    BAOCAONAM bcn = data.getValue(BAOCAONAM.class);
+                                    BAOCAONAM bcn = new BAOCAONAM(ma_bcn_hk1,mahk1,key_user,0,0);
                                     list_bcnam.add(bcn);
                                     check_hk1 = 1;
                                 }
                                 else if(data.child("maHKNH").getValue(String.class).equals(mahk2))
                                 {
                                     ma_bcn_hk2 = data.getKey();
-                                    BAOCAONAM bcn  = data.getValue(BAOCAONAM.class);
+                                    BAOCAONAM bcn = new BAOCAONAM(ma_bcn_hk2,mahk2,key_user,0,0);
                                     list_bcnam.add(bcn);
                                     check_hk2 = 1;
                                 }
@@ -260,6 +352,23 @@ public class BaoCaoNhapNamScreen extends AppCompatActivity
                             list_bcnam.add(bcn);
                         }
                     }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                db_monhoc.addListenerForSingleValueEvent(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        for(DataSnapshot data : snapshot.getChildren())
+                        {
+                            MONHOC mh = new MONHOC(data.getKey(),data.child("tenMH").getValue(String.class),"");
+                            list_mon_db.add(mh);
+                        }
+                    }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 

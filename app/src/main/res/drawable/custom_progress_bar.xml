@@ -4,7 +4,7 @@
         <shape
             android:shape="ring"
             android:useLevel="false"
-            android:thickness="15dp">
+            android:thickness="10dp">
             <solid android:color="#FFFFFF"/>
         </shape>
     </item>
@@ -13,7 +13,7 @@
         <shape
             android:shape="ring"
             android:useLevel="true"
-            android:thickness="15dp">
+            android:thickness="10dp">
             <solid android:color="#2F6BFF"/>
         </shape>
     </item>
