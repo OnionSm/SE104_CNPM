@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,8 +50,24 @@ public class SignUpScreen extends AppCompatActivity
 
             }
         });
-
-
+        Button loginButton = findViewById(R.id.button_dangnhap);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tạo Intent để chuyển hướng sang màn hình signup
+                Intent intent = new Intent(SignUpScreen.this, Login.class);
+                startActivity(intent);
+            }
+        });
+        ImageButton sdtButton = dang_ki_button;
+        sdtButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Tạo Intent để chuyển hướng sang màn hình signup
+                Intent intent = new Intent(SignUpScreen.this, SDTXacThucScreen.class);
+                startActivity(intent);
+            }
+        });
 
     }
     private void CheckValidInput()
