@@ -3,12 +3,15 @@ package com.example.myapplication;
 public class cauhoiitem
 {
     private String stt;
+    private String mach;
     private String mon_hoc;
     private String mo_ta;
     private String do_kho;
     private String ngay_tao;
-    public cauhoiitem(String stt, String mon_hoc, String mo_ta, String do_kho, String ngay_tao) {
+
+    public cauhoiitem(String stt, String mach, String mon_hoc, String mo_ta, String do_kho, String ngay_tao) {
         this.stt = stt;
+        this.mach = mach;
         this.mon_hoc = mon_hoc;
         this.mo_ta = mo_ta;
         this.do_kho = do_kho;
@@ -21,6 +24,14 @@ public class cauhoiitem
 
     public void setStt(String stt) {
         this.stt = stt;
+    }
+
+    public String getMach() {
+        return mach;
+    }
+
+    public void setMach(String mach) {
+        this.mach = mach;
     }
 
     public String getMon_hoc() {
@@ -54,7 +65,4 @@ public class cauhoiitem
     public void setNgay_tao(String ngay_tao) {
         this.ngay_tao = ngay_tao;
     }
-
-
-
 }
