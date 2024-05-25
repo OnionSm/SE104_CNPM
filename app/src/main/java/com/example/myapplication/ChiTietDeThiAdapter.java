@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,35 +11,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class DsCauHoiDaTaoAdapter extends RecyclerView.Adapter<DsCauHoiDaTaoAdapter.DsViewHolder> {
-
+public class ChiTietDeThiAdapter extends RecyclerView.Adapter<ChiTietDeThiAdapter.DsDeThiViewHolder>
+{
     private ArrayList<cauhoiitem> mylist;
 
-
-    private OnItemClickListener listener;
-
-    public interface OnItemClickListener
-    {
-        void onItemClick(cauhoiitem cauhoi);
-    }
-
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
-
-    public DsCauHoiDaTaoAdapter(ArrayList<cauhoiitem> mylist) {
+    public ChiTietDeThiAdapter(ArrayList<cauhoiitem> mylist) {
         this.mylist = mylist;
     }
 
     @NonNull
     @Override
-    public DsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_custom_list_view, parent, false);
-        return new DsViewHolder(view);
+    public ChiTietDeThiAdapter.DsDeThiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chi_tiet_cau_hoi_item, parent, false);
+        return new ChiTietDeThiAdapter.DsDeThiViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(@NonNull DsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ChiTietDeThiAdapter.DsDeThiViewHolder holder, int position) {
         cauhoiitem cauhoi = mylist.get(position);
         if (cauhoi == null) {
             return;
@@ -50,15 +36,6 @@ public class DsCauHoiDaTaoAdapter extends RecyclerView.Adapter<DsCauHoiDaTaoAdap
         holder.noidung.setText(cauhoi.getMo_ta());
         holder.dokho.setText(cauhoi.getDo_kho());
         holder.ngaytao.setText(cauhoi.getNgay_tao());
-        holder.layout.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                listener.onItemClick(cauhoi);
-            }
-        });
-
     }
 
     @Override
@@ -69,7 +46,8 @@ public class DsCauHoiDaTaoAdapter extends RecyclerView.Adapter<DsCauHoiDaTaoAdap
         return 0;
     }
 
-    public class DsViewHolder extends RecyclerView.ViewHolder {
+    public class DsDeThiViewHolder extends RecyclerView.ViewHolder
+    {
         private TextView stt;
         private TextView monhoc;
         private TextView noidung;
@@ -77,7 +55,7 @@ public class DsCauHoiDaTaoAdapter extends RecyclerView.Adapter<DsCauHoiDaTaoAdap
         private TextView ngaytao;
         private ConstraintLayout layout;
 
-        public DsViewHolder(@NonNull View itemView)
+        public DsDeThiViewHolder(@NonNull View itemView)
         {
             super(itemView);
             stt = itemView.findViewById(R.id.custom_list_view_stt);

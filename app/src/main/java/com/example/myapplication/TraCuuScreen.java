@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 
+import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -23,6 +25,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.core.graphics.Insets;
@@ -32,6 +35,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,6 +57,8 @@ public class TraCuuScreen extends AppCompatActivity
     SearchView searview;
 
     ImageButton quay_lai_main_screen;
+    dethitracuuitem dethi_selected;
+    BottomSheetDialog bottom_sheet_dialog;
 
 
     @Override
@@ -86,8 +92,9 @@ public class TraCuuScreen extends AppCompatActivity
                 CreatePopUpFilter();
             }
         });
-
+        setupBottomSheetDialog();
         GetDataFromFireBase();
+        GetListDeThi();
         setupOnBackPressed();
     }
 
@@ -153,7 +160,7 @@ public class TraCuuScreen extends AppCompatActivity
     {
         DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
         DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
-        Query query = db_dethi.limitToLast(10);
+        Query query = db_dethi.limitToLast(20);
         mylist = new ArrayList<>();
         query.addChildEventListener(new ChildEventListener()
         {
@@ -163,16 +170,17 @@ public class TraCuuScreen extends AppCompatActivity
                 String ma_DT = snapshot.child("maDT").getValue(String.class);
                 String ngay_Thi = snapshot.child("ngayThi").getValue(String.class);
                 String ma_MH_dethi = snapshot.child("maMH").getValue(String.class);
+                String thoiluong = String.valueOf(snapshot.child("thoiLuong").getValue(Integer.class));
 
                 db_monhoc.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot)
                     {
                         String tenmon = snapshot.child(ma_MH_dethi).child("tenMH").getValue(String.class);
-                        mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT));
-                        GetListDeThi();
-                    }
+                        mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT, thoiluong));
+                        adapter.notifyDataSetChanged();
 
+                    }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
@@ -211,7 +219,15 @@ public class TraCuuScreen extends AppCompatActivity
         dethi_rcv = findViewById(R.id.ds_de_thi_rcv);
         LinearLayoutManager ln_layout_manager = new LinearLayoutManager(TraCuuScreen.this);
         dethi_rcv.setLayoutManager(ln_layout_manager);
-        adapter = new DeThiTraCuuAdapter(mylist);
+        adapter = new DeThiTraCuuAdapter(mylist, new DeThiTraCuuAdapter.DeThiTraCuuClickCallBack()
+        {
+            @Override
+            public void deThiTraCuuCallBack(dethitracuuitem dethi)
+            {
+                dethi_selected = dethi;
+                bottom_sheet_dialog.show();
+            }
+        });
         dethi_rcv.setAdapter(adapter);
 
         RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(TraCuuScreen.this, DividerItemDecoration.VERTICAL);
@@ -261,5 +277,93 @@ public class TraCuuScreen extends AppCompatActivity
             }
         });
     }
+    private void setupBottomSheetDialog()
+    {
+        bottom_sheet_dialog = new BottomSheetDialog(TraCuuScreen.this);
+        View bottom_sheet_view = getLayoutInflater().inflate(R.layout.bottom_xem_sua_xoa_de_thi, null);
+        bottom_sheet_dialog.setContentView(bottom_sheet_view);
+        ImageButton button_xem_de_thi = bottom_sheet_view.findViewById(R.id.button_chi_tiet_de_thi);
+        ImageButton button_sua_de_thi = bottom_sheet_view.findViewById(R.id.button_sua_de_thi);
+        ImageButton button_xoa_de_thi = bottom_sheet_view.findViewById(R.id.button_xoa_de_thi);
+        button_xem_de_thi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(TraCuuScreen.this, ChiTietDeThiScreen.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("madethi", dethi_selected.getMa_de());
+                intent.putExtra("data_madethi", bundle);
+                startActivity(intent);
+            }
+        });
+        button_sua_de_thi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(TraCuuScreen.this, SuaDeThiScreen.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("madethi",dethi_selected.getMa_de());
+                intent.putExtra("data", bundle);
+                startActivity(intent);
+            }
+        });
+        button_xoa_de_thi.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                showPopupXoa();
+            }
+        });
 
+    }
+    private void showPopupXoa()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(TraCuuScreen.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.pop_up_xoa_de_thi, null);
+        builder.setView(dialogView);
+        Button button_dong_y = dialogView.findViewById(R.id.button_dong_y_xoa);
+        Button button_huy = dialogView.findViewById(R.id.button_huy_xoa);
+        AlertDialog dialog = builder.create();
+        button_dong_y.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
+                DatabaseReference db_dethi_cauhoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
+                db_dethi_cauhoi.addListenerForSingleValueEvent(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        for(DataSnapshot data : snapshot.getChildren())
+                        {
+                            if(data.child("maDT").getValue(String.class).equals(dethi_selected.getMa_de()))
+                            {
+                                db_dethi_cauhoi.child(data.getKey()).removeValue();
+                            }
+                        }
+                        db_dethi.child(dethi_selected.getMa_de()).removeValue();
+                        Toast.makeText(TraCuuScreen.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        bottom_sheet_dialog.dismiss();
+                        mylist.remove(dethi_selected);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+        });
+        button_huy.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
+    }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -29,13 +30,18 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
     private ArrayList<dethitracuuitem> mylist;
     private ArrayList<dethitracuuitem> mylist_old;
     private ArrayList<dethitracuuitem> mylist_filtered;
+    private DeThiTraCuuClickCallBack callback;
+    interface DeThiTraCuuClickCallBack
+    {
+        void deThiTraCuuCallBack(dethitracuuitem dethi);
+    }
 
-    public DeThiTraCuuAdapter(ArrayList<dethitracuuitem> mylist)
+    public DeThiTraCuuAdapter(ArrayList<dethitracuuitem> mylist , DeThiTraCuuClickCallBack callback)
     {
         this.mylist = mylist;
         this.mylist_old = mylist;
+        this.callback = callback;
     }
-
     @NonNull
     @Override
     public DeThiViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -53,8 +59,24 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
             return;
         }
         holder.ma_de.setText(dethi.getMa_de());
-        holder.ngay_tao.setText(dethi.getNgay());
+        if(dethi.getNgay().equals(""))
+        {
+            holder.ngay_tao.setText("Chưa có ngày thi");
+        }
+        else
+        {
+            holder.ngay_tao.setText(dethi.getNgay());
+        }
         holder.ten_mon.setText(dethi.getMon_hoc());
+        holder.thoi_luong.setText(dethi.getThoiluong() + " phút");
+        holder.layout.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                callback.deThiTraCuuCallBack(dethi);
+            }
+        });
     }
 
     @Override
@@ -67,20 +89,22 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
         return 0;
     }
 
-
-
     public class DeThiViewHoder extends RecyclerView.ViewHolder
     {
         private TextView ma_de;
         private TextView ten_mon;
 
         private TextView ngay_tao;
+        private TextView thoi_luong;
+        private ConstraintLayout layout;
         public DeThiViewHoder(@NonNull View itemView)
         {
             super(itemView);
             ten_mon =  itemView.findViewById(R.id.cs_lv_ten_mon);
-            ngay_tao =  itemView.findViewById(R.id.cs_lv_ngay);
+            ngay_tao =  itemView.findViewById(R.id.cs_lv_ngay_thi);
             ma_de =  itemView.findViewById(R.id.cs_lv_ma_de);
+            thoi_luong = itemView.findViewById(R.id.cs_lv_thoi_luong);
+            layout = itemView.findViewById(R.id.tc_de_thi_custom_lv);
         }
     }
     @Override

@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -13,10 +14,16 @@ import java.util.ArrayList;
 public class DsDeThiDaTaoAdapter extends RecyclerView.Adapter<DsDeThiDaTaoAdapter.DsDeThiViewHoder>
 {
     private ArrayList<dethidataoitem> mylist;
+    private DsDeThiClickCallBack callback;
+    interface DsDeThiClickCallBack
+    {
+        void dsDeThiCallBack(dethidataoitem dethi);
+    }
 
-    public DsDeThiDaTaoAdapter(ArrayList<dethidataoitem> mylist)
+    public DsDeThiDaTaoAdapter(ArrayList<dethidataoitem> mylist, DsDeThiClickCallBack callback)
     {
         this.mylist = mylist;
+        this.callback = callback;
     }
 
     @NonNull
@@ -51,6 +58,14 @@ public class DsDeThiDaTaoAdapter extends RecyclerView.Adapter<DsDeThiDaTaoAdapte
         {
             holder.ngaytao.setText(dethi.getNgaytao());
         }
+        holder.layout.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                callback.dsDeThiCallBack(dethi);
+            }
+        });
 
     }
 
@@ -77,6 +92,8 @@ public class DsDeThiDaTaoAdapter extends RecyclerView.Adapter<DsDeThiDaTaoAdapte
         private TextView made;
         private TextView thoiluong;
         private TextView ngaytao;
+        private ConstraintLayout layout;
+
         public DsDeThiViewHoder(@NonNull View itemView)
         {
             super(itemView);
@@ -87,6 +104,7 @@ public class DsDeThiDaTaoAdapter extends RecyclerView.Adapter<DsDeThiDaTaoAdapte
             made =  itemView.findViewById(R.id.custom_list_view_ma_de);
             thoiluong =  itemView.findViewById(R.id.custom_list_view_thoi_luong);
             ngaytao =  itemView.findViewById(R.id.custom_list_view_ngay_tao);
+            layout = itemView.findViewById(R.id.main);
         }
     }
 

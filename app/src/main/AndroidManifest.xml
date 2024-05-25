@@ -6,9 +6,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
-
     <uses-permission android:name="android.permission." />
 
     <application
@@ -25,9 +25,14 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".SuaDeThiScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietDeThiScreen"
+            android:exported="false" />
+        <activity
             android:name=".BaoCaoNhapNamScreen"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".QuenMatKhauScreen"
             android:exported="true" />
@@ -51,10 +56,10 @@
             android:exported="false" />
         <activity
             android:name=".DanhSachDeThiScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ThongTinDeThiScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".BaoCaoRecycleItem"
             android:exported="true" />
@@ -93,7 +98,8 @@
             android:exported="true" />
         <activity
             android:name=".DeThiScreen"
-            android:exported="true" />
+            android:exported="true">
+        </activity>
         <activity
             android:name=".CustomListView"
             android:exported="true" />
@@ -114,7 +120,7 @@
             android:exported="true" />
         <activity
             android:name=".CauHoiScreen"
-            android:exported="true" />
+            android:exported="true"></activity>
         <activity
             android:name=".MainScreen"
             android:exported="true" />
@@ -123,7 +129,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
