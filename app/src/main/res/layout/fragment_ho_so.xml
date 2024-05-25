@@ -105,13 +105,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.14"/>
+        app:layout_constraintGuide_percent="0.08"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/profile_guideline_3_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.304"/>
+        app:layout_constraintGuide_percent="0.25"/>
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/doi_anh_dai_dien"
+        android:background="@drawable/doi_anh_dai_dien"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/profile_guideline_23_1"
+app:layout_constraintEnd_toEndOf="@id/profile_guideline_23_2"
+app:layout_constraintTop_toTopOf="@id/profile_guideline_23_3"
+app:layout_constraintBottom_toBottomOf="@id/profile_guideline_23_4"/>
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/profile_guideline_23_1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.32"/>
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/profile_guideline_23_2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.69"/>
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/profile_guideline_23_3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+android:orientation="horizontal"
+app:layout_constraintGuide_percent="0.26"/>
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/profile_guideline_23_4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.29"/>
+
+
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -544,6 +580,40 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.825"/>
-
+<ImageButton
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@drawable/log_out_icon"
+    android:scaleType="fitXY"
+    android:id="@+id/log_out"
+    app:layout_constraintBottom_toBottomOf="@id/profile_guideline_22_4"
+    app:layout_constraintEnd_toEndOf="@id/profile_guideline_22_2"
+    app:layout_constraintStart_toStartOf="@id/profile_guideline_22_1"
+    app:layout_constraintTop_toTopOf="@id/profile_guideline_22_3"
+    />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/profile_guideline_22_1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.82"/>
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/profile_guideline_22_2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.95"/>
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/profile_guideline_22_3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.87"/>
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/profile_guideline_22_4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.92"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
