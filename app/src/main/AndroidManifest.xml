@@ -6,10 +6,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.READ_SECURE_CAMERA"/>
-
+    <uses-permission android:name="android.permission.READ_SECURE_CAMERA" />
     <uses-permission android:name="android.permission." />
 
     <application
@@ -26,9 +26,17 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".SDTXacThucSignUp"
+            android:exported="false" />
+        <activity
+            android:name=".SDTXacThucToSignup"
+            android:exported="false" />
+        <activity
+            android:name=".VerifyOTPToLogin"
+            android:exported="false" />
+        <activity
             android:name=".BaoCaoNhapNamScreen"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".QuenMatKhauScreen"
             android:exported="true" />
@@ -52,10 +60,10 @@
             android:exported="false" />
         <activity
             android:name=".DanhSachDeThiScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ThongTinDeThiScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".BaoCaoRecycleItem"
             android:exported="true" />

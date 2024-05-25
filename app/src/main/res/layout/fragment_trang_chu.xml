@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.185" />
+        app:layout_constraintGuide_percent="0.145" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_3_2"
         android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.345" />
+        app:layout_constraintGuide_percent="0.305" />
 
 
     <TextView
@@ -124,20 +124,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.36" />
+        app:layout_constraintGuide_percent="0.315" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_4_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.393" />
+        app:layout_constraintGuide_percent="0.356" />
 
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="Khoa khoa học máy tính"
+        android:text="Khoa Khoa học máy tính"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_5_1"
@@ -150,7 +150,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.423" />
+        app:layout_constraintGuide_percent="0.41" />
 
 
     <ImageButton
