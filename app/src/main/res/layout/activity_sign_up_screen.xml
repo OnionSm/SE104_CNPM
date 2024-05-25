@@ -8,6 +8,51 @@
     android:background="@drawable/sign_up_background"
     tools:context=".SignUpScreen">
     <!-- Thêm các guideline dọc -->
+    <!-- Thêm cái nhập masogv,ông đưa cái msgv lên đầu, tui thêm tạm ở đây lấy cái id code backend, sau ông code lại front nha-->
+    <EditText
+        android:id="@+id/nhap_msgv"
+        android:paddingStart="15dp"
+        android:hint="Nhập MSGV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="14sp"
+        android:background="@drawable/login_screen_shape_4"
+        tools:ignore="Autofill,HardcodedText,LabelFor,MissingConstraints,TextFields"
+        app:layout_constraintBottom_toBottomOf="@+id/nhap_msgv_4"
+        app:layout_constraintEnd_toEndOf="@+id/nhap_msgv_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nhap_msgv_1"
+        app:layout_constraintTop_toTopOf="@+id/nhap_msgv_3"
+
+
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_msgv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_msgv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_msgv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_msgv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/l_nhap_text"
         android:layout_width="wrap_content"
@@ -33,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.26" />
+        app:layout_constraintGuide_percent="0.42" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/r_email"
@@ -250,7 +295,7 @@
         android:id="@+id/ten_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Tên"
+        android:text="Họ và tên"
         android:textColor="#0000FF"
         android:textSize="11sp"
         android:gravity="bottom"
@@ -290,7 +335,7 @@
         android:id="@+id/xac_nhan_mk"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Xác Nhận Mật Khẩu"
+        android:text="Xác nhận mật khẩu"
         android:textColor="#0000FF"
         android:textSize="11sp"
         android:gravity="bottom"
@@ -320,7 +365,8 @@
         android:id="@+id/nhap_ten"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:hint="Nhập Tên"
+        android:paddingStart="15dp"
+        android:hint="Nhập tên"
         android:textSize="14sp"
         android:background="@drawable/login_screen_shape_4"
         app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_ten_text"
@@ -377,7 +423,8 @@
         android:id="@+id/button_dangnhap"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="bạn có tài khoản rồi sao, đăng nhập"
+        android:text="Bạn có tài khoản rồi sao
+        Đăng nhập"
         android:textSize="11sp"
         android:background="#FFFFFF"
         android:textColor="#0000FF"

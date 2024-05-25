@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity
     EditText EmailInput;
     EditText PasswordInput;
     ImageButton LoginButton;
-
+    ImageButton QuenMatKhauButton;
     boolean password_visible;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity
         EmailInput = findViewById(R.id.login_email_edit_text);
         PasswordInput = findViewById(R.id.login_pass_edit_text);
         LoginButton = findViewById(R.id.login_button);
+        QuenMatKhauButton = findViewById(R.id.quen_mat_khau_button);
 
 
         PasswordInput.setOnTouchListener(new View.OnTouchListener()
@@ -122,6 +123,13 @@ public class Login extends AppCompatActivity
             public void onClick(View v) {
                 // Tạo Intent để chuyển hướng sang màn hình signup
                 Intent intent = new Intent(Login.this, SignUpScreen.class);
+                startActivity(intent);
+            }
+        });
+        QuenMatKhauButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, SDTXacThucScreen.class);
                 startActivity(intent);
             }
         });

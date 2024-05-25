@@ -2,84 +2,96 @@ package com.example.myapplication;
 
 
 
-public class GIANGVIEN
-{
-    private String maGV;
-    private String hoTenGV;
-    private String ngSinhGV;
-    private String gioiTinhGV;
-    private String matKhau;
-    private String maNhomND;
+public class GIANGVIEN {
+    public String gioiTinhGV;
+    public String hoTenGV;
+    public String maGV;
+    public String maNhomND;
+    public String matKhau;
+    public String ngSinhGV;
+    public String sdt;
 
-    public GIANGVIEN(String maGV, String hoTenGV, String ngSinhGV, String gioiTinhGV, String matKhau, String maNhomND) {
-        this.maGV = maGV;
-        this.hoTenGV = hoTenGV;
-        this.ngSinhGV = ngSinhGV;
+    public GIANGVIEN(String gioiTinhGV, String hoTenGV, String maGV, String maNhomND, String matKhau, String ngSinhGV, String sdt) {
         this.gioiTinhGV = gioiTinhGV;
-        this.matKhau = matKhau;
-        this.maNhomND = maNhomND;
-    }
-
-    public GIANGVIEN() {
-    }
-
-    public String getMaGV() {
-        return maGV;
-    }
-
-    public void setMaGV(String maGV) {
-        this.maGV = maGV;
-    }
-
-    public String getHoTenGV() {
-        return hoTenGV;
-    }
-
-    public void setHoTenGV(String hoTenGV) {
         this.hoTenGV = hoTenGV;
-    }
-
-    public String getNgSinhGV() {
-        return ngSinhGV;
-    }
-
-    public void setNgSinhGV(String ngSinhGV) {
+        this.maGV = maGV;
+        this.maNhomND = maNhomND;
+        this.matKhau = matKhau;
         this.ngSinhGV = ngSinhGV;
+        this.sdt = sdt;
     }
 
     public String getGioiTinhGV() {
         return gioiTinhGV;
     }
 
-    public void setGioiTinhGV(String gioiTinhGV) {
-        this.gioiTinhGV = gioiTinhGV;
+    public String getHoTenGV() {
+        return hoTenGV;
     }
 
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
+    public String getMaGV() {
+        return maGV;
     }
 
     public String getMaNhomND() {
         return maNhomND;
     }
 
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public String getNgSinhGV() {
+        return ngSinhGV;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setGioiTinhGV(String gioiTinhGV) {
+        this.gioiTinhGV = gioiTinhGV;
+    }
+
+    public void setHoTenGV(String hoTenGV) {
+        this.hoTenGV = hoTenGV;
+    }
+
+    public void setMaGV(String maGV) {
+        this.maGV = maGV;
+    }
+
     public void setMaNhomND(String maNhomND) {
         this.maNhomND = maNhomND;
     }
 
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public void setNgSinhGV(String ngSinhGV) {
+        this.ngSinhGV = ngSinhGV;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
     @Override
     public String toString() {
-        return "com.example.myapplication.GIANGVIEN{" +
-                "maGV='" + maGV + '\'' +
+        return "GIANGVIEN{" +
+                "gioiTinhGV='" + gioiTinhGV + '\'' +
                 ", hoTenGV='" + hoTenGV + '\'' +
-                ", ngSinhGV=" + ngSinhGV +
-                ", gioiTinhGV='" + gioiTinhGV + '\'' +
-                ", matKhau='" + matKhau + '\'' +
+                ", maGV='" + maGV + '\'' +
                 ", maNhomND='" + maNhomND + '\'' +
+                ", matKhau='" + matKhau + '\'' +
+                ", ngSinhGV='" + ngSinhGV + '\'' +
+                ", sdt='" + sdt + '\'' +
                 '}';
     }
 }
+
+
+
+
+

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gui_ma_xac_thuc_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerifyOTPToLogin">
+        <ImageButton
+            android:id="@+id/otp_screen_icon_back"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/otp_guideline_1_4"
+            app:layout_constraintEnd_toEndOf="@id/otp_guideline_1_2"
+            app:layout_constraintStart_toStartOf="@id/otp_guideline_1_1"
+            app:layout_constraintTop_toTopOf="@id/otp_guideline_1_3"
+            app:srcCompat="@drawable/them_cau_hoi_image_view_1"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.07"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_1_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_1_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.105"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/otp_guideline_2_4"
+            app:layout_constraintEnd_toEndOf="@id/otp_guideline_2_2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/otp_guideline_2_1"
+            app:layout_constraintTop_toTopOf="@id/otp_guideline_2_3"
+            app:srcCompat="@drawable/nhap_ma_otp_text" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_2_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.17"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_2_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.53"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.26"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_2_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.292" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/otp_guideline_3_4"
+            app:layout_constraintEnd_toEndOf="@id/otp_guideline_3_2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/otp_guideline_2_1"
+            app:layout_constraintTop_toTopOf="@id/otp_guideline_3_3"
+            app:srcCompat="@drawable/vui_long_nhap_ma_text" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_3_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.33"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_3_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.38" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/otp_guideline_4_4"
+            app:layout_constraintEnd_toEndOf="@id/otp_guideline_4_2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/otp_guideline_2_1"
+            app:layout_constraintTop_toTopOf="@id/otp_guideline_4_3"
+            app:srcCompat="@drawable/ma_xac_thuc_text" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_4_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_4_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.43"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_4_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.455" />
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/otp_guideline_5_4"
+            app:layout_constraintEnd_toEndOf="@id/otp_guideline_5_2"
+            app:layout_constraintStart_toStartOf="@id/otp_guideline_5_1"
+            app:layout_constraintTop_toTopOf="@id/otp_guideline_5_3">
+            <ImageButton
+                android:id="@+id/xac_thuc_otp_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/xac_thuc_otp_button" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_5_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.16" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_5_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.832"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_5_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.81"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_5_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.865" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="@id/otp_guideline_8_3"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/otp_input_1"
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textColor="#2F6BFE"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="LabelFor" />
+            <EditText
+                android:id="@+id/otp_input_2"
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textColor="#2F6BFE"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="LabelFor" />
+            <EditText
+                android:id="@+id/otp_input_3"
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#2F6BFE"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="LabelFor" />
+            <EditText
+                android:id="@+id/otp_input_4"
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:gravity="center"
+                android:textColor="#2F6BFE"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="LabelFor" />
+            <EditText
+                android:id="@+id/otp_input_5"
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#2F6BFE"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                tools:ignore="LabelFor" />
+            <EditText
+                android:id="@+id/otp_input_6"
+                android:layout_width="38dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_gravity="center"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textColor="#2F6BFE"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                tools:ignore="LabelFor" />
+
+
+        </LinearLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_8_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.46" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/otp_guideline_6_4"
+            app:layout_constraintEnd_toEndOf="@id/otp_guideline_6_2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/otp_guideline_6_1"
+            app:layout_constraintTop_toTopOf="@id/otp_guideline_6_3"
+            app:srcCompat="@drawable/ban_khong_nhan_duoc_ma" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_6_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.24"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_6_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.56"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_6_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.62"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_6_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.64" />
+
+        <TextView
+            android:id="@+id/gui_lai_ma_click"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Gửi lại mã"
+            android:textSize="13sp"
+            android:textColor="#2F6BFE"
+            app:layout_constraintBottom_toBottomOf="@+id/otp_guideline_7_4"
+            app:layout_constraintEnd_toEndOf="@id/otp_guideline_7_2"
+            app:layout_constraintStart_toStartOf="@id/otp_guideline_7_1"
+            app:layout_constraintTop_toTopOf="@id/otp_guideline_7_3"
+            />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_7_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.616"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_7_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.58"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_7_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.76"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/otp_guideline_7_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.64"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
