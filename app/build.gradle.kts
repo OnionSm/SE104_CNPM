@@ -87,6 +87,8 @@ dependencies {
     implementation ("androidx.browser:browser:1.2.0")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation ("com.google.android.material:material:1.8.0")
+    implementation("com.google.firebase:firebase-storage:21.0.0")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 
