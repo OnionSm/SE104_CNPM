@@ -2,12 +2,13 @@ package fragment;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -19,8 +20,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.myapplication.DsCauHoiDaTao;
 import com.example.myapplication.GIANGVIEN;
+import com.example.myapplication.Login;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,43 +30,30 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HoSoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HoSoFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private final int PICK_IMAGE_REQUEST = 1;
-    private StorageReference storageReference;
 
+    private Uri imageUri;
+    private CircleImageView ho_so_userimage;
+    private String userAccount;
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ActivityResultLauncher<Intent> imagePickerLauncher;
 
     public HoSoFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HoSoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static HoSoFragment newInstance(String param1, String param2) {
         HoSoFragment fragment = new HoSoFragment();
         Bundle args = new Bundle();
@@ -82,17 +70,25 @@ public class HoSoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        storageReference = FirebaseStorage.getInstance().getReference();
+
+        // Khởi tạo imagePickerLauncher
+        imagePickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                imageUri = result.getData().getData();
+                Picasso.get().load(imageUri).into(ho_so_userimage);
+                addToStorage(imageUri);
+            }
+        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ho_so, container, false);
+        ho_so_userimage = view.findViewById(R.id.ho_so_user_image);
         SetProfileData(view);
         ImageButton log_out = view.findViewById(R.id.log_out);
         log_out.setOnClickListener(v -> showPopupLogout());
         return view;
-
     }
 
     private void showPopupLogout() {
@@ -109,8 +105,10 @@ public class HoSoFragment extends Fragment {
     }
 
     private void Logout() {
-        getActivity().finish();
-    }
+        Intent intent = new Intent(getActivity(), Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        getActivity().finish();    }
 
     private void SetProfileData(View view) {
         TextView ho_so_ten = view.findViewById(R.id.profile_ten_text);
@@ -119,18 +117,19 @@ public class HoSoFragment extends Fragment {
         TextView ho_so_email = view.findViewById(R.id.profile_email_text);
         TextView ho_so_sdt = view.findViewById(R.id.profile_sdt_text);
         TextView ho_so_diachi = view.findViewById(R.id.profile_dia_chi_text);
-        CircleImageView ho_so_userimage = view.findViewById(R.id.ho_so_user_image);
         ImageButton doi_anh_dai_dien = view.findViewById(R.id.doi_anh_dai_dien);
 
         DatabaseReference db_gv = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
         DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
-        doi_anh_dai_dien.setOnClickListener(v -> {
-        });
+
+        doi_anh_dai_dien.setOnClickListener(v -> chooseImage());
+
         db_pdn.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String account = snapshot.child("account").getValue(String.class);
+                userAccount = account;
                 db_gv.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -141,17 +140,14 @@ public class HoSoFragment extends Fragment {
                         ho_so_email.setText(account + "@gm.uit.edu.vn");
                         ho_so_sdt.setText("");
                         ho_so_diachi.setText("TP. Hồ Chí Minh");
-                        String filepath = "user_image_22520375";
 
                         db_userimage.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 String file_image = snapshot.child(account).child("fileImage").getValue(String.class);
-                                Context context = getContext();
-                                ;
-                                String packageName = context.getPackageName();
-                                int resourceId = context.getResources().getIdentifier(file_image, "drawable", packageName);
-                                ho_so_userimage.setImageResource(resourceId);
+                                if (file_image != null) {
+                                    Picasso.get().load(file_image).into(ho_so_userimage);
+                                }
                             }
 
                             @Override
@@ -174,6 +170,21 @@ public class HoSoFragment extends Fragment {
             }
         });
     }
+
+    public void chooseImage() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        imagePickerLauncher.launch(intent);
+    }
+
+    private void addToStorage(Uri imageUri) {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("USERIMAGE");
+        final StorageReference imageName = storageReference.child(userAccount + "_" + UUID.randomUUID().toString());
+        imageName.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
+            imageName.getDownloadUrl().addOnSuccessListener(uri -> {
+                DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
+                db_userimage.child(userAccount).child("fileImage").setValue(uri.toString());
+            });
+        });
+    }
 }
-
-
