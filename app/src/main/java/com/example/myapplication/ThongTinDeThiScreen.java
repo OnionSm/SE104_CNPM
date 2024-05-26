@@ -138,6 +138,16 @@ public class ThongTinDeThiScreen extends AppCompatActivity
             Log.e("namhoc", namhoc);
             return false;
         }
+        else
+        {
+            int nam1 = Integer.parseInt(namhoc.split("/")[0]);
+            int nam2 = Integer.parseInt(namhoc.split("/")[1]);
+            if(nam2 != (nam1 + 1))
+            {
+                Toast.makeText(ThongTinDeThiScreen.this, "Năm học trước phải bé hơn năm sau 1 đơn vị", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
         if(Integer.parseInt(thoiluong) < thoiluongtoithieu || Integer.parseInt(thoiluong) > thoiluongtoida)
         {
             Toast.makeText(ThongTinDeThiScreen.this, "Thời lượng phải lớn hơn " + String.valueOf(thoiluongtoithieu) + " và bé hơn " + String.valueOf(thoiluongtoida) ,Toast.LENGTH_SHORT).show();

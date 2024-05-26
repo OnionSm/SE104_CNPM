@@ -252,6 +252,11 @@ public class DsCauHoiDaTao extends AppCompatActivity
                             }
                         }
                         dbCauHoi.child(selectedCauhoi.getMach()).removeValue();
+                        mylist.remove(selectedCauhoi);
+                        for(int i = 0; i<mylist.size();i++)
+                        {
+                            mylist.get(i).setStt(String.valueOf(i+1));
+                        }
                         dialog.dismiss();
                         bottom_sheet_dialog.dismiss();
                         Toast.makeText(DsCauHoiDaTao.this, "Đã xóa thành công", Toast.LENGTH_SHORT).show();
@@ -279,7 +284,8 @@ public class DsCauHoiDaTao extends AppCompatActivity
 
         mylist = new ArrayList<>();
 
-        db_cauhoi.addChildEventListener(new ChildEventListener() {
+        db_cauhoi.addChildEventListener(new ChildEventListener()
+        {
             int stt = 1;
 
             @Override
@@ -308,13 +314,8 @@ public class DsCauHoiDaTao extends AppCompatActivity
                                         public void onDataChange(@NonNull DataSnapshot dokhoSnapshot)
                                         {
                                             String dokho = dokhoSnapshot.child("TenDK").getValue(String.class);
-
-                                            if (mylist.size() > 50) {
-                                                mylist.remove(mylist.size() - 1);
-                                            }
                                             mylist.add(0, new cauhoiitem(String.valueOf(stt), mach, tenmon, noidung, dokho, ngaytao));
                                             stt++;
-
                                             // Update the serial numbers
                                             for (int i = 0; i < mylist.size(); i++) {
                                                 cauhoiitem item = mylist.get(i);

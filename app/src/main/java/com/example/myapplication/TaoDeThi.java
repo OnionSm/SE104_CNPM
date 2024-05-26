@@ -95,23 +95,28 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
             @Override
             public void onClick(View v)
             {
-                DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
-                DatabaseReference db_dethi_cauhoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
-
-                String key_dt = db_dethi.push().getKey();
-                DETHI dt = new DETHI(key_dt,Integer.parseInt(thoiluong),key_mahknh,"",key_mamh,key_user);
-                db_dethi.child(key_dt).setValue(dt);
-                for(int i = 0 ;i < mylist.size(); i++)
+                if(!mylist.isEmpty())
                 {
-                    DETHICAUHOI dt_ch = new DETHICAUHOI(key_dt,mylist.get(i).getMacauhoi());
-                    String key_dtch = db_dethi_cauhoi.push().getKey();
-                    db_dethi_cauhoi.child(key_dtch).setValue(dt_ch);
+                    DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
+                    DatabaseReference db_dethi_cauhoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
+
+                    String key_dt = db_dethi.push().getKey();
+                    DETHI dt = new DETHI(key_dt, Integer.parseInt(thoiluong), key_mahknh, "", key_mamh, key_user);
+                    db_dethi.child(key_dt).setValue(dt);
+                    for (int i = 0; i < mylist.size(); i++) {
+                        DETHICAUHOI dt_ch = new DETHICAUHOI(key_dt, mylist.get(i).getMacauhoi());
+                        String key_dtch = db_dethi_cauhoi.push().getKey();
+                        db_dethi_cauhoi.child(key_dtch).setValue(dt_ch);
+                    }
+                    Toast.makeText(TaoDeThi.this, "Đã tạo đề thi thành công", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(TaoDeThi.this, "Đã tạo đề thi thành công", Toast.LENGTH_SHORT).show();
+                else
+                {
+                    Toast.makeText(TaoDeThi.this, "Đề thi phải có ít nhất một câu hỏi",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
-
         bottom_navigation_view = findViewById(R.id.tao_de_thi_bottom_navigation_view);
 
         viewpager2 = findViewById(R.id.tao_de_thi_view_pager);

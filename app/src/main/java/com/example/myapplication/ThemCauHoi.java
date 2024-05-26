@@ -217,25 +217,26 @@ public class ThemCauHoi extends AppCompatActivity
 
                                                 }
                                             });
-                                            CAUHOI chiTietCauHoi = new CAUHOI(maCH, maDoKho, noiDung, maMonHoc, maGVtaocauhoi, dateString);
-                                            dbRef_3.child(maCH).setValue(chiTietCauHoi).addOnCompleteListener(new OnCompleteListener<Void>()
+                                            if(!noiDung.isEmpty())
                                             {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task)
-                                                {
-                                                    if (task.isSuccessful())
-                                                    {
-                                                        Toast.makeText(ThemCauHoi.this, "Câu hỏi đã được tạo", Toast.LENGTH_LONG).show();
-                                                        noi_dung_cau_hoi.setText("");
+                                                CAUHOI chiTietCauHoi = new CAUHOI(maCH, maDoKho, noiDung, maMonHoc, maGVtaocauhoi, dateString);
+                                                dbRef_3.child(maCH).setValue(chiTietCauHoi).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Toast.makeText(ThemCauHoi.this, "Câu hỏi đã được tạo", Toast.LENGTH_LONG).show();
+                                                            noi_dung_cau_hoi.setText("");
 
+                                                        } else {
+                                                            Toast.makeText(ThemCauHoi.this, "Lỗi", Toast.LENGTH_LONG).show();
+                                                        }
                                                     }
-                                                    else
-                                                    {
-                                                        Toast.makeText(ThemCauHoi.this, "Lỗi", Toast.LENGTH_LONG).show();
-                                                    }
-                                                }
-                                            });
-
+                                                });
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(ThemCauHoi.this, "Nội dung đang còn trống", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
                                         else
                                         {
