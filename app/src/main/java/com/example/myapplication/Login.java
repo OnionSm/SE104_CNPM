@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -107,12 +108,15 @@ public class Login extends AppCompatActivity
                                         ref.child("PHIENDANGNHAP").setValue(phiendangnhap);
                                         startActivity(new Intent(Login.this, MainScreenNew.class));
                                         finish();
+                                    }else {
+                                        Toast.makeText(Login.this, "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                                     }
                                     Log.d("GIANGVIEN", "ID: " + id);
                                     Log.d("GIANGVIEN", "Mật khẩu: " + matKhau);
                                 }
                             }
                         }
+
                     }
                 });
             }
