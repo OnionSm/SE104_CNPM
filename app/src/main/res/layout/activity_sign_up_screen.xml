@@ -8,6 +8,52 @@
     android:background="@drawable/sign_up_background"
     tools:context=".SignUpScreen">
     <!-- Thêm các guideline dọc -->
+    <!-- Thêm cái nhập masogv,ông đưa cái msgv lên đầu, tui thêm tạm ở đây lấy cái id code backend, sau ông code lại front nha-->
+    <EditText
+        android:id="@+id/nhap_msgv"
+        android:hint="Nhập MSGV"
+        android:layout_width="0dp"
+        android:paddingStart="15dp"
+        android:layout_height="0dp"
+        android:textSize="14sp"
+        android:background="@drawable/login_screen_shape_4"
+        tools:ignore="Autofill,HardcodedText,LabelFor,MissingConstraints,TextFields"
+        app:layout_constraintBottom_toBottomOf="@+id/nhap_msgv_4"
+        app:layout_constraintEnd_toEndOf="@+id/nhap_msgv_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nhap_msgv_1"
+        app:layout_constraintTop_toTopOf="@+id/nhap_msgv_3"
+
+
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_msgv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_msgv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_msgv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.37" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nhap_msgv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/l_nhap_text"
         android:layout_width="wrap_content"
@@ -33,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.26" />
+        app:layout_constraintGuide_percent="0.42" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/r_email"
@@ -82,14 +128,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.24" />
+        app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/r_button_dangky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.76" />
+        app:layout_constraintGuide_percent="0.8" />
     <!-- Thêm các guideline ngang -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_tao_tk"
@@ -124,70 +170,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_ten_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37" />
+        app:layout_constraintGuide_percent="0.47" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_nhap_ten_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37" />
+        app:layout_constraintGuide_percent="0.47" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_nhap_ten_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.44" />
+        app:layout_constraintGuide_percent="0.52" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.46" />
+        app:layout_constraintGuide_percent="0.55" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.48" />
+        app:layout_constraintGuide_percent="0.57" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_nhap_email_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.48" />
+        app:layout_constraintGuide_percent="0.57" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_nhap_email_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.62" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_mk_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.57" />
+        app:layout_constraintGuide_percent="0.65" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_mk_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.59" />
+        app:layout_constraintGuide_percent="0.67" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -195,62 +241,69 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.59" />
+        app:layout_constraintGuide_percent="0.67" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_nhap_mk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_percent="0.72" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_xac_nhan_mk_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.69" />
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_xac_nhan_mk_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.71" />
+        app:layout_constraintGuide_percent="0.77" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_nhap_lai_mk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.71" />
+        app:layout_constraintGuide_percent="0.77" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_nhap_lai_mk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.78" />
+        app:layout_constraintGuide_percent="0.82" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_dang_ky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.87" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_nhap_msgv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_dang_ky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.91" />
+        app:layout_constraintGuide_percent="0.92" />
     <!--thêm text-->
     <TextView
         android:id="@+id/ten_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Tên"
+        android:text="Họ và tên"
         android:textColor="#0000FF"
         android:textSize="11sp"
         android:gravity="bottom"
@@ -290,7 +343,7 @@
         android:id="@+id/xac_nhan_mk"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Xác Nhận Mật Khẩu"
+        android:text="Xác nhận mật khẩu"
         android:textColor="#0000FF"
         android:textSize="11sp"
         android:gravity="bottom"
@@ -307,6 +360,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Nhập mật khẩu"
+        android:paddingStart="15dp"
         android:background="@drawable/login_screen_shape_4"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_mk"
@@ -320,7 +374,8 @@
         android:id="@+id/nhap_ten"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:hint="Nhập Tên"
+        android:paddingStart="15dp"
+        android:hint="Nhập tên"
         android:textSize="14sp"
         android:background="@drawable/login_screen_shape_4"
         app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_ten_text"
@@ -334,8 +389,8 @@
         android:id="@+id/nhap_lai_mk"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:ems="10"
         android:inputType="textPassword"
+        android:paddingStart="15dp"
         android:hint="Nhập lại mật khẩu"
         android:textSize="14sp"
         android:background="@drawable/login_screen_shape_4"
@@ -350,17 +405,18 @@
         android:id="@+id/nhap_email"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/login_screen_shape_4"
         android:ems="10"
         android:hint="Nhập email"
-        android:textSize="14sp"
         android:inputType="textEmailAddress"
-        android:background="@drawable/login_screen_shape_4"
-       app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_email_text"
-       app:layout_constraintEnd_toEndOf="@+id/r_nhap_text"
-       app:layout_constraintHorizontal_bias="0.0"
-       app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
-       app:layout_constraintTop_toTopOf="@+id/top_nhap_email_text"
-       app:layout_constraintVertical_bias="0.0"
+        android:paddingStart="15dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bot_nhap_email_text"
+        app:layout_constraintEnd_toEndOf="@+id/r_nhap_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/l_nhap_text"
+        app:layout_constraintTop_toTopOf="@+id/top_nhap_email_text"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="Autofill,HardcodedText" />
     <ImageView
         android:id="@+id/cham_diem_text"
@@ -377,7 +433,8 @@
         android:id="@+id/button_dangnhap"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="bạn có tài khoản rồi sao, đăng nhập"
+        android:text="Bạn có tài khoản rồi sao
+        Đăng nhập"
         android:textSize="11sp"
         android:background="#FFFFFF"
         android:textColor="#0000FF"
@@ -398,4 +455,18 @@
         app:layout_constraintStart_toStartOf="@+id/l_button_dangky"
         app:layout_constraintTop_toTopOf="@+id/top_dang_ky"
         tools:ignore="ContentDescription" />
+    <TextView
+        android:id="@+id/nhap_msgv_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Mã số giáo viên"
+        android:textColor="#0000FF"
+        android:textSize="11sp"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/nhap_msgv_3"
+        app:layout_constraintEnd_toEndOf="@+id/r_xac_nhan_mat_khau"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nhap_msgv_1"
+        app:layout_constraintTop_toTopOf="@+id/top_nhap_msgv"
+        tools:ignore="HardcodedText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

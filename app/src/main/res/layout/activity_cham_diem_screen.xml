@@ -34,14 +34,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.21" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/r_tai_len_moi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.68" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/r_tai_len_gan_day"
         android:layout_width="wrap_content"
@@ -86,21 +86,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
+        app:layout_constraintGuide_percent="0.18" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_tai_len_moi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.27" />
+        app:layout_constraintGuide_percent="0.32" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_tai_len_excel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.34" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_tai_len_excel"
         android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.77" />
+        app:layout_constraintGuide_percent="0.80" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bot_cham_diem"
         android:layout_width="wrap_content"
@@ -176,22 +176,10 @@
         android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
-        android:src="@drawable/button_tai_len_moi"
+        android:src="@drawable/tai_len_moi"
         app:layout_constraintBottom_toBottomOf="@+id/bot_tai_len_moi"
         app:layout_constraintEnd_toEndOf="@+id/r_tai_len_moi"
         app:layout_constraintStart_toStartOf="@+id/l_tai_len_moi"
-        app:layout_constraintTop_toTopOf="@+id/top_tai_len_moi" />
-
-    <ImageButton
-        android:id="@+id/r_tai_len_gan_day_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#00FFFFFF"
-        android:scaleType="centerInside"
-        android:src="@drawable/button_tai_len_gan_day"
-        app:layout_constraintBottom_toBottomOf="@+id/bot_tai_len_moi"
-        app:layout_constraintEnd_toEndOf="@+id/r_tai_len_gan_day"
-        app:layout_constraintStart_toStartOf="@+id/r_tai_len_moi"
         app:layout_constraintTop_toTopOf="@+id/top_tai_len_moi" />
 
     <TextView

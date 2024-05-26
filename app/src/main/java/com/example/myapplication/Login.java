@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ public class Login extends AppCompatActivity
     EditText EmailInput;
     EditText PasswordInput;
     ImageButton LoginButton;
-
+    ImageButton QuenMatKhauButton;
     boolean password_visible;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -50,6 +51,7 @@ public class Login extends AppCompatActivity
         EmailInput = findViewById(R.id.login_email_edit_text);
         PasswordInput = findViewById(R.id.login_pass_edit_text);
         LoginButton = findViewById(R.id.login_button);
+        QuenMatKhauButton = findViewById(R.id.quen_mat_khau_button);
 
 
         PasswordInput.setOnTouchListener(new View.OnTouchListener()
@@ -106,12 +108,15 @@ public class Login extends AppCompatActivity
                                         ref.child("PHIENDANGNHAP").setValue(phiendangnhap);
                                         startActivity(new Intent(Login.this, MainScreenNew.class));
                                         finish();
+                                    }else {
+                                        Toast.makeText(Login.this, "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                                     }
                                     Log.d("GIANGVIEN", "ID: " + id);
                                     Log.d("GIANGVIEN", "Mật khẩu: " + matKhau);
                                 }
                             }
                         }
+
                     }
                 });
             }
@@ -122,6 +127,13 @@ public class Login extends AppCompatActivity
             public void onClick(View v) {
                 // Tạo Intent để chuyển hướng sang màn hình signup
                 Intent intent = new Intent(Login.this, SignUpScreen.class);
+                startActivity(intent);
+            }
+        });
+        QuenMatKhauButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, SDTXacThucScreen.class);
                 startActivity(intent);
             }
         });

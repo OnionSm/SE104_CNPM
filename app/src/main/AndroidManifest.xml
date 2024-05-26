@@ -9,8 +9,9 @@
     <uses-permission
         android:name="android.permission.WRITE_SECURE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission." />
 
+    <uses-permission android:name="android.permission.READ_SECURE_CAMERA" />
+    <uses-permission android:name="android.permission." />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -29,6 +30,15 @@
             android:exported="false" />
         <activity
             android:name=".ChiTietDeThiScreen"
+
+            android:name=".SDTXacThucSignUp"
+            android:exported="false" />
+        <activity
+            android:name=".SDTXacThucToSignup"
+            android:exported="false" />
+        <activity
+            android:name=".VerifyOTPToLogin"
+
             android:exported="false" />
         <activity
             android:name=".BaoCaoNhapNamScreen"

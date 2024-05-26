@@ -29,16 +29,22 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
-public class SDTXacThucScreen extends AppCompatActivity {
+public class SDTXacThucSignUp extends AppCompatActivity {
     EditText sdt_xac_thuc;
     ImageButton gui_ma_xac_thuc;
     FirebaseAuth mAuth;
     DatabaseReference giangVienRef;
+    String ten_user, email, pass, msgv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sdtxac_thuc_screen);
+        setContentView(R.layout.activity_sdtxac_thuc_sign_up);
+        ten_user = getIntent().getStringExtra("ten_user");
+        email = getIntent().getStringExtra("email");
+        pass = getIntent().getStringExtra("pass");
+        msgv = getIntent().getStringExtra("msgv");
         sdt_xac_thuc = findViewById(R.id.sdt_xac_thuc);
         gui_ma_xac_thuc = findViewById(R.id.gui_ma_otp_button);
         final ProgressBar progressBar = findViewById(R.id.progress_bar);
@@ -46,24 +52,10 @@ public class SDTXacThucScreen extends AppCompatActivity {
         giangVienRef = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
 
         EdgeToEdge.enable(this);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.sdt_xac_thuc_screen), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.sdt_xac_thuc_sign_up), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
-
-        ImageButton icon_back_login = findViewById(R.id.sdt_xac_thuc_icon_back);
-        icon_back_login.setOnClickListener(view -> {
-            Intent quay_lai_trang_login = new Intent(SDTXacThucScreen.this, Login.class);
-            startActivity(quay_lai_trang_login);
-            finish();
-        });
-
-        ImageButton dang_nhap_text = findViewById(R.id.dang_nhap_sdt);
-        dang_nhap_text.setOnClickListener(view -> {
-            Intent dang_nhap_intent = new Intent(SDTXacThucScreen.this, Login.class);
-            startActivity(dang_nhap_intent);
-            finish();
         });
 
         gui_ma_xac_thuc.setOnClickListener(new View.OnClickListener() {
@@ -75,14 +67,14 @@ public class SDTXacThucScreen extends AppCompatActivity {
                         progressBar.setVisibility(View.VISIBLE);
                         gui_ma_xac_thuc.setVisibility(View.INVISIBLE);
                         String fullPhoneNumber = "+84" + phoneNumber;
-                        Log.d("SDTXacThucScreen", "Full Phone Number: " + fullPhoneNumber);
+                        Log.d("SDTXacThucToSignup", "Full Phone Number: " + fullPhoneNumber);
                         // Gửi mã xác thực
                         sendVerificationCode("+84" + phoneNumber, progressBar);
                     } else {
-                        Toast.makeText(SDTXacThucScreen.this, "Nhập số điện thoại hợp lệ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SDTXacThucSignUp.this, "Nhập số điện thoại hợp lệ", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(SDTXacThucScreen.this, "Nhập số điện thoại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SDTXacThucSignUp.this, "Nhập số điện thoại", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -94,7 +86,7 @@ public class SDTXacThucScreen extends AppCompatActivity {
                 PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber(phoneNumber)
                         .setTimeout(60L, TimeUnit.SECONDS)
-                        .setActivity(SDTXacThucScreen.this)
+                        .setActivity(SDTXacThucSignUp.this)
                         .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
@@ -106,18 +98,22 @@ public class SDTXacThucScreen extends AppCompatActivity {
                             public void onVerificationFailed(@NonNull FirebaseException e) {
                                 progressBar.setVisibility(View.GONE);
                                 gui_ma_xac_thuc.setVisibility(View.VISIBLE);
-                                Toast.makeText(SDTXacThucScreen.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SDTXacThucSignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 progressBar.setVisibility(View.GONE);
                                 gui_ma_xac_thuc.setVisibility(View.VISIBLE);
-                                Intent intent = new Intent(getApplicationContext(), GuiMaXacThucScreen.class);
+                                Intent intent = new Intent(getApplicationContext(), VerifyOTPToLogin.class);
                                 intent.putExtra("phone_number", phoneNumber);
                                 intent.putExtra("verificationId", verificationId);
-
+                                intent.putExtra("ten_user", ten_user);
+                                intent.putExtra("email", email);
+                                intent.putExtra("pass", pass);
+                                intent.putExtra("msgv", msgv);
                                 startActivity(intent);
+
                             }
                         })
                         .build();

@@ -2,108 +2,104 @@ package com.example.myapplication;
 
 
 
-public class GIANGVIEN
+
+public class GIANGVIEN 
 {
-    private String maGV;
-    private String hoTenGV;
-    private String ngSinhGV;
-    private String gioiTinhGV;
-    private String email;
-    private String sdt;
-    private String matKhau;
-    private String maNhomND;
+    public String gioiTinhGV;
+    public String hoTenGV;
+    public String maGV;
+    public String maNhomND;
+    public String matKhau;
+    public String ngSinhGV;
+    public String sdt;
 
-    public GIANGVIEN()
-    {
-
+    public GIANGVIEN(String gioiTinhGV, String hoTenGV, String maGV, String maNhomND, String matKhau, String ngSinhGV, String sdt) {
+        this.gioiTinhGV = gioiTinhGV;
+        this.hoTenGV = hoTenGV;
+        this.maGV = maGV;
+        this.maNhomND = maNhomND;
+        this.matKhau = matKhau;
+        this.ngSinhGV = ngSinhGV;
+        this.sdt = sdt;
     }
 
-    public GIANGVIEN(String maGV, String hoTenGV, String ngSinhGV, String gioiTinhGV, String email, String sdt, String matKhau, String maNhomND) {
-        this.maGV = maGV;
-        this.hoTenGV = hoTenGV;
-        this.ngSinhGV = ngSinhGV;
-        this.gioiTinhGV = gioiTinhGV;
-        this.email = email;
-        this.sdt = sdt;
-        this.matKhau = matKhau;
-        this.maNhomND = maNhomND;
+    public String getGioiTinhGV() 
+    {
+        return gioiTinhGV;
+    }
+
+    public String getHoTenGV() 
+    {
+        return hoTenGV;
     }
 
     public String getMaGV() {
         return maGV;
     }
 
-    public void setMaGV(String maGV) {
-        this.maGV = maGV;
-    }
-
-    public String getHoTenGV() {
-        return hoTenGV;
-    }
-
-    public void setHoTenGV(String hoTenGV) {
-        this.hoTenGV = hoTenGV;
-    }
-
-    public String getNgSinhGV() {
-        return ngSinhGV;
-    }
-
-    public void setNgSinhGV(String ngSinhGV) {
-        this.ngSinhGV = ngSinhGV;
-    }
-
-    public String getGioiTinhGV() {
-        return gioiTinhGV;
-    }
-
-    public void setGioiTinhGV(String gioiTinhGV) {
-        this.gioiTinhGV = gioiTinhGV;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
+    public String getMaNhomND() {
+        return maNhomND;
     }
 
     public String getMatKhau() {
         return matKhau;
     }
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
+    public String getNgSinhGV() {
+        return ngSinhGV;
     }
 
-    public String getMaNhomND() {
-        return maNhomND;
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setGioiTinhGV(String gioiTinhGV) {
+        this.gioiTinhGV = gioiTinhGV;
+    }
+
+
+
+    public void setHoTenGV(String hoTenGV) 
+    {
+        this.hoTenGV = hoTenGV;
+    }
+
+    public void setMaGV(String maGV) {
+        this.maGV = maGV;
     }
 
     public void setMaNhomND(String maNhomND) {
         this.maNhomND = maNhomND;
     }
 
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public void setNgSinhGV(String ngSinhGV) {
+        this.ngSinhGV = ngSinhGV;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "GIANGVIEN{" +
-                "maGV='" + maGV + '\'' +
+                "gioiTinhGV='" + gioiTinhGV + '\'' +
                 ", hoTenGV='" + hoTenGV + '\'' +
-                ", ngSinhGV='" + ngSinhGV + '\'' +
-                ", gioiTinhGV='" + gioiTinhGV + '\'' +
-                ", email='" + email + '\'' +
-                ", sdt='" + sdt + '\'' +
-                ", matKhau='" + matKhau + '\'' +
+                ", maGV='" + maGV + '\'' +
                 ", maNhomND='" + maNhomND + '\'' +
+                ", matKhau='" + matKhau + '\'' +
+                ", ngSinhGV='" + ngSinhGV + '\'' +
+                ", sdt='" + sdt + '\'' +
                 '}';
     }
 }
+
+
+
+
+

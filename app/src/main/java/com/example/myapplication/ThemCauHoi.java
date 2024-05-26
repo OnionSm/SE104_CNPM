@@ -31,6 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import fragment.NganHangCauHoiFragment;
@@ -47,6 +49,7 @@ public class ThemCauHoi extends AppCompatActivity
     ArrayList<String> do_kho_list = new ArrayList<>();
     Spinner spinner_do_kho;
     EditText noi_dung_cau_hoi;
+    TextView ngay_dang_tai;
     TextView ten_giang_vien;
 
     DatabaseReference db_pdn;
@@ -63,7 +66,11 @@ public class ThemCauHoi extends AppCompatActivity
         setContentView(R.layout.activity_them_cau_hoi);
 
         noi_dung_cau_hoi = findViewById(R.id.noi_dung_cau_hoi);
-
+        ngay_dang_tai = findViewById(R.id.ngay_dang_tai);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        Date currentDate = new Date();
+        String ngayHienTai = sdf.format(currentDate);
+        ngay_dang_tai.setText(ngayHienTai);
 
         dbRef_3 = FirebaseDatabase.getInstance().getReference("CAUHOI");
         dbRef_4 = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
@@ -219,6 +226,8 @@ public class ThemCauHoi extends AppCompatActivity
                                                     if (task.isSuccessful())
                                                     {
                                                         Toast.makeText(ThemCauHoi.this, "Câu hỏi đã được tạo", Toast.LENGTH_LONG).show();
+                                                        noi_dung_cau_hoi.setText("");
+
                                                     }
                                                     else
                                                     {
