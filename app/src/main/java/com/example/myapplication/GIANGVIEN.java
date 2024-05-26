@@ -12,7 +12,9 @@ public class GIANGVIEN
     public String matKhau;
     public String ngSinhGV;
     public String sdt;
-
+    public GIANGVIEN()
+    {
+    }
     public GIANGVIEN(String gioiTinhGV, String hoTenGV, String maGV, String maNhomND, String matKhau, String ngSinhGV, String sdt) {
         this.gioiTinhGV = gioiTinhGV;
         this.hoTenGV = hoTenGV;

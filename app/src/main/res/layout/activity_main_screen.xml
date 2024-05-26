@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.393" />
+        app:layout_constraintGuide_percent="0.398" />
 
 
     <TextView
@@ -147,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.423" />
+        app:layout_constraintGuide_percent="0.43" />
 
 
     <ImageButton

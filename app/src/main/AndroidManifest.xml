@@ -30,11 +30,9 @@
             android:exported="false" />
         <activity
             android:name=".ChiTietDeThiScreen"
-
-            android:name=".SDTXacThucSignUp"
             android:exported="false" />
         <activity
-            android:name=".SDTXacThucToSignup"
+            android:name=".SDTXacThucSignUp"
             android:exported="false" />
         <activity
             android:name=".VerifyOTPToLogin"

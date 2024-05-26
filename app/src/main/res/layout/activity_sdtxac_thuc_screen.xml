@@ -38,13 +38,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.08"/>
+            app:layout_constraintGuide_percent="0.05"/>
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/xac_thuc_sdt_guideline_1_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.105"/>
+            app:layout_constraintGuide_percent="0.082"/>
 
     <ImageView
         android:layout_width="0dp"

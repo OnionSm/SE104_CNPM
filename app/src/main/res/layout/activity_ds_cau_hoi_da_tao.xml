@@ -64,13 +64,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08"/>
+        app:layout_constraintGuide_percent="0.05"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ds_cau_hoi_guideline_1_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.105"/>
+        app:layout_constraintGuide_percent="0.082"/>
 
 
     <ImageView
@@ -78,7 +78,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@id/ds_cau_hoi_guideline_1_4"
+        app:layout_constraintBottom_toBottomOf="@id/ds_cau_hoi_guideline_2_4"
         app:layout_constraintEnd_toEndOf="@id/ds_cau_hoi_guideline_2_2"
         app:layout_constraintStart_toStartOf="@id/ds_cau_hoi_guideline_2_1"
         app:layout_constraintTop_toTopOf="@id/ds_cau_hoi_guideline_1_3"
@@ -96,6 +96,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.515"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ds_cau_hoi_guideline_2_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.078"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/danh_sach_cau_hoi_recycle_view"
