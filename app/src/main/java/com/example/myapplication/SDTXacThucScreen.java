@@ -76,8 +76,8 @@ public class SDTXacThucScreen extends AppCompatActivity {
                         gui_ma_xac_thuc.setVisibility(View.INVISIBLE);
                         String fullPhoneNumber = "+84" + phoneNumber;
                         Log.d("SDTXacThucScreen", "Full Phone Number: " + fullPhoneNumber);
-                        // Gửi mã xác thực
-                        sendVerificationCode("+84" + phoneNumber, progressBar);
+                        // Kiểm tra số điện thoại trên Firebase trước khi gửi mã xác thực
+                        checkPhoneNumberExists(fullPhoneNumber, progressBar);
                     } else {
                         Toast.makeText(SDTXacThucScreen.this, "Nhập số điện thoại hợp lệ", Toast.LENGTH_SHORT).show();
                     }
@@ -87,6 +87,30 @@ public class SDTXacThucScreen extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void checkPhoneNumberExists(String phoneNumber, ProgressBar progressBar) {
+        giangVienRef.orderByChild("sdt").equalTo(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Số điện thoại tồn tại trên Firebase, tiếp tục gửi mã xác thực
+                    sendVerificationCode(phoneNumber, progressBar);
+                } else {
+                    // Số điện thoại không tồn tại trên Firebase
+                    progressBar.setVisibility(View.GONE);
+                    gui_ma_xac_thuc.setVisibility(View.VISIBLE);
+                    Toast.makeText(SDTXacThucScreen.this, "Số điện thoại không tồn tại", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                progressBar.setVisibility(View.GONE);
+                gui_ma_xac_thuc.setVisibility(View.VISIBLE);
+                Toast.makeText(SDTXacThucScreen.this, "Lỗi kiểm tra số điện thoại", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void sendVerificationCode(String phoneNumber, ProgressBar progressBar) {
