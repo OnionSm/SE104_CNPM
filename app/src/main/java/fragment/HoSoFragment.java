@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.GIANGVIEN;
 import com.example.myapplication.Login;
 import com.example.myapplication.R;
@@ -91,7 +92,8 @@ public class HoSoFragment extends Fragment {
         return view;
     }
 
-    private void showPopupLogout() {
+    private void showPopupLogout()
+    {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.pop_up_dang_xuat, null);
@@ -104,13 +106,16 @@ public class HoSoFragment extends Fragment {
         dialog.show();
     }
 
-    private void Logout() {
+    private void Logout()
+    {
         Intent intent = new Intent(getActivity(), Login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-        getActivity().finish();    }
+        getActivity().finish();
+    }
 
-    private void SetProfileData(View view) {
+    private void SetProfileData(View view)
+    {
         TextView ho_so_ten = view.findViewById(R.id.profile_ten_text);
         TextView ho_so_ngaysinh = view.findViewById(R.id.profile_ngay_sinh_text);
         TextView ho_so_gioitinh = view.findViewById(R.id.profile_gioi_tinh_text);
@@ -118,16 +123,18 @@ public class HoSoFragment extends Fragment {
         TextView ho_so_sdt = view.findViewById(R.id.profile_sdt_text);
         TextView ho_so_diachi = view.findViewById(R.id.profile_dia_chi_text);
         ImageButton doi_anh_dai_dien = view.findViewById(R.id.doi_anh_dai_dien);
+        CircleImageView user_image = view.findViewById(R.id.ho_so_user_image);
 
         DatabaseReference db_gv = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
         DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
 
-        doi_anh_dai_dien.setOnClickListener(v -> chooseImage());
+        /*doi_anh_dai_dien.setOnClickListener(v -> chooseImage());*/
 
         db_pdn.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
                 String account = snapshot.child("account").getValue(String.class);
                 userAccount = account;
                 db_gv.addValueEventListener(new ValueEventListener() {
@@ -141,15 +148,29 @@ public class HoSoFragment extends Fragment {
                         ho_so_sdt.setText(giangvien.getSdt());
                         ho_so_diachi.setText("TP. Hồ Chí Minh");
 
-                        db_userimage.addValueEventListener(new ValueEventListener() {
+                        db_userimage.addValueEventListener(new ValueEventListener()
+                        {
                             @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String file_image = snapshot.child(account).child("fileImage").getValue(String.class);
-                                if (file_image != null) {
+                            public void onDataChange(@NonNull DataSnapshot snapshot)
+                            {
+                                /*String file_image = snapshot.child(account).child("fileImage").getValue(String.class);
+                                if (file_image != null)
+                                {
                                     Picasso.get().load(file_image).into(ho_so_userimage);
+                                }*/
+                                for (DataSnapshot data : snapshot.getChildren())
+                                {
+                                    if(data.getKey().equals(userAccount))
+                                    {
+                                        String file_image = data.child("fileImage").getValue(String.class);
+                                        if (file_image != null)
+                                        {
+                                            Glide.with(HoSoFragment.this).load(file_image).into(user_image);
+                                        }
+                                    }
+
                                 }
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -171,13 +192,15 @@ public class HoSoFragment extends Fragment {
         });
     }
 
-    public void chooseImage() {
+    public void chooseImage()
+    {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         imagePickerLauncher.launch(intent);
     }
 
-    private void addToStorage(Uri imageUri) {
+    private void addToStorage(Uri imageUri)
+    {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("USERIMAGE");
         final StorageReference imageName = storageReference.child(userAccount + "_" + UUID.randomUUID().toString());
         imageName.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {

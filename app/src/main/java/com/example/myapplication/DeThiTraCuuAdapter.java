@@ -153,7 +153,7 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
             @Override
             protected FilterResults performFiltering(CharSequence constraint)
             {
-                String str_search = constraint.toString();
+                String str_search = constraint.toString().trim();
                 if(str_search.isEmpty())
                 {
                     mylist = mylist_old;
