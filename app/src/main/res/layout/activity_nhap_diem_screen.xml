@@ -95,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="@id/nhap_diem_guideline_4_2"
         app:layout_constraintStart_toStartOf="@id/nhap_diem_guideline_4_1"
         app:layout_constraintTop_toTopOf="@id/nhap_diem_guideline_4_3"
-        app:srcCompat="@drawable/cham_thi_tao_de_button"/>
+        app:srcCompat="@drawable/luu_de_thi_button"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/nhap_diem_guideline_4_1"
         android:layout_width="wrap_content"

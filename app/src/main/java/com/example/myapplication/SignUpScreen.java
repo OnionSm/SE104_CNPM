@@ -9,11 +9,19 @@ import android.widget.Toast;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,10 +52,24 @@ public class SignUpScreen extends AppCompatActivity {
         dang_ki_button = findViewById(R.id.button_dangky);
         ms_gv = findViewById(R.id.nhap_msgv);
 
-        dang_ki_button.setOnClickListener(new View.OnClickListener() {
+        dang_ki_button.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                CheckValidInput();
+            public void onClick(View v)
+            {
+                CheckValidInput(new OnCompleteDataGV()
+                {
+                    @Override
+                    public void onCompleteData(String ten_user, String email, String pass, String msgv)
+                    {
+                        Intent intent = new Intent(SignUpScreen.this, SDTXacThucSignUp.class);
+                        intent.putExtra("ten_user", ten_user);
+                        intent.putExtra("email", email);
+                        intent.putExtra("pass", pass);
+                        intent.putExtra("msgv", msgv);
+                        startActivity(intent);
+                    }
+                });
             }
         });
 
@@ -61,7 +83,8 @@ public class SignUpScreen extends AppCompatActivity {
         });
     }
 
-    private void CheckValidInput() {
+    private void CheckValidInput(OnCompleteDataGV callback)
+    {
         String ten_user = ten_user_edt.getText().toString();
         String email = email_edt.getText().toString();
         String pass = password_edt.getText().toString();
@@ -82,13 +105,41 @@ public class SignUpScreen extends AppCompatActivity {
                 Toast.makeText(SignUpScreen.this, "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
                 return;
             }
+            DatabaseReference db_gv = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
+            db_gv.addListenerForSingleValueEvent(new ValueEventListener()
+            {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot)
+                {
+                    int max = (int)snapshot.getChildrenCount();
+                    int count = 0;
+                    for(DataSnapshot data : snapshot.getChildren())
+                    {
+                        if(data.child("maGV").getValue(String.class).equals(msgv))
+                        {
+                            Toast.makeText(SignUpScreen.this, "Mã giáo viên đã tồn tại",Toast.LENGTH_SHORT).show();
+                        }
+                        count ++;
+                        if(count==max)
+                        {
+                            callback.onCompleteData(ten_user, email, pass, msgv);
+                            return;
+                        }
 
-            Intent intent = new Intent(SignUpScreen.this, SDTXacThucSignUp.class);
-            intent.putExtra("ten_user", ten_user);
-            intent.putExtra("email", email);
-            intent.putExtra("pass", pass);
-            intent.putExtra("msgv", msgv);
-            startActivity(intent);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
         }
+    }
+    interface OnCompleteDataGV
+    {
+        void onCompleteData(String ten_user, String email, String pass, String msgv);
     }
 }

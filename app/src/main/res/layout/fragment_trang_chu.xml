@@ -111,7 +111,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="TS.Ngô Đức Thành"
+        android:text=""
         android:textColor="#000000"
         android:textSize="21dp"
         android:textStyle="bold"
