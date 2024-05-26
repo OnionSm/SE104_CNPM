@@ -160,58 +160,75 @@ public class TraCuuScreen extends AppCompatActivity
     {
         DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
         DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
-        Query query = db_dethi.limitToLast(20);
+        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         mylist = new ArrayList<>();
-        query.addChildEventListener(new ChildEventListener()
+        db_dethi.addValueEventListener(new ValueEventListener()
         {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-                String ma_DT = snapshot.child("maDT").getValue(String.class);
-                String ngay_Thi = snapshot.child("ngayThi").getValue(String.class);
-                String ma_MH_dethi = snapshot.child("maMH").getValue(String.class);
-                String thoiluong = String.valueOf(snapshot.child("thoiLuong").getValue(Integer.class));
+                for(DataSnapshot data : snapshot.getChildren())
+                {
+                    String ma_DT = data.child("maDT").getValue(String.class);
+                    String ngay_Thi = data.child("ngayThi").getValue(String.class);
+                    String ma_MH_dethi = data.child("maMH").getValue(String.class);
+                    String thoiluong = String.valueOf(data.child("thoiLuong").getValue(Integer.class));
+                    String magv_dethi = data.child("maGV").getValue(String.class);
 
-                db_monhoc.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    db_monhoc.addValueEventListener(new ValueEventListener()
                     {
-                        String tenmon = snapshot.child(ma_MH_dethi).child("tenMH").getValue(String.class);
-                        mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT, thoiluong));
-                        adapter.notifyDataSetChanged();
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot)
+                        {
+                            for(DataSnapshot data : snapshot.getChildren())
+                            {
+                                if(data.getKey().equals(ma_MH_dethi))
+                                {
+                                    String tenmon = data.child("tenMH").getValue(String.class);
+                                    db_pdn.addValueEventListener(new ValueEventListener()
+                                    {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot)
+                                        {
+                                            String user_id = snapshot.child("account").getValue(String.class);
+                                            if(user_id.equals("000000"))
+                                            {
+                                                mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT, thoiluong));
+                                                adapter.notifyDataSetChanged();
+                                            }
+                                            else
+                                            {
+                                                if(user_id.equals(magv_dethi))
+                                                {
+                                                    mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT, thoiluong));
+                                                    adapter.notifyDataSetChanged();
+                                                }
+                                            }
+                                        }
 
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                                        }
+                                    });
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error)
+                        {
+
+                        }
+                    });
+                }
             }
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-
-            }
 
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot)
-            {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
-            {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error)
-            {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
     }
 
     private void GetListDeThi()

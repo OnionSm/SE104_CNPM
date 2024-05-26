@@ -176,7 +176,8 @@ public class TrangChuFragment extends Fragment {
         DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         db_pdn.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
                 String userAccount = snapshot.child("account").getValue(String.class);
                 StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("USERIMAGE");
                 final StorageReference imageName = storageReference.child(userAccount + "_" + UUID.randomUUID().toString());
