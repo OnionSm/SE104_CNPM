@@ -203,7 +203,7 @@ app:layout_constraintGuide_percent="0.26"/>
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37"/>
+        app:layout_constraintGuide_percent="0.39"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -416,7 +416,7 @@ app:layout_constraintGuide_percent="0.26"/>
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.638"/>
+        app:layout_constraintGuide_percent="0.66"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_height="0dp"

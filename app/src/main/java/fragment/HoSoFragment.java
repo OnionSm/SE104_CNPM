@@ -145,7 +145,7 @@ public class HoSoFragment extends Fragment {
                         ho_so_ngaysinh.setText(giangvien.getNgSinhGV());
                         ho_so_gioitinh.setText(giangvien.getGioiTinhGV());
                         ho_so_email.setText(account + "@gm.uit.edu.vn");
-                        ho_so_sdt.setText("");
+                        ho_so_sdt.setText(giangvien.getSdt());
                         ho_so_diachi.setText("TP. Hồ Chí Minh");
 
                         db_userimage.addValueEventListener(new ValueEventListener()
