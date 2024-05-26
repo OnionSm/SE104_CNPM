@@ -92,6 +92,10 @@ public class BaoCaoNhapNamScreen extends AppCompatActivity
             {
                 String nam1_text = nam1_edt.getText().toString();
                 String nam2_text = nam2_edt.getText().toString();
+                if (!"2023".equals(nam1_text) || !"2024".equals(nam2_text)) {
+                    Toast.makeText(BaoCaoNhapNamScreen.this, "Không có dữ liệu cho năm học này", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 namhoc = nam1_text + "/" + nam2_text;
                 if (!TextUtils.isEmpty(nam1_text) && !TextUtils.isEmpty(nam2_text))
                 {
