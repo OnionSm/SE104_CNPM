@@ -22,13 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.075" />
+        app:layout_constraintGuide_percent="0.05" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_1_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.107" />
+        app:layout_constraintGuide_percent="0.082" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_1_3"
         android:layout_width="wrap_content"

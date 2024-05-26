@@ -66,13 +66,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08"/>
+        app:layout_constraintGuide_percent="0.05"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ds_cau_hoi_guideline_1_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.105"/>
+        app:layout_constraintGuide_percent="0.082"/>
 
 
     <ImageView
@@ -103,13 +103,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08"/>
+        app:layout_constraintGuide_percent="0.05"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/ds_cau_hoi_guideline_2_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.103"/>
+        app:layout_constraintGuide_percent="0.078"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/danh_sach_cau_hoi_recycle_view"

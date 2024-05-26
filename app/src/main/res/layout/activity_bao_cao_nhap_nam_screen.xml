@@ -23,13 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.075" />
+        app:layout_constraintGuide_percent="0.05" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_1_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.107" />
+        app:layout_constraintGuide_percent="0.082" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_1_3"
         android:layout_width="wrap_content"
@@ -94,13 +94,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.078" />
+        app:layout_constraintGuide_percent="0.053" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_3_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.102" />
+        app:layout_constraintGuide_percent="0.077" />
 
 
     <ImageView
@@ -130,13 +130,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.181" />
+        app:layout_constraintGuide_percent="0.156" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_4_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.207" />
+        app:layout_constraintGuide_percent="0.182" />
 
 
     <ImageView
@@ -167,13 +167,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.402" />
+        app:layout_constraintGuide_percent="0.377" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_5_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.61" />
+        app:layout_constraintGuide_percent="0.585" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -195,7 +195,7 @@
             android:inputType="number"
             android:maxLength="20"
             android:gravity="center"
-            android:textColor="#2F6BFE"
+            android:textColor="#0000FD"
             android:textSize="24sp"
             android:text=""
             android:textStyle="bold"
@@ -227,7 +227,7 @@
             android:inputType="number"
             android:gravity="center"
             android:maxLength="4"
-            android:textColor="#6E7591"
+            android:textColor="#0000FD"
             android:textSize="24sp"
             android:textStyle="bold"
             android:text=""
@@ -253,12 +253,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.47" />
+        app:layout_constraintGuide_percent="0.445" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/tao_de_guideline_6_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.525" />
+        app:layout_constraintGuide_percent="0.51" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

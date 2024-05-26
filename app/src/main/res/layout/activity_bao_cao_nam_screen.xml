@@ -24,13 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.075" />
+        app:layout_constraintGuide_percent="0.05" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bao_cao_guideline_1_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.107" />
+        app:layout_constraintGuide_percent="0.082" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bao_cao_guideline_1_3"
         android:layout_width="wrap_content"
@@ -60,13 +60,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.078" />
+        app:layout_constraintGuide_percent="0.053" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bao_cao_guideline_2_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.103" />
+        app:layout_constraintGuide_percent="0.078" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bao_cao_guideline_2_3"
         android:layout_width="wrap_content"
@@ -105,15 +105,17 @@
         app:layout_constraintGuide_percent="0.955"/>
 
 
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/bao_cao_view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/main_scr_guideline_1"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/bao_cao_guideline_1_2" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bao_cao_guideline_1_2"
+        app:layout_constraintVertical_bias="0.0" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bao_cao_bottom_navigation_view"
         android:layout_width="match_parent"
