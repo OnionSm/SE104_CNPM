@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -34,6 +35,10 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
     interface DeThiTraCuuClickCallBack
     {
         void deThiTraCuuCallBack(dethitracuuitem dethi);
+    }
+    public void SetListData(ArrayList<dethitracuuitem> data)
+    {
+        mylist_filtered = data;
     }
 
     public DeThiTraCuuAdapter(ArrayList<dethitracuuitem> mylist , DeThiTraCuuClickCallBack callback)
@@ -153,6 +158,7 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
             @Override
             protected FilterResults performFiltering(CharSequence constraint)
             {
+                ArrayList<dethitracuuitem> list = new ArrayList<>();
                 String str_search = constraint.toString().trim();
                 if(str_search.isEmpty())
                 {
@@ -160,7 +166,6 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
                 }
                 else
                 {
-                    ArrayList<dethitracuuitem> list = new ArrayList<>();
                     for(dethitracuuitem dethi : mylist_old)
                     {
                         if(dethi.getMa_de().toLowerCase().contains(str_search.toLowerCase()))
@@ -194,14 +199,14 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
             @Override
             protected FilterResults performFiltering(CharSequence constraint)
             {
-                String str_search = constraint.toString();
+                ArrayList<dethitracuuitem> list = new ArrayList<>();
+                String str_search = constraint.toString().trim();
                 if(str_search.isEmpty())
                 {
                     mylist = mylist_filtered;
                 }
                 else
                 {
-                    ArrayList<dethitracuuitem> list = new ArrayList<>();
                     for(dethitracuuitem dethi : mylist_filtered)
                     {
                         db_dethi.addValueEventListener(new ValueEventListener()
@@ -215,7 +220,7 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot)
                                     {
-                                        String hocky = snapshot.child(mahocky).child("hocKy").getValue(String.class);
+                                        String hocky = String.valueOf(snapshot.child(mahocky).child("hocKy").getValue(Integer.class));
                                         if(hocky.toLowerCase().contains(str_search.toLowerCase()))
                                         {
                                             list.add(dethi);
@@ -260,17 +265,19 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
             @Override
             protected FilterResults performFiltering(CharSequence constraint)
             {
-                String str_search = constraint.toString();
+                ArrayList<dethitracuuitem> list = new ArrayList<>();
+                String str_search = constraint.toString().trim();
+                Log.e("Check môn", str_search);
                 if(str_search.isEmpty())
                 {
                     mylist = mylist_filtered;
                 }
                 else
                 {
-                    ArrayList<dethitracuuitem> list = new ArrayList<>();
                     for(dethitracuuitem dethi : mylist_filtered)
                     {
-                        if(dethi.getMon_hoc().toLowerCase().contains(str_search.toLowerCase()))
+                        Log.e("Tên môn", dethi.getMon_hoc());
+                        if(dethi.getMon_hoc().toLowerCase().equals(str_search.toLowerCase()))
                         {
                             list.add(dethi);
                         }
@@ -300,14 +307,14 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
             @Override
             protected FilterResults performFiltering(CharSequence constraint)
             {
-                String str_search = constraint.toString();
+                ArrayList<dethitracuuitem> list = new ArrayList<>();
+                String str_search = constraint.toString().trim();
                 if(str_search.isEmpty())
                 {
                     mylist = mylist_filtered;
                 }
                 else
                 {
-                    ArrayList<dethitracuuitem> list = new ArrayList<>();
                     for(dethitracuuitem dethi : mylist_filtered)
                     {
                         db_dethi.addValueEventListener(new ValueEventListener()
@@ -315,13 +322,12 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot)
                             {
-                                String thoiluong = snapshot.child(dethi.getMa_de()).child("thoiLuong").getValue(String.class);
-                                if(thoiluong.toLowerCase().contains(str_search.toLowerCase()))
+                                String thoiluong = String.valueOf(snapshot.child(dethi.getMa_de()).child("thoiLuong").getValue(Integer.class));
+                                if(thoiluong.equals(str_search.toLowerCase()))
                                 {
                                     list.add(dethi);
                                 }
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error)
                             {
@@ -356,23 +362,17 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
             @Override
             protected FilterResults performFiltering(CharSequence constraint)
             {
-                String str_search = constraint.toString();
-                if(str_search.isEmpty())
+                String str_search = constraint.toString().trim();
+                ArrayList<dethitracuuitem> list = new ArrayList<>();
+                Log.e("String search", str_search);
+                for(dethitracuuitem dethi : mylist_filtered)
                 {
-                    mylist = mylist_filtered;
-                }
-                else
-                {
-                    ArrayList<dethitracuuitem> list = new ArrayList<>();
-                    for(dethitracuuitem dethi : mylist_filtered)
+                    if(dethi.getNgay().equals(str_search.toLowerCase()))
                     {
-                        if(dethi.getNgay().toLowerCase().contains(str_search.toLowerCase()))
-                        {
-                            list.add(dethi);
-                        }
+                        list.add(dethi);
                     }
-                    mylist = list;
                 }
+                mylist = list;
                 mylist_filtered = mylist;
                 FilterResults filter_results = new FilterResults();
                 filter_results.values = mylist;
@@ -394,19 +394,19 @@ public class DeThiTraCuuAdapter extends RecyclerView.Adapter<DeThiTraCuuAdapter.
             @Override
             protected FilterResults performFiltering(CharSequence constraint)
             {
-                String str_search = constraint.toString();
+                ArrayList<dethitracuuitem> list = new ArrayList<>();
+                String str_search = constraint.toString().trim();
                 if(str_search.isEmpty())
                 {
                     mylist = mylist_old;
                 }
                 else
                 {
-                    ArrayList<dethitracuuitem> list = new ArrayList<>();
                     for(dethitracuuitem dethi : mylist_filtered)
                     {
                         String nam = dethi.getNgay().split("/")[2];
                         Log.e("năm", nam);
-                        if(dethi.getNgay().toLowerCase().contains(str_search.toLowerCase()))
+                        if(dethi.getNgay().toLowerCase().equals(str_search.toLowerCase()))
                         {
                             list.add(dethi);
                         }

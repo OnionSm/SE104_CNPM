@@ -17,8 +17,11 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -74,15 +77,29 @@ public class SuaDeThiScreen extends AppCompatActivity implements IPassingData
             @Override
             public void onClick(View v)
             {
-                DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
                 DatabaseReference db_dethi_cauhoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
+                db_dethi_cauhoi.addListenerForSingleValueEvent(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        for(DataSnapshot data : snapshot.getChildren())
+                        {
+                            if(data.child("maDT").getValue(String.class).equals(madethi))
+                            {
+                                db_dethi_cauhoi.child(data.getKey()).removeValue();
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
 
-                String key_dt = db_dethi.push().getKey();
-                DETHI dt = new DETHI(key_dt,Integer.parseInt(thoiluong),key_mahknh,"",key_mamh,key_user);
-                db_dethi.child(key_dt).setValue(dt);
+                    }
+                });
                 for(int i = 0 ;i < mylist.size(); i++)
                 {
-                    DETHICAUHOI dt_ch = new DETHICAUHOI(key_dt,mylist.get(i).getMacauhoi());
+                    DETHICAUHOI dt_ch = new DETHICAUHOI(madethi,mylist.get(i).getMacauhoi());
                     String key_dtch = db_dethi_cauhoi.push().getKey();
                     db_dethi_cauhoi.child(key_dtch).setValue(dt_ch);
                 }
