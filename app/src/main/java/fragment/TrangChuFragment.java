@@ -113,7 +113,6 @@ public class TrangChuFragment extends Fragment {
         ImageButton bao_cao = view.findViewById(R.id.trang_chu_bao_cao_button);
         bao_cao.setOnClickListener(v -> {
             startActivity(new Intent(activity, BaoCaoNhapNamScreen.class));
-            requireActivity().finishAffinity();
         });
 
         SetUserImage(view);

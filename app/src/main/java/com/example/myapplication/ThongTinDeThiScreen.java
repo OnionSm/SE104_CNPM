@@ -132,6 +132,12 @@ public class ThongTinDeThiScreen extends AppCompatActivity
             Log.e("hocky", hocky);
             return false;
         }
+        if (!namhoc.matches("\\d{4}/\\d{4}"))
+        {
+            Toast.makeText(ThongTinDeThiScreen.this, "Năm học phải có định dạng xxxx/xxxx", Toast.LENGTH_SHORT).show();
+            Log.e("namhoc", namhoc);
+            return false;
+        }
         if(Integer.parseInt(thoiluong) < thoiluongtoithieu || Integer.parseInt(thoiluong) > thoiluongtoida)
         {
             Toast.makeText(ThongTinDeThiScreen.this, "Thời lượng phải lớn hơn " + String.valueOf(thoiluongtoithieu) + " và bé hơn " + String.valueOf(thoiluongtoida) ,Toast.LENGTH_SHORT).show();
