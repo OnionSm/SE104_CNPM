@@ -7,18 +7,25 @@
     android:orientation="vertical">
 
     <ImageButton
-        android:id="@+id/button_sua_cau_hoi"
+        android:id="@+id/button_chi_tiet_de_thi"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:scaleType="fitXY"
-        android:src="@drawable/sua_cau_hoi_button"
-        />
+        android:src="@drawable/chi_tiet_de_thi_button" />
 
     <ImageButton
-        android:id="@+id/button_xoa_cau_hoi"
+        android:id="@+id/button_sua_de_thi"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="-18dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/sua_de_thi_button" />
+
+    <ImageButton
+        android:id="@+id/button_xoa_de_thi"
         android:layout_width="match_parent"
         android:layout_marginTop="-18dp"
         android:layout_height="70dp"
         android:scaleType="fitXY"
-        android:src="@drawable/xoa_cau_hoi_button" />
+        android:src="@drawable/xoa_de_thi_button" />
 </LinearLayout>

@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 
 
-public class GIANGVIEN {
+
+public class GIANGVIEN 
+{
     public String gioiTinhGV;
     public String hoTenGV;
     public String maGV;
@@ -21,11 +23,13 @@ public class GIANGVIEN {
         this.sdt = sdt;
     }
 
-    public String getGioiTinhGV() {
+    public String getGioiTinhGV() 
+    {
         return gioiTinhGV;
     }
 
-    public String getHoTenGV() {
+    public String getHoTenGV() 
+    {
         return hoTenGV;
     }
 
@@ -53,7 +57,10 @@ public class GIANGVIEN {
         this.gioiTinhGV = gioiTinhGV;
     }
 
-    public void setHoTenGV(String hoTenGV) {
+
+
+    public void setHoTenGV(String hoTenGV) 
+    {
         this.hoTenGV = hoTenGV;
     }
 
@@ -78,7 +85,8 @@ public class GIANGVIEN {
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "GIANGVIEN{" +
                 "gioiTinhGV='" + gioiTinhGV + '\'' +
                 ", hoTenGV='" + hoTenGV + '\'' +

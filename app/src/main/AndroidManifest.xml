@@ -9,9 +9,9 @@
     <uses-permission
         android:name="android.permission.WRITE_SECURE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
+
     <uses-permission android:name="android.permission.READ_SECURE_CAMERA" />
     <uses-permission android:name="android.permission." />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -26,6 +26,11 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".SuaDeThiScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietDeThiScreen"
+
             android:name=".SDTXacThucSignUp"
             android:exported="false" />
         <activity
@@ -33,6 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".VerifyOTPToLogin"
+
             android:exported="false" />
         <activity
             android:name=".BaoCaoNhapNamScreen"
@@ -102,7 +108,8 @@
             android:exported="true" />
         <activity
             android:name=".DeThiScreen"
-            android:exported="true" />
+            android:exported="true">
+        </activity>
         <activity
             android:name=".CustomListView"
             android:exported="true" />
@@ -123,7 +130,7 @@
             android:exported="true" />
         <activity
             android:name=".CauHoiScreen"
-            android:exported="true" />
+            android:exported="true"></activity>
         <activity
             android:name=".MainScreen"
             android:exported="true" />
@@ -132,7 +139,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

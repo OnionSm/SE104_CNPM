@@ -5,11 +5,13 @@ public class dethitracuuitem
     private String mon_hoc;
     private String ngay;
     private String ma_de;
+    private String thoiluong;
 
-    public dethitracuuitem(String mon_hoc, String ngay, String ma_de) {
+    public dethitracuuitem(String mon_hoc, String ngay, String ma_de, String thoiluong) {
         this.mon_hoc = mon_hoc;
         this.ngay = ngay;
         this.ma_de = ma_de;
+        this.thoiluong = thoiluong;
     }
 
     public String getMon_hoc() {
@@ -34,5 +36,13 @@ public class dethitracuuitem
 
     public void setMa_de(String ma_de) {
         this.ma_de = ma_de;
+    }
+
+    public String getThoiluong() {
+        return thoiluong;
+    }
+
+    public void setThoiluong(String thoiluong) {
+        this.thoiluong = thoiluong;
     }
 }

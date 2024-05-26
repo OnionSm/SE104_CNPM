@@ -4,16 +4,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class TaoDeThi2Adapter extends RecyclerView.Adapter<TaoDeThi2Adapter.CauHoiViewHolder>
+public class TaoDeThiAdapter4 extends RecyclerView.Adapter<TaoDeThiAdapter4.CauHoiViewHolder>
 {
     private ArrayList<taodethicauhoiitem> mylist;
     private IClickUpdateCauHoiDaChon iclickupdate;
@@ -28,7 +26,7 @@ public class TaoDeThi2Adapter extends RecyclerView.Adapter<TaoDeThi2Adapter.CauH
     }
 
 
-    public TaoDeThi2Adapter(ArrayList<taodethicauhoiitem> mylist, IClickUpdateCauHoiDaChon iclickupdate, IClickDeleteCauHoiDaChon iclickdelete)
+    public TaoDeThiAdapter4(ArrayList<taodethicauhoiitem> mylist, IClickUpdateCauHoiDaChon iclickupdate, IClickDeleteCauHoiDaChon iclickdelete)
     {
         this.mylist = mylist;
         this.iclickupdate = iclickupdate;
@@ -37,10 +35,10 @@ public class TaoDeThi2Adapter extends RecyclerView.Adapter<TaoDeThi2Adapter.CauH
 
     @NonNull
     @Override
-    public TaoDeThi2Adapter.CauHoiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public TaoDeThiAdapter4.CauHoiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_tao_de_thi_cau_hoi_da_tao,parent,false);
-        return new TaoDeThi2Adapter.CauHoiViewHolder(view);
+        return new TaoDeThiAdapter4.CauHoiViewHolder(view);
     }
 
     @Override
