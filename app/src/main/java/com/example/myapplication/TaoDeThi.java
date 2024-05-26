@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -106,6 +107,8 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
                     String key_dtch = db_dethi_cauhoi.push().getKey();
                     db_dethi_cauhoi.child(key_dtch).setValue(dt_ch);
                 }
+                Toast.makeText(TaoDeThi.this, "Đã tạo đề thi thành công", Toast.LENGTH_SHORT).show();
+
             }
         });
 
