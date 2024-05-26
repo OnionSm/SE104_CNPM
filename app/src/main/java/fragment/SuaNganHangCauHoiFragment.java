@@ -205,7 +205,7 @@ public class SuaNganHangCauHoiFragment extends Fragment
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-
+                socautd = snapshot.child("socautd").child("giaTri").getValue(Integer.class);
             }
 
             @Override

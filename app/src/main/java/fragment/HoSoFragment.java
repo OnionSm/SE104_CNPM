@@ -129,7 +129,7 @@ public class HoSoFragment extends Fragment {
         DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
 
-        /*doi_anh_dai_dien.setOnClickListener(v -> chooseImage());*/
+        doi_anh_dai_dien.setOnClickListener(v -> chooseImage());
 
         db_pdn.addValueEventListener(new ValueEventListener() {
             @Override

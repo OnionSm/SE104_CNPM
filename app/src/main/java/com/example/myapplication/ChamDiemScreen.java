@@ -76,10 +76,10 @@ public class ChamDiemScreen extends AppCompatActivity
                             Uri uri = data.getData();
                             String[] filename1;
                             String fn;
-                            String filepath=uri.getPath();
+                            String filepath= uri.getPath();
                             String filePath1[]=filepath.split(":");
                             filename1 =filepath.split("/");
-                            fn=filename1[filename1.length-1];
+                            fn= filename1[filename1.length-1];
                             String absoulute_path = Environment.getExternalStorageDirectory().getPath()+"/"+filePath1[1];
                             select_file.setText(absoulute_path);
                         }
@@ -156,7 +156,7 @@ public class ChamDiemScreen extends AppCompatActivity
         {
             OpenGallery();
         }*/
-            OpenGallery();
+        OpenGallery();
     }
     private void OpenGallery()
     {

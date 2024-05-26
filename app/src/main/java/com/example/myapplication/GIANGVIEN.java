@@ -15,7 +15,6 @@ public class GIANGVIEN
     public GIANGVIEN()
     {
 
-
     }
     public GIANGVIEN(String gioiTinhGV, String hoTenGV, String maGV, String maNhomND, String matKhau, String ngSinhGV, String sdt) {
         this.gioiTinhGV = gioiTinhGV;
