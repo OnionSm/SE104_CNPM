@@ -2,10 +2,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_screen"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".MainScreen">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fragment.TrangChuAdminFragment">
 
     <ImageView
         android:id="@+id/trang_chu_logo_uit"
@@ -133,7 +132,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.356" />
 
-
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -152,8 +150,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.41" />
-
-
     <ImageButton
         android:id="@+id/trang_chu_cau_hoi_button"
         android:layout_width="0dp"
@@ -289,7 +285,28 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.857" />
 
-
-
+    <ImageButton
+        android:id="@+id/trang_chu_tham_so_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/trang_chu_guideline_11_2"
+        app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_6_4"
+        app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_6_3"
+        app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_11_1"
+        app:srcCompat="@drawable/tham_so_button" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/trang_chu_guideline_11_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.875" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/trang_chu_guideline_11_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.942" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

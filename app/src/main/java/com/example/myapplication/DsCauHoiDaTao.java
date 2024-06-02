@@ -95,7 +95,6 @@ public class DsCauHoiDaTao extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(DsCauHoiDaTao.this, CauHoiScreen.class));
                 finish();
             }
         });
@@ -371,7 +370,8 @@ public class DsCauHoiDaTao extends AppCompatActivity
     }
 
 
-    private void GetListCauHoi() {
+    private void GetListCauHoi()
+    {
         cauhoi_rcv = findViewById(R.id.danh_sach_cau_hoi_recycle_view);
         // Set GridLayoutManager with 1 column
         GridLayoutManager grid_layout_manager = new GridLayoutManager(DsCauHoiDaTao.this, 1);
@@ -396,8 +396,8 @@ public class DsCauHoiDaTao extends AppCompatActivity
         getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                if (isEnabled()) {
-                    startActivity(new Intent(DsCauHoiDaTao.this, CauHoiScreen.class));
+                if (isEnabled())
+                {
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();

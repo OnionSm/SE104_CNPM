@@ -30,7 +30,8 @@ public class CauHoiScreen extends AppCompatActivity
             return insets;
         });
         ImageButton tao_cau_hoi = findViewById(R.id.cau_hoi_tao_cau_hoi_button);
-        tao_cau_hoi.setOnClickListener(new View.OnClickListener() {
+        tao_cau_hoi.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
@@ -44,19 +45,27 @@ public class CauHoiScreen extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Intent quay_lai_trang_chu_intent = new Intent(CauHoiScreen.this, MainScreenNew.class);
-                startActivity(quay_lai_trang_chu_intent);
                 finish();
             }
         });
 
         ds_cau_hoi_da_tao_button = (ImageButton) findViewById(R.id.tao_cau_hoi_danh_sach_button);
-        ds_cau_hoi_da_tao_button.setOnClickListener(new View.OnClickListener() {
+        ds_cau_hoi_da_tao_button.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
                 startActivity(new Intent(CauHoiScreen.this, DsCauHoiDaTao.class));
-                finish();
+            }
+        });
+
+        ImageButton monhoc_button = findViewById(R.id.tao_mon_hoc_danh_sach_button);
+        monhoc_button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(CauHoiScreen.this, MonHocScreen.class));
             }
         });
         setupOnBackPressed();

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_sua_xoa"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background = "@drawable/mon_hoc_bottom_sheet_background"
+    android:orientation="vertical">
+
+    <!--<ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/mon_hoc_bottom_sheet_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="10dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/bottom_sheet_upper_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/button_sua_mon_hoc"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="40dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/sua_button_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sửa môn học"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="20sp"
+        android:textColor="#271717"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/button_sua_mon_hoc"
+        app:layout_constraintEnd_toEndOf="@id/button_sua_mon_hoc"
+        app:layout_constraintTop_toTopOf="@id/button_sua_mon_hoc"
+        app:layout_constraintBottom_toBottomOf="@id/button_sua_mon_hoc"/>
+
+
+
+    <ImageButton
+        android:id="@+id/button_xoa_mon_hoc"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:scaleType="fitXY"
+        android:background="#00FFFFFF"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/xoa_button_1"
+        app:layout_constraintTop_toBottomOf="@id/button_sua_mon_hoc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xóa môn học"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="20sp"
+        android:textColor="#7D1D40"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/button_xoa_mon_hoc"
+        app:layout_constraintEnd_toEndOf="@id/button_xoa_mon_hoc"
+        app:layout_constraintTop_toTopOf="@id/button_xoa_mon_hoc"
+        app:layout_constraintBottom_toBottomOf="@id/button_xoa_mon_hoc"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
