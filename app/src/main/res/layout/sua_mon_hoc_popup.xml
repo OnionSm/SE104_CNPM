@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/cau_hoi_box_background2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/noi_dung_mon_hoc_edt"
+        android:layout_width="350dp"
+        android:layout_height="130dp"
+        android:background="@drawable/cau_hoi_box_background2"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Nhập nội dung môn học"
+        android:gravity="top|left"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noi_dung_mon_hoc" />
+
+    <EditText
+        android:id="@+id/mon_hoc_edt"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/cau_hoi_box_background2"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="left|center"
+        android:hint="Nhập tên môn học"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/do_kho"/>
+
+    <ImageView
+        android:id="@+id/noi_dung_mon_hoc"
+        android:layout_width="110dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/noi_dung_mon_hoc_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mon_hoc_edt" />
+
+    <ImageView
+        android:id="@+id/do_kho"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ten_mon_hoc_text2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/thay_doi_mon_hoc_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="25dp"
+        app:srcCompat="@drawable/luu_mon_hoc_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noi_dung_mon_hoc_edt"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

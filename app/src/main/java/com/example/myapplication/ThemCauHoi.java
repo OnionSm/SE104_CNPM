@@ -56,6 +56,8 @@ public class ThemCauHoi extends AppCompatActivity
 
     CircleImageView use_dang_tai;
 
+    ImageButton them_cau_hoi_button;
+
     int code;
     ArrayList<taodethicauhoiitem> list_cau_hoi_duoc_chon;
 
@@ -64,6 +66,17 @@ public class ThemCauHoi extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_cau_hoi);
+
+        them_cau_hoi_button = findViewById(R.id.them_mon_hoc_button);
+        them_cau_hoi_button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(ThemCauHoi.this, ThemMonHocScreen.class));
+            }
+        });
+
 
         noi_dung_cau_hoi = findViewById(R.id.noi_dung_cau_hoi);
         ngay_dang_tai = findViewById(R.id.ngay_dang_tai);
@@ -78,12 +91,14 @@ public class ThemCauHoi extends AppCompatActivity
         db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
 
         spinner_mon_hoc = findViewById(R.id.tao_cau_hoi_mon_hoc_spiner);
-        dbRef.addValueEventListener(new ValueEventListener() {
+        dbRef.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 tenMonHocList.clear();
-                for (DataSnapshot monHocSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot monHocSnapshot : dataSnapshot.getChildren())
+                {
                     String tenMonHoc = monHocSnapshot.child("tenMH").getValue(String.class);
                     tenMonHocList.add(tenMonHoc);
                 }
@@ -91,16 +106,19 @@ public class ThemCauHoi extends AppCompatActivity
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(DatabaseError databaseError)
+            {
                 Log.w(TAG, "Lỗi", databaseError.toException());
             }
         });
 
         dbRef_2 = FirebaseDatabase.getInstance().getReference("DOKHO");
         spinner_do_kho = findViewById(R.id.tao_cau_hoi_do_kho_spiner);
-        dbRef_2.addValueEventListener(new ValueEventListener() {
+        dbRef_2.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
                 do_kho_list.clear();
                 for (DataSnapshot doKhoSnapshot : dataSnapshot.getChildren()) {
                     String doKho = doKhoSnapshot.child("TenDK").getValue(String.class);
@@ -154,13 +172,15 @@ public class ThemCauHoi extends AppCompatActivity
 
 
 
-    private void updateSpinner() {
+    private void updateSpinner()
+    {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(ThemCauHoi.this, android.R.layout.simple_spinner_item, tenMonHocList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_mon_hoc.setAdapter(adapter);
     }
 
-    private void updateSpinner1() {
+    private void updateSpinner1()
+    {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(ThemCauHoi.this, android.R.layout.simple_spinner_item, do_kho_list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_do_kho.setAdapter(adapter);

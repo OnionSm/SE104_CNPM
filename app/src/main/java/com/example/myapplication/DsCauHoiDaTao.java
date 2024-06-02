@@ -124,20 +124,32 @@ public class DsCauHoiDaTao extends AppCompatActivity
 
     private void updateCauHoiToDatabase()
     {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(DsCauHoiDaTao.this);
-        LayoutInflater inflater1 = getLayoutInflater();
-        View dialogView1 = inflater1.inflate(R.layout.activity_sua_cau_hoi_pop_up, null);
-        builder1.setView(dialogView1);
-        EditText noiDungEditText = dialogView1.findViewById(R.id.noi_dung_cau_hoi_edt);
-        EditText doKhoEditText = dialogView1.findViewById(R.id.do_kho_edt);
-        ImageButton thayDoiButton = dialogView1.findViewById(R.id.thay_doi_cau_hoi_button);
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_sua_cau_hoi_pop_up);
+
+        Window window = dialog.getWindow();
+        if(window == null)
+        {
+            return;
+        }
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams window_attributes = window.getAttributes();
+        window_attributes.gravity = Gravity.CENTER;
+        window.setAttributes(window_attributes);
+        EditText noiDungEditText = dialog.findViewById(R.id.noi_dung_cau_hoi_edt);
+        EditText doKhoEditText = dialog.findViewById(R.id.do_kho_edt);
+        ImageButton thayDoiButton = dialog.findViewById(R.id.thay_doi_cau_hoi_button);
         if (selectedCauhoi != null)
         {
             noiDungEditText.setText(selectedCauhoi.getMo_ta());
             doKhoEditText.setText(selectedCauhoi.getDo_kho());
         }
-        AlertDialog dialog = builder1.create();
+        dialog.setCanceledOnTouchOutside(true);
         dialog.show();
+
         thayDoiButton.setOnClickListener(v ->
         {
             DatabaseReference dbCauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
