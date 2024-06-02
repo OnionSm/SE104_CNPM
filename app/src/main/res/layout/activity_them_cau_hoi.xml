@@ -447,4 +447,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.94"/>
+    <ImageButton
+        android:id="@+id/them_mon_hoc_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/them_mon_hoc_button"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/tao_de_guideline_2_1"
+        app:layout_constraintEnd_toEndOf="@id/tao_de_guideline_2_2"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_1_3"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_1_4"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_2_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tao_de_guideline_2_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.955"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

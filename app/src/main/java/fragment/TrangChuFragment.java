@@ -88,26 +88,22 @@ public class TrangChuFragment extends Fragment {
         cauhoi = view.findViewById(R.id.trang_chu_cau_hoi_button);
         cauhoi.setOnClickListener(v -> {
             startActivity(new Intent(activity, CauHoiScreen.class));
-            requireActivity().finishAffinity();
         });
 
         ImageButton dethi = view.findViewById(R.id.trang_chu_de_thi_button);
         dethi.setOnClickListener(v -> {
             Intent de_thi_intent = new Intent(activity, DeThiScreen.class);
             startActivity(de_thi_intent);
-            requireActivity().finishAffinity();
         });
 
         ImageButton tra_cuu = view.findViewById(R.id.trang_chu_tra_cuu_button);
         tra_cuu.setOnClickListener(v -> {
             startActivity(new Intent(activity, TraCuuScreen.class));
-            requireActivity().finishAffinity();
         });
 
         ImageButton cham_diem = view.findViewById(R.id.trang_chu_cham_diem_button);
         cham_diem.setOnClickListener(v -> {
             startActivity(new Intent(activity, ChamDiemScreen.class));
-            requireActivity().finishAffinity();
         });
 
         ImageButton bao_cao = view.findViewById(R.id.trang_chu_bao_cao_button);

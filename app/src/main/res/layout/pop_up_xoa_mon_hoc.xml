@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pop_up_xoa_mon_hoc"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@drawable/round_pop_up">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Bạn chắc chắn muốn xóa môn học này chứ? Môn học sau khi xóa sẽ không được lưu trữ lại."
+        android:textColor="#000000"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <Button
+        android:id="@+id/button_dong_y_xoa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Đồng ý"
+        android:textStyle="bold"
+        android:textColor="#0000FD"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="17sp"
+        android:background="@drawable/border"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_huy_xoa"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintHorizontal_bias="0.25" />
+
+    <Button
+        android:id="@+id/button_huy_xoa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Hủy"
+        android:textStyle="bold"
+        android:textColor="#0000FD"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="17sp"
+        android:background="@drawable/border"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/button_dong_y_xoa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintHorizontal_bias="0.75" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
