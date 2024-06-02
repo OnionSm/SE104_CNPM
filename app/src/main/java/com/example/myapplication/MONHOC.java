@@ -5,6 +5,10 @@ public class MONHOC
     private String maMH;
     private String tenMH;
     private String moTaMH;
+    public MONHOC()
+    {
+
+    }
 
     public MONHOC(String maMH, String tenMH, String moTaMH) {
         this.maMH = maMH;

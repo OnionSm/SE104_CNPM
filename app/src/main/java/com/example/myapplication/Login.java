@@ -93,7 +93,8 @@ public class Login extends AppCompatActivity
                 String email = EmailInput.getText().toString();
                 String password = PasswordInput.getText().toString();
                 Log.i("Text Credentials", "Email: " + email + " and Password: " + password);
-                ref.child("GIANGVIEN").child(email).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                ref.child("GIANGVIEN").child(email).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if (task.isSuccessful()) {
@@ -106,7 +107,14 @@ public class Login extends AppCompatActivity
                                     {
                                         PHIENDANGNHAP phiendangnhap = new PHIENDANGNHAP(id,matKhau);
                                         ref.child("PHIENDANGNHAP").setValue(phiendangnhap);
-                                        startActivity(new Intent(Login.this, MainScreenNew.class));
+                                        if(email.equals("000000"))
+                                        {
+                                            startActivity(new Intent(Login.this, MainScreenAdmin.class));
+                                        }
+                                        else
+                                        {
+                                            startActivity(new Intent(Login.this, MainScreenNew.class));
+                                        }
                                         finish();
                                     }else {
                                         Toast.makeText(Login.this, "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
@@ -122,17 +130,21 @@ public class Login extends AppCompatActivity
             }
         });
         ImageButton dangKyButton = findViewById(R.id.dang_ky_button);
-        dangKyButton.setOnClickListener(new View.OnClickListener() {
+        dangKyButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 // Tạo Intent để chuyển hướng sang màn hình signup
                 Intent intent = new Intent(Login.this, SignUpScreen.class);
                 startActivity(intent);
             }
         });
-        QuenMatKhauButton.setOnClickListener(new View.OnClickListener() {
+        QuenMatKhauButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent = new Intent(Login.this, SDTXacThucScreen.class);
                 startActivity(intent);
             }

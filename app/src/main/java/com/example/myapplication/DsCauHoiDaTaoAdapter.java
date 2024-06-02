@@ -40,7 +40,8 @@ public class DsCauHoiDaTaoAdapter extends RecyclerView.Adapter<DsCauHoiDaTaoAdap
         return new DsViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(@NonNull DsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DsViewHolder holder, int position)
+    {
         cauhoiitem cauhoi = mylist.get(position);
         if (cauhoi == null) {
             return;
