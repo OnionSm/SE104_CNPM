@@ -171,7 +171,8 @@ public class NganHangCauHoiFragment extends Fragment
 
                         String mach = data.child("maCH").getValue(String.class);
                         String noidung = data.child("noiDung").getValue(String.class);
-                        mylist.add(new taodethicauhoiitem(mach, noidung));
+                        String madokho = data.child("maDoKho").getValue(String.class);
+                        mylist.add(new taodethicauhoiitem(mach, madokho, noidung));
                         adapter.notifyDataSetChanged();
                     }
 

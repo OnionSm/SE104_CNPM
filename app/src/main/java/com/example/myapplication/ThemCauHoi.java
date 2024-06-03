@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +36,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import fragment.HoSoFragment;
 import fragment.NganHangCauHoiFragment;
+import fragment.TrangChuFragment;
 
 public class ThemCauHoi extends AppCompatActivity
 {
@@ -54,9 +57,11 @@ public class ThemCauHoi extends AppCompatActivity
 
     DatabaseReference db_pdn;
 
-    CircleImageView use_dang_tai;
+    CircleImageView user_dang_tai;
 
     ImageButton them_cau_hoi_button;
+    SessionManager sessionManager;
+    String user_account;
 
     int code;
     ArrayList<taodethicauhoiitem> list_cau_hoi_duoc_chon;
@@ -77,6 +82,9 @@ public class ThemCauHoi extends AppCompatActivity
             }
         });
 
+        // Khởi tạo biến chia sẻ dữ liệu
+        sessionManager = new SessionManager(getApplicationContext());
+        user_account = sessionManager.getUsername();
 
         noi_dung_cau_hoi = findViewById(R.id.noi_dung_cau_hoi);
         ngay_dang_tai = findViewById(R.id.ngay_dang_tai);
@@ -88,7 +96,6 @@ public class ThemCauHoi extends AppCompatActivity
         dbRef_3 = FirebaseDatabase.getInstance().getReference("CAUHOI");
         dbRef_4 = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
         dbRef = FirebaseDatabase.getInstance().getReference("MONHOC");
-        db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
 
         spinner_mon_hoc = findViewById(R.id.tao_cau_hoi_mon_hoc_spiner);
         dbRef.addValueEventListener(new ValueEventListener()
@@ -190,7 +197,6 @@ public class ThemCauHoi extends AppCompatActivity
     {
         String tenMonHoc = spinner_mon_hoc.getSelectedItem().toString();
         String tenDoKho = spinner_do_kho.getSelectedItem().toString();
-        String magv;
         getMaMonHoc(tenMonHoc, new OnMaMonHocCallback()
         {
             @Override
@@ -208,62 +214,33 @@ public class ThemCauHoi extends AppCompatActivity
                                 String noiDung = noi_dung_cau_hoi.getText().toString();
                                 String maCH = dbRef_3.push().getKey();
 
-                                // Lấy tên giảng viên từ Firebase
-                                String tenGiangVien = ten_giang_vien.getText().toString();
+                                Calendar calendar = Calendar.getInstance();
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                String dateString = dateFormat.format(calendar.getTime());
 
-                                // Lấy mã giảng viên từ tên giảng viên
-                                getMaGiangVien(tenGiangVien, new OnMaGiangVienCallback()
+                                if(!noiDung.isEmpty())
                                 {
-                                    @Override
-                                    public void onMaGiangVienReceived(String maGVtaocauhoi)
+                                    CAUHOI chiTietCauHoi = new CAUHOI(maCH, maDoKho, noiDung, maMonHoc, user_account, dateString);
+                                    dbRef_3.child(maCH).setValue(chiTietCauHoi).addOnCompleteListener(new OnCompleteListener<Void>()
                                     {
-                                        if (maGVtaocauhoi != null)
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task)
                                         {
-                                            Calendar calendar = Calendar.getInstance();
-                                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                                            String dateString = dateFormat.format(calendar.getTime());
-
-                                            db_pdn.addValueEventListener(new ValueEventListener()
+                                            if (task.isSuccessful())
                                             {
-                                                @Override
-                                                public void onDataChange(@NonNull DataSnapshot snapshot)
-                                                {
-                                                    String magv = snapshot.child("account").getValue(String.class);
-                                                }
+                                                Toast.makeText(ThemCauHoi.this, "Câu hỏi đã được tạo", Toast.LENGTH_LONG).show();
+                                                noi_dung_cau_hoi.setText("");
 
-                                                @Override
-                                                public void onCancelled(@NonNull DatabaseError error)
-                                                {
-
-                                                }
-                                            });
-                                            if(!noiDung.isEmpty())
-                                            {
-                                                CAUHOI chiTietCauHoi = new CAUHOI(maCH, maDoKho, noiDung, maMonHoc, maGVtaocauhoi, dateString);
-                                                dbRef_3.child(maCH).setValue(chiTietCauHoi).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                        if (task.isSuccessful()) {
-                                                            Toast.makeText(ThemCauHoi.this, "Câu hỏi đã được tạo", Toast.LENGTH_LONG).show();
-                                                            noi_dung_cau_hoi.setText("");
-
-                                                        } else {
-                                                            Toast.makeText(ThemCauHoi.this, "Lỗi", Toast.LENGTH_LONG).show();
-                                                        }
-                                                    }
-                                                });
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(ThemCauHoi.this, "Nội dung đang còn trống", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(ThemCauHoi.this, "Lỗi", Toast.LENGTH_LONG).show();
                                             }
                                         }
-                                        else
-                                        {
-                                            Toast.makeText(ThemCauHoi.this, "Không tìm thấy mã giảng viên", Toast.LENGTH_LONG).show();
-                                        }
-                                    }
-                                });
+                                    });
+                                }
+                                else
+                                {
+                                    Toast.makeText(ThemCauHoi.this, "Nội dung đang còn trống", Toast.LENGTH_SHORT).show();
+                                }
                             }
                             else
                             {
@@ -285,7 +262,8 @@ public class ThemCauHoi extends AppCompatActivity
         dbRef.orderByChild("tenMH").equalTo(tenMonHoc).addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 String maMonHoc = null;
                 for (DataSnapshot monHocSnapshot : dataSnapshot.getChildren()) {
                     maMonHoc = monHocSnapshot.getKey();
@@ -327,91 +305,53 @@ public class ThemCauHoi extends AppCompatActivity
         });
     }
 
-    private void getMaGiangVien(String tenGiangVien, OnMaGiangVienCallback callback)
-    {
-        db_pdn.child("account").addListenerForSingleValueEvent(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                String maGiangVien = dataSnapshot.getValue(String.class);
-                callback.onMaGiangVienReceived(maGiangVien);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "Lỗi", databaseError.toException());
-                callback.onMaGiangVienReceived(null);
-            }
-        });
-    }
 
     private void SetUserImage()
     {
-
-        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
-        DatabaseReference db_gv = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
-        use_dang_tai = findViewById(R.id.anh_dai_dien_nguoi_them_cau_hoi);
-        db_pdn.addValueEventListener(new ValueEventListener()
+        user_dang_tai = findViewById(R.id.anh_dai_dien_nguoi_them_cau_hoi);
+        db_userimage.addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-                String taikhoan = snapshot.child("account").getValue(String.class);
-                db_userimage.addValueEventListener(new ValueEventListener()
+                for (DataSnapshot data : snapshot.getChildren())
                 {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    if(data.getKey().equals(user_account))
                     {
-                        String file_image = snapshot.child(taikhoan).child("fileImage").getValue(String.class);
-                        String packageName = getPackageName();
-                        int resourceId = getResources().getIdentifier(file_image, "drawable", packageName);
-                        use_dang_tai.setImageResource(resourceId);
+                        String file_image = data.child("fileImage").getValue(String.class);
+                        if (file_image != null)
+                        {
+                            Glide.with(ThemCauHoi.this).load(file_image).into(user_dang_tai);
+                        }
                     }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error)
-                    {
 
-                    }
-                });
+                }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+                Toast.makeText(ThemCauHoi.this, "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
+
 
     private void GetTenNguoiThemCauHoi()
     {
         ten_giang_vien = findViewById(R.id.ten_nguoi_them_cau_hoi);
-        db_pdn.addValueEventListener(new ValueEventListener()
+        dbRef_4.addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-                String magv = snapshot.child("account").getValue(String.class);
-                dbRef_4.addValueEventListener(new ValueEventListener()
-                {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
-                    {
-                        String ten_gv = snapshot.child(magv).child("hoTenGV").getValue(String.class);
-                        ten_giang_vien.setText(ten_gv);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                String ten_gv = snapshot.child(user_account).child("hoTenGV").getValue(String.class);
+                ten_giang_vien.setText(ten_gv);
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error)
+            {
 
             }
         });

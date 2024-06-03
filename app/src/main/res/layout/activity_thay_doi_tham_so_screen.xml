@@ -5,6 +5,7 @@
     android:id="@+id/thay_doi_tham_so"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".ThayDoiThamSoScreen">
 
     <ImageButton
@@ -398,7 +399,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.82"/>
 
-    <ImageButton
+    <!--<ImageButton
         android:id="@+id/luu_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -435,6 +436,202 @@
         app:layout_constraintStart_toStartOf="@id/luu_button"
         app:layout_constraintTop_toTopOf="@id/luu_button"
         app:srcCompat="@drawable/thoi_luong_toi_da_text"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>-->
+
+    <ImageButton
+        android:id="@+id/dtt_update"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_15_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_15_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_15_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_15_3"
+        android:background ="@drawable/chinh_sua_button"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_15_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.77"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_15_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.825"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_15_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.316"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_15_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.348"/>
+
+    <ImageButton
+        android:id="@+id/dtt_ok"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_15_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_16_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_16_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_15_3"
+        android:background ="@drawable/dong_y_button"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_16_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.846"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_16_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.901"/>
+
+    <ImageButton
+        android:id="@+id/dtd_update"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_17_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_15_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_15_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_17_3"
+        android:background ="@drawable/chinh_sua_button"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_17_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.428"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_17_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46"/>
+
+    <ImageButton
+        android:id="@+id/dtd_ok"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_17_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_16_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_16_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_17_3"
+        android:background ="@drawable/dong_y_button"/>
+
+    <ImageButton
+        android:id="@+id/sctd_update"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_18_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_15_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_15_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_18_3"
+        android:background ="@drawable/chinh_sua_button"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_18_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.543"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_18_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5745"/>
+
+    <ImageButton
+        android:id="@+id/sctd_ok"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_18_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_16_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_16_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_18_3"
+        android:background ="@drawable/dong_y_button"/>
+
+    <ImageButton
+        android:id="@+id/tltt_update"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_19_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_15_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_15_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_19_3"
+        android:background ="@drawable/chinh_sua_button"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_19_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.657"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_19_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.69"/>
+
+    <ImageButton
+        android:id="@+id/tltt_ok"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_19_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_16_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_16_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_19_3"
+        android:background ="@drawable/dong_y_button"/>
+
+
+    <ImageButton
+        android:id="@+id/tltd_update"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_20_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_15_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_15_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_20_3"
+        android:background ="@drawable/chinh_sua_button"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_20_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7725"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/thay_doi_tham_so_guideline_20_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.804"/>
+
+    <ImageButton
+        android:id="@+id/tltd_ok"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/thay_doi_tham_so_guideline_20_4"
+        app:layout_constraintEnd_toEndOf="@id/thay_doi_tham_so_guideline_16_2"
+        app:layout_constraintStart_toStartOf="@id/thay_doi_tham_so_guideline_16_1"
+        app:layout_constraintTop_toTopOf="@id/thay_doi_tham_so_guideline_20_3"
+        android:background ="@drawable/dong_y_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

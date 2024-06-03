@@ -166,6 +166,7 @@ public class CauHoiDaChonFragment extends Fragment
 
     private void UpdateCauHoiToDataBase(taodethicauhoiitem cauhoi)
     {
+
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_sua_cau_hoi_pop_up);
@@ -183,17 +184,40 @@ public class CauHoiDaChonFragment extends Fragment
         dialog.setCanceledOnTouchOutside(true);
         dialog.show();
 
+        DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
+        DatabaseReference db_dokho = FirebaseDatabase.getInstance().getReference("DOKHO");
+
         EditText noidung_edt = dialog.findViewById(R.id.noi_dung_cau_hoi_edt);
         EditText dokho_edt = dialog.findViewById(R.id.do_kho_edt);
         ImageButton thay_doi_button = dialog.findViewById(R.id.thay_doi_cau_hoi_button);
+        noidung_edt.setText(cauhoi.getNoidung());
+        db_dokho.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                for(DataSnapshot data : snapshot.getChildren())
+                {
+                    if(data.getKey().equals(cauhoi.getMadokho()))
+                    {
+                        dokho_edt.setText(data.child("TenDK").getValue(String.class));
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+
+            }
+        });
+
 
         thay_doi_button.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
-                DatabaseReference db_dokho = FirebaseDatabase.getInstance().getReference("DOKHO");
                 String dokho = dokho_edt.getText().toString();
                 String noidung = noidung_edt.getText().toString();
                 db_cauhoi.addListenerForSingleValueEvent(new ValueEventListener()
@@ -210,8 +234,8 @@ public class CauHoiDaChonFragment extends Fragment
                             {
                                 for (DataSnapshot data : snapshot.getChildren())
                                 {
-                                    Log.e("tên độ khó", data.child("TenDK").getValue(String.class).toLowerCase());
-                                    if (data.child("TenDK").getValue(String.class).toLowerCase().equals(dokho.toLowerCase())) {
+                                    if (data.child("TenDK").getValue(String.class).toLowerCase().equals(dokho.toLowerCase()))
+                                    {
                                         String madokho = data.getKey().toString();
                                         cauhoi_full.setMaDoKho(madokho);
                                         String key = db_cauhoi.push().getKey();

@@ -59,6 +59,8 @@ public class DsCauHoiDaTao extends AppCompatActivity
 
     ShimmerFrameLayout shimmer_layout;
     private cauhoiitem selectedCauhoi;
+    SessionManager sessionManager;
+    String user_account;
 
 
     LinearLayout data_layout;
@@ -73,6 +75,9 @@ public class DsCauHoiDaTao extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        sessionManager = new SessionManager(getApplicationContext());
+        user_account = sessionManager.getUsername();
+
         adapter = new DsCauHoiDaTaoAdapter(mylist);
         setupBottomSheetDialog();
 
@@ -287,8 +292,8 @@ public class DsCauHoiDaTao extends AppCompatActivity
         dialog.show();
     }
 
-    private void GetDataFromFireBase() {
-        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
+    private void GetDataFromFireBase()
+    {
         DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
         DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
         DatabaseReference db_dokho = FirebaseDatabase.getInstance().getReference("DOKHO");
@@ -300,7 +305,8 @@ public class DsCauHoiDaTao extends AppCompatActivity
             int stt = 1;
 
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
                 String mach = snapshot.child("maCH").getValue(String.class);
                 String mamh = snapshot.child("maMH").getValue(String.class);
                 String madokho = snapshot.child("maDoKho").getValue(String.class);
@@ -309,68 +315,119 @@ public class DsCauHoiDaTao extends AppCompatActivity
                 String noidung_origin = snapshot.child("noiDung").getValue(String.class);
                 String noidung = noidung_origin.length() > 200 ? noidung_origin.substring(0, 200) : noidung_origin;
 
-                db_pdn.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot pdnSnapshot) {
-                        String taikhoan = pdnSnapshot.child("account").getValue(String.class);
-                        if (taikhoan.equals(magv)) {
-                            // Fetch subject name and difficulty level in parallel
-                            db_monhoc.child(mamh).addListenerForSingleValueEvent(new ValueEventListener() {
+                if (user_account.equals(magv))
+                {
+                    // Fetch subject name and difficulty level in parallel
+                    db_monhoc.child(mamh).addListenerForSingleValueEvent(new ValueEventListener()
+                    {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot monhocSnapshot) {
+                            String tenmon = monhocSnapshot.child("tenMH").getValue(String.class);
+
+                            db_dokho.child(madokho).addListenerForSingleValueEvent(new ValueEventListener()
+                            {
                                 @Override
-                                public void onDataChange(@NonNull DataSnapshot monhocSnapshot) {
-                                    String tenmon = monhocSnapshot.child("tenMH").getValue(String.class);
-
-                                    db_dokho.child(madokho).addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot dokhoSnapshot)
-                                        {
-                                            String dokho = dokhoSnapshot.child("TenDK").getValue(String.class);
-                                            mylist.add(0, new cauhoiitem(String.valueOf(stt), mach, tenmon, noidung, dokho, ngaytao));
-                                            stt++;
-                                            // Update the serial numbers
-                                            for (int i = 0; i < mylist.size(); i++) {
-                                                cauhoiitem item = mylist.get(i);
-                                                item.setStt(String.valueOf(i + 1));
-                                            }
-                                            adapter.notifyDataSetChanged(); // Notify the adapter of dataset changes
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-                                            // Handle error
-                                        }
-                                    });
+                                public void onDataChange(@NonNull DataSnapshot dokhoSnapshot)
+                                {
+                                    String dokho = dokhoSnapshot.child("TenDK").getValue(String.class);
+                                    mylist.add(0, new cauhoiitem(String.valueOf(stt), mach, tenmon, noidung, dokho, ngaytao));
+                                    stt++;
+                                    // Update the serial numbers
+                                    for (int i = 0; i < mylist.size(); i++)
+                                    {
+                                        cauhoiitem item = mylist.get(i);
+                                        item.setStt(String.valueOf(i + 1));
+                                    }
+                                    adapter.notifyDataSetChanged(); // Notify the adapter of dataset changes
                                 }
 
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                                public void onCancelled(@NonNull DatabaseError error)
+                                {
                                     // Handle error
                                 }
                             });
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        // Handle error
-                    }
-                });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error)
+                        {
+                            // Handle error
+                        }
+                    });
+                }
+
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // Handle child changed
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+                String mach = snapshot.child("maCH").getValue(String.class);
+                for (cauhoiitem item : mylist) {
+                    if (item.getMach().equals(mach)) {
+                        // Update the item fields
+                        String mamh = snapshot.child("maMH").getValue(String.class);
+                        String madokho = snapshot.child("maDoKho").getValue(String.class);
+                        String ngaytao = snapshot.child("ngaytao").getValue(String.class);
+                        String noidung_origin = snapshot.child("noiDung").getValue(String.class);
+                        String noidung = noidung_origin.length() > 200 ? noidung_origin.substring(0, 200) : noidung_origin;
+
+                        item.setMo_ta(noidung);
+                        item.setNgay_tao(ngaytao);
+
+                        db_monhoc.child(mamh).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot monhocSnapshot) {
+                                String tenmon = monhocSnapshot.child("tenMH").getValue(String.class);
+                                item.setMon_hoc(tenmon);
+
+                                db_dokho.child(madokho).addListenerForSingleValueEvent(new ValueEventListener()
+                                {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dokhoSnapshot) {
+                                        String dokho = dokhoSnapshot.child("TenDK").getValue(String.class);
+                                        item.setDo_kho(dokho);
+                                        adapter.notifyDataSetChanged();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        // Handle error
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // Handle error
+                            }
+                        });
+                        break;
+                    }
+                }
             }
 
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                // Handle child removed
+            public void onChildRemoved(@NonNull DataSnapshot snapshot)
+            {
+                String mach = snapshot.child("maCH").getValue(String.class);
+                for (int i = 0; i < mylist.size(); i++) {
+                    if (mylist.get(i).getMach().equals(mach)) {
+                        mylist.remove(i);
+                        // Update the serial numbers
+                        for (int j = 0; j < mylist.size(); j++) {
+                            mylist.get(j).setStt(String.valueOf(j + 1));
+                        }
+                        adapter.notifyDataSetChanged();
+                        break;
+                    }
+                }
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
             {
-                // Handle child moved
+                // This usually indicates a reordering of elements. Handle if necessary.
             }
 
             @Override
@@ -380,6 +437,7 @@ public class DsCauHoiDaTao extends AppCompatActivity
             }
         });
     }
+
 
 
     private void GetListCauHoi()

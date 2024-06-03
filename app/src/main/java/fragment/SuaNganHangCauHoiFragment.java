@@ -74,7 +74,8 @@ public class SuaNganHangCauHoiFragment extends Fragment
     private String mParam1;
     private String mParam2;
 
-    public SuaNganHangCauHoiFragment() {
+    public SuaNganHangCauHoiFragment()
+    {
         // Required empty public constructor
     }
 
@@ -113,6 +114,7 @@ public class SuaNganHangCauHoiFragment extends Fragment
         madethi = activity.AccessMaDeThi();
         View view  = inflater.inflate(R.layout.fragment_sua_ngan_hang_cau_hoi, container, false);
 
+        mylist = new ArrayList<>();
 
         themcauhoi = view.findViewById(R.id.them_cau_hoi_button);
 
@@ -240,7 +242,8 @@ public class SuaNganHangCauHoiFragment extends Fragment
                                     if(data.getKey().equals(mach))
                                     {
                                         String noidung = data.child("noiDung").getValue(String.class);
-                                        taodethicauhoiitem cauhoi = new taodethicauhoiitem(mach,noidung);
+                                        String madokho = data.child("maDoKho").getValue(String.class);
+                                        taodethicauhoiitem cauhoi = new taodethicauhoiitem(mach,madokho,noidung);
                                         list_cau_hoi_duoc_chon.add(cauhoi);
                                         Bundle result = new Bundle();
                                         result.putSerializable("list_duoc_chon", list_cau_hoi_duoc_chon);
@@ -266,7 +269,6 @@ public class SuaNganHangCauHoiFragment extends Fragment
     {
         DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
         DatabaseReference db_cauhoi = FirebaseDatabase.getInstance().getReference("CAUHOI");
-        mylist = new ArrayList<>();
         db_dethi.addValueEventListener(new ValueEventListener()
         {
             @Override
@@ -278,7 +280,8 @@ public class SuaNganHangCauHoiFragment extends Fragment
                     {
                         String magv = data.child("maGV").getValue(String.class);
                         String mamhdethi = data.child("maMH").getValue(String.class);
-                        db_cauhoi.addValueEventListener(new ValueEventListener() {
+                        db_cauhoi.addValueEventListener(new ValueEventListener()
+                        {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot)
                             {
@@ -289,7 +292,8 @@ public class SuaNganHangCauHoiFragment extends Fragment
                                     {
                                         String noidung = data.child("noiDung").getValue(String.class);
                                         String mach = data.getKey();
-                                        taodethicauhoiitem cauhoi = new taodethicauhoiitem(mach,noidung);
+                                        String madokho = data.child("maDoKho").getValue(String.class);
+                                        taodethicauhoiitem cauhoi = new taodethicauhoiitem(mach, madokho, noidung);
                                         mylist.add(cauhoi);
                                         adapter.notifyDataSetChanged();
                                     }
