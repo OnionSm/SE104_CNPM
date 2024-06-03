@@ -206,7 +206,6 @@ public class NhapDiemScreen extends AppCompatActivity
             {
                 if(isEnabled())
                 {
-                    startActivity(new Intent(NhapDiemScreen.this, ChamDiemScreen.class));
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();

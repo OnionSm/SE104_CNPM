@@ -2,13 +2,23 @@ package com.example.myapplication;
 
 public class DETHICAUHOI
 {
+    private String key;
     private String maDT;
     private String maCH;
 
-    public DETHICAUHOI(String maDT, String maCH)
+    public DETHICAUHOI(String key, String maDT, String maCH)
     {
+        this.key = key;
         this.maDT = maDT;
         this.maCH = maCH;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getMaDT() {
@@ -28,9 +38,11 @@ public class DETHICAUHOI
     }
 
     @Override
-    public String toString() {
-        return "com.example.myapplication.DETHICAUHOI{" +
-                "maDT='" + maDT + '\'' +
+    public String toString()
+    {
+        return "DETHICAUHOI{" +
+                "key='" + key + '\'' +
+                ", maDT='" + maDT + '\'' +
                 ", maCH='" + maCH + '\'' +
                 '}';
     }
