@@ -99,8 +99,8 @@ public class SuaDeThiScreen extends AppCompatActivity implements IPassingData
                 });
                 for(int i = 0 ;i < mylist.size(); i++)
                 {
-                    DETHICAUHOI dt_ch = new DETHICAUHOI(madethi,mylist.get(i).getMacauhoi());
                     String key_dtch = db_dethi_cauhoi.push().getKey();
+                    DETHICAUHOI dt_ch = new DETHICAUHOI(key_dtch, madethi,mylist.get(i).getMacauhoi());
                     db_dethi_cauhoi.child(key_dtch).setValue(dt_ch);
                 }
             }

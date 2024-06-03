@@ -43,6 +43,8 @@ public class DanhSachDeThiScreen extends AppCompatActivity
     ShimmerFrameLayout shimmer_layout;
     dethidataoitem selected_dethi;
     BottomSheetDialog bottom_sheet_dialog;
+    SessionManager sessionManager;
+    String user_account;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -54,6 +56,13 @@ public class DanhSachDeThiScreen extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        // Khởi tạo list dữ liệu cho recycleview
+        mylist = new ArrayList<>();
+
+        // Khởi tạo biến dùng để truy xuất user_login;
+        sessionManager = new SessionManager(getApplicationContext());
+        user_account = sessionManager.getUsername();
+
 
         back_button = findViewById(R.id.ds_danh_sach_cau_hoi_icon_back);
         back_button.setOnClickListener(new View.OnClickListener()
@@ -76,9 +85,8 @@ public class DanhSachDeThiScreen extends AppCompatActivity
             shimmer_layout.stopShimmer();
             shimmer_layout.setVisibility(View.INVISIBLE);
         },3000);
-
-        GetDataDeThiFromFireBase();
         GetListDeThi();
+        GetDataDeThiFromFireBase();
 
 
         setupOnBackPressed();
@@ -93,7 +101,6 @@ public class DanhSachDeThiScreen extends AppCompatActivity
             {
                 if(isEnabled())
                 {
-                    startActivity(new Intent(DanhSachDeThiScreen.this, DeThiScreen.class));
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();
@@ -131,7 +138,6 @@ public class DanhSachDeThiScreen extends AppCompatActivity
                 bundle.putString("madethi",selected_dethi.getMade());
                 intent.putExtra("data", bundle);
                 startActivity(intent);
-
             }
         });
         button_xoa_de_thi.setOnClickListener(new View.OnClickListener()
@@ -142,7 +148,6 @@ public class DanhSachDeThiScreen extends AppCompatActivity
                 showPopupXoa();
             }
         });
-
     }
     private void GetListDeThi()
     {
@@ -168,55 +173,91 @@ public class DanhSachDeThiScreen extends AppCompatActivity
         DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         DatabaseReference db_hknh = FirebaseDatabase.getInstance().getReference("HKNH");
         DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
-        mylist = new ArrayList<>();
         db_dethi.addChildEventListener(new ChildEventListener()
         {
             int stt = 1;
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
             {
-                String madt = snapshot.child("maDT").getValue(String.class);
-                String magv = snapshot.child("maGV").getValue(String.class);
-                String mahknh = snapshot.child("maHKNH").getValue(String.class);
-                String ngaythi = snapshot.child("ngayThi").getValue(String.class);
-                String thoiluong = String.valueOf(snapshot.child("thoiLuong").getValue(Integer.class));
-                String mamh = snapshot.child("maMH").getValue(String.class);
-                db_pdn.addValueEventListener(new ValueEventListener()
+                DETHI dethi = snapshot.getValue(DETHI.class);
+
+                if(dethi.getMaGV().equals(user_account))
                 {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    db_monhoc.addListenerForSingleValueEvent(new ValueEventListener()
                     {
-                        String taikhoan = snapshot.child("account").getValue(String.class);
-                        if(magv.equals(taikhoan))
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot)
                         {
-                            db_monhoc.addValueEventListener(new ValueEventListener() {
+                            String monhoc = snapshot.child(dethi.getMaMH()).child("tenMH").getValue(String.class);
+                            db_hknh.addListenerForSingleValueEvent(new ValueEventListener()
+                            {
                                 @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String monhoc = snapshot.child(mamh).child("tenMH").getValue(String.class);
-                                    db_hknh.addValueEventListener(new ValueEventListener()
+                                public void onDataChange(@NonNull DataSnapshot snapshot)
+                                {
+                                    String hocky = String.valueOf(snapshot.child(dethi.getMaHKNH()).child("hocKy").getValue(Integer.class));
+                                    String nam1 = String.valueOf(snapshot.child(dethi.getMaHKNH()).child("nam1").getValue(Integer.class));
+                                    String nam2 = String.valueOf(snapshot.child(dethi.getMaHKNH()).child("nam2").getValue(Integer.class));
+                                    mylist.add(0, new dethidataoitem(String.valueOf(stt), dethi.getMaDT(), monhoc,
+                                            hocky, nam1 +  "/" + nam2, String.valueOf(dethi.getThoiLuong()), dethi.getNgayThi()));
+                                    stt++;
+                                    for (int i = 0; i < mylist.size(); i++)
+                                    {
+                                        dethidataoitem item = mylist.get(i);
+                                        item.setStt(String.valueOf(i + 1));
+                                    }
+                                    adapter.notifyDataSetChanged();
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error)
+                                {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+                DETHI dethi = snapshot.getValue(DETHI.class);
+
+                if(dethi.getMaGV().equals(user_account))
+                {
+                    for (dethidataoitem item : mylist)
+                    {
+                        if (item.getMade().equals(dethi.getMaDT()))
+                        {
+                            db_monhoc.addListenerForSingleValueEvent(new ValueEventListener()
+                            {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot)
+                                {
+                                    String monhoc = snapshot.child(dethi.getMaMH()).child("tenMH").getValue(String.class);
+                                    db_hknh.addListenerForSingleValueEvent(new ValueEventListener()
                                     {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot)
                                         {
-                                            String hocky = String.valueOf(snapshot.child(mahknh).child("hocKy").getValue(Integer.class));
-                                            String nam1 = String.valueOf(snapshot.child(mahknh).child("nam1").getValue(Integer.class));
-                                            String nam2 = String.valueOf(snapshot.child(mahknh).child("nam2").getValue(Integer.class));
-                                            if (mylist.size() > 50)
-                                            {
-                                                mylist.remove(mylist.size() - 1);
-                                            }
-                                            mylist.add(0, new dethidataoitem(String.valueOf(stt), madt, monhoc,
-                                                    hocky, nam1 +  "/" + nam2, thoiluong, ngaythi));
-                                            stt++;
-                                            for (int i = 0; i < mylist.size(); i++) {
-                                                dethidataoitem item = mylist.get(i);
-                                                item.setStt(String.valueOf(i + 1));
-                                            }
+                                            String hocky = String.valueOf(snapshot.child(dethi.getMaHKNH()).child("hocKy").getValue(Integer.class));
+                                            String nam1 = String.valueOf(snapshot.child(dethi.getMaHKNH()).child("nam1").getValue(Integer.class));
+                                            String nam2 = String.valueOf(snapshot.child(dethi.getMaHKNH()).child("nam2").getValue(Integer.class));
+                                            item.setTenmon(monhoc);
+                                            item.setHocky(hocky);
+                                            item.setNamhoc(nam1 + "/" + nam2);
+                                            item.setThoiluong(String.valueOf(dethi.getThoiLuong()));
+                                            item.setNgaytao(dethi.getNgayThi());
                                             adapter.notifyDataSetChanged();
-
                                         }
                                         @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
+                                        public void onCancelled(@NonNull DatabaseError error)
+                                        {
 
                                         }
                                     });
@@ -227,37 +268,52 @@ public class DanhSachDeThiScreen extends AppCompatActivity
 
                                 }
                             });
+                            break;
                         }
                     }
+                }
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot)
+            {
+                DETHI dethi = snapshot.getValue(DETHI.class);
 
+                if(dethi.getMaGV().equals(user_account))
+                {
+                    for (int i = 0; i < mylist.size(); i++)
+                    {
+                        if (mylist.get(i).getMade().equals(dethi.getMaDT()))
+                        {
+                            mylist.remove(i);
+                            for (int j = i; j < mylist.size(); j++)
+                            {
+                                mylist.get(j).setStt(String.valueOf(j + 1));
+                            }
+                            adapter.notifyDataSetChanged();
+                            break;
+                        }
                     }
-                });
+                }
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName)
+            {
+                // This typically occurs when the order of the items changes.
+                // In our scenario, we'll just update the list.
+                // In most Firebase scenarios, this isn't necessary unless a specific order is being used.
+                adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+                // Handle possible errors.
             }
         });
     }
+
     private void showPopupXoa()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(DanhSachDeThiScreen.this);
@@ -299,7 +355,8 @@ public class DanhSachDeThiScreen extends AppCompatActivity
                     }
 
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
 
                     }
                 });

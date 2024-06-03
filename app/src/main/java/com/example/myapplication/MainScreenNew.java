@@ -61,7 +61,8 @@ public class MainScreenNew extends AppCompatActivity
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main_screen_new);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainscreennew), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainscreennew), (v, insets) ->
+        {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -138,9 +139,11 @@ public class MainScreenNew extends AppCompatActivity
         setupOnBackPressed();
     }
 
-
-    private void setupOnBackPressed() {
-        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+    // Xử lí khi nhấn back trên điện thoại
+    private void setupOnBackPressed()
+    {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
+        {
             @Override
             public void handleOnBackPressed() {
                 long currentTime = System.currentTimeMillis();
@@ -156,8 +159,10 @@ public class MainScreenNew extends AppCompatActivity
             }
         });
     }
-    private boolean checkPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+    private boolean checkPermission()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+        {
             return Environment.isExternalStorageManager();
         } else {
             int readCheck = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
@@ -195,17 +200,5 @@ public class MainScreenNew extends AppCompatActivity
         }
     }
 
-    /*private void ApplyData()
-    {
-
-
-        DatabaseReference db_lop = FirebaseDatabase.getInstance().getReference("LOP");
-        for(int i = 0 ; i<10; i++)
-        {
-            String key = db_lop.push().getKey();
-            list_hk.get(i).setMaLop(key);
-            db_lop.child(key).setValue(list_hk.get(i));
-        }
-    }*/
 
 }

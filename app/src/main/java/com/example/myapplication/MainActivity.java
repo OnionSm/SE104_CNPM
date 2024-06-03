@@ -12,7 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,10 +29,31 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable()
         {
             @Override
-            public void run() {
-                startActivity(new Intent(MainActivity.this, Login.class));
-                finish();
+            public void run()
+            {
+                SessionManager sessionManager = new SessionManager(getApplicationContext());
+                if (sessionManager.isLoggedIn())
+                {
+                    // Chuyển đến màn hình chính
+                    String user_account = sessionManager.getUsername();
+                    if(user_account.equals("000000"))
+                    {
+                        startActivity(new Intent(MainActivity.this, MainScreenAdmin.class));
+                    }
+                    else
+                    {
+                        startActivity(new Intent(MainActivity.this, MainScreenNew.class));
+                    }
+                    finish();
+                } else
+                {
+                    // Chuyển đến màn hình đăng nhập
+                    Intent intent = new Intent(MainActivity.this, Login.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         },2500);
+
     }
 }

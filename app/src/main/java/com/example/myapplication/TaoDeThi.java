@@ -103,9 +103,10 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
                     String key_dt = db_dethi.push().getKey();
                     DETHI dt = new DETHI(key_dt, Integer.parseInt(thoiluong), key_mahknh, "", key_mamh, key_user);
                     db_dethi.child(key_dt).setValue(dt);
-                    for (int i = 0; i < mylist.size(); i++) {
-                        DETHICAUHOI dt_ch = new DETHICAUHOI(key_dt, mylist.get(i).getMacauhoi());
+                    for (int i = 0; i < mylist.size(); i++)
+                    {
                         String key_dtch = db_dethi_cauhoi.push().getKey();
+                        DETHICAUHOI dt_ch = new DETHICAUHOI(key_dtch,key_dt, mylist.get(i).getMacauhoi());
                         db_dethi_cauhoi.child(key_dtch).setValue(dt_ch);
                     }
                     Toast.makeText(TaoDeThi.this, "Đã tạo đề thi thành công", Toast.LENGTH_SHORT).show();

@@ -19,11 +19,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.GIANGVIEN;
 import com.example.myapplication.Login;
 import com.example.myapplication.R;
+import com.example.myapplication.SessionManager;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,14 +39,16 @@ import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HoSoFragment extends Fragment {
+public class HoSoFragment extends Fragment
+{
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private Uri imageUri;
     private CircleImageView ho_so_userimage;
-    private String userAccount;
+    SessionManager sessionManager;
+    String user_account;
 
     private String mParam1;
     private String mParam2;
@@ -55,7 +59,8 @@ public class HoSoFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static HoSoFragment newInstance(String param1, String param2) {
+    public static HoSoFragment newInstance(String param1, String param2)
+    {
         HoSoFragment fragment = new HoSoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -65,7 +70,8 @@ public class HoSoFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -83,8 +89,14 @@ public class HoSoFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.fragment_ho_so, container, false);
+
+        // Khởi tạo biến chia sẻ dữ liệu
+        sessionManager = new SessionManager(getActivity().getApplicationContext());
+        user_account = sessionManager.getUsername();
+
         ho_so_userimage = view.findViewById(R.id.ho_so_user_image);
         SetProfileData(view);
         ImageButton log_out = view.findViewById(R.id.log_out);
@@ -126,68 +138,53 @@ public class HoSoFragment extends Fragment {
         CircleImageView user_image = view.findViewById(R.id.ho_so_user_image);
 
         DatabaseReference db_gv = FirebaseDatabase.getInstance().getReference("GIANGVIEN");
-        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
 
         doi_anh_dai_dien.setOnClickListener(v -> chooseImage());
 
-        db_pdn.addValueEventListener(new ValueEventListener() {
+        db_gv.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-                String account = snapshot.child("account").getValue(String.class);
-                userAccount = account;
-                db_gv.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        GIANGVIEN giangvien = snapshot.child(account).getValue(GIANGVIEN.class);
-                        ho_so_ten.setText(giangvien.getHoTenGV());
-                        ho_so_ngaysinh.setText(giangvien.getNgSinhGV());
-                        ho_so_gioitinh.setText(giangvien.getGioiTinhGV());
-                        ho_so_email.setText(account + "@gm.uit.edu.vn");
-                        ho_so_sdt.setText(giangvien.getSdt());
-                        ho_so_diachi.setText("TP. Hồ Chí Minh");
+                GIANGVIEN giangvien = snapshot.child(user_account).getValue(GIANGVIEN.class);
+                ho_so_ten.setText(giangvien.getHoTenGV());
+                ho_so_ngaysinh.setText(giangvien.getNgSinhGV());
+                ho_so_gioitinh.setText(giangvien.getGioiTinhGV());
+                ho_so_email.setText(user_account + "@gm.uit.edu.vn");
+                ho_so_sdt.setText(giangvien.getSdt());
+                ho_so_diachi.setText("TP. Hồ Chí Minh");
 
-                        db_userimage.addValueEventListener(new ValueEventListener()
+                db_userimage.addValueEventListener(new ValueEventListener()
+                {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
+                        for (DataSnapshot data : snapshot.getChildren())
                         {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot)
+                            if(data.getKey().equals(user_account))
                             {
-                                /*String file_image = snapshot.child(account).child("fileImage").getValue(String.class);
+                                String file_image = data.child("fileImage").getValue(String.class);
                                 if (file_image != null)
                                 {
-                                    Picasso.get().load(file_image).into(ho_so_userimage);
-                                }*/
-                                for (DataSnapshot data : snapshot.getChildren())
-                                {
-                                    if(data.getKey().equals(userAccount))
-                                    {
-                                        String file_image = data.child("fileImage").getValue(String.class);
-                                        if (file_image != null)
-                                        {
-                                            Glide.with(HoSoFragment.this).load(file_image).into(user_image);
-                                        }
-                                    }
-
+                                    Glide.with(HoSoFragment.this).load(file_image).into(user_image);
                                 }
                             }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
+                        }
                     }
-
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+                        Toast.makeText(getActivity(), "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+                Toast.makeText(getActivity(), "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -202,11 +199,12 @@ public class HoSoFragment extends Fragment {
     private void addToStorage(Uri imageUri)
     {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("USERIMAGE");
-        final StorageReference imageName = storageReference.child(userAccount + "_" + UUID.randomUUID().toString());
-        imageName.putFile(imageUri).addOnSuccessListener(taskSnapshot -> {
+        final StorageReference imageName = storageReference.child(user_account + "_" + UUID.randomUUID().toString());
+        imageName.putFile(imageUri).addOnSuccessListener(taskSnapshot ->
+        {
             imageName.getDownloadUrl().addOnSuccessListener(uri -> {
                 DatabaseReference db_userimage = FirebaseDatabase.getInstance().getReference("USERIMAGE");
-                db_userimage.child(userAccount).child("fileImage").setValue(uri.toString());
+                db_userimage.child(user_account).child("fileImage").setValue(uri.toString());
             });
         });
     }

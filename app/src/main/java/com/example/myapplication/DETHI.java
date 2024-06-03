@@ -10,6 +10,11 @@ public class DETHI
     private String ngayThi;
     private String maMH;
     private String maGV;
+    public DETHI()
+    {
+
+    }
+
 
     public DETHI(String maDT, int thoiLuong, String maHKNH, String ngayThi, String maMH, String maGV) {
         this.maDT = maDT;

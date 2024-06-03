@@ -96,17 +96,24 @@ public class Login extends AppCompatActivity
                 ref.child("GIANGVIEN").child(email).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>()
                 {
                     @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if (task.isSuccessful()) {
+                    public void onComplete(@NonNull Task<DataSnapshot> task)
+                    {
+                        if (task.isSuccessful())
+                        {
                             DataSnapshot dataSnapshot = task.getResult();
-                            if (dataSnapshot.exists()) {
-                                if (dataSnapshot.exists()) {
+                            if (dataSnapshot.exists())
+                            {
+                                if (dataSnapshot.exists())
+                                {
                                     String id = dataSnapshot.child("maGV").getValue(String.class);
                                     String matKhau = dataSnapshot.child("matKhau").getValue(String.class);
                                     if (email.equals(id) && password.equals(matKhau))
                                     {
-                                        PHIENDANGNHAP phiendangnhap = new PHIENDANGNHAP(id,matKhau);
-                                        ref.child("PHIENDANGNHAP").setValue(phiendangnhap);
+                                        //PHIENDANGNHAP phiendangnhap = new PHIENDANGNHAP(id,matKhau);
+                                        //ref.child("PHIENDANGNHAP").setValue(phiendangnhap);
+
+                                        SessionManager sessionManager = new SessionManager(getApplicationContext());
+                                        sessionManager.createLoginSession(email);
                                         if(email.equals("000000"))
                                         {
                                             startActivity(new Intent(Login.this, MainScreenAdmin.class));
@@ -116,7 +123,9 @@ public class Login extends AppCompatActivity
                                             startActivity(new Intent(Login.this, MainScreenNew.class));
                                         }
                                         finish();
-                                    }else {
+                                    }
+                                    else
+                                    {
                                         Toast.makeText(Login.this, "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                                     }
                                     Log.d("GIANGVIEN", "ID: " + id);
