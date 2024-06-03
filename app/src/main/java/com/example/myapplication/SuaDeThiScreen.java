@@ -28,166 +28,161 @@ import java.util.ArrayList;
 import fragment.TaoDeThiViewPagerAdapter2;
 import my_interface.IPassingData;
 
-public class SuaDeThiScreen extends AppCompatActivity implements IPassingData
-{
+public class SuaDeThiScreen extends AppCompatActivity implements IPassingData {
 
-    private BottomNavigationView bottom_navigation_view;
-    private ViewPager2 viewpager2;
-
-    TaoDeThiViewPagerAdapter2 view_pager_adapter;
-    DatabaseReference db_monhoc;
-    String monhoc;
-    String hocky;
-    String namhoc;
-    String thoiluong;
-
-    ArrayList<taodethicauhoiitem> mylist;
-
-    String key_mamh;
-    String key_user;
-    String key_mahknh;
-
-    String madethi;
+    private BottomNavigationView bottomNavigationView;
+    private ViewPager2 viewPager;
+    private TaoDeThiViewPagerAdapter2 viewPagerAdapter;
+    private ArrayList<taodethicauhoiitem> mylist;
+    private String madethi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sua_de_thi_screen);
+
+        initializeUI();
+        getDataFromIntent();
+
+        setupBottomNavigationView();
+        setupViewPager();
+        setupOnBackPressed();
+    }
+
+    private void initializeUI() {
+        // Adjust insets for edge-to-edge display
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageButton quay_lai_de_thi = findViewById(R.id.sua_de_thi_icon_back);
-        quay_lai_de_thi.setOnClickListener(new View.OnClickListener()
-        {
+
+        mylist = new ArrayList<>();
+        ImageButton backButton = findViewById(R.id.sua_de_thi_icon_back);
+        backButton.setOnClickListener(view -> finish());
+
+        ImageButton saveButton = findViewById(R.id.luu_de_thi_button);
+        saveButton.setOnClickListener(view -> saveDataToFirebase());
+    }
+
+    private void getDataFromIntent() {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra("data");
+        if (bundle != null) {
+            madethi = bundle.getString("madethi");
+        }
+    }
+
+    private void setupBottomNavigationView() {
+        bottomNavigationView = findViewById(R.id.sua_de_thi_bottom_navigation_view);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.menu_ngan_hang_cau_hoi:
+                    viewPager.setCurrentItem(0);
+                    break;
+                case R.id.menu_cau_hoi_da_chon:
+                    viewPager.setCurrentItem(1);
+                    break;
+            }
+            return true;
+        });
+    }
+
+    private void setupViewPager() {
+        viewPager = findViewById(R.id.sua_de_thi_view_pager);
+        viewPagerAdapter = new TaoDeThiViewPagerAdapter2(this);
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setPageTransformer(new ZoomOutPageTransformer());
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onClick(View view)
-            {
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                switch (position) {
+                    case 0:
+                        bottomNavigationView.setSelectedItemId(R.id.menu_ngan_hang_cau_hoi);
+                        break;
+                    case 1:
+                        bottomNavigationView.setSelectedItemId(R.id.menu_cau_hoi_da_chon);
+                        break;
+                }
+            }
+        });
+    }
+
+    private void setupOnBackPressed() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 finish();
             }
         });
-
-        GetDataFromIntent();
-
-        ImageButton luu_de_thi = findViewById(R.id.luu_de_thi_button);
-        luu_de_thi.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                DatabaseReference db_dethi_cauhoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
-                db_dethi_cauhoi.addListenerForSingleValueEvent(new ValueEventListener()
-                {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
-                    {
-                        for(DataSnapshot data : snapshot.getChildren())
-                        {
-                            if(data.child("maDT").getValue(String.class).equals(madethi))
-                            {
-                                db_dethi_cauhoi.child(data.getKey()).removeValue();
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error)
-                    {
-
-                    }
-                });
-                for(int i = 0 ;i < mylist.size(); i++)
-                {
-                    String key_dtch = db_dethi_cauhoi.push().getKey();
-                    DETHICAUHOI dt_ch = new DETHICAUHOI(key_dtch, madethi,mylist.get(i).getMacauhoi());
-                    db_dethi_cauhoi.child(key_dtch).setValue(dt_ch);
-                }
-            }
-        });
-
-
-        bottom_navigation_view = findViewById(R.id.sua_de_thi_bottom_navigation_view);
-
-        viewpager2 = findViewById(R.id.sua_de_thi_view_pager );
-        view_pager_adapter = new TaoDeThiViewPagerAdapter2(this);
-        viewpager2.setAdapter(view_pager_adapter);
-        viewpager2.setPageTransformer(new ZoomOutPageTransformer());
-        bottom_navigation_view.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener()
-        {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item)
-            {
-                switch (item.getItemId())
-                {
-                    case R.id.menu_ngan_hang_cau_hoi:
-                        viewpager2.setCurrentItem(0);
-                        break;
-                    case R.id.menu_cau_hoi_da_chon:
-                        viewpager2.setCurrentItem(1);
-                        break;
-                }
-                return true;
-            }
-        });
-        viewpager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback()
-        {
-            @Override
-            public void onPageSelected(int position)
-            {
-                switch (position)
-                {
-                    case 0:
-                        bottom_navigation_view.setSelectedItemId(R.id.menu_ngan_hang_cau_hoi);
-                        break;
-                    case 1:
-                        bottom_navigation_view.setSelectedItemId(R.id.menu_cau_hoi_da_chon);
-                        break;
-                }
-                super.onPageSelected(position);
-            }
-        });
-        setupOnBackPressed();
     }
-    private void setupOnBackPressed()
-    {
-        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
-        {
+
+    private void saveDataToFirebase() {
+        DatabaseReference dbDeThiCauHoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
+        dbDeThiCauHoi.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void handleOnBackPressed()
-            {
-                if(isEnabled())
-                {
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                    setEnabled(false);
-                    finish();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (madethi != null && !mylist.isEmpty()) {
+                    updateOrAddQuestions(snapshot, dbDeThiCauHoi);
+                    removeUnusedQuestions(snapshot, dbDeThiCauHoi);
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("FirebaseError", "Error: " + error.getMessage());
             }
         });
     }
 
-    private void GetDataFromIntent()
-    {
-        Intent thong_tin_de_thi_intent = getIntent();
-        Bundle bundle_get = thong_tin_de_thi_intent.getBundleExtra("data");
-        if(bundle_get != null)
-        {
-            madethi = bundle_get.getString("madethi");
+    private void updateOrAddQuestions(DataSnapshot snapshot, DatabaseReference dbDeThiCauHoi) {
+        for (taodethicauhoiitem item : mylist) {
+            boolean exists = false;
+            for (DataSnapshot data : snapshot.getChildren()) {
+                if (data.child("maCH").getValue(String.class).equals(item.getMacauhoi())
+                        && data.child("maDT").getValue(String.class).equals(madethi)) {
+                    exists = true;
+                    break;
+                }
+            }
+            if (!exists) {
+                String key = dbDeThiCauHoi.push().getKey();
+                DETHICAUHOI dtCh = new DETHICAUHOI(key, madethi, item.getMacauhoi());
+                dbDeThiCauHoi.child(key).setValue(dtCh);
+            }
         }
     }
 
-    public String AccessMaDeThi()
-    {
-        return madethi;
+    private void removeUnusedQuestions(DataSnapshot snapshot, DatabaseReference dbDeThiCauHoi) {
+        for (DataSnapshot data : snapshot.getChildren()) {
+            if (data.child("maDT").getValue(String.class).equals(madethi)) {
+                boolean found = false;
+                for (taodethicauhoiitem item : mylist) {
+                    if (data.child("maCH").getValue(String.class).equals(item.getMacauhoi())) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    dbDeThiCauHoi.child(data.getKey()).removeValue();
+                }
+            }
+        }
     }
 
     @Override
-    public void PassData(ArrayList<taodethicauhoiitem> list_cau_hoi)
-    {
-        mylist = list_cau_hoi;
-        for(int i = 0 ;i < mylist.size(); i++)
-        {
-            Log.e("Giá trị trong activity", String.valueOf(mylist.get(i).getMacauhoi())+ "   " +String.valueOf(mylist.get(i).getNoidung()));
+    public void PassData(ArrayList<taodethicauhoiitem> listCauHoi) {
+        mylist = listCauHoi;
+        for (taodethicauhoiitem item : mylist) {
+            Log.e("Activity Data", item.getMacauhoi() + "   " + item.getNoidung());
         }
+    }
+
+    public String AccessMaDeThi() {
+        return madethi;
     }
 }

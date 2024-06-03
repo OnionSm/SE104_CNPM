@@ -170,7 +170,6 @@ public class DanhSachDeThiScreen extends AppCompatActivity
     private void GetDataDeThiFromFireBase()
     {
         DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
-        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
         DatabaseReference db_hknh = FirebaseDatabase.getInstance().getReference("HKNH");
         DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
         db_dethi.addChildEventListener(new ChildEventListener()

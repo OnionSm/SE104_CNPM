@@ -69,7 +69,7 @@ public class TaoDeThi extends AppCompatActivity implements IPassingData
         });
         db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
 
-
+        mylist = new ArrayList<>();
         ImageButton quay_lai_de_thi = findViewById(R.id.tao_de_thi_icon_back);
         quay_lai_de_thi.setOnClickListener(new View.OnClickListener()
         {

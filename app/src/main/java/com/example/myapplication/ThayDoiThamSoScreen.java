@@ -23,6 +23,17 @@ public class ThayDoiThamSoScreen extends AppCompatActivity
     EditText thoi_luong_toi_thieu_edt;
     EditText thoi_luong_toi_da_edt;
     ImageButton luu_button;
+
+    ImageButton dtt_update;
+    ImageButton dtt_ok;
+    ImageButton dtd_update;
+    ImageButton dtd_ok;
+    ImageButton sctd_update;
+    ImageButton sctd_ok;
+    ImageButton tltt_update;
+    ImageButton tltt_ok;
+    ImageButton tltd_update;
+    ImageButton tltd_ok;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -49,7 +60,6 @@ public class ThayDoiThamSoScreen extends AppCompatActivity
         so_cau_toi_da_edt = findViewById(R.id.so_cau_toi_da_edt);
         thoi_luong_toi_thieu_edt = findViewById(R.id.thoi_luong_toi_thieu_edt);
         thoi_luong_toi_da_edt = findViewById(R.id.thoi_luong_toi_da_edt);
-        luu_button = findViewById(R.id.luu_button);
         luu_button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -58,6 +68,82 @@ public class ThayDoiThamSoScreen extends AppCompatActivity
 
             }
         });
+
+        dtt_update = findViewById(R.id.dtt_update);
+        dtt_update.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dtt_ok = findViewById(R.id.dtt_ok);
+        dtt_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dtd_update = findViewById(R.id.dtd_update);
+        dtd_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dtd_ok = findViewById(R.id.dtt_ok);
+        dtd_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        sctd_update = findViewById(R.id.sctd_update);
+        sctd_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        sctd_ok = findViewById(R.id.sctd_ok);
+        sctd_ok.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+            }
+        });
+        tltt_update = findViewById(R.id.tltt_update);
+        tltt_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        tltt_ok = findViewById(R.id.tltt_ok);
+        tltt_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        tltd_update = findViewById(R.id.tltd_update);
+        tltd_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        tltd_ok = findViewById(R.id.tltt_ok);
+        tltd_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
         setupOnBackPressed();
     }
     private void setupOnBackPressed()
