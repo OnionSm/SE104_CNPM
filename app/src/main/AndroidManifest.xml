@@ -26,6 +26,15 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".DanhSachLopScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ThemLopScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ChamThiMainScreen"
+            android:exported="false" />
+        <activity
             android:name=".ThayDoiThamSoScreen"
             android:exported="false" />
         <activity

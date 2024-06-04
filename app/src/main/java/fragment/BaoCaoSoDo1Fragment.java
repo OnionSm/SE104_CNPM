@@ -38,7 +38,8 @@ import java.util.Map;
  * Use the {@link BaoCaoSoDo1Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BaoCaoSoDo1Fragment extends Fragment {
+public class BaoCaoSoDo1Fragment extends Fragment
+{
 
     private String namhoc;
 

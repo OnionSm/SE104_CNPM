@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_sheet_sua_xoa"
+    android:background="#F0F7FF"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/button_sua_lop"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/sua_lop_button"
+        />
+
+    <ImageButton
+        android:id="@+id/button_xoa_lop"
+        android:layout_width="match_parent"
+        android:layout_marginTop="-18dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/xoa_lop_button" />
+</LinearLayout>
