@@ -7,19 +7,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-
 import android.view.LayoutInflater;
 import android.view.View;
-
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import android.widget.SearchView;
 import android.widget.Toast;
-
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -27,7 +23,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -41,29 +36,31 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
-public class TraCuuScreen extends AppCompatActivity
-{
+public class TraCuuScreen extends AppCompatActivity {
 
     ArrayList<dethitracuuitem> mylist;
     DeThiTraCuuAdapter adapter;
     RecyclerView dethi_rcv;
-
     SearchView searview;
-
     ImageButton quay_lai_main_screen;
     dethitracuuitem dethi_selected;
     BottomSheetDialog bottom_sheet_dialog;
+    SessionManager sessionManager;
+    String user_account;
 
+    String made;
+    String ngaythi;
+    String monhoc;
+    String thoiluong;
+    String hocky;
+    String namhoc;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_tra_cuu_screen);
@@ -73,43 +70,31 @@ public class TraCuuScreen extends AppCompatActivity
             return insets;
         });
 
-        quay_lai_main_screen = findViewById(R.id.tra_cuu_back_button);
+        sessionManager = new SessionManager(getApplicationContext());
+        user_account = sessionManager.getUsername();
 
-        quay_lai_main_screen.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(TraCuuScreen.this, MainScreenNew.class));
-            }
-        });
+        mylist = new ArrayList<>();
+
+        quay_lai_main_screen = findViewById(R.id.tra_cuu_back_button);
+        quay_lai_main_screen.setOnClickListener(v -> startActivity(new Intent(TraCuuScreen.this, MainScreenNew.class)));
 
         ImageButton bo_loc_mo_rong = findViewById(R.id.tra_cuu_mo_rong_button);
-        bo_loc_mo_rong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                CreatePopUpFilter();
-            }
-        });
+        bo_loc_mo_rong.setOnClickListener(v -> CreatePopUpFilter());
+
         setupBottomSheetDialog();
-        GetDataFromFireBase();
-        GetListDeThi();
+        setupRecyclerView();
+        setupSearchView();
         setupOnBackPressed();
+        GetDataFromFireBase();
     }
 
-
-
-
-    private void CreatePopUpFilter()
-    {
+    private void CreatePopUpFilter() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_bo_loc_tra_cuu_screen);
 
         Window window = dialog.getWindow();
-        if(window == null)
-        {
+        if (window == null) {
             return;
         }
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -122,6 +107,10 @@ public class TraCuuScreen extends AppCompatActivity
         dialog.setCanceledOnTouchOutside(true);
 
         dialog.show();
+        for(int i = 0; i < mylist.size(); i++)
+        {
+            Log.e("MYLIST",mylist.get(i).toString());
+        }
 
         EditText madt_edt = dialog.findViewById(R.id.bo_loc_edt_ma_de);
         EditText ngaythi_edt = dialog.findViewById(R.id.bo_loc_edt_ngay_thi);
@@ -131,166 +120,186 @@ public class TraCuuScreen extends AppCompatActivity
         EditText namhoc_edt = dialog.findViewById(R.id.bo_loc_edt_nam_hoc);
         ImageButton tra_cuu_btn = dialog.findViewById(R.id.bo_loc_button_tra_cuu);
 
-        tra_cuu_btn.setOnClickListener(new View.OnClickListener()
+        if(made!=null)
         {
-            @Override
-            public void onClick(View v)
-            {
-                String made = madt_edt.getText().toString();
-                adapter.getFilterMaDe().filter(made);
+            madt_edt.setText(made);
+        }
+        if(ngaythi!=null)
+        {
+            ngaythi_edt.setText(ngaythi);
+        }
+        if(monhoc!=null)
+        {
+            mh_edt.setText(monhoc);
+        }
+        if(thoiluong!= null)
+        {
+            thoiluong_edt.setText(thoiluong);
+        }
+        if(hocky != null)
+        {
+            hk_edt.setText(hocky);
+        }
+        if(namhoc!= null)
+        {
+            namhoc_edt.setText(namhoc);
+        }
 
-                String ngaythi = ngaythi_edt.getText().toString();
-                adapter.getFilterNgayThi().filter(ngaythi);
-
-                String monhoc = mh_edt.getText().toString();
-                adapter.getFilterMonHoc().filter(monhoc);
-
-                String thoiluong = thoiluong_edt.getText().toString();
-                adapter.getFilterThoiLuong().filter(thoiluong);
-
-                String hocky = hk_edt.getText().toString();
-                adapter.getFilterHocKy().filter(hocky);
-
-                String namhoc = namhoc_edt.getText().toString();
-                adapter.getFilterNam().filter(namhoc);
-
-                dialog.dismiss();
-            }
+        tra_cuu_btn.setOnClickListener(v -> {
+            made = madt_edt.getText().toString();
+            ngaythi = ngaythi_edt.getText().toString();
+            monhoc = mh_edt.getText().toString();
+            thoiluong = thoiluong_edt.getText().toString();
+            hocky = hk_edt.getText().toString();
+            namhoc = namhoc_edt.getText().toString();
+            adapter.getFilterByMultipleAttributes(made,hocky,monhoc,thoiluong,ngaythi,namhoc);
+            dialog.dismiss();
         });
     }
 
-    private void GetDataFromFireBase()
-    {
+    private void GetDataFromFireBase() {
         DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
         DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
-        DatabaseReference db_pdn = FirebaseDatabase.getInstance().getReference("PHIENDANGNHAP");
-        mylist = new ArrayList<>();
-        db_dethi.addValueEventListener(new ValueEventListener()
-        {
+        DatabaseReference db_hknh = FirebaseDatabase.getInstance().getReference("HKNH");
+
+        db_dethi.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                for(DataSnapshot data : snapshot.getChildren())
-                {
-                    String ma_DT = data.child("maDT").getValue(String.class);
-                    String ngay_Thi = data.child("ngayThi").getValue(String.class);
-                    String ma_MH_dethi = data.child("maMH").getValue(String.class);
-                    String thoiluong = String.valueOf(data.child("thoiLuong").getValue(Integer.class));
-                    String magv_dethi = data.child("maGV").getValue(String.class);
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                processChild(snapshot);
+            }
 
-                    db_monhoc.addValueEventListener(new ValueEventListener()
-                    {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot)
-                        {
-                            for(DataSnapshot data : snapshot.getChildren())
-                            {
-                                if(data.getKey().equals(ma_MH_dethi))
-                                {
-                                    String tenmon = data.child("tenMH").getValue(String.class);
-                                    db_pdn.addValueEventListener(new ValueEventListener()
-                                    {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot)
-                                        {
-                                            String user_id = snapshot.child("account").getValue(String.class);
-                                            if(user_id.equals("000000"))
-                                            {
-                                                mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT, thoiluong));
-                                                adapter.notifyDataSetChanged();
-                                            }
-                                            else
-                                            {
-                                                if(user_id.equals(magv_dethi))
-                                                {
-                                                    mylist.add(new dethitracuuitem(tenmon, ngay_Thi, ma_DT, thoiluong));
-                                                    adapter.notifyDataSetChanged();
-                                                }
-                                            }
-                                        }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                processChild(snapshot);
+            }
 
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error)
-                                        {
-
-                                        }
-                                    });
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error)
-                        {
-
-                        }
-                    });
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                String ma_DT = snapshot.child("maDT").getValue(String.class);
+                for (int i = 0; i < mylist.size(); i++) {
+                    if (mylist.get(i).getMa_de().equals(ma_DT)) {
+                        mylist.remove(i);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    }
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // Handle child moved event if needed. Generally, Firebase doesn't move data like this.
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle possible errors.
+            }
+
+            private void processChild(DataSnapshot snapshot) {
+                DETHI dethi = snapshot.getValue(DETHI.class);
+                if (dethi == null) return;
+
+                db_hknh.child(dethi.getMaHKNH()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot hknhSnapshot) {
+                        HKNH hknh = hknhSnapshot.getValue(HKNH.class);
+                        if (hknh == null) return;
+
+                        db_monhoc.child(dethi.getMaMH()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot monhocSnapshot) {
+                                String tenmon = monhocSnapshot.child("tenMH").getValue(String.class);
+                                if (tenmon == null) return;
+
+                                dethitracuuitem item = new dethitracuuitem(
+                                        tenmon, dethi.getMaGV(), dethi.getMaHKNH(),
+                                        String.valueOf(hknh.getHocKy()), String.valueOf(hknh.getNam1()),
+                                        String.valueOf(hknh.getNam2()), dethi.getNgayThi(), dethi.getMaDT(),
+                                        String.valueOf(dethi.getThoiLuong())
+                                );
+
+                                if (user_account.equals("000000") || user_account.equals(dethi.getMaGV()))
+                                {
+                                    int index = -1;
+                                    for (int i = 0; i < mylist.size(); i++) {
+                                        if (mylist.get(i).getMa_de().equals(dethi.getMaDT()))
+                                        {
+                                            index = i;
+                                            break;
+                                        }
+                                    }
+
+                                    if (index != -1) {
+                                        mylist.set(index, item); // Update the item if it exists
+                                    } else
+                                    {
+                                        mylist.add(item); // Add the item if it's new
+                                    }
+                                    adapter.notifyDataSetChanged();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error)
+                            {
+                                // Handle possible errors.
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle possible errors.
+                    }
+                });
             }
         });
     }
 
-    private void GetListDeThi()
+    private void setupRecyclerView()
     {
         dethi_rcv = findViewById(R.id.ds_de_thi_rcv);
         LinearLayoutManager ln_layout_manager = new LinearLayoutManager(TraCuuScreen.this);
         dethi_rcv.setLayoutManager(ln_layout_manager);
-        adapter = new DeThiTraCuuAdapter(mylist, new DeThiTraCuuAdapter.DeThiTraCuuClickCallBack()
-        {
-            @Override
-            public void deThiTraCuuCallBack(dethitracuuitem dethi)
-            {
-                dethi_selected = dethi;
-                bottom_sheet_dialog.show();
-            }
+        adapter = new DeThiTraCuuAdapter(mylist, dethi -> {
+            dethi_selected = dethi;
+            bottom_sheet_dialog.show();
         });
         dethi_rcv.setAdapter(adapter);
 
         RecyclerView.ItemDecoration item_decoration = new DividerItemDecoration(TraCuuScreen.this, DividerItemDecoration.VERTICAL);
         dethi_rcv.addItemDecoration(item_decoration);
+    }
+
+    private void setupSearchView()
+    {
         searview = findViewById(R.id.tra_cuu_search_view);
         searview.setOnQueryTextListener(new SearchView.OnQueryTextListener()
         {
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                adapter.getFilterMaDe().filter(query);
+                adapter.getFilter().filter(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText)
             {
-                adapter.getFilterMaDe().filter(newText);
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });
-        // Sau khi đã thêm dữ liệu mới vào danh sách, cập nhật giao diện nếu cần
-        // Ví dụ: Nếu bạn sử dụng RecyclerView, bạn có thể gọi notifyDataSetChanged()
-        // adapter.notifyDataSetChanged();
     }
 
-    private void GetDataSorted()
-    {
-        DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
-        DatabaseReference db_hknh = FirebaseDatabase.getInstance().getReference("HKNH");
-        DatabaseReference db_monhoc = FirebaseDatabase.getInstance().getReference("MONHOC");
-    }
     private void setupOnBackPressed()
     {
-        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true)
-        {
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed()
             {
-                if(isEnabled())
+                if (isEnabled())
                 {
-                    startActivity(new Intent(TraCuuScreen.this, MainScreenNew.class));
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     setEnabled(false);
                     finish();
@@ -298,94 +307,72 @@ public class TraCuuScreen extends AppCompatActivity
             }
         });
     }
-    private void setupBottomSheetDialog()
-    {
+
+    private void setupBottomSheetDialog() {
         bottom_sheet_dialog = new BottomSheetDialog(TraCuuScreen.this);
         View bottom_sheet_view = getLayoutInflater().inflate(R.layout.bottom_xem_sua_xoa_de_thi, null);
         bottom_sheet_dialog.setContentView(bottom_sheet_view);
+
         ImageButton button_xem_de_thi = bottom_sheet_view.findViewById(R.id.button_chi_tiet_de_thi);
         ImageButton button_sua_de_thi = bottom_sheet_view.findViewById(R.id.button_sua_de_thi);
         ImageButton button_xoa_de_thi = bottom_sheet_view.findViewById(R.id.button_xoa_de_thi);
-        button_xem_de_thi.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(TraCuuScreen.this, ChiTietDeThiScreen.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("madethi", dethi_selected.getMa_de());
-                intent.putExtra("data_madethi", bundle);
-                startActivity(intent);
-            }
-        });
-        button_sua_de_thi.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(TraCuuScreen.this, SuaDeThiScreen.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("madethi",dethi_selected.getMa_de());
-                intent.putExtra("data", bundle);
-                startActivity(intent);
-            }
-        });
-        button_xoa_de_thi.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                showPopupXoa();
-            }
+
+        button_xem_de_thi.setOnClickListener(v -> {
+            Intent intent = new Intent(TraCuuScreen.this, ChiTietDeThiScreen.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("madethi", dethi_selected.getMa_de());
+            intent.putExtra("data_madethi", bundle);
+            startActivity(intent);
         });
 
+        button_sua_de_thi.setOnClickListener(v -> {
+            Intent intent = new Intent(TraCuuScreen.this, SuaDeThiScreen.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("madethi", dethi_selected.getMa_de());
+            intent.putExtra("data", bundle);
+            startActivity(intent);
+        });
+
+        button_xoa_de_thi.setOnClickListener(v -> showPopupXoa());
     }
-    private void showPopupXoa()
-    {
+
+    private void showPopupXoa() {
         AlertDialog.Builder builder = new AlertDialog.Builder(TraCuuScreen.this);
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.pop_up_xoa_de_thi, null);
         builder.setView(dialogView);
+
         Button button_dong_y = dialogView.findViewById(R.id.button_dong_y_xoa);
         Button button_huy = dialogView.findViewById(R.id.button_huy_xoa);
         AlertDialog dialog = builder.create();
-        button_dong_y.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
-                DatabaseReference db_dethi_cauhoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
-                db_dethi_cauhoi.addListenerForSingleValueEvent(new ValueEventListener()
-                {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
-                    {
-                        for(DataSnapshot data : snapshot.getChildren())
-                        {
-                            if(data.child("maDT").getValue(String.class).equals(dethi_selected.getMa_de()))
-                            {
-                                db_dethi_cauhoi.child(data.getKey()).removeValue();
-                            }
+
+        button_dong_y.setOnClickListener(v -> {
+            DatabaseReference db_dethi = FirebaseDatabase.getInstance().getReference("DETHI");
+            DatabaseReference db_dethi_cauhoi = FirebaseDatabase.getInstance().getReference("DETHICAUHOI");
+            db_dethi_cauhoi.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot data : snapshot.getChildren()) {
+                        if (data.child("maDT").getValue(String.class).equals(dethi_selected.getMa_de())) {
+                            db_dethi_cauhoi.child(data.getKey()).removeValue();
                         }
-                        db_dethi.child(dethi_selected.getMa_de()).removeValue();
-                        Toast.makeText(TraCuuScreen.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                        bottom_sheet_dialog.dismiss();
-                        mylist.remove(dethi_selected);
-                        adapter.notifyDataSetChanged();
                     }
+                    db_dethi.child(dethi_selected.getMa_de()).removeValue();
+                    Toast.makeText(TraCuuScreen.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    bottom_sheet_dialog.dismiss();
+                    mylist.remove(dethi_selected);
+                    adapter.notifyDataSetChanged();
+                }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle possible errors.
+                }
+            });
         });
+
         button_huy.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
-
 }

@@ -9,6 +9,11 @@ public class HKNH
     private int nam1;
     private int nam2;
 
+    public HKNH()
+    {
+
+    }
+
     public HKNH(String maHKNH, int hocKy, int nam1, int nam2) {
         this.maHKNH = maHKNH;
         this.hocKy = hocKy;
