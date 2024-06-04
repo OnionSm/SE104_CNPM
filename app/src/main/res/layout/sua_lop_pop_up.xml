@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/cau_hoi_box_background2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/ten_lop_edt"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/cau_hoi_box_background2"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Nhập tên lớp"
+        android:gravity="top|left"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noi_dung_cau_hoi" />
+
+    <EditText
+        android:id="@+id/si_so_edt"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/cau_hoi_box_background2"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="left|center"
+        android:hint="Nhập sỉ số"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/do_kho"/>
+
+    <ImageView
+        android:id="@+id/noi_dung_cau_hoi"
+        android:layout_width="45dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/ten_lop_text_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/do_kho"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/si_so_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ten_lop_edt" />
+
+    <ImageButton
+        android:id="@+id/thay_doi_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="25dp"
+        app:srcCompat="@drawable/thay_doi_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/si_so_edt"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

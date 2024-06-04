@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThemLopScreen">
+
+    <ImageButton
+        android:id="@+id/icon_back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_1_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_1_2"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_1_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_1_3"
+        app:srcCompat="@drawable/them_cau_hoi_image_view_1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_1_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_1_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_1_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_1_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.082"/>
+
+
+    <ImageView
+        android:id="@+id/them_lop_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_2_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_2_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_2_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_2_3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/them_lop_text" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_2_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.13"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_2_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_2_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_2_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08"/>
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_3_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_3_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_3_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_3_3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/thong_tin_lop_text"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_3_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.375"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_3_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.621"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_3_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.173"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_3_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.201"/>
+
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_4_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_4_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_4_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_4_3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ten_lop_text"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.16"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_4_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.255"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_4_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.275"/>
+
+    <EditText
+        android:id="@+id/ten_lop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:hint="Nhập tên lớp"
+        android:background="@drawable/text_box_1"
+        android:paddingLeft="17dp"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_5_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_5_2"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_5_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_5_3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_5_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_5_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_5_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.285"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_5_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.349"/>
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_6_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_6_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_4_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_6_3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/hoc_ky_text2"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_6_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.152"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_6_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.365"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_6_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.387"/>
+
+
+    <EditText
+        android:id="@+id/hoc_ky"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:hint="Nhập học kỳ"
+        android:background="@drawable/text_box_1"
+        android:paddingLeft="17dp"
+        android:fontFamily="@font/roboto_regular"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_7_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_5_2"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_5_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_7_3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_7_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.397"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_7_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46"/>
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_8_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_8_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_4_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_8_3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/nam_hoc_text2"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_8_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_8_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.485"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_8_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.505"/>
+
+    <EditText
+        android:id="@+id/nam_hoc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:hint="Nhập tên lớp"
+        android:background="@drawable/text_box_1"
+        android:paddingLeft="17dp"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_9_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_5_2"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_5_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_9_3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_9_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.515"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_9_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.578"/>
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_10_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_10_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_4_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_10_3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/si_so_text"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_10_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.125"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_10_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.593"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_10_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.612"/>
+
+
+    <EditText
+        android:id="@+id/si_so"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:hint="Nhập sỉ số"
+        android:background="@drawable/text_box_1"
+        android:paddingLeft="17dp"
+        android:fontFamily="@font/roboto_regular"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_11_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_5_2"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_5_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_11_3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_11_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.625"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_11_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.689"/>
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_12_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_12_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_4_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_12_3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/mon_hoc_text"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_12_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.178"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_12_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.714"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_12_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.735"/>
+
+
+    <!--<EditText
+        android:id="@+id/mon_hoc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:hint="Nhập môn học"
+        android:background="@drawable/text_box_1"
+        android:paddingLeft="17dp"
+        android:fontFamily="@font/roboto_regular"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_13_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_5_2"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_5_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_13_3" />-->
+
+    <Spinner
+        android:id="@+id/them_lop_spiner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:dropDownVerticalOffset = "70dp"
+        android:background="@drawable/text_box_1"
+        app:layout_constraintBottom_toBottomOf="@id/them_lop_guideline_13_4"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_5_2"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_5_1"
+        app:layout_constraintTop_toTopOf="@id/them_lop_guideline_13_3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_13_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.745"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_lop_guideline_13_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.807"/>
+
+    <ImageButton
+        android:id="@+id/luu_lop_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@id/them_cau_hoi_guideline_17_2"
+        app:layout_constraintEnd_toEndOf="@id/them_lop_guideline_5_2"
+        app:layout_constraintStart_toStartOf="@id/them_lop_guideline_5_1"
+        app:layout_constraintTop_toTopOf="@id/them_cau_hoi_guideline_17_1"
+        app:srcCompat="@drawable/luu_lop_button"
+        tools:ignore="TouchTargetSizeCheck, SpeakableTextPresentCheck" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_17_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/them_cau_hoi_guideline_17_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.94"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
