@@ -24,6 +24,7 @@ import com.example.myapplication.BaoCaoNhapNamScreen;
 import com.example.myapplication.CauHoiScreen;
 import com.example.myapplication.ChamDiemScreen;
 import com.example.myapplication.ChamThiMainScreen;
+import com.example.myapplication.DanhSachLopScreen;
 import com.example.myapplication.DeThiScreen;
 import com.example.myapplication.MainScreenNew;
 import com.example.myapplication.R;
@@ -118,7 +119,7 @@ public class TrangChuFragment extends Fragment {
 
         ImageButton cham_diem = view.findViewById(R.id.trang_chu_cham_diem_button);
         cham_diem.setOnClickListener(v -> {
-            startActivity(new Intent(activity, ChamThiMainScreen.class));
+            startActivity(new Intent(activity, DanhSachLopScreen.class));
         });
 
         ImageButton bao_cao = view.findViewById(R.id.trang_chu_bao_cao_button);

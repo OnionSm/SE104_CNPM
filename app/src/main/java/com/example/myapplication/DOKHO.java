@@ -2,11 +2,15 @@ package com.example.myapplication;
 
 public class DOKHO {
     private String maDoKho;
-    private String tenDoKho;
+    private String TenDK;
+    public DOKHO()
+    {
 
-    public DOKHO(String maDoKho, String tenDoKho) {
+    }
+
+    public DOKHO(String maDoKho, String tenDK) {
         this.maDoKho = maDoKho;
-        this.tenDoKho = tenDoKho;
+        TenDK = tenDK;
     }
 
     public String getMaDoKho() {
@@ -17,19 +21,11 @@ public class DOKHO {
         this.maDoKho = maDoKho;
     }
 
-    public String getTenDoKho() {
-        return tenDoKho;
+    public String getTenDK() {
+        return TenDK;
     }
 
-    public void setTenDoKho(String tenDoKho) {
-        this.tenDoKho = tenDoKho;
-    }
-
-    @Override
-    public String toString() {
-        return "com.example.myapplication.DOKHO{" +
-                "maDoKho='" + maDoKho + '\'' +
-                ", tenDoKho='" + tenDoKho + '\'' +
-                '}';
+    public void setTenDK(String tenDK) {
+        TenDK = tenDK;
     }
 }

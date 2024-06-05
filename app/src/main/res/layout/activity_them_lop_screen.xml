@@ -293,7 +293,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:hint="Nhập tên lớp"
+        android:hint="VD: 2023/2024"
         android:background="@drawable/text_box_1"
         android:paddingLeft="17dp"
         android:fontFamily="@font/roboto_regular"

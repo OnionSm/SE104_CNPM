@@ -53,8 +53,7 @@ public class ChamThiMainScreen extends AppCompatActivity
         });
 
         back_button = findViewById(R.id.cham_diem_icon_back);
-        cham_diem_button = findViewById(R.id.cham_diem_button);
-        ds_bai_cham_button = findViewById(R.id.ds_bai_cham_button);
+        ds_bai_cham_button = findViewById(R.id.thong_tin_cham_diem);
         lop_hoc_button = findViewById(R.id.lop_hoc_button);
 
         back_button.setOnClickListener(new View.OnClickListener()
@@ -65,17 +64,11 @@ public class ChamThiMainScreen extends AppCompatActivity
                 finish();
             }
         });
-        cham_diem_button.setOnClickListener(new View.OnClickListener()
+        ds_bai_cham_button.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(ChamThiMainScreen.this, ChamDiemScreen.class));
-            }
-        });
-        ds_bai_cham_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
             }
         });

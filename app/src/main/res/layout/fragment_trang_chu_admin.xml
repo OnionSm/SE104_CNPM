@@ -295,7 +295,7 @@
         app:layout_constraintEnd_toEndOf="@id/trang_chu_guideline_6_4"
         app:layout_constraintStart_toStartOf="@id/trang_chu_guideline_6_3"
         app:layout_constraintTop_toTopOf="@id/trang_chu_guideline_11_1"
-        app:srcCompat="@drawable/tham_so_button" />
+        app:srcCompat="@drawable/thay_doi_quy_dinh_button" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/trang_chu_guideline_11_1"
         android:layout_width="wrap_content"

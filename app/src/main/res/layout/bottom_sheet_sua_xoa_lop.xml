@@ -7,8 +7,18 @@
     android:orientation="vertical">
 
     <ImageButton
+        android:id="@+id/button_cham_diem"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/cham_diem_button2"
+        />
+
+
+    <ImageButton
         android:id="@+id/button_sua_lop"
         android:layout_width="match_parent"
+        android:layout_marginTop="-18dp"
         android:layout_height="70dp"
         android:scaleType="fitXY"
         android:src="@drawable/sua_lop_button"

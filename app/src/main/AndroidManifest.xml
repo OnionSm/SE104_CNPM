@@ -26,6 +26,12 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="33">
         <activity
+            android:name=".ThayDoiDoKho"
+            android:exported="false" />
+        <activity
+            android:name=".ThayDoiQuyDinhMainScreen"
+            android:exported="false" />
+        <activity
             android:name=".DanhSachLopScreen"
             android:exported="false" />
         <activity

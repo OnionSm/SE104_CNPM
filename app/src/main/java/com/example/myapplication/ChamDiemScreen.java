@@ -62,6 +62,8 @@ public class ChamDiemScreen extends AppCompatActivity
     String filename;
     String filepath;
     TextView select_file;
+    String malop;
+    String tenlop;
     private ActivityResultLauncher<Intent> m_activity_result = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>()
@@ -98,6 +100,11 @@ public class ChamDiemScreen extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra("data_malop");
+        malop = bundle.getString("malop");
+        tenlop = bundle.getString("tenlop");
+
         ImageButton button_back = findViewById(R.id.cham_diem_button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +144,8 @@ public class ChamDiemScreen extends AppCompatActivity
                     String data = select_file.getText().toString();
                     Bundle bundle = new Bundle();
                     bundle.putString("filepath", data);
+                    bundle.putString("malopchamthi",malop);
+                    bundle.putString("tenlopchamthi",tenlop);
                     intent.putExtra("mypackage", bundle);
                     startActivity(intent);
                     finish();

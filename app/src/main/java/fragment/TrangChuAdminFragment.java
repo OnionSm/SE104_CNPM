@@ -23,11 +23,13 @@ import com.example.myapplication.BaoCaoNhapNamScreen;
 import com.example.myapplication.CauHoiScreen;
 import com.example.myapplication.ChamDiemScreen;
 import com.example.myapplication.ChamThiMainScreen;
+import com.example.myapplication.DanhSachLopScreen;
 import com.example.myapplication.DeThiScreen;
 import com.example.myapplication.MainScreenAdmin;
 import com.example.myapplication.MainScreenNew;
 import com.example.myapplication.R;
 import com.example.myapplication.SessionManager;
+import com.example.myapplication.ThayDoiQuyDinhMainScreen;
 import com.example.myapplication.ThayDoiThamSoScreen;
 import com.example.myapplication.TraCuuScreen;
 import com.google.firebase.database.DataSnapshot;
@@ -139,7 +141,7 @@ public class TrangChuAdminFragment extends Fragment
 
         ImageButton cham_diem = view.findViewById(R.id.trang_chu_cham_diem_button);
         cham_diem.setOnClickListener(v -> {
-            startActivity(new Intent(activity, ChamThiMainScreen.class));
+            startActivity(new Intent(activity, DanhSachLopScreen.class));
         });
 
         ImageButton bao_cao = view.findViewById(R.id.trang_chu_bao_cao_button);
@@ -153,7 +155,7 @@ public class TrangChuAdminFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(activity, ThayDoiThamSoScreen.class));
+                startActivity(new Intent(activity, ThayDoiQuyDinhMainScreen.class));
             }
         });
 
