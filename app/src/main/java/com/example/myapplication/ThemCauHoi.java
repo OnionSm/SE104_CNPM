@@ -128,7 +128,7 @@ public class ThemCauHoi extends AppCompatActivity
             {
                 do_kho_list.clear();
                 for (DataSnapshot doKhoSnapshot : dataSnapshot.getChildren()) {
-                    String doKho = doKhoSnapshot.child("TenDK").getValue(String.class);
+                    String doKho = doKhoSnapshot.child("tenDK").getValue(String.class);
                     do_kho_list.add(doKho);
                 }
                 updateSpinner1();
@@ -282,7 +282,7 @@ public class ThemCauHoi extends AppCompatActivity
 
     private void getMaDoKho(String tenDoKho, OnMaDoKhoCallback callback)
     {
-        dbRef_2.orderByChild("TenDK").equalTo(tenDoKho).addListenerForSingleValueEvent(new ValueEventListener()
+        dbRef_2.orderByChild("tenDK").equalTo(tenDoKho).addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)

@@ -55,6 +55,10 @@ public class NhapDiemScreen extends AppCompatActivity
     DatabaseReference db_chitietlop;
 
     TextView ma_lop_text_view;
+    String malop;
+    String tenlop;
+    SessionManager sessionManager;
+    String user_account;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -66,6 +70,8 @@ public class NhapDiemScreen extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        sessionManager = new SessionManager(getApplicationContext());
+        user_account = sessionManager.getUsername();
 
         setupOnBackPressed();
 
@@ -90,6 +96,11 @@ public class NhapDiemScreen extends AppCompatActivity
             public void onClick(View v)
             {
                 int item_count = adapter.getItemCount();
+                DatabaseReference db_lop = FirebaseDatabase.getInstance().getReference("LOP");
+                db_lop.child(malop).child("maGVCham").setValue(user_account);
+                db_lop.child(malop).child("siSo").setValue(item_count);
+
+
 
                 for(int i = 0;i<item_count;i++)
                 {
@@ -121,11 +132,14 @@ public class NhapDiemScreen extends AppCompatActivity
         });
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("mypackage");
+        malop = bundle.getString("malopchamthi");
+        tenlop = bundle.getString("tenlopchamthi");
         filepath = bundle.getString("filepath");
         Toast.makeText(NhapDiemScreen.this,filepath,Toast.LENGTH_LONG).show();
+        ma_lop_text_view.setText("Mã lớp: "+ tenlop);
         GetData(filepath);
     }
-    private void GetListCauHoi()
+    private void GetListSinhVien()
     {
         nhap_diem_rcv = findViewById(R.id.cham_thi_recycle_view);
         LinearLayoutManager ln_layout_manager = new LinearLayoutManager(NhapDiemScreen.this);
@@ -187,7 +201,7 @@ public class NhapDiemScreen extends AppCompatActivity
                     mylist.add(sv);
                     Log.e("CHI TIẾT LỚP ND", sv.getMaLop() + "   " + sv.getMaSV()+ "   " + sv.getTenSV()+ "   " + sv.getDiem() + "   "+ sv.getDiemChu()+ "   " + sv.getGhiChu());
                 }
-                GetListCauHoi();
+                GetListSinhVien();
             }
             workbook.close();
             inputStream.close();

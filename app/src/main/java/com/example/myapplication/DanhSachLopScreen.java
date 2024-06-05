@@ -86,7 +86,6 @@ public class DanhSachLopScreen extends AppCompatActivity
                 startActivity(new Intent(DanhSachLopScreen.this, ThemLopScreen.class));
             }
         });
-
         setupBottomSheetDialog();
         GetListCauHoi();
         GetDataLopFromFirebase();
@@ -211,8 +210,33 @@ public class DanhSachLopScreen extends AppCompatActivity
         bottom_sheet_dialog = new BottomSheetDialog(DanhSachLopScreen.this);
         View bottom_sheet_view = getLayoutInflater().inflate(R.layout.bottom_sheet_sua_xoa_lop, null);
         bottom_sheet_dialog.setContentView(bottom_sheet_view);
+        ImageButton cham_diem_button = bottom_sheet_view.findViewById(R.id.button_cham_diem);
         ImageButton button_sua_mon_hoc = bottom_sheet_view.findViewById(R.id.button_sua_lop);
         ImageButton button_xoa_mon_hoc = bottom_sheet_view.findViewById(R.id.button_xoa_lop);
+
+        cham_diem_button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(selected_lop!= null)
+                {
+                    if(!selected_lop.getMaGVCham().isEmpty())
+                    {
+                        Toast.makeText(DanhSachLopScreen.this, "Lớp này đã được chấm", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(DanhSachLopScreen.this, ChamDiemScreen.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("tenlop",selected_lop.getTenLop());
+                        bundle.putString("malop",selected_lop.getMaLop());
+                        intent.putExtra("data_malop",bundle);
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
         button_sua_mon_hoc.setOnClickListener(new View.OnClickListener()
         {
             @Override

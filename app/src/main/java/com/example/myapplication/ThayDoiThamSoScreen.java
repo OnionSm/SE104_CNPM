@@ -366,9 +366,11 @@ public class ThayDoiThamSoScreen extends AppCompatActivity {
     }
 
     private void setupOnBackPressed() {
-        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+        OnBackPressedCallback callback = new OnBackPressedCallback(true)
+        {
             @Override
-            public void handleOnBackPressed() {
+            public void handleOnBackPressed()
+            {
                 finish();
             }
         };
