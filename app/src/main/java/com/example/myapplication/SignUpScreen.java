@@ -118,6 +118,7 @@ public class SignUpScreen extends AppCompatActivity {
                         if(data.child("maGV").getValue(String.class).equals(msgv))
                         {
                             Toast.makeText(SignUpScreen.this, "Mã giáo viên đã tồn tại",Toast.LENGTH_SHORT).show();
+                            return;
                         }
                         count ++;
                         if(count==max)
