@@ -169,7 +169,8 @@ public class VerifyOTPToLogin extends AppCompatActivity {
                     numberphone
             );
 
-            giangVienRef.child(msgv).setValue(giangvien).addOnCompleteListener(task -> {
+            giangVienRef.child(msgv).setValue(giangvien).addOnCompleteListener(task ->
+            {
                 if (task.isSuccessful()) {
                     showToast("Đăng ký thành công");
                     Intent intent = new Intent(VerifyOTPToLogin.this, Login.class);
